@@ -1,0 +1,238 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    background-color: #faf2f2;
+    font-size: 1.1em;
+    line-height: 1.5;
+    text-align: center;
+}
+
+button:focus
+{
+    outline:0; /* Get rid of the edge around the button after clicking */
+}
+
+
+/*
+ *  login box section
+ */
+#rectangle-background
+{
+    display: flex; /* modify after adding Login Button under the navigation bar (hidden by defult)*/
+    height:400px;
+    width:70%;
+    position: center;
+    margin-top: 40%; /* modify later */
+    margin-left:15%; /* modify later */
+    transform: translateY(-100%);
+    /*margin: auto;*/
+    text-align:center;
+    background-color: rgba(17, 2, 38, 0.6);
+    border-radius:2px;
+}
+
+/* the cross mark */
+#close
+{
+    position:absolute;
+    top:0;
+    right:14px;
+    font-size:40px;
+    color:#faf7f0;
+    transform:rotate(45deg);
+    cursor:pointer;
+}
+
+/* the outer toggle rectangle */
+#toggle-layer
+{
+    background-color: white;
+    border:0.1px solid #1f5483;
+    border-radius: 5px;
+    height:500px;
+    position:absolute;
+    top:-50px;
+    width:50%;
+    right:calc(50% - 50px);
+    transition:.2s ease-in-out;
+}
+
+.right-outer-layer
+{
+    /* The addClass() && removeClass() method in js file
+     * needs !important
+     */
+    right:50px !important;
+}
+
+#choose-login
+{
+    position:absolute;
+    padding:0 120px;
+    top:25%;
+    color:#faf7f0;
+}
+
+#choose-register
+{
+    position:absolute;
+    padding:0 120px;
+    top:25%;
+    right:0;
+    color: #faf7f0;
+}
+
+/* login and register button */
+#register-button, #login-button
+{
+    display:inline-block;
+    margin-top:50px;
+
+    padding:6px 16px;
+    width:150px;
+    font-family: sans-serif;
+    font-size:20px;
+    color: #04000a;
+    text-align:center;
+
+    background-color: #faf7f0;
+
+    border:1px solid #9E9E9E;
+    border-radius:20px;
+
+    transition:all 0.5s;
+    cursor:pointer;
+}
+
+/* animation: spanning arrows for login and register buttons */
+/* text */
+#register-button span, #login-button span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+/* arrow pointing to left*/
+#register-button span:after
+{
+    content: '\00ab';
+    position: absolute;
+    opacity: 1;
+    top: 0;
+    left: -20px;
+    transition: 0.5s;
+}
+/* arrow pointing to right */
+#login-button span:after
+{
+    content: '\00bb';
+    position: absolute;
+    opacity: 1;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+/* text moving to the right*/
+#register-button:hover span
+{
+    padding-left: 25px;
+}
+/* text moving to the left*/
+#login-button:hover span
+{
+    padding-right: 25px;
+}
+
+#register-button:hover span:after
+{
+    opacity: 1;
+    left: 0;
+}
+
+#login-button:hover span:after
+{
+    opacity: 1;
+    right: 0;
+}
+/* the end of the arrow animation CSS */
+
+
+
+#login-form ,#register-form
+{
+    /* hidden */
+    display:none;
+    opacity:0;
+
+    transition:0.2s ease-in-out;
+    color:rgba(11, 2, 26, 0.8);
+    text-align:left;
+    padding:50px;
+}
+
+.reveal-showcase
+{
+    display:block !important;
+    opacity:0.9 !important;
+}
+
+/* forgot password */
+#login-form a
+{
+    text-decoration: none;
+    color:rgba(17, 2, 38, 0.6);
+    font-size:16px;
+}
+/* hover over "forgot password"*/
+#login-form a:hover
+{
+    color:#4b2d43;
+}
+
+#register-form p
+{
+    font-size:8px;
+}
+
+input[type = text], #pwdShow1, #pwdShow2, #pwdShow3
+{
+    display: block;
+    width: 90%;
+    margin:25px 0;
+    padding: 15px;
+    border: 1px solid rgba(17, 2, 38, 0.25);
+}
+input[type = text]:focus, #pwdShow1:focus, #pwdShow2:focus, #pwdShow3:focus
+{
+    border: 1px solid rgba(118, 63, 209, 0.6);
+}
+
+/* login and register button */
+.form-button
+{
+    float:right;
+    width:40%;
+    padding: 10px;
+    background-color: #4b2d43;
+    color:white;
+    border:0.5px solid #eafdff;
+    border-radius:3px;
+    cursor:pointer;
+    box-shadow: 2px 2px #566974;
+}
+
+.form-button:hover
+{
+    background: #110226;
+}
+
+/* press down effect on button */
+.form-button:active
+{
+    background: #110226;
+    box-shadow: 2px 0.5px #566974;
+    transform:translateY(2px);
+}
