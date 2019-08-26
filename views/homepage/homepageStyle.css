@@ -32,18 +32,6 @@ button:focus
     border-radius:2px;
 }
 
-/* the cross mark */
-#close
-{
-    position:absolute;
-    top:0;
-    right:14px;
-    font-size:40px;
-    color:#faf7f0;
-    transform:rotate(45deg);
-    cursor:pointer;
-}
-
 /* the outer toggle rectangle */
 #toggle-layer
 {

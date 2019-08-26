@@ -1,0 +1,22 @@
+var express = require('express');
+var router = express.Router();
+var controller = require('../controllers/controller.js');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+const path = require('path');
+
+
+router.get('/',function(req,res){
+  res.sendFile(path.join(__dirname+'/../views/homepage/homepage.html'));
+  //__dirname : It will resolve to your project folder.
+});
+
+router.get('/profile', function(req,res){
+    res.sendFile(path.join(__dirname+'/../views/index.html'));
+})
+
+router.post('/login', controller.login);
+
+router.post('/register', controller.register);
+
+module.exports = router;

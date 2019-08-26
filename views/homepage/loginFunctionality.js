@@ -5,17 +5,11 @@
 *   Login/Register Toggle Functionality
 */
 
-
 /* login form pop up*/
 
 /*function popup(){
     document.querySelector("#rectangle-background").style.display="flex";
 }*/
-
-/* close login pop up window */
-function closeForm(){
-    document.querySelector("#rectangle-background").style.display="none";
-}
 
 /* showPassword checkbox */
 function showPassword() {
@@ -33,6 +27,67 @@ function showPassword() {
         input2.type = "password";
         input3.type = "password";
     }
+}
+
+// Validate sign up form
+function formValidation() {
+    // JavaScript form validation
+    var checkPassword = function (str) {
+        var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        return re.test(str);
+    };
+
+    var checkForm = function (e) {
+        if (this.psw.value != "" && this.psw.value == this.pswrepeat.value) {
+            if (!checkPassword(this.psw.value)) {
+                alert("The password you have entered is not valid!");
+                this.psw.focus();
+                e.preventDefault();
+                return;
+            }
+        } else {
+            alert("Error: Please check that you've entered and confirmed your password!");
+            this.psw.focus();
+            e.preventDefault();
+            return;
+        }
+    };
+
+    var regform = document.getElementById("regform");
+    regform.addEventListener("submit", checkForm, true);
+
+    // HTML5 form validation
+
+    var supports_input_validity = function () {
+        var i = document.createElement("input");
+        return "setCustomValidity" in i;
+    }
+
+    if (supports_input_validity()) {
+        var pswInput = document.getElementById("field_psw");
+        pswInput.setCustomValidity(pswInput.title);
+
+        var pswrepeatInput = document.getElementById("field_pswrepeat");
+
+        // input key handlers
+
+        pswInput.addEventListener("keyup", function (e) {
+            this.setCustomValidity(this.validity.patternMismatch ? pswInput.title : "");
+            if (this.checkValidity()) {
+                pswrepeatInput.pattern = RegExp.escape(this.value);
+                pswrepeatInput.setCustomValidity(pswrepeatInput.title);
+            } else {
+                pswrepeatInput.pattern = this.pattern;
+                pswrepeatInput.setCustomValidity("");
+            }
+        }, false);
+
+        pswrepeatInput.addEventListener("keyup", function (e) {
+            this.setCustomValidity(this.validity.patternMismatch ? pswrepeatInput.title : "");
+        }, false);
+
+    }
+
 }
 
 /*
