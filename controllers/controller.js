@@ -12,8 +12,9 @@ var register = function(req,res){
       });
 
       user.setPassword(req.body.pwd);
+      console.log(user);
       return user.save()
-        .then(() => res.sendFile(path.join(__dirname+'/../views/awaitingApproval.html')));
+        .then(() => res.redirect('/u'));
 }
 
 /* login function */
@@ -36,7 +37,7 @@ var login = function(req,res){
                       return res.redirect('/profile');
                   }
                   else{
-                      return alert("Sorry, your account hasn't been approved!");
+                      return res.redirect('/u');
                   }
               }
           })(req, res, next);

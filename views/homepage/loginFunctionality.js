@@ -38,16 +38,17 @@ function formValidation() {
     };
 
     var checkForm = function (e) {
-        if (this.psw.value != "" && this.psw.value == this.pswrepeat.value) {
-            if (!checkPassword(this.psw.value)) {
+        console.log("HELLO");
+        if (this.pwd.value != "" && this.pwd.value == this.pwdrepeat.value) {
+            if (!checkPassword(this.pwd.value)) {
                 alert("The password you have entered is not valid!");
-                this.psw.focus();
+                this.pwd.focus();
                 e.preventDefault();
                 return;
             }
         } else {
             alert("Error: Please check that you've entered and confirmed your password!");
-            this.psw.focus();
+            this.pwd.focus();
             e.preventDefault();
             return;
         }
@@ -55,39 +56,6 @@ function formValidation() {
 
     var regform = document.getElementById("regform");
     regform.addEventListener("submit", checkForm, true);
-
-    // HTML5 form validation
-
-    var supports_input_validity = function () {
-        var i = document.createElement("input");
-        return "setCustomValidity" in i;
-    }
-
-    if (supports_input_validity()) {
-        var pswInput = document.getElementById("field_psw");
-        pswInput.setCustomValidity(pswInput.title);
-
-        var pswrepeatInput = document.getElementById("field_pswrepeat");
-
-        // input key handlers
-
-        pswInput.addEventListener("keyup", function (e) {
-            this.setCustomValidity(this.validity.patternMismatch ? pswInput.title : "");
-            if (this.checkValidity()) {
-                pswrepeatInput.pattern = RegExp.escape(this.value);
-                pswrepeatInput.setCustomValidity(pswrepeatInput.title);
-            } else {
-                pswrepeatInput.pattern = this.pattern;
-                pswrepeatInput.setCustomValidity("");
-            }
-        }, false);
-
-        pswrepeatInput.addEventListener("keyup", function (e) {
-            this.setCustomValidity(this.validity.patternMismatch ? pswrepeatInput.title : "");
-        }, false);
-
-    }
-
 }
 
 /*

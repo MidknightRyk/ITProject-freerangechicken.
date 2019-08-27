@@ -30,6 +30,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var routes = require('./routes/routes.js');
+app.post("/register", function(req,res){
+    console.log(req.body.name);
+});
 app.use('/', routes);
 // Start the server
 const PORT = process.env.PORT || 3000;

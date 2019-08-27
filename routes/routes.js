@@ -13,7 +13,11 @@ router.get('/',function(req,res){
 
 router.get('/profile', function(req,res){
     res.sendFile(path.join(__dirname+'/../views/index.html'));
-})
+});
+
+router.get('/u', function(req, res){
+    res.sendFile(path.join(__dirname+'/../views/awaitingApproval.html'))
+});
 
 router.post('/login', controller.login);
 
