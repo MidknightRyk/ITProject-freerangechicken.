@@ -2,6 +2,7 @@ const path = require('path');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var passport = require('passport');
+var Artifact = require('Artifact');
 
 var register = function(req,res){
     //app.post("/register", function(req,res){
@@ -43,6 +44,25 @@ var login = function(req,res){
             }
         }
     })(req, res);
+}
+
+var addArtifact = function(req,res){
+
+  var artifact = new Artifact({
+          "name": req.body.name,
+          "description": req.body.description,
+          /*imagePath: [{
+            primaryImage: String,
+            extraImages: { type: [String], default: null }
+          }], HELP PLS TQ*/
+          "author": req.body.username,
+          "tags": req.body.tags,
+          "placeOrigin": { type: String, default: null },
+          "year": req.body.year,
+          "approved": false
+  })
+
+  return artifact.save()
 }
 
 module.exports.login = login;

@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var controller = require('../controllers/controller.js');
 var mongoose = require('mongoose');
-var User = mongoose.model('User');
 const path = require('path');
 
 
@@ -22,5 +21,7 @@ router.get('/u', function(req, res){
 router.post('/login', controller.login);
 
 router.post('/register', controller.register);
+
+router.post('/addArtifact', controller.addArtifact);
 
 module.exports = router;
