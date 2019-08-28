@@ -4,6 +4,9 @@ var User = mongoose.model('User');
 var passport = require('passport');
 
 var register = function(req,res){
+    //app.post("/register", function(req,res){
+    console.log(req.body.name);
+
     var user = new User({
           "username":req.body.name,
           "email":req.body.email,
@@ -21,7 +24,7 @@ var register = function(req,res){
 var login = function(req,res){
     User.find({'email':req.body.email}, function(err, user){
       if (!err){
-          passport.authenticate('local', (err, user, info)=>{
+          passport.authenticate('user', (err, user, info)=>{
               if (err){
                   return res.redirect('/');
               }
@@ -40,7 +43,7 @@ var login = function(req,res){
                       return res.redirect('/u');
                   }
               }
-          })(req, res, next);
+          })(req, res);
       }
   })
 }

@@ -5,13 +5,14 @@ const LocalStrategy = require('passport-local');
 const User = mongoose.model('User');
 
 //User authorisation strategy
-passport.use('local', new LocalStrategy(
+passport.use('user', new LocalStrategy(
     {
     usernameField: 'email',
     passwordField: 'pwd'
-  },
+    },
     function(username, password, done) {
         User.findOne({ 'email': username }, function(err, user, res) {
+            console.log("11");
             if (!err){
                 if(!user || !user.validatePassword(password)) {
                     return done(null, false, { errors: { 'email or password': 'is invalid' } });
