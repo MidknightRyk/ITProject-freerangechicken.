@@ -71,12 +71,11 @@ var addArtifact = function(req,res){
 
 var uploadImage = function(req, res){
   var img = fs.readFileSync(req.file.path)
-  var encode_image = img.toString('base64');
 
   var image = new Image({
-      "name": img,
-      "contentType": req.file.mimetype,
-      "image": new Buffer(encode_image, 'base64')
+      "name": req.file.originalname,
+      "data": img,
+      "contentType": req.file.mimetype
   });
 
   console.log(image);
