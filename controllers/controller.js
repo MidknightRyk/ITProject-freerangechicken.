@@ -1,8 +1,10 @@
 const path = require('path');
+const fs = require('fs');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var Artifact = mongoose.model('Artifact');
+var Image = mongoose.model('Image');
 var passport = require('passport');
-var Artifact = require('Artifact');
 
 var register = function(req,res){
     //app.post("/register", function(req,res){
@@ -63,7 +65,27 @@ var addArtifact = function(req,res){
   })
 
   return artifact.save()
+    .then(() => res.redirect('/u'));
 }
+
+
+var uploadImage = function(req, res){
+  var img = fs.readFileSync(req.file.path)
+  var encode_image = img.toString('base64');
+
+  var image = new Image({
+      "name": img,
+      "contentType": req.file.mimetype,
+      "image": new Buffer(encode_image, 'base64')
+  });
+
+  console.log(image);
+  return image.save()
+    .then(() => res.redirect('/u'));
+
+};
 
 module.exports.login = login;
 module.exports.register = register;
+module.exports.addArtifact = addArtifact;
+module.exports.uploadImage = uploadImage;
