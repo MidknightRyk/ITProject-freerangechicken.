@@ -70,21 +70,31 @@ var addArtifact = function(req,res){
 
 
 var uploadImage = function(req, res){
-  var img = fs.readFileSync(req.file.path)
 
   var image = new Image({
       "name": req.file.originalname,
-      "data": img,
+      "data": fs.readFileSync(req.file.path),
       "contentType": req.file.mimetype
   });
-
-  console.log(image);
+  console.log("Image " + req.file.originalname + "has been uploaded!")
   return image.save()
     .then(() => res.redirect('/u'));
 
+};
+
+var getImage = function(req,res) {
+  Image.findOne({ "name": req.params.image },function(err,images) {
+
+     if (err) return console.log(err)
+
+     console.log(req.params.image)
+     res.contentType(images.contentType);
+     res.send( images.data );
+  });
 };
 
 module.exports.login = login;
 module.exports.register = register;
 module.exports.addArtifact = addArtifact;
 module.exports.uploadImage = uploadImage;
+module.exports.getImage = getImage;

@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 var multer  = require('multer')
 var upload = multer({ dest: 'uploads/' });
 const path = require('path');
-var Image = mongoose.model('Image');
 
 
 router.get('/',function(req,res){
@@ -25,15 +24,7 @@ router.get('/uploadImage', function(req, res){
     res.sendFile(path.join(__dirname+'/../views/fileupload.html'))
 });
 
-router.get("/images/:image", function(req,res) {
-    Image.findOne({ "name": req.param.image },function(err,images) {
-
-       if (err) return console.log(err)
-
-       //res.set("Content-Type", images.contentType);
-       res.send( images.img );
-    });
-});
+router.get("/images/:image", controller.getImage);
 
 router.post('/login', controller.login);
 
