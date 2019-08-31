@@ -7,7 +7,10 @@ var userSchema = mongoose.Schema(
         hash: String,
         salt: String,
         admin: Boolean,
-        approved: Boolean
+        approved: Boolean,
+        dateJoined: { type: Date, default: Date.now },
+        relationship: String,
+        artifacts : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Artifact' }]
     }
 );
 

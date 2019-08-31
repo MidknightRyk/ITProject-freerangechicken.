@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Artifact = mongoose.model('Artifact');
 var Image = mongoose.model('Image');
+var ObjectId = require('mongodb').ObjectID;
 var passport = require('passport');
 
 var register = function(req,res){
@@ -58,23 +59,31 @@ var login = function(req,res){
 }
 
 var addArtifact = function(req,res){
-
     var artifact = new Artifact({
         "name": req.body.name,
         "description": req.body.description,
-        /*imagePath: [{
-        primaryImage: String,
-        extraImages: { type: [String], default: null }
-    }], kiv*/
-    "author": req.body.username,
-    "tags": req.body.tags,
-    "placeOrigin": { type: String, default: null },
-    "year": req.body.year,
-    "approved": false
-})
+        "author": req.body.username,
+        "tags": req.body.tags,
+        "placeOrigin": { type: String, default: null },
+        "year": req.body.year,
+        "approved": false
+    })
 
-return artifact.save()
-.then(() => res.redirect('/u'));
+    return artifact.save()
+    .then(() =>{
+        User.findOneAndUpdate(
+            {_id: ObjectId(req.session.user)},
+            {$push: {artifacts: artifact._id}},
+            function (err, success) {
+                if (err) {
+                    return res.sendStatus(400);
+                }
+                else{
+                    res.redirect('/profile');
+                }
+            }
+        );
+    });
 }
 
 
@@ -102,6 +111,15 @@ var getImage = function(req,res) {
     });
 };
 
+var profile = function(req, res){
+    User.findById(ObjectId(req.session.user))
+    .populate({ path: 'artifacts', model: Artifact })
+    .exec((err,user) =>{
+        res.render(path.join(__dirname+'/../views/profile-page/profile-page.pug'),{user:user,  artifacts: user.artifacts});
+    })
+}
+
+module.exports.profile = profile;
 module.exports.login = login;
 module.exports.register = register;
 module.exports.addArtifact = addArtifact;

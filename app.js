@@ -33,6 +33,8 @@ app.use(passport.session());
 
 var routes = require('./routes/routes.js');
 
+app.set('views','./views');
+app.set('view engine', 'pug');
 app.use('/', routes);
 // Start the server
 const PORT = process.env.PORT || 3000;

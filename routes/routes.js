@@ -12,9 +12,7 @@ router.get('/',function(req,res){
   //__dirname : It will resolve to your project folder.
 });
 
-router.get('/profile', function(req,res){
-    res.sendFile(path.join(__dirname+'/../views/index.html'));
-});
+router.get('/profile', controller.profile);
 
 router.get('/u', function(req, res){
     res.sendFile(path.join(__dirname+'/../views/awaitingApproval.html'))
