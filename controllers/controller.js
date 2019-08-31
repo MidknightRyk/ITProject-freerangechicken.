@@ -56,7 +56,7 @@ var addArtifact = function(req,res){
           /*imagePath: [{
             primaryImage: String,
             extraImages: { type: [String], default: null }
-          }], HELP PLS TQ*/
+          }], kiv*/
           "author": req.body.username,
           "tags": req.body.tags,
           "placeOrigin": { type: String, default: null },
