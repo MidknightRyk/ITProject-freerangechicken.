@@ -6,7 +6,7 @@ const dbURI =
 
 const options = {
   useNewUrlParser: true,
-  dbName: "INFO30005"
+  dbName: "Database"
 };
 
 mongoose.connect(dbURI, options).then(
@@ -18,4 +18,7 @@ mongoose.connect(dbURI, options).then(
  }
 );
 
+
+
 require('./user.js');
+require('./artifact.js');

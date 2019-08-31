@@ -5,17 +5,11 @@
 *   Login/Register Toggle Functionality
 */
 
-
 /* login form pop up*/
 
 /*function popup(){
     document.querySelector("#rectangle-background").style.display="flex";
 }*/
-
-/* close login pop up window */
-function closeForm(){
-    document.querySelector("#rectangle-background").style.display="none";
-}
 
 /* showPassword checkbox */
 function showPassword() {
