@@ -11,8 +11,7 @@ passport.use('user', new LocalStrategy(
     passwordField: 'pwd'
     },
     function(username, password, done) {
-        User.findOne({ 'email': username }, function(err, user, res) {
-            console.log(username);
+        User.findOne({ email: username }, function(err, user, res) {
             if (!err){
                 if(!user || !user.validatePassword(password)) {
                     return done(null, false, { errors: { 'email or password': 'is invalid' } });

@@ -29,35 +29,6 @@ function showPassword() {
     }
 }
 
-// Validate sign up form
-function formValidation() {
-    // JavaScript form validation
-    var checkPassword = function (str) {
-        var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-        return re.test(str);
-    };
-
-    var checkForm = function (e) {
-        console.log("HELLO");
-        if (this.pwd.value != "" && this.pwd.value == this.pwdrepeat.value) {
-            if (!checkPassword(this.pwd.value)) {
-                alert("The password you have entered is not valid!");
-                this.pwd.focus();
-                e.preventDefault();
-                return;
-            }
-        } else {
-            alert("Error: Please check that you've entered and confirmed your password!");
-            this.pwd.focus();
-            e.preventDefault();
-            return;
-        }
-    };
-
-    var regform = document.getElementById("regform");
-    regform.addEventListener("submit", checkForm, true);
-}
-
 /*
  * sliding animation
  */
