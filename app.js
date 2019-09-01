@@ -1,25 +1,21 @@
-//Set up express
+// Set up express
 var express = require('express');
 var app = express();
-var multer = require('multer');
 var bodyParser = require('body-parser');
 var session = require('cookie-session');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const path = require('path');
-const router = express.Router();
 
 app.use(express.static(__dirname));
 app.use(session({
-    secret: 'itproject',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        secureProxy: true,
-        httpOnly: true,
-      }
+	secret: 'itproject',
+	resave: false,
+	saveUninitialized: false,
+	cookie: {
+		secureProxy: true,
+		httpOnly: true
+	}
 }));
-
 
 // Database setup
 require('./models/db.js');
@@ -36,5 +32,6 @@ var routes = require('./routes/routes.js');
 app.use('/', routes);
 // Start the server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, function(){ console.log(`Express listening on port ${PORT}`);
+app.listen(PORT, function () {
+	console.log(`Express listening on port ${PORT}`);
 });

@@ -4,33 +4,33 @@ const LocalStrategy = require('passport-local');
 
 const User = mongoose.model('User');
 
-//User authorisation strategy
+// User authorisation strategy
 passport.use('user', new LocalStrategy(
-    {
-    usernameField: 'email',
-    passwordField: 'pwd'
-    },
-    function(username, password, done) {
-        User.findOne({ 'email': username }, function(err, user, res) {
-            console.log(username);
-            if (!err){
-                if(!user || !user.validatePassword(password)) {
-                    return done(null, false, { errors: { 'email or password': 'is invalid' } });
-                }
-                return done(null, user);
-            }else{ throw err;}
-        })
-    }
+	{
+		usernameField: 'email',
+		passwordField: 'pwd'
+	},
+	function (username, password, done) {
+		User.findOne({ 'email': username }, function (err, user, res) {
+			console.log(username);
+			if (!err) {
+				if (!user || !user.validatePassword(password)) {
+					return done(null, false, { errors: { 'email or password': 'is invalid' } });
+				}
+				return done(null, user);
+			} else { throw err; }
+		});
+	}
 ));
 
-//Serialise User with id
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-} );
+// Serialise User with id
+passport.serializeUser(function (user, done) {
+	done(null, user.id);
+});
 
-//Find user in the two databases
-passport.deserializeUser(function(id, done) {
-    User.getUserById(id, function(err, user) {
-        done(err, user);
-    });
+// Find user in the two databases
+passport.deserializeUser(function (id, done) {
+	User.getUserById(id, function (err, user) {
+		done(err, user);
+	});
 });
