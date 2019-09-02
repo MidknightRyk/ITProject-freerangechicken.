@@ -1,9 +1,0 @@
-{
-   "name": "ARTIFACT_NAME",
-   "description": "ARTIFACT_DESCRIPTION",
-   "author": "UPLOADED_BY_NAME",
-   "dateCreated": "DATE_UPLOADED",
-   "tags": ["TAG1", "TAG2", "TAG3"],
-   "placeOrigin": "PLACE_OF_ORIGIN",
-   "year": "YEAR_ARTIFACT_MADE"
-}

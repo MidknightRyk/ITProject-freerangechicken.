@@ -5,68 +5,64 @@
 *   Login/Register Toggle Functionality
 */
 
-/* login form pop up*/
+/* login form pop up */
 
-/*function popup(){
+/* function popup(){
     document.querySelector("#rectangle-background").style.display="flex";
-}*/
+} */
 
 /* showPassword checkbox */
-function showPassword() {
-    var input1 = document.getElementById("pwdShow1");
-    var input2 = document.getElementById("pwdShow2");
-    var input3 = document.getElementById("pwdShow3");
+function showPassword () {
+	var input1 = document.getElementById('pwdShow1');
+	var input2 = document.getElementById('pwdShow2');
+	var input3 = document.getElementById('pwdShow3');
 
-    if ((input1.type === "password")||(input2.type === "password")||(input3.type === "password")) {
-        input1.type = "text";
-        input2.type = "text";
-        input3.type = "text";
-
-    } else {
-        input1.type = "password";
-        input2.type = "password";
-        input3.type = "password";
-    }
+	if ((input1.type === 'password') || (input2.type === 'password') || (input3.type === 'password')) {
+		input1.type = 'text';
+		input2.type = 'text';
+		input3.type = 'text';
+	} else {
+		input1.type = 'password';
+		input2.type = 'password';
+		input3.type = 'password';
+	}
 }
 
 // Validate sign up form
-function formValidation() {
+function formValidation () {
     // JavaScript form validation
-    var checkPassword = function (str) {
-        var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-        return re.test(str);
-    };
+	var checkPassword = function (str) {
+		var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+		return re.test(str);
+	};
 
-    var checkForm = function (e) {
-        console.log("HELLO");
-        if (this.pwd.value != "" && this.pwd.value == this.pwdrepeat.value) {
-            if (!checkPassword(this.pwd.value)) {
-                alert("The password you have entered is not valid!");
-                this.pwd.focus();
-                e.preventDefault();
-                return;
-            }
-        } else {
-            alert("Error: Please check that you've entered and confirmed your password!");
-            this.pwd.focus();
-            e.preventDefault();
-            return;
-        }
-    };
+	var checkForm = function (e) {
+		console.log('HELLO');
+		if (this.pwd.value !== '' && this.pwd.value === this.pwdrepeat.value) {
+			if (!checkPassword(this.pwd.value)) {
+				alert ('The password you have entered is not valid!');
+				this.pwd.focus();
+				e.preventDefault();
+			}
+		} else {
+			alert ("Error: Please check that you've entered and confirmed your password!");
+			this.pwd.focus();
+			e.preventDefault();
+		}
+	};
 
-    var regform = document.getElementById("regform");
-    regform.addEventListener("submit", checkForm, true);
+	var regform = document.getElementById('regform');
+	regform.addEventListener('submit', checkForm, true);
 }
 
 /*
  * sliding animation
  */
-$(document).ready(function(){
-
+$(document).ready(function () {
     // default display
     $("#login-form").addClass("reveal-showcase");
 
-    //if register button is clicked
+    // if register button is clicked
     $("#register-button").click(function(){
         $("#choose-register").fadeOut();
         $("#choose-login").fadeIn();
