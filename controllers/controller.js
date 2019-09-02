@@ -1,4 +1,5 @@
 const fs = require('fs');
+var storage = require('sessionstorage');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Artifact = mongoose.model('Artifact');
@@ -50,7 +51,6 @@ var addArtifact = function (req, res) {
 	var artifact = new Artifact({
 		'name': req.body.name,
 		'description': req.body.description,
-		'primaryImage': req.body.primaryimage,
 		'author': req.body.username,
 		'tags': req.body.tags,
 		'placeOrigin': req.body.country,
@@ -58,13 +58,15 @@ var addArtifact = function (req, res) {
 		'approved': false
 	});
 
-	return artifact.save()
-    .then(() => res.redirect('/uploadImage'));
+	artifact.save();
+	storage.artifactId = artifact._id;
+	console.log(artifact._id);
+	return res.redirect('/uploadImage');
 };
 
 var getArtifact = function (req, res) {
 	console.log(req.params.artifact);
-	Artifact.find({'_id': ObjectId(req.params.artifact)}, function (err, artifact) {
+	Artifact.find({'_id': ObjectID(req.params.artifact)}, function (err, artifact) {
 		if (err) return console.log(err);
 
 		console.log(req.params.artifact);
@@ -74,17 +76,34 @@ var getArtifact = function (req, res) {
 
 var uploadImage = function (req, res) {
 	var imgname = req.file.originalname;
+	var artifactID = storage.artifactId;
+	console.log('Updating Images for artifact' + artifactID);
 
 	var image = new Image({
 		'name': imgname,
 		'data': fs.readFileSync(req.file.path),
-		'contentType': req.file.mimetype
+		'contentType': req.file.mimetype,
+		'artifactID': artifactID
 	});
 
-	Artifact.updateOne(
-		{ 'name': req.body.artifactname },
-		{ $set: { 'extraImages': imgname } }
-	);
+	if (req.body.imageType === 'primaryImage') {
+		console.log('Updating Primary Image');
+		Artifact.findOneAndUpdate(
+			{ '_id': artifactID.toString() },
+			{ 'primaryImage': imgname },
+			{ upsert: true }, function (err, artifact) {
+				if (err) return console.log('couldnt update database');
+
+				console.log(artifact.name);
+			}
+		);
+	} else {
+		console.log('Updating Extra Images');
+		Artifact.findOneAndUpdate(
+			{ '_id': artifactID.toString() },
+			{ $push: { 'extraImages': imgname } }
+		);
+	}
 
 	console.log('Image ' + req.file.originalname + 'has been uploaded!');
 	return image.save()

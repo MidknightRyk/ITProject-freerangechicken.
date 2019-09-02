@@ -3,7 +3,7 @@ var artifactSchema = mongoose.Schema(
 	{
 		name: String,
 		description: String,
-		primaryImage: String,
+		primaryImage: { type: String, default: null },	// Stores the image object id in mongo
 		extraImages: { type: [String], default: null },
 		author: String,
 		editor: {type: String, default: null},
