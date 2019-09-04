@@ -1,10 +1,9 @@
 var mongoose = require('mongoose');
+var path = require('path');
 var User = mongoose.model('User');
+var Artifact = mongoose.model('Artifact');
 var passport = require('passport');
 var ObjectId = require('mongodb').ObjectID;
-var Artifact = mongoose.model('Artifact');
-var Image = mongoose.model('Image');
-const path = require('path');
 
 var register = function (req, res) {
 	User.findOne({ email: req.body.email }).then(function (user) {
