@@ -97,7 +97,7 @@ var uploadImage = function (req, res) {
 				console.log(artifact.name);
 			}
 		);
-	} else {
+	} else if (req.body.imageType === 'extraImage') {
 		console.log('Updating Extra Images');
 		Artifact.findOneAndUpdate(
 			{ '_id': artifactID.toString() },
