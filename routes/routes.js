@@ -12,11 +12,6 @@ router.get('/', function (req, res) {
   // dirname : It will resolve to your project folder.
 });
 
-// Get Profile Page
-router.get('/profile', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/index.html'));
-});
-
 // Get require admin approval page
 router.get('/u', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/awaitingApproval.html'));
