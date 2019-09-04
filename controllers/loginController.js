@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
+var path = require('path');
 var User = mongoose.model('User');
+var Artifact = mongoose.model('Artifact');
 var passport = require('passport');
+var ObjectId = require('mongodb').ObjectID;
 
 var register = function (req, res) {
 	User.findOne({ email: req.body.email }).then(function (user) {
@@ -48,5 +51,16 @@ var login = function (req, res) {
 	})(req, res);
 };
 
+var profile = function (req, res) {
+	User.findById(ObjectId(req.session.user))
+		.populate({ path: 'artifacts', model: Artifact })
+		.exec((err, user) => {
+			if (err) return console.log(err);
+			res.render(path.join(__dirname, '/../views/profile-page/profile-page.pug'),
+			{user: user, artifacts: user.artifacts});
+		});
+};
+
+module.exports.profile = profile;
 module.exports.login = login;
 module.exports.register = register;
