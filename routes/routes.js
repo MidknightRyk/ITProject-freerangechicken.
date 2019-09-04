@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var controller = require('../controllers/controller.js');
+var loginController = require('../controllers/loginController.js');
+var imageController = require('../controllers/imageController.js');
+var artifactController = require('../controllers/artifactController.js');
 var multer = require('multer');
 var upload = multer({
 	dest: 'uploads/'
@@ -12,34 +14,44 @@ router.get('/', function (req, res) {
   // dirname : It will resolve to your project folder.
 });
 
+// Get Profile Page
 router.get('/profile', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/index.html'));
 });
 
+// Get require admin approval page
 router.get('/u', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/awaitingApproval.html'));
 });
 
+// Get upload image page
 router.get('/uploadImage', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/fileupload.html'));
 });
 
+// Get add Artifact page
 router.get('/addArtifact', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/addArtifact.html'));
 });
 
-router.get('/images/:image', controller.getImage);
+// Get images
+router.get('/images/:image', imageController.getImage);
 
-router.get('/aritfacts/:artifact', controller.getArtifact);
+// Get artifacts by id
+router.get('/aritfacts/:artifact', artifactController.getArtifact);
 
-router.post('/login', controller.login);
+// Login
+router.post('/login', loginController.login);
 
-router.post('/register', controller.register);
+// Register
+router.post('/register', loginController.register);
 
-router.post('/addArtifact', controller.addArtifact);
+// Add Artifact
+router.post('/addArtifact', artifactController.addArtifact);
 
+// Upload Image
 var type = upload.single('myImage');
 
-router.post('/uploadImage', type, controller.uploadImage);
+router.post('/uploadImage', type, imageController.uploadImage);
 
 module.exports = router;
