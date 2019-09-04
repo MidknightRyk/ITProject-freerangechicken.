@@ -43,7 +43,6 @@ var uploadImage = function (req, res) {
 		image.artifactId = artifactID;
 	} else if (req.body.imageType === 'userProfilePhoto') {
 		console.log('Updating User Profile Photo ' + artifactID);
-
 	}
 
 	console.log('Image ' + req.file.originalname + 'has been uploaded!');
