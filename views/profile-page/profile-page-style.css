@@ -1,0 +1,474 @@
+button:focus
+{
+    outline:0; /* Get rid of the edge around the button after clicking */
+}
+
+
+body {
+    line-height: 1;
+}
+
+p {
+    margin: 0 0 2em 0;
+}
+
+h1 {
+    font-size: 2.75em;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 1em 0;
+    letter-spacing: -0.035em;
+}
+
+
+@media screen and (max-width: 736px) {
+
+    h1 {
+        font-size: 2em;
+        margin: 0 0 1em 0;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+
+    h1 {
+        font-size: 1.75em;
+    }
+
+}
+
+a {
+
+    transition: border-bottom-color 0.2s ease, color 0.2s ease;
+    color: #585858;
+    border-bottom: dotted 1px rgba(88, 88, 88, 0.5);
+}
+
+a:hover {
+    border-bottom-color: transparent;
+    color: #af0d57 !important;
+}
+
+
+
+/* Wrapper */
+
+#wrapper > * > .inner {
+    width: 100%;
+    max-width: 68em;
+    padding: 0 1em;
+    margin: 0 auto;
+
+}
+
+@media screen and (max-width: 736px) {
+
+    #wrapper > * > .inner {
+        padding: 0 1.25em;
+    }
+
+}
+
+
+/* Header */
+
+#header {
+    padding: 4em 0 0.5em 0.5em ;
+}
+
+#header .profile-info {
+
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 0;
+    color: inherit;
+    font-weight: 900;
+    letter-spacing: 0.35em;
+    margin: 0 0 2.5em 0;
+    text-transform: uppercase;
+}
+
+#header .profile-info > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Profile Photo */
+#profile-photo
+{
+    width:115px;
+    height:115px;
+
+    object-fit:cover; /* avoid stretching the photo*/
+    border: 6px solid lightgrey;
+    border-radius: 50%;
+
+    cursor:pointer;
+}
+
+#profile-photo:hover
+{
+    width:120px;
+    height:120px;
+    transition:0.5s;
+}
+
+
+/* Edit Artifacts Button */
+/* inspired from: https://codepen.io/tawfiqin/pen/OdgEJM */
+.icon-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #cdcdcd;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    transition: width 0.2s ease-in-out;
+}
+.edit-btn:hover {
+    width: 150px;
+}
+.edit-btn::before,
+.edit-btn::after {
+    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 10px;
+    top: calc(50% - 2px);
+    background: #dd0e5a;
+}
+.edit-btn::after {
+    right: 14px;
+    overflow: hidden;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.edit-btn::before {
+    left: 14px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.icon-btn:focus {
+    outline: none;
+}
+
+.btn-txt {
+    opacity: 0;
+    transition: opacity 0.2s;
+    color: #260613;
+
+}
+
+
+.edit-btn:hover::before,
+.edit-btn:hover::after {
+    width: 4px;
+    border-radius: 2px;
+}
+.edit-btn:hover .btn-txt {
+    opacity: 1;
+}
+
+.edit-icon::after,
+.edit-icon::before {
+    transition: all 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 2px;
+    top: calc(50% - 10px);
+    background: #dd0e5a;
+    overflow: hidden;
+}
+.edit-icon::before {
+    left: 22px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.edit-icon::after {
+    right: 22px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.edit-btn:hover .edit-icon::before {
+    left: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
+.edit-btn:hover .edit-icon::after {
+    right: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
+
+
+
+/* Main */
+
+#main {
+    padding: 0 0 6em 0;
+}
+
+@media screen and (max-width: 736px) {
+
+    #main {
+        padding: 0 0 4em 0 ;
+    }
+}
+
+
+
+/* Section/Article */
+
+section.special, article.special {
+    text-align: center;
+}
+
+header p {
+    margin-top: -1em;
+}
+
+@media screen and (max-width: 736px) {
+
+    header p {
+        margin-top: 0;
+    }
+
+}
+
+
+/* Tiles */
+/* Inspired by html5up - theme: Phantom */
+.tiles {
+
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin: -2.5em 0 0 -2.5em;
+}
+
+.tiles article {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    position: relative;
+    width: calc(33.33333% - 2.5em);
+    margin: 2.5em 0 0 2.5em;
+}
+
+.tiles article > .image {
+
+    transition: transform 0.5s ease;
+    position: relative;
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.tiles article > .image img {
+    display: block;
+    width: 100%;
+}
+
+.tiles article > .image:before {
+    pointer-events: none;
+    transition: background-color 0.5s ease, opacity 0.5s ease;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.tiles article > .image:after {
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.25;
+    z-index: 2;
+}
+
+.tiles article > a {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease, transform 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    border-radius: 4px;
+    border-bottom: 0;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    z-index: 3;
+}
+
+.tiles article > a > :last-child {
+    margin: 0;
+}
+
+.tiles article > a:hover {
+    color: #ffffff !important;
+}
+
+.tiles article > a h2 {
+    margin: 0;
+}
+
+.tiles article > a .content {
+
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    width: 100%;
+    max-height: 0;
+    line-height: 1.5;
+    margin-top: 0.35em;
+    opacity: 0;
+}
+
+.tiles article > a .content > :last-child {
+    margin-bottom: 0;
+}
+
+.tiles article#style1 > .image:before {
+    background-color: #f2849e;
+}
+
+.tiles article#style2 > .image:before {
+    background-color: #7ecaf6;
+}
+
+.tiles article#style3 > .image:before {
+    background-color: #7bd0c1;
+}
+
+.tiles article#style4 > .image:before {
+    background-color: #c75b9b;
+}
+
+.tiles article#style5 > .image:before {
+    background-color: #ae85ca;
+}
+
+.tiles article#style6 > .image:before {
+    background-color: #8499e7;
+}
+
+body:not(.is-touch) .tiles article:hover > .image {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+body:not(.is-touch) .tiles article:hover > .image:before {
+    background-color: #333333;
+    opacity: 0.35;
+}
+
+body:not(.is-touch) .tiles article:hover > .image:after {
+    opacity: 0;
+}
+
+body:not(.is-touch) .tiles article:hover .content {
+    max-height: 15em;
+    opacity: 1;
+}
+
+* + .tiles {
+    margin-top: 2em;
+}
+
+body.is-preload .tiles article {
+    -moz-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+body.is-touch .tiles article .content {
+    max-height: 15em;
+    opacity: 1;
+}
+
+@media screen and (max-width: 1280px) {
+
+    .tiles {
+        margin: -1.25em 0 0 -1.25em;
+    }
+
+    .tiles article {
+        width: calc(33.33333% - 1.25em);
+        margin: 1.25em 0 0 1.25em;
+    }
+
+}
+
+@media screen and (max-width: 980px) {
+
+    .tiles {
+        margin: -2.5em 0 0 -2.5em;
+    }
+
+    .tiles article {
+        width: calc(50% - 2.5em);
+        margin: 2.5em 0 0 2.5em;
+    }
+
+}
+
+@media screen and (max-width: 736px) {
+
+    .tiles {
+        margin: -1.25em 0 0 -1.25em;
+    }
+
+    .tiles article {
+        width: calc(50% - 1.25em);
+        margin: 1.25em 0 0 1.25em;
+    }
+
+    .tiles article:hover > .image {
+        -moz-transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+        -ms-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .tiles {
+        margin: 0;
+    }
+
+    .tiles article {
+        width: 100%;
+        margin: 1.25em 0 0 0;
+    }
+
+}

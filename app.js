@@ -32,6 +32,9 @@ app.use(passport.session());
 var routes = require('./routes/routes.js');
 var subdomainRouter = require('./routes/subdomainRoutes.js');
 
+app.set('views', './views');
+app.set('view engine', 'pug');
+
 // Subdomain Router
 router.get('/', subdomainRouter);
 

@@ -4,9 +4,7 @@ var loginController = require('../controllers/loginController.js');
 var imageController = require('../controllers/imageController.js');
 var artifactController = require('../controllers/artifactController.js');
 var multer = require('multer');
-var upload = multer({
-	dest: 'uploads/'
-});
+var upload = multer({ dest: 'uploads/' });
 const path = require('path');
 
 router.get('/', function (req, res) {
@@ -23,6 +21,8 @@ router.get('/profile', function (req, res) {
 router.get('/u', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/awaitingApproval.html'));
 });
+
+router.get('/profile', loginController.profile);
 
 // Get upload image page
 router.get('/uploadImage', function (req, res) {
