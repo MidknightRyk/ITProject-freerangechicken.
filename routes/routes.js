@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router();
 var controller = require('../controllers/controller.js');
 var multer = require('multer');
-var upload = multer({
-	dest: 'uploads/'
-});
+var upload = multer({ dest: 'uploads/' });
 const path = require('path');
 
 router.get('/', function (req, res) {
@@ -16,9 +14,7 @@ router.get('/profile', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/index.html'));
 });
 
-router.get('/u', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/awaitingApproval.html'));
-});
+router.get('/profile', controller.profile);
 
 router.get('/uploadImage', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/fileupload.html'));
@@ -31,6 +27,9 @@ router.get('/addArtifact', function (req, res) {
 router.get('/images/:image', controller.getImage);
 
 router.get('/aritfacts/:artifact', controller.getArtifact);
+router.get('/uploadImage', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/fileupload.html'));
+});
 
 router.post('/login', controller.login);
 

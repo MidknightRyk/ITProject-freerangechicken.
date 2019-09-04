@@ -8,7 +8,7 @@
 /* login form pop up */
 
 /* function popup(){
-    document.querySelector("#rectangle-background").style.display="flex";
+    document.querySelector('#rectangle-background').style.display='flex';
 } */
 
 /* showPassword checkbox */
@@ -40,12 +40,12 @@ function formValidation () {
 		console.log('HELLO');
 		if (this.pwd.value !== '' && this.pwd.value === this.pwdrepeat.value) {
 			if (!checkPassword(this.pwd.value)) {
-				alert ('The password you have entered is not valid!');
+				alert('The password you have entered is not valid!');
 				this.pwd.focus();
 				e.preventDefault();
 			}
 		} else {
-			alert ("Error: Please check that you've entered and confirmed your password!");
+			alert('Error: Please check that youve entered and confirmed your password!');
 			this.pwd.focus();
 			e.preventDefault();
 		}
@@ -59,28 +59,27 @@ function formValidation () {
  * sliding animation
  */
 $(document).ready(function () {
-    // default display
-    $("#login-form").addClass("reveal-showcase");
+	// default display
+	$('#login-form').addClass('reveal-showcase');
 
-    // if register button is clicked
-    $("#register-button").click(function(){
-        $("#choose-register").fadeOut();
-        $("#choose-login").fadeIn();
-        //move the outer-layer box to the right
-        $("#toggle-layer").addClass("right-outer-layer");
-        //hide login showcase
-        $("#login-form").removeClass("reveal-showcase");
-        //reveal register showcase
-        $("#register-form").addClass("reveal-showcase");
+	// if register button is clicked
+	$('#register-button').click(function(){
+		$('#choose-register').fadeOut();
+		$('#choose-login').fadeIn();
+		// move the outer-layer box to the right
+		$('#toggle-layer').addClass('right-outer-layer');
+		// hide login showcase
+		$('#login-form').removeClass('reveal-showcase');
+		// reveal register showcase
+		$('#register-form').addClass('reveal-showcase');
 
-    });
+	});
 
-    $("#login-button").click(function(){
-        $("#choose-login").fadeOut();
-        $("#choose-register").fadeIn();
-        $("#toggle-layer").removeClass("right-outer-layer");
-        $("#login-form").addClass("reveal-showcase");
-        $("#register-form").removeClass("reveal-showcase");
-
-    });
+	$('#login-button').click(function(){
+		$('#choose-login').fadeOut();
+		$('#choose-register').fadeIn();
+		$('#toggle-layer').removeClass('right-outer-layer');
+		$('#login-form').addClass('reveal-showcase');
+		$('#register-form').removeClass('reveal-showcase');
+	});
 });

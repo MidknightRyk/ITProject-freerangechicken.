@@ -1,6 +1,7 @@
 // Set up express
 var express = require('express');
 var app = express();
+var multer = require('multer');
 var bodyParser = require('body-parser');
 var session = require('cookie-session');
 app.use(bodyParser.json());
@@ -29,6 +30,8 @@ app.use(passport.session());
 
 var routes = require('./routes/routes.js');
 
+app.set('views','./views');
+app.set('view engine', 'pug');
 app.use('/', routes);
 // Start the server
 const PORT = process.env.PORT || 3000;
