@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Free Range User Approval Page</title>
+
+    <link href="admin-user-style.css" rel="stylesheet" type="text/css" >
+    <link href="admin-artifact-style.css" rel="stylesheet" type="text/css">
+
+    <!-- Font Awesome CDN-->
+    <script src="https://kit.fontawesome.com/010fb4b3e5.js"></script>
+
+    <!-- Bootstrap CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<body>
+
+
+
+
+<!-- Navigation Tabs : User Request + Artifact Request -->
+
+<ul class="nav nav-pills mb-3 mt-3 ml-5" id="pills-tab" role="tablist" >
+    <li class="nav-item">
+        <a class="nav-link active btn-outline-info" id="pills-user-tab" data-toggle="pill" href="#pills-user" role="tab" aria-controls="pills-user" aria-selected="true">
+            <i class="fas fa-user-check"> User Request <span id="user-request-count" class="badge badge-danger badge-pill">0</span></i>
+        </a>
+
+    </li>
+    <li class="nav-item">
+        <a class="nav-link btn-outline-warning" id="pills-artifact-tab" data-toggle="pill" href="#pills-artifact" role="tab" aria-controls="pills-artifact" aria-selected="false" style="">
+            <i class="fab fa-earlybirds"> Artifact Request <span id="artifact-request-count" class="badge badge-danger badge-pill">0</span></i>
+        </a>
+    </li>
+
+</ul>
+
+
+
+<!-- Tabs Content Container -->
+<div class="tab-content" id="pills-tabContent">
+
+    <!-- The content under User Request Tab | Currently Active -->
+    <div class="tab-pane fade show active" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab">
+
+        <!-- User Request Box -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="main-box no-header">
+                        <div class="main-box-body">
+                            <div class="table-responsive">
+
+                                <table class="table user-list">
+
+                                    <!-- Header -->
+                                    <thead>
+                                    <tr>
+                                        <th><span>User</span></th>
+                                        <th><span>Created</span></th>
+                                        <th><span>Approval</span></th>
+                                        <th><span>Email</span></th>
+
+                                        <th class="text-center"><span>Status</span></th>
+                                    </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                    <!-- User Approval 1 -->
+                                    <tr class="user-request">
+                                        <!-- Profile Photo + Username + Relationship -->
+                                        <td>
+                                            <img src="http://images6.fanpop.com/image/photos/33400000/Leonardo-DiCaprio-young-leonardo-dicaprio-33468322-500-560.jpg" alt="">
+                                            <a href="#" class="user-name">Username1</a>
+                                            <span class="user-subhead">...(｡•ˇ‸ˇ•｡) ...</span>
+                                        </td>
+                                        <!-- Account Created Date -->
+                                        <td>10/09/2019</td>
+
+                                        <!-- Approve + Delete Buttons -->
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+                                        </td>
+
+                                        <!-- Email -->
+                                        <td>
+                                            <a href="#">freerangechickenfeet@gmail.com</a>
+                                        </td>
+
+                                        <!-- Request Status ( This column is not really necessary )-->
+                                        <td class="text-center">
+                                            <span class="label">accepted</span>
+                                        </td>
+
+                                    </tr>
+
+                                    <!-- User Approval 2 -->
+                                    <tr class="user-request">
+
+                                        <td>
+                                            <img src="https://imgs2.dab3games.com/tom-and-jerry-mouse-maze-game.png" alt="">
+                                            <a href="#" class="user-name">Username2</a>
+                                            <span class="user-subhead">Auntie</span>
+                                        </td>
+
+                                        <td>10/09/2019</td>
+
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <a href="#">freerangechickenhand@gmail.com</a>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <span class="label label-success">Pending</span>
+                                        </td>
+
+                                    </tr>
+
+                                    <!-- User Approval 3 -->
+                                    <tr class="user-request">
+                                        <td>
+                                            <img src="http://img.youai123.com/5c43226e9f3c2.gif" alt="">
+                                            <a href="#" class="user-name">Username3</a>
+                                            <span class="user-subhead">Uncle</span>
+                                        </td>
+
+                                        <td>10/09/2019</td>
+
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                        </td>
+
+                                        <td>
+                                            <a href="#">freerangechickenleg@gmail.com</a>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <span class="label label-danger">pending</span>
+                                        </td>
+
+                                    </tr>
+
+                                    <!-- User Approval 4 -->
+                                    <tr class="user-request">
+                                        <td>
+                                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Slime_Rancher_112_screenshot.jpg/250px-Slime_Rancher_112_screenshot.jpg" alt="">
+                                            <a href="#" class="user-name">Username4</a>
+                                            <span class="user-subhead">Sister</span>
+                                        </td>
+
+                                        <td>10/09/2019</td>
+
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                        </td>
+
+                                        <td>
+                                            <a href="#">freerangechickenwing@gmail.com</a>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <span class="label label-danger">pending</span>
+                                        </td>
+
+                                    </tr>
+
+                                    <!-- User Approval 5 -->
+                                    <tr class="user-request">
+                                        <td>
+                                            <img src="https://cdn6.f-cdn.com/contestentries/1376995/30494909/5b566bc71d308_thumbCard.jpg" alt="">
+                                            <a href="#" class="user-name">Username5</a>
+                                            <span class="user-subhead">Cousin</span>
+                                        </td>
+
+                                        <td>10/09/2019</td>
+
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                        </td>
+
+                                        <td>
+                                            <a href="#">freerangechickendrumstick@gmail.com</a>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <span class="label label-danger">pending</span>
+                                        </td>
+
+                                    </tr>
+
+                                    <!-- User Approval 6 -->
+                                    <tr class="user-request">
+                                        <td>
+                                            <img src="https://opidesign.net/wp-content/uploads/landscape-architecture-fun-facts-outside-productions-blog-980x551.jpg" alt="">
+                                            <a href="#" class="user-name">Username6</a>
+                                            <span class="user-subhead">Mum</span>
+                                        </td>
+
+                                        <td>10/09/2019</td>
+
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                        </td>
+
+                                        <td>
+                                            <a href="#">freerangechickentender@gmail.com</a>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <span class="label label-danger">pending</span>
+                                        </td>
+
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- The content under Artifact Request Tab -->
+    <div class="tab-pane fade" id="pills-artifact" role="tabpanel" aria-labelledby="pills-artifact-tab">
+        <!-- Artifact Request Box -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="main-box no-header">
+                        <div class="main-box-body">
+                            <div class="table-responsive">
+
+                                <table class="table artifact-list">
+
+                                    <!-- Header -->
+                                    <thead>
+                                    <tr>
+                                        <th><span>Artifact</span></th>
+                                        <th><span>Edited</span></th>
+                                        <th><span>Approval</span></th>
+                                        <th><span>Description</span></th>
+
+                                        <th class="text-center"><span>Status</span></th>
+                                    </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                    <!-- Artifact Approval 1 -->
+                                    <tr class="artifact-request">
+                                        <!-- Artifact Photo + Artifact Name + User Origin -->
+                                        <td>
+                                            <img src="https://i.ytimg.com/vi/CkFCBBNdsZg/maxresdefault.jpg" alt="">
+                                            <a href="#" class="artifact-name">ArtifactName1</a>
+                                            <span class="username-subhead">Andy Lau</span>
+                                        </td>
+
+                                        <!-- Artifact Uploaded Date -->
+                                        <td>10/09/2019</td>
+
+                                        <!-- Approve + Delete Buttons -->
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+                                        </td>
+
+                                        <!-- Description -->
+                                        <td>
+                                            <span>a tea cup</span>
+                                        </td>
+
+                                        <!-- Request Status: Pending / Accepted-->
+                                        <td class="text-center">
+                                            <span class="label">pending</span>
+                                        </td>
+
+                                    </tr>
+
+                                    <!-- Artifact Approval 2 -->
+                                    <tr class="artifact-request">
+
+                                        <td>
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/51a0K1S1nKL._UY500_.jpg" alt="">
+                                            <a href="#" class="artifact-name">ArtifactName2</a>
+                                            <span class="username-subhead">Username2</span>
+                                        </td>
+
+                                        <td>10/09/2019</td>
+
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <span>Elena's necklace</span>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <span class="label">pending</span>
+                                        </td>
+
+                                    </tr>
+
+                                    <!-- Artifact Approval 3 -->
+                                    <tr class="artifact-request">
+
+                                        <td>
+                                            <img src="https://gw.alicdn.com/bao/uploaded/i4/34362852/TB26oiHsr0kpuFjy0FjXXcBbVXa_!!34362852.jpg_b.jpg" alt="">
+                                            <a href="#" class="artifact-name">ArtifactName3</a>
+                                            <span class="username-subhead">Username3</span>
+                                        </td>
+
+                                        <td>10/09/2019</td>
+
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <span>仲天骐的耳钉</span>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <span class="label">pending</span>
+                                        </td>
+
+                                    </tr>
+
+                                    <!-- Artifact Approval 4 -->
+                                    <tr class="artifact-request">
+
+                                        <td>
+                                            <img src="https://i.redd.it/7hjgfhg6hz401.png" alt="">
+                                            <a href="#" class="artifact-name">ArtifactName1</a>
+                                            <span class="username-subhead">Username4</span>
+                                        </td>
+
+                                        <td>10/09/2019</td>
+
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <span>Starew Valley Artifacts</span>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <span class="label">accepted</span>
+                                        </td>
+
+                                    </tr>
+
+                                    <!-- Artifact Approval 5 -->
+                                    <tr class="artifact-request">
+
+                                        <td>
+                                            <img src="https://ae01.alicdn.com/kf/HTB1XfaiaiYrK1Rjy0Fdq6ACvVXaV/Japapnese-Anime-Detective-Conan-Glasses-Cosplay-Props-Resin-for-Women-Men-Halloween-Christmas-Gifts.jpg" alt="">
+                                            <a href="#" class="artifact-name">ArtifactName5</a>
+                                            <span class="username-subhead">Username5</span>
+                                        </td>
+
+                                        <td>10/09/2019</td>
+
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <span>Conan's glasses</span>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <span class="label">pending</span>
+                                        </td>
+
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* Count the total number of artifact requests */
+    /* BUT this is not real-time value and it does include faded/deleted request...*/
+    var artiCount = $('.artifact-request').length;
+    //var userCount = $('.user-request').length;
+
+    $(document).ready(function(){
+
+
+        // Show "deleted" text then the entire row fades out
+        $(".delete-btn").on('click',function(){
+            $(this).closest('tr').fadeOut();
+            $(this).closest('tr').find(".text-center").text("deleted");
+            $(this).closest('td').text("deleted");
+        });
+
+
+
+        // Show "uploaded" text then the entire row fades out
+        $(".accept-btn").on('click',function(){
+            $(this).closest('tr').fadeOut();
+            $(this).closest('tr').find(".text-center").text("accepted");
+            $(this).closest('td').text("accepted");
+        });
+
+        // Before Clicking
+        $('#artifact-request-count').text(artiCount.toString());
+
+        // Change the number of unread requests to 0 after clicking on "Artifact Request" button
+        $("#pills-artifact-tab").on('click',function(){
+            $('#artifact-request-count').text("0");
+        });
+
+        /*$('#user-request-count').text(userCount.toString());
+        $("#pills-user-tab").on('click',function(){
+            $('#user-request-count').text("0");
+        });*/
+
+
+    });
+</script>
+
+
+</body>
+</html>
