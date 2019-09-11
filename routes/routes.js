@@ -8,7 +8,11 @@ var upload = multer({ dest: 'uploads/' });
 const path = require('path');
 
 router.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/homepage/homepage.html'));
+	if (!req.session.user) {
+		res.sendFile(path.join(__dirname, '/../views/homepage/homepage.html'));
+	} else {
+		res.redirect('/profile');
+	}
   // dirname : It will resolve to your project folder.
 });
 
