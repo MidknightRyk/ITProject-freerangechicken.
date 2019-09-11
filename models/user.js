@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var crypto = require('crypto');
 var userSchema = mongoose.Schema(
 	{
-		username: String,
+		name: String,
 		email: String,
 		hash: String,
 		salt: String,

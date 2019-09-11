@@ -9,12 +9,12 @@ router.get('/', function (req, res) {
 
 // Artifact approval page
 router.get('/artifactApproval', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/artifact-approval.html'));
+	res.sendFile(path.join(__dirname, '/../views/admin-page/artifact-approval.html'));
 });
 
 // Admin Approval Homepage
 router.get('/homepage', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/request-approval.html'));
+	res.sendFile(path.join(__dirname, '/../views/admin-page/request-approval.html'));
 });
 
 // prob need a subdomain controller too

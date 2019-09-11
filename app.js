@@ -36,7 +36,7 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 
 // Subdomain Router
-router.get('/', subdomainRouter);
+router.use('/', subdomainRouter);
 
 app.use(subdomain('admin', router));
 app.use('/', routes);
