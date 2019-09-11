@@ -51,13 +51,15 @@ var login = function (req, res) {
 	})(req, res);
 };
 
-var profile = function(req, res){
-    User.findById(ObjectId(req.session.user))
-    .populate({ path: 'artifacts', model: Artifact })
-    .exec((err,user) =>{
-        res.render(path.join(__dirname+'/../views/profile-page/profile-page.pug'),{user:user,  artifacts: user.artifacts});
-    })
-}
+var profile = function (req, res) {
+	User.findById(ObjectId(req.session.user))
+	.populate({ path: 'artifacts', model: Artifact })
+	.exec((err, user) => {
+		if (err) return console.log(err);
+		res.render(path.join(__dirname, '/../views/profile-page/profile-page.pug'),
+				{user: user, artifacts: user.artifacts});
+	});
+};
 
 module.exports.login = login;
 module.exports.register = register;
