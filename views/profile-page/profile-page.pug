@@ -1,0 +1,98 @@
+doctype html
+head
+	meta(charset='UTF-8')
+	meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+	title Your Profile
+	link(href='../views/profile-page/profile-page-style.css' rel='stylesheet' type='text/css')
+	script(src='http://code.jquery.com/jquery-3.3.1.js')
+	// Font Awesome CDN
+	script(src='https://kit.fontawesome.com/010fb4b3e5.js')
+	// Bootstrap CDN
+	link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+	script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+	script(src="https://code.jquery.com/jquery-3.2.1.min.js")
+	script(src="../node_modules/jquery.facedetection/dist/jquery.facedetection.min.js")
+// Wrapper
+#wrapper
+	// Header
+	header#header
+		.inner
+			// Profile Photo + Username
+			// Update profile photos by clicking on the original profile photo
+			a.profile-info(href='')
+				// Profile Photo
+				img#profile-photo.mr.mt-3(src='../views/profile-page/profile-photo.jpeg' alt='Profile Photo')
+				// Username
+				span.title
+				|    #{user.username}
+			script.
+				$('#profile-photo').faceDetection({
+					complete: function (faces) {
+						console.log(faces);
+						console.log(faces.length);
+					}
+				});
+			// Edit Artifacts Button
+			div(style='float:right;margin-top:10%')
+				button.icon-btn.edit-btn
+					.edit-icon
+					// Direct to Edit/Add Artifacts Page
+					a(href='' style='text-decoration: none;')
+						.btn-txt
+							b Edit Artifacts
+
+	// Main
+	#main
+		.inner
+			header
+				// First Join Date + Relationship with Mrs Tan + the Number of Total Artifacts Added
+				// <i> tags are character icons from FontAwesome
+
+
+				p#join-date
+					i.far.fa-clock
+				script.
+					function english_ordinal_suffix(dt)
+					{
+						return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
+					}
+					var user = !{JSON.stringify(user)};
+					var date = new Date(user.dateJoined);
+					console.log(typeof date);
+					var mm = date.toLocaleString('default', { month: 'long' });
+					var yyyy = date.getFullYear();
+					document.getElementById('join-date').appendChild(document.createTextNode("   Joined on "+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
+
+				p#relationship
+					i.fas.fa-users
+					|  #{user.relationship}
+				p#total-artifacts
+					i.far.fa-gem
+					|  #{artifacts.length} Artifacts contributed
+			// Photos of Artifacts that the User Added
+			section.tiles
+			each artifact, index in artifacts
+				script.
+					var styles = ['style1', 'style2', 'style3','style4','style5','#style6'];
+					var random_style = styles[Math.floor(Math.random() * styles.length)];
+					document.getElementById('display').className = random_style;
+
+				// Photos
+				article.display
+					span.image
+						img(src='jade-necklace.jpg' alt='')
+					// Link Direct to the Artifact Page
+					a(href='../views/profile-page/profile-photo.jpeg')
+						// the Name of the Artifact
+						h2 #{artifact.name}
+						// the Date Added/Last Modified + Artifact Description
+						.content
+							p.date #{artifact.dateEdited}
+							script.
+								var artifact = !{JSON.stringify(artifact)};
+								var date = new Date(artifact.dateCreated);
+								var dd = date.toLocaleString('default', { day: '2-digit'});
+								var mm = date.toLocaleString('default', { month: 'long' });
+								var yyyy = date.getFullYear();
+								document.getElementsByClassName('date')[index].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
+							p.description #{artifact.description}
