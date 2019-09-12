@@ -87,7 +87,7 @@ head
 						h2 #{artifact.name}
 						// the Date Added/Last Modified + Artifact Description
 						.content
-							p.date #{artifact.dateEdited}
+							p.date
 							script.
 								var artifact = !{JSON.stringify(artifact)};
 								var date = new Date(artifact.dateCreated);
