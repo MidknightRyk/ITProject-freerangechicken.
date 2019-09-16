@@ -1,0 +1,34 @@
+var storage = require('sessionstorage');
+var mongoose = require('mongoose');
+var Artifact = mongoose.model('Artifact');
+
+var addArtifact = function (req, res) {
+	console.log(req.body);
+	var artifact = new Artifact({
+		'name': req.body.name,
+		'description': req.body.description,
+		'author': req.body.username,
+		'tags': req.body.tags,
+		'placeOrigin': req.body.country,
+		'year': req.body.year,
+		'approved': false
+	});
+
+	artifact.save();
+	storage.artifactId = artifact._id;
+	console.log(artifact._id);
+	return res.redirect('/uploadImage');
+};
+
+var getArtifact = function (req, res) {
+	console.log(req.params.artifact);
+	Artifact.find({'_id': (req.params.artifact).toString()}, function (err, artifact) {
+		if (err) return console.log(err);
+
+		console.log(req.params.artifact);
+		res.send(artifact.data);
+	});
+};
+
+module.exports.addArtifact = addArtifact;
+module.exports.getArtifact = getArtifact;

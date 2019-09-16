@@ -6,6 +6,7 @@ body {
     font-size: 1.1em;
     line-height: 1.5;
     text-align: center;
+    height: 100%
 }
 
 button:focus
@@ -30,18 +31,6 @@ button:focus
     text-align:center;
     background-color: rgba(17, 2, 38, 0.6);
     border-radius:2px;
-}
-
-/* the cross mark */
-#close
-{
-    position:absolute;
-    top:0;
-    right:14px;
-    font-size:40px;
-    color:#faf7f0;
-    transform:rotate(45deg);
-    cursor:pointer;
 }
 
 /* the outer toggle rectangle */
