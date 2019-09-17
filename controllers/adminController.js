@@ -10,20 +10,20 @@ var adminPage = function (req, res) {
 };
 
 var userApprove = function (req, res) {
-    User.findOneAndUpdate({_id: ObjectID(req.body.id)}, {approved: 1});
-}
+	User.findOneAndUpdate({_id: ObjectID(req.body.id)}, {approved: 1});
+};
 
 var artiApprove = function (req, res) {
-    Artifact.findOneAndUpdate({_id: ObjectID(req.body.id)}, {approved: 1});
-}
+	Artifact.findOneAndUpdate({_id: ObjectID(req.body.id)}, {approved: 1});
+};
 
 var userDelete = function (req, res) {
-    User.findOneAndDelete({_id: ObjectID(req.body.id)});
-}
+	User.findOneAndDelete({_id: ObjectID(req.body.id)});
+};
 
 var artiDelete = function (req, res) {
-    Artifact.findOneAndDelete({_id: ObjectID(req.body.id)});
-}
+	Artifact.findOneAndDelete({_id: ObjectID(req.body.id)});
+};
 
 module.exports.adminPage = adminPage;
 module.exports.userApprove = userApprove;
