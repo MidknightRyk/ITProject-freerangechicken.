@@ -1,6 +1,7 @@
 var storage = require('sessionstorage');
 var mongoose = require('mongoose');
 var Artifact = mongoose.model('Artifact');
+var path = require('path');
 
 var addArtifact = function (req, res) {
 	console.log(req.body);
@@ -30,5 +31,15 @@ var getArtifact = function (req, res) {
 	});
 };
 
+var groupArtifacts = function (req, res) {
+	res.render(path.join(__dirname, '/../views/catalogue/catalogue.pug'),
+		{stuff: Artifact.aggregate(
+			[
+				{ $group: { _id: '$year', artifacts: { $push: '$$ROOT' } } }
+			]
+	)});
+};
+
+module.exports.groupArtifacts = groupArtifacts;
 module.exports.addArtifact = addArtifact;
 module.exports.getArtifact = getArtifact;
