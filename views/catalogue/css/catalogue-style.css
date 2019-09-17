@@ -787,21 +787,6 @@ textarea.form-control {
   border-color: #343a40;
 }
 
-.contact-section .contact-info p {
-  color: white;
-  font-family: "Playfair+Display", times, serif;
-  font-size: 30px;
-  margin-bottom: 30px;
-}
-
-.contact-section .contact-info p .d-block {
-  font-size: 14px;
-  letter-spacing: .2em;
-  font-family: "Mukta Mahee", arial, sans-serif;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-}
-
 .post-categories li {
   display: block;
 }
