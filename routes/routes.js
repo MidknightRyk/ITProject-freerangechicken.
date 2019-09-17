@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
 
 // Get require admin approval page
 router.get('/u', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/awaitingApproval.html'));
+	res.sendFile(path.join(__dirname, '/../views/awaiting-approval-page/awaiting-approval-page.html'));
 });
 
 router.get('/profile', loginController.profile);

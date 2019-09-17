@@ -1,4 +1,5 @@
 const express = require('express');
+var path = require('path');
 var router = express.Router();
 var adminController = require('../controllers/adminController.js');
 
@@ -14,6 +15,22 @@ router.get('/', function (req, res) {
 
 // Admin Approval Homepage
 router.get('/homepage', adminController.adminPage);
+
+router.get('/user-approve', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/admin-page/request-approval.html'));
+});
+
+router.get('/user-delete', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/admin-page/request-approval.html'));
+});
+
+router.get('/arti-approve', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/admin-page/artifact-approval.html'));
+});
+
+router.get('/arti-delete', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/admin-page/request-approval.html'));
+});
 
 router.post('/user-approve', adminController.userApprove);
 
