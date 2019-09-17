@@ -36,7 +36,7 @@ app.set('view engine', 'pug');
 app.use('/admin', adminRouter);
 app.use('/', routes);
 // Start the server
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
 	console.log(`Express listening on port ${PORT}`);
 });
