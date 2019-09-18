@@ -18,7 +18,18 @@ passport.use('user', new LocalStrategy(
 					return done(null, false, { errors: { 'email or password': 'is invalid' } });
 				}
 				return done(null, user);
-			} else { throw err; }
+			} else {
+				User.findOne({'username': username}, function (err, user, res) {
+					if (!err) {
+						if (!user || !user.validatePassword(password)) {
+							return done(null, false, { errors: { 'email or password': 'is invalid' } });
+						}
+						return done(null, user);
+					} else {
+						throw err;
+					}
+				});
+			}
 		});
 	}
 ));

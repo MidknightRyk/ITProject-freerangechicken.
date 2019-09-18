@@ -5,8 +5,16 @@ var User = mongoose.model('User');
 var ObjectID = mongoose.ObjectID;
 
 var adminPage = function (req, res) {
-	res.render(path.join(__dirname, '/../views/admin-page/admin-page.pug'),
-		{users: User.find({approved: 0}), artifacts: Artifact.find({'approved': 0})});
+	User.find({'approved': 0}).lean().exec(function (err, users) {
+		if (!err) {
+			Artifact.find({'approved': 0}).lean().exec(function (err, artifacts) {
+				if (!err) {
+					res.render(path.join(__dirname, '/../views/admin-page/admin-page.pug'),
+						{users: users, artifacts: artifacts});
+				} else { throw err; }
+			});
+		} else { throw err; }
+	});
 };
 
 var userApprove = function (req, res) {
