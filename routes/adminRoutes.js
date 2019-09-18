@@ -1,17 +1,10 @@
 const express = require('express');
-var path = require('path');
 var router = express.Router();
 var adminController = require('../controllers/adminController.js');
 
 // admin specific routes
 // Access but typing culturechive.herokuapp.com/admin/{page you want}
-router.get('/', function (req, res) {
-	if (req.session.userType === 'admin') {
-		return adminController.adminPage;
-	} else {
-		res.sendFile(path.join(__dirname, '/../views/adminPage.html'));
-	}
-});
+router.get('/', adminController.adminPage);
 
 // Admin Approval Homepage
 router.get('/homepage', adminController.adminPage);

@@ -11,7 +11,8 @@ var userSchema = mongoose.Schema(
 		approved: Boolean,
 		dateJoined: { type: Date, default: Date.now },
 		relationship: String,
-		artifacts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Artifact' }]
+		artifacts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Artifact' }],
+		displayPic: { type: String, default: null }
 	}
 );
 
