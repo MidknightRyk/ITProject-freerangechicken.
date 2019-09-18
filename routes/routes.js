@@ -42,6 +42,9 @@ router.get('/aritfacts/:artifact', artifactController.getArtifact);
 // Login
 router.post('/login', loginController.login);
 
+// Logout
+router.post('/logout', loginController.logout);
+
 // Register
 router.post('/register', loginController.register);
 

@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var path = require('path');
 var Artifact = mongoose.model('Artifact');
 var User = mongoose.model('User');
-var ObjectID = mongoose.ObjectID;
 
 var adminPage = function (req, res) {
 	if (req.session.userType === 'admin') {
@@ -22,19 +21,56 @@ var adminPage = function (req, res) {
 };
 
 var userApprove = function (req, res) {
-	User.findOneAndUpdate({_id: ObjectID(req.body.id)}, {approved: 1});
+	var userId = req.body.userId || req.query.userId;
+	User.findOneAndUpdate({_id: userId}, {approved: 1}).then(
+		function (err, res) {
+			if (err) {
+				throw err;
+			} else {
+				res.send(userId);
+			}
+		}
+	);
 };
 
 var artiApprove = function (req, res) {
-	Artifact.findOneAndUpdate({_id: ObjectID(req.body.id)}, {approved: 1});
+	var userId = req.body.userId || req.query.userId;
+	console.log(userId);
+	Artifact.findOneAndUpdate({_id: userId}, {approved: 1}).then(
+		function (err, res) {
+			if (err) {
+				throw err;
+			} else {
+				res.send(userId);
+			}
+		}
+	);
 };
 
 var userDelete = function (req, res) {
-	User.findOneAndDelete({_id: ObjectID(req.body.id)});
+	var userId = req.body.userId || req.query.userId;
+	User.findOneAndDelete({_id: userId}).then(
+		function (err, res) {
+			if (err) {
+				throw err;
+			} else {
+				res.send(userId);
+			}
+		}
+	);
 };
 
 var artiDelete = function (req, res) {
-	Artifact.findOneAndDelete({_id: ObjectID(req.body.id)});
+	var userId = req.body.userId || req.query.userId;
+	Artifact.findOneAndDelete({_id: userId}).then(
+		function (err, res) {
+			if (err) {
+				throw err;
+			} else {
+				res.send(userId);
+			}
+		}
+	);
 };
 
 module.exports.adminPage = adminPage;
