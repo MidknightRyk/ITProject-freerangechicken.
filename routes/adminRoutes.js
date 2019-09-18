@@ -5,7 +5,7 @@ var adminController = require('../controllers/adminController.js');
 
 // admin specific routes
 // Access but typing culturechive.herokuapp.com/admin/{page you want}
-router.get('/', function (req, res) {
+router.get('', function (req, res) {
 	if (req.session.userType === 'admin') {
 		return adminController.adminPage;
 	} else {
