@@ -1,4 +1,5 @@
 const express = require('express');
+var path = require('path');
 var router = express.Router();
 var adminController = require('../controllers/adminController.js');
 
@@ -8,7 +9,7 @@ router.get('/', function (req, res) {
 	if (req.session.userType === 'admin') {
 		return adminController.adminPage;
 	} else {
-		res.redirect(401, req.header('host').replace('admin.', ''));
+		res.sendFile(path.join(__dirname, '/../views/adminPage.html'));
 	}
 });
 
