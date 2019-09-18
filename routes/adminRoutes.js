@@ -9,28 +9,12 @@ router.get('/', function (req, res) {
 	if (req.session.userType === 'admin') {
 		return adminController.adminPage;
 	} else {
-		res.redirect(401, req.header('host').replace('admin.', ''));
+		res.sendFile(path.join(__dirname, '/../views/adminPage.html'));
 	}
 });
 
 // Admin Approval Homepage
 router.get('/homepage', adminController.adminPage);
-//
-// router.get('/user-approve', function (req, res) {
-// 	res.sendFile(path.join(__dirname, '/../views/admin-page/request-approval.html'));
-// });
-//
-// router.get('/user-delete', function (req, res) {
-// 	res.sendFile(path.join(__dirname, '/../views/admin-page/request-approval.html'));
-// });
-//
-// router.get('/arti-approve', function (req, res) {
-// 	res.sendFile(path.join(__dirname, '/../views/admin-page/artifact-approval.html'));
-// });
-//
-// router.get('/arti-delete', function (req, res) {
-// 	res.sendFile(path.join(__dirname, '/../views/admin-page/request-approval.html'));
-// });
 
 router.post('/user-approve', adminController.userApprove);
 
