@@ -1,7 +1,5 @@
 // Set up express
-var subdomain = require('express-subdomain');
 var express = require('express');
-var router = express.Router();
 var app = express();
 var bodyParser = require('body-parser');
 var session = require('cookie-session');
@@ -30,15 +28,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var routes = require('./routes/routes.js');
-var subdomainRouter = require('./routes/subdomainRoutes.js');
+var adminRouter = require('./routes/adminRoutes.js');
 
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-// Subdomain Router
-router.use('/', subdomainRouter);
-
-app.use(subdomain('admin', router));
+app.use('/admin', adminRouter);
 app.use('/', routes);
 // Start the server
 const PORT = process.env.PORT || 3000;

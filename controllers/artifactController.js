@@ -35,7 +35,7 @@ var groupArtifacts = function (req, res) {
 	res.render(path.join(__dirname, '/../views/catalogue/catalogue.pug'),
 		{stuff: Artifact.aggregate(
 			[
-				{ $group: { _id: "$year", artifacts: { $push: "$$ROOT" } } }
+				{ $group: { _id: '$year', artifacts: { $push: '$$ROOT' } } }
 			]
 	)});
 };
