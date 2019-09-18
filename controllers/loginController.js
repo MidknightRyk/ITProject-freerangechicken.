@@ -15,7 +15,8 @@ var register = function (req, res) {
 					return res.status(400).send('Username taken!');
 				} else {
 					var user = new User({
-						'username': req.body.name,
+						'name': req.body.name,
+						'username': req.body.username,
 						'email': req.body.email,
 						'approved': false,
 						'admin': false

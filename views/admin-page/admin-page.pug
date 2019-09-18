@@ -1,0 +1,133 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+  title Free Range User Approval Page
+  link(href='../views/admin-page/admin-user-style.css' rel='stylesheet' type='text/css')
+  link(href='../views/admin-page/admin-artifact-style.css' rel='stylesheet' type='text/css')
+  // Font Awesome CDN
+  script(src='https://kit.fontawesome.com/010fb4b3e5.js')
+  // Bootstrap CDN
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+  // Jquery
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+  script(src='../views/admin-page/admin.js' type='text/javascript')
+// Navigation Tabs : User Request + Artifact Request
+ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
+  li.nav-item
+    a#pills-user-tab.nav-link.active.btn-outline-info(data-toggle='pill' href='#pills-user' role='tab' aria-controls='pills-user' aria-selected='true')
+      i.fas.fa-user-check
+        | User Request
+        span#user-request-count.badge.badge-danger.badge-pill #{users.length}
+  li.nav-item
+    a#pills-artifact-tab.nav-link.btn-outline-warning(data-toggle='pill' href='#pills-artifact' role='tab' aria-controls='pills-artifact' aria-selected='false' style='')
+      i.fab.fa-earlybirds
+        | Artifact Request
+        span#artifact-request-count.badge.badge-danger.badge-pill #{artifacts.length}
+// Tabs Content Container
+#pills-tabContent.tab-content
+  // The content under User Request Tab | Currently Active
+  #pills-user.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='pills-user-tab')
+    // User Request Box
+    .container
+      .row
+        .col-lg-12
+          .main-box.no-header
+            .main-box-body
+              .table-responsive
+                table.table.user-list
+                  // Header
+                  thead
+                    tr
+                      th
+                        span User
+                      th
+                        span Created
+                      th
+                        span Approval
+                      th
+                        span Email
+                  tbody
+                  each user, index in users
+                    tr.user-request
+                      // Name + Relationship
+                      td
+                        a.user-name(href='#') #{user.name}
+                        span.user-subhead ...(&#xFF61;&bull;&caron;&#x2038;&caron;&bull;&#xFF61;) ...
+                      // Account Created Date
+                      td.userDate
+                      script.
+                          var user = !{JSON.stringify(user)};
+                          var date = new Date(user.dateCreated);
+                          var dd = date.toLocaleString('default', { day: '2-digit'});
+                          var mm = date.toLocaleString('default', { month: 'long' });
+                          var yyyy = date.getFullYear();
+                          document.getElementsByClassName('userDate')[index].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
+                      // Approve + Delete Buttons
+                      td(style='width: 20%;')
+                        a.user-accept-btn.table-link.text-success(href='#')
+                          span.fa-stack
+                            i.fa.fa-square.fa-stack-2x
+                            i.fas.fa-check.fa-stack-1x.fa-inverse
+                        a.user-delete-btn.table-link.text-danger(href='#')
+                          span.fa-stack
+                            i.fa.fa-square.fa-stack-2x
+                            i.fa.fa-trash-o.fa-stack-1x.fa-inverse
+                      // Email
+                      td
+                        #{user.email}
+
+                          // The content under Artifact Request Tab
+  #pills-artifact.tab-pane.fade(role='tabpanel' aria-labelledby='pills-artifact-tab')
+    // Artifact Request Box
+    .container
+      .row
+        .col-lg-12
+          .main-box.no-header
+            .main-box-body
+              .table-responsive
+                table.table.artifact-list
+                  // Header
+                  thead
+                    tr
+                      th
+                        span Artifact
+                      th
+                        span Edited
+                      th
+                        span Approval
+                      th
+                        span Description
+                  tbody
+                    each artifact, index in artifacts
+                      tr.artifact-request
+                        // Artifact Photo + Artifact Name + User Origin
+                        td
+                          img(src='https://i.ytimg.com/vi/CkFCBBNdsZg/maxresdefault.jpg' alt='')
+                          a.artifact-name(href='#') #{artifact.name}
+                          span.username-subhead #{artifact.author}
+                        // Artifact Uploaded Date
+                        td.artifactDate
+                        script.
+                            var artifact = !{JSON.stringify(artifact)};
+                            var date = new Date(artifact.dateCreated);
+                            var dd = date.toLocaleString('default', { day: '2-digit'});
+                            var mm = date.toLocaleString('default', { month: 'long' });
+                            var yyyy = date.getFullYear();
+                            document.getElementsByClassName('artifactDate')[index].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
+                        // Approve + Delete Buttons
+                        td(style='width: 20%;')
+                          a.arti-accept-btn.table-link.text-success(href='#')
+                            span.fa-stack
+                              i.fa.fa-square.fa-stack-2x
+                              i.fas.fa-check.fa-stack-1x.fa-inverse
+                          a.arti-delete-btn.table-link.text-danger(href='#')
+                            span.fa-stack
+                              i.fa.fa-square.fa-stack-2x
+                              i.fa.fa-trash-o.fa-stack-1x.fa-inverse
+                        // Description
+                        td
+                          span #{artifact.description}
