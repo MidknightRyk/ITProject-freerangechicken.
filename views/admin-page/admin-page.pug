@@ -65,14 +65,14 @@ ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
                           var dd = date.toLocaleString('default', { day: '2-digit'});
                           var mm = date.toLocaleString('default', { month: 'long' });
                           var yyyy = date.getFullYear();
-                          document.getElementsByClassName('userDate')[index].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
+                          document.getElementsByClassName('userDate')["#{index}"].appendChild(document.createTextNode(dd+" "+mm+" "+yyyy));
                       // Approve + Delete Buttons
                       td(style='width: 20%;')
-                        a.user-accept-btn.table-link.text-success(href='#')
+                        a.user-accept-btn.table-link.text-success(data-id="" + user._id)
                           span.fa-stack
                             i.fa.fa-square.fa-stack-2x
                             i.fas.fa-check.fa-stack-1x.fa-inverse
-                        a.user-delete-btn.table-link.text-danger(href='#')
+                        a.user-delete-btn.table-link.text-danger(data-id="" + user._id)
                           span.fa-stack
                             i.fa.fa-square.fa-stack-2x
                             i.fa.fa-trash-o.fa-stack-1x.fa-inverse
@@ -117,14 +117,14 @@ ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
                             var dd = date.toLocaleString('default', { day: '2-digit'});
                             var mm = date.toLocaleString('default', { month: 'long' });
                             var yyyy = date.getFullYear();
-                            document.getElementsByClassName('artifactDate')[index].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
+                            document.getElementsByClassName('artifactDate')["#{index}"].appendChild(document.createTextNode(dd+" "+mm+" "+yyyy));
                         // Approve + Delete Buttons
                         td(style='width: 20%;')
-                          a.arti-accept-btn.table-link.text-success(href='#')
+                          a.arti-accept-btn.table-link.text-success(data-id="" + artifact._id)
                             span.fa-stack
                               i.fa.fa-square.fa-stack-2x
                               i.fas.fa-check.fa-stack-1x.fa-inverse
-                          a.arti-delete-btn.table-link.text-danger(href='#')
+                          a.arti-delete-btn.table-link.text-danger(data-id="" + artifact._id)
                             span.fa-stack
                               i.fa.fa-square.fa-stack-2x
                               i.fa.fa-trash-o.fa-stack-1x.fa-inverse

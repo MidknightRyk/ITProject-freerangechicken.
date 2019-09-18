@@ -62,6 +62,12 @@ var profile = function (req, res) {
 	});
 };
 
+var logout = function (req, res) {
+	req.session = null;
+	res.redirect('/');
+};
+
 module.exports.login = login;
 module.exports.register = register;
 module.exports.profile = profile;
+module.exports.logout = logout;
