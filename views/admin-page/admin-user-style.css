@@ -44,14 +44,18 @@
 }
 
 /* Restrict the size of the profile photo */
-.user-list tbody td>img {
+/*.user-list tbody td>img {
+    position: relative;
+    max-width: 65px;
+    float: left;
+    margin-right: 15px;
+}*/
+td img {
     position: relative;
     max-width: 65px;
     float: left;
     margin-right: 15px;
 }
-
-
 
 /* To get rid of the underline caused by using font awesome icon
  * And the hotlink underline
