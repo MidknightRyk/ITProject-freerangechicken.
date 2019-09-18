@@ -3,12 +3,13 @@ var artifactSchema = mongoose.Schema(
 	{
 		name: String,
 		description: String,
-		primaryImage: { type: String, default: null },	// Stores the image object id in mongo
+		// Stores the image object id
+		primaryImage: { type: String, default: null },
 		extraImages: { type: [String], default: null },
 		author: String,
-		editor: {type: String, default: null},
+		editor: String,
 		dateCreated: { type: Date, default: Date.now },
-		dateEdited: {type: Date, default: null},
+		dateEdited: Date,
 		tags: { type: [String], index: true },
 		placeOrigin: { type: String, default: null },
 		year: { type: Number, index: true },

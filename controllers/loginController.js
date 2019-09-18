@@ -39,6 +39,7 @@ var login = function (req, res) {
 		if (user) {
 			if (user.approved) {
 				req.session.user = user._id;
+				req.session.username = user.name;
 				if (user.admin) {
 					req.session.userType = 'admin';
 				} else {

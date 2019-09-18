@@ -8,7 +8,7 @@ var addArtifact = function (req, res) {
 	var artifact = new Artifact({
 		'name': req.body.name,
 		'description': req.body.description,
-		'author': req.body.username,
+		'author': req.session.username,
 		'tags': req.body.tags,
 		'placeOrigin': req.body.country,
 		'year': req.body.year,
