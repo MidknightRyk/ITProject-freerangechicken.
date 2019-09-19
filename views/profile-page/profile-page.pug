@@ -94,5 +94,5 @@ head
 								var dd = date.toLocaleString('default', { day: '2-digit'});
 								var mm = date.toLocaleString('default', { month: 'long' });
 								var yyyy = date.getFullYear();
-								document.getElementsByClassName('date')[index].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
+								document.getElementsByClassName('date')["#{index}"].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
 							p.description #{artifact.description}
