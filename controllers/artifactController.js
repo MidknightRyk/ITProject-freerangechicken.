@@ -25,7 +25,7 @@ var addArtifact = function (req, res) {
 
 // Gets a single artifact by id
 var getArtifact = function (req, res) {
-	var artifactID = req.params.artifact;
+	var artifactID = req.params.id;
 	Artifact.findById(ObjectID(artifactID), function (err, artifact) {
 		if (err) return console.log(err);
 		// idk the path for this cause we don't have a page for this yet

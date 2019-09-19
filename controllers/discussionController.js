@@ -48,7 +48,7 @@ var getIssue = function (req, res) {
 
 // Close issues that are resolve, so basically like archiving?
 var closeIssue = function (req, res) {
-	var issueID = req.params.issue;
+	var issueID = req.body.issueId || req.query.issueId;
 	Issue.findOneAndUpdate(
 		{ '_id': ObjectId(issueID) },
 		{ 'status': 'Closed' }

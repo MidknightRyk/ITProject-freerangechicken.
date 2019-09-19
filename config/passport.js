@@ -19,6 +19,7 @@ passport.use('user', new LocalStrategy(
 				}
 				return done(null, user);
 			} else {
+				// If user input username instead of email
 				User.findOne({'username': username}, function (err, user, res) {
 					if (!err) {
 						if (!user || !user.validatePassword(password)) {
@@ -39,7 +40,7 @@ passport.serializeUser(function (user, done) {
 	done(null, user.id);
 });
 
-// Find user in the two databases
+// Find user in the database
 passport.deserializeUser(function (id, done) {
 	User.getUserById(id, function (err, user) {
 		done(err, user);
