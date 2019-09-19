@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Artifact = mongoose.model('Artifact');
 var path = require('path');
 
+// Creates a new artifact
 var addArtifact = function (req, res) {
 	console.log(req.body);
 	var artifact = new Artifact({
@@ -21,16 +22,23 @@ var addArtifact = function (req, res) {
 	return res.redirect('/uploadImage');
 };
 
+/* Gets artifact with id,
+ **** Needs refinement:
+ * depends on how artifact is being accessed
+ * decide on how to acquire the id
+*/
 var getArtifact = function (req, res) {
 	console.log(req.params.artifact);
 	Artifact.find({'_id': (req.params.artifact).toString()}, function (err, artifact) {
 		if (err) return console.log(err);
 
+		storage.artifactId = artifact._id;
 		console.log(req.params.artifact);
 		res.send(artifact.data);
 	});
 };
 
+// Groups all existing artifacts and displays them
 var groupArtifacts = function (req, res) {
 	res.render(path.join(__dirname, '/../views/catalogue/catalogue.pug'),
 		{stuff: Artifact.aggregate(
