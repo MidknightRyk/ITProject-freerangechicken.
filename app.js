@@ -20,6 +20,8 @@ app.use(session({
 // Database setup
 require('./models/db.js');
 require('./models/image.js');
+require('./models/issue.js');
+require('./models/comment.js');
 require('./config/passport.js');
 
 // Passport setup

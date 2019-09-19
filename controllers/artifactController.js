@@ -2,6 +2,7 @@ var storage = require('sessionstorage');
 var mongoose = require('mongoose');
 var Artifact = mongoose.model('Artifact');
 var path = require('path');
+var ObjectID = require('mongodb').ObjectID;
 
 // Creates a new artifact
 var addArtifact = function (req, res) {
@@ -22,19 +23,15 @@ var addArtifact = function (req, res) {
 	return res.redirect('/uploadImage');
 };
 
-/* Gets artifact with id,
- **** Needs refinement:
- * depends on how artifact is being accessed
- * decide on how to acquire the id
-*/
+// Gets a single artifact by id
 var getArtifact = function (req, res) {
-	console.log(req.params.artifact);
-	Artifact.find({'_id': (req.params.artifact).toString()}, function (err, artifact) {
+	var artifactID = req.params.artifact;
+	Artifact.findById(ObjectID(artifactID), function (err, artifact) {
 		if (err) return console.log(err);
-
-		storage.artifactId = artifact._id;
-		console.log(req.params.artifact);
-		res.send(artifact.data);
+		// idk the path for this cause we don't have a page for this yet
+		return res.render(path.join(__dirname, '../views/artifact-page.pug'),
+			{ artifact: artifact }
+		);
 	});
 };
 

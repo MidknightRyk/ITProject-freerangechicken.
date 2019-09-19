@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var storage = require('sessionstorage');
+var path = require('path');
 var Issue = mongoose.model('Issue');
 var Comment = mongoose.model('Comment');
 var ObjectId = require('mongodb').ObjectID;
@@ -10,7 +11,8 @@ var addIssue = function (req, res) {
 		'topic': req.body.topic,
 		'author': req.session.username,
 		'artifactID': storage.artifactId,
-		'content': req.body.description
+		'content': req.body.description,
+		'status': 'Open'
 	});
 
 	return issue.save()
@@ -32,15 +34,32 @@ var addComment = function (req, res) {
 };
 
 var getIssue = function (req, res) {
-	Issue.findById(ObjectId(req.params.issue))
+	var issueID = req.params.issue;
+	Issue.findById(ObjectId(issueID))
+	.populate({ path: 'comments', model: Comment })
+	.exec(function (err, issue) {
+		if (err) return console.log(err);
+		// idk the path for this cause we don't have a page for this yet
+		return res.render(path.join(__dirname, '../views/discussion-board/issue-page.pug'),
+		{ issue: issue, comment: [issue.comments] }
+	);
+	});
 };
 
+// Close issues that are resolve, so basically like archiving?
 var closeIssue = function (req, res) {
-
+	var issueID = req.params.issue;
+	Issue.findOneAndUpdate(
+		{ '_id': ObjectId(issueID) },
+		{ 'status': 'Closed' }
+	);
+	// Remove the comment functionality for this issue
+	// Also are we able to reopen issues?
 };
 
+// Only editable fields: Title?? and description
 var editIssue = function (req, res) {
-
+	// var issueID = req.params.issue;
 };
 
 module.exports.addIssue = addIssue;
