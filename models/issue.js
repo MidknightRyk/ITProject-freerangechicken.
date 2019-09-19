@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var Comment = mongoose.model('Comment');
 var issueSchema = mongoose.Schema(
 	{
 		topic: String,
@@ -7,7 +6,7 @@ var issueSchema = mongoose.Schema(
 		author: String,
 		artifactID: String,
 		content: String,
-		comments: [Comment]
+		comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
 	}
 );
 
