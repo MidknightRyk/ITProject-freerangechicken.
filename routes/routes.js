@@ -8,6 +8,8 @@ var multer = require('multer');
 var upload = multer({ dest: 'uploads/' });
 const path = require('path');
 
+// We need to refactor this, this is too convoluted with everything in here
+
 router.get('/', function (req, res) {
 	if (!req.session.user) {
 		res.sendFile(path.join(__dirname, '/../views/homepage/homepage.html'));
@@ -62,7 +64,6 @@ router.post('/addArtifact', artifactController.addArtifact);
 
 // Upload Image
 var type = upload.single('myImage');
-
 router.post('/uploadImage', type, imageController.uploadImage);
 
 // Add Issue to Disscussion Board

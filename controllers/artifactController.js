@@ -45,6 +45,8 @@ var groupArtifacts = function (req, res) {
 	)});
 };
 
+// We need one with edit artifact
+
 module.exports.groupArtifacts = groupArtifacts;
 module.exports.addArtifact = addArtifact;
 module.exports.getArtifact = getArtifact;
