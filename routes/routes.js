@@ -10,6 +10,7 @@ const path = require('path');
 
 // We need to refactor this, this is too convoluted with everything in here
 
+// Get homepage
 router.get('/', function (req, res) {
 	if (!req.session.user) {
 		res.sendFile(path.join(__dirname, '/../views/homepage/homepage.html'));
@@ -24,6 +25,7 @@ router.get('/u', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/awaiting-approval-page/awaiting-approval-page.html'));
 });
 
+// Get profile page
 router.get('/profile', loginController.profile);
 
 // Get upload image page

@@ -3,6 +3,8 @@ var path = require('path');
 var Artifact = mongoose.model('Artifact');
 var User = mongoose.model('User');
 
+// Gets unapproved users and artifacts
+// Displays them on admin page
 var adminPage = function (req, res) {
 	if (req.session.userType === 'admin') {
 		User.find({'approved': 0}).lean().exec(function (err, users) {
@@ -20,6 +22,7 @@ var adminPage = function (req, res) {
 	}
 };
 
+// Approves user
 var userApprove = function (req, res) {
 	var userId = req.body.userId || req.query.userId;
 	User.findOneAndUpdate({_id: userId}, {approved: 1}).then(
@@ -33,6 +36,7 @@ var userApprove = function (req, res) {
 	);
 };
 
+// Approves artifact
 var artiApprove = function (req, res) {
 	var userId = req.body.userId || req.query.userId;
 	console.log(userId);
@@ -47,6 +51,7 @@ var artiApprove = function (req, res) {
 	);
 };
 
+// Deletes user
 var userDelete = function (req, res) {
 	var userId = req.body.userId || req.query.userId;
 	User.findOneAndDelete({_id: userId}).then(
@@ -60,6 +65,7 @@ var userDelete = function (req, res) {
 	);
 };
 
+// Deletes artifact
 var artiDelete = function (req, res) {
 	var userId = req.body.userId || req.query.userId;
 	Artifact.findOneAndDelete({_id: userId}).then(
