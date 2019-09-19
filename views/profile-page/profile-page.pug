@@ -24,7 +24,7 @@ head
 				img#profile-photo.mr.mt-3(src='../views/profile-page/profile-photo.jpeg' alt='Profile Photo')
 				// Username
 				span.title
-				|    #{user.username}
+				|    #{user.name}
 			script.
 				$('#profile-photo').faceDetection({
 					complete: function (faces) {

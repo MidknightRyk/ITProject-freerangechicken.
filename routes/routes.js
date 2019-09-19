@@ -3,6 +3,7 @@ var router = express.Router();
 var loginController = require('../controllers/loginController.js');
 var imageController = require('../controllers/imageController.js');
 var artifactController = require('../controllers/artifactController.js');
+var discussionController = require('../controllers/discussionController.js');
 var multer = require('multer');
 var upload = multer({ dest: 'uploads/' });
 const path = require('path');
@@ -33,6 +34,14 @@ router.get('/addArtifact', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/addArtifact.html'));
 });
 
+// Create Issue page
+router.get('/createIssue', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/addArtifact.html'));
+});
+
+// Get Issue Page
+router.get('/issue/:issue', discussionController.getIssue);
+
 // Get images
 router.get('/images/:image', imageController.getImage);
 
@@ -55,5 +64,8 @@ router.post('/addArtifact', artifactController.addArtifact);
 var type = upload.single('myImage');
 
 router.post('/uploadImage', type, imageController.uploadImage);
+
+// Add Issue to Disscussion Board
+router.post('/createIssue', discussionController.addIssue);
 
 module.exports = router;
