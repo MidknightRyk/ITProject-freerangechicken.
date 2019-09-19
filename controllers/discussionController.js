@@ -64,6 +64,6 @@ var editIssue = function (req, res) {
 
 module.exports.addIssue = addIssue;
 module.exports.addComment = addComment;
-module.export.getIssue = getIssue;
-module.export.closeIssue = closeIssue;
-module.export.editIssue = editIssue;
+module.exports.getIssue = getIssue;
+module.exports.closeIssue = closeIssue;
+module.exports.editIssue = editIssue;
