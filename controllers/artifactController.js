@@ -13,7 +13,7 @@ var addArtifact = function (req, res) {
 		'name': req.body.name,
 		'description': req.body.description,
 		'author': req.session.username,
-		'tags': req.body.tags,
+		'tags': (req.body.tags).split(','),
 		'placeOrigin': req.body.country,
 		'year': req.body.year
 	});

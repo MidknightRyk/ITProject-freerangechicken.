@@ -12,7 +12,7 @@ var userSchema = mongoose.Schema(
 		dateJoined: { type: Date, default: Date.now },
 		relationship: String,
 		artifacts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Artifact' }],
-		displayPic: { type: String, default: null }
+		displayPic: { type: mongoose.Schema.Types.ObjectId, ref: 'Image' }
 	}
 );
 

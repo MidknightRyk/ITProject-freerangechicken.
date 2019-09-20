@@ -4,8 +4,8 @@ var artifactSchema = mongoose.Schema(
 		name: String,
 		description: String,
 		// Stores the image object id
-		primaryImage: { type: String, default: null },
-		extraImages: { type: [String], default: null },
+		primaryImage: { type: mongoose.Schema.Types.ObjectId, ref: 'Image' },
+		extraImages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Image' }],
 		author: String,
 		editor: String,
 		dateCreated: { type: Date, default: Date.now },
