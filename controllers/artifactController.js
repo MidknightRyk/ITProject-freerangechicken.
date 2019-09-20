@@ -12,7 +12,7 @@ var addArtifact = function (req, res) {
 	var artifact = new Artifact({
 		'name': req.body.name,
 		'description': req.body.description,
-		'author': req.session.username,
+		'author': req.session.userName,
 		'tags': (req.body.tags).split(','),
 		'placeOrigin': req.body.country,
 		'year': req.body.year

@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 var Image = mongoose.model('Image');
 var Artifact = mongoose.model('Artifact');
 var User = mongoose.model('User');
-var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Upload images
 var uploadImage = function (req, res) {
@@ -24,7 +23,7 @@ var uploadImage = function (req, res) {
 		var artifactID = storage.artifactId;
 		console.log('Updating Primary Image for ' + artifactID);
 		Artifact.findOneAndUpdate(
-			{ '_id': ObjectId(artifactID) },
+			{ '_id': artifactID },
 			{ 'primaryImage': imgID },
 			function (err, artifact) {
 				if (err) return console.log('couldnt update artifact image');
@@ -38,7 +37,7 @@ var uploadImage = function (req, res) {
 	} else if (req.body.imageType === 'extraImage') {
 		console.log('Updating Extra Images Image for ' + artifactID);
 		Artifact.findOneAndUpdate(
-			{ '_id': ObjectId(artifactID) },
+			{ '_id': artifactID },
 			{ $push: { 'extraImages': imgID } }
 		);
 
@@ -48,7 +47,7 @@ var uploadImage = function (req, res) {
 		var userID = req.session.user;
 		console.log('Updating User Profile Photo ' + userID);
 		User.findOneAndUpdate(
-			{ '_id': ObjectId(userID) },
+			{ '_id': userID },
 			{ 'displayPic': imgID }
 		);
 	}
