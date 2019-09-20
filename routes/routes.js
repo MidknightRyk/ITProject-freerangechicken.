@@ -3,13 +3,13 @@ var router = express.Router();
 var path = require('path');
 var loginController = require('../controllers/loginController.js');
 var admin = require('./adminRoutes.js');
-var artifact = require('./artifactRoutes.js');
+var artifactRoute = require('./artifactRoutes.js');
 var discus = require('./discussionRoutes.js');
 var image = require('./imageRoutes.js');
 
 // External routes
 router.use('/admin', admin);
-router.use('/artifact', artifact);
+router.use('/artifacts', artifactRoute);
 router.use('/discussion-board', discus);
 router.use('/images', image);
 

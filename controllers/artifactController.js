@@ -5,7 +5,6 @@ var Artifact = mongoose.model('Artifact');
 var OldArtifact = mongoose.model('OldArtifact');
 var User = mongoose.model('User');
 var Edits = mongoose.model('Edits');
-var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Creates a new artifact
 var addArtifact = function (req, res) {
@@ -38,8 +37,9 @@ var addArtifact = function (req, res) {
 // Gets a single artifact by id
 var getArtifact = function (req, res) {
 	var artifactID = req.params.artifact;
-	Artifact.findById(ObjectId(artifactID), function (err, artifact) {
+	Artifact.findById(artifactID, function (err, artifact) {
 		if (err) return console.log(err);
+		storage.artifactId = artifact.id;
 		// idk the path for this cause we don't have a page for this yet
 		return res.render(path.join(__dirname, '../views/artifact-page.pug'),
 			{ artifact: artifact }
@@ -63,8 +63,8 @@ var groupArtifacts = function (req, res) {
  * ***Does not include image edits***
  */
 var suggestEdits = function (req, res) {
-	var artifactID = req.params.artifact || storage.artifactId;
-	Artifact.findById(ObjectId(artifactID),
+	var artifactID = storage.artifactId;
+	Artifact.findById(artifactID,
 	function (err, artifact) {
 		if (err) return console.log(err);
 		var editedArtifact = new Artifact({
@@ -109,7 +109,7 @@ var editArtifact = function (req, res) {
 		if (req.body.approval /* approved */) {
 			edit.approved = true;
 
-			Artifact.findById(ObjectId(artifactID), function (err, artifact) {
+			Artifact.findById(artifactID, function (err, artifact) {
 				if (err) return console.log(err);
 				// Place the old artifact into logs, to keep track of changes
 				var oldArti = new OldArtifact(artifact);
@@ -118,7 +118,7 @@ var editArtifact = function (req, res) {
 				// Replace all the fields of the original artifact with the new info
 				// Deletes the temp artifact
 				Artifact.findOneAndDelete(
-					{ '_id': ObjectId(newartifactID) },
+					{ '_id': newartifactID },
 					function (err, newartifact) {
 						if (err) return console.log(err);
 
@@ -138,7 +138,7 @@ var editArtifact = function (req, res) {
 			edit.approval = true;
 			edit.rejected = true;
 
-			Artifact.findOneAndDelete({ '_id': ObjectId(newartifactID) });
+			Artifact.findOneAndDelete({ '_id': newartifactID });
 		};
 		edit.save();
 	});

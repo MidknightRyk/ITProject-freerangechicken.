@@ -3,7 +3,6 @@ var path = require('path');
 var User = mongoose.model('User');
 var Artifact = mongoose.model('Artifact');
 var passport = require('passport');
-var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Registration function
 var register = function (req, res) {
