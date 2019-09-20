@@ -3,6 +3,7 @@ var storage = require('sessionstorage');
 var path = require('path');
 var Issue = mongoose.model('Issue');
 var Comment = mongoose.model('Comment');
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Adds Issue to an artifact, ensure that the session storage has the artifactID
 var addIssue = function (req, res) {
@@ -11,7 +12,7 @@ var addIssue = function (req, res) {
 		'author': req.session.userName,
 		'artifactID': storage.artifactId,
 		'content': req.body.description,
-		'status': 'Open'
+		'closed': false
 	});
 
 	return issue.save()
@@ -27,14 +28,14 @@ var addComment = function (req, res) {
 	});
 
 	Issue.findOneAndUpdate(
-		{ '_id': issueID.toString() },
+		{ '_id': ObjectId(issueID) },
 		{ $push: { 'comments': comment } }
 	);
 };
 
 var getIssue = function (req, res) {
 	var issueID = req.params.issue;
-	Issue.findById(issueID.toString())
+	Issue.findById(ObjectId(issueID))
 	.populate({ path: 'comments', model: Comment })
 	.exec(function (err, issue) {
 		if (err) return console.log(err);
@@ -49,8 +50,8 @@ var getIssue = function (req, res) {
 var closeIssue = function (req, res) {
 	var issueID = req.body.issueId || req.query.issueId;
 	Issue.findOneAndUpdate(
-		{ '_id': issueID.toString() },
-		{ 'status': 'Closed' }
+		{ '_id': ObjectId(issueID) },
+		{ 'closed': true }
 	);
 	// Remove the comment functionality for this issue
 	// Also are we able to reopen issues?
@@ -60,7 +61,7 @@ var closeIssue = function (req, res) {
 var editIssue = function (req, res) {
 	var issueID = req.params.issue;
 	Issue.findOneAndUpdate(
-		{ '_id': issueID.toString() },
+		{ '_id': ObjectId(issueID) },
 		{ 'topic': req.body.newTopic, 'content': req.body.newContent }
 	);
 };

@@ -6,7 +6,8 @@ var issueSchema = mongoose.Schema(
 		author: String,
 		artifactID: String,
 		content: String,
-		comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
+		comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+		closed: Boolean
 	}
 );
 

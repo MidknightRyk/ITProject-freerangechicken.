@@ -13,14 +13,15 @@ var artifactSchema = mongoose.Schema(
 		tags: { type: [String], index: true },
 		placeOrigin: { type: String, default: null },
 		year: { type: Number, index: true },
-		approved: Boolean
+		approved: { type: Boolean, default: false }
 	}
 );
 
-artifactSchema.methods.editArtifact = function (username, attribute, newInfo) {
+artifactSchema.methods.edit = function (username, attribute, newInfo) {
 	this.attribute = newInfo;
 	this.dateEdited = Date.now;
 	this.editor = username;
 };
 
-mongoose.model('Artifact', artifactSchema);
+mongoose.model('Artifact', artifactSchema, 'artifacts');
+mongoose.model('OldArtifact', artifactSchema, 'artifact-logs');
