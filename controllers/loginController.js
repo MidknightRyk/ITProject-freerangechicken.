@@ -3,7 +3,6 @@ var path = require('path');
 var User = mongoose.model('User');
 var Artifact = mongoose.model('Artifact');
 var passport = require('passport');
-var ObjectId = require('mongodb').ObjectID;
 
 // Registration function
 var register = function (req, res) {
@@ -61,7 +60,8 @@ var login = function (req, res) {
 
 // Retrieve profile
 var profile = function (req, res) {
-	User.findById(ObjectId(req.session.user))
+	var userID = (req.session.user);
+	User.findById(userID.toString())
 	.populate({ path: 'artifacts', model: Artifact })
 	.exec((err, user) => {
 		if (err) return console.log(err);

@@ -2,7 +2,6 @@ var storage = require('sessionstorage');
 var mongoose = require('mongoose');
 var Artifact = mongoose.model('Artifact');
 var path = require('path');
-var ObjectID = require('mongodb').ObjectID;
 
 // Creates a new artifact
 var addArtifact = function (req, res) {
@@ -26,7 +25,7 @@ var addArtifact = function (req, res) {
 // Gets a single artifact by id
 var getArtifact = function (req, res) {
 	var artifactID = req.params.artifact;
-	Artifact.findById(ObjectID(artifactID), function (err, artifact) {
+	Artifact.findById(artifactID.toString(), function (err, artifact) {
 		if (err) return console.log(err);
 		// idk the path for this cause we don't have a page for this yet
 		return res.render(path.join(__dirname, '../views/artifact-page.pug'),

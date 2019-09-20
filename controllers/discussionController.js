@@ -3,7 +3,6 @@ var storage = require('sessionstorage');
 var path = require('path');
 var Issue = mongoose.model('Issue');
 var Comment = mongoose.model('Comment');
-var ObjectId = require('mongodb').ObjectID;
 
 // Adds Issue to an artifact, ensure that the session storage has the artifactID
 var addIssue = function (req, res) {
@@ -35,7 +34,7 @@ var addComment = function (req, res) {
 
 var getIssue = function (req, res) {
 	var issueID = req.params.issue;
-	Issue.findById(ObjectId(issueID))
+	Issue.findById(issueID.toString())
 	.populate({ path: 'comments', model: Comment })
 	.exec(function (err, issue) {
 		if (err) return console.log(err);
@@ -50,7 +49,7 @@ var getIssue = function (req, res) {
 var closeIssue = function (req, res) {
 	var issueID = req.body.issueId || req.query.issueId;
 	Issue.findOneAndUpdate(
-		{ '_id': ObjectId(issueID) },
+		{ '_id': issueID.toString() },
 		{ 'status': 'Closed' }
 	);
 	// Remove the comment functionality for this issue
