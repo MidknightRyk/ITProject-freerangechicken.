@@ -1,7 +1,8 @@
 var storage = require('sessionstorage');
 var mongoose = require('mongoose');
-var Artifact = mongoose.model('Artifact');
 var path = require('path');
+var Artifact = mongoose.model('Artifact');
+var User = mongoose.model('User');
 
 // Creates a new artifact
 var addArtifact = function (req, res) {
@@ -16,9 +17,19 @@ var addArtifact = function (req, res) {
 		'approved': false
 	});
 
+	// Save artifact and update the id to session storage
 	artifact.save();
-	storage.artifactId = artifact._id;
-	console.log(artifact._id);
+	var artiID = artifact._id;
+	storage.artifactId = artiID;
+
+	// Update artifact id to the relevent user who uploaded it
+	User.findOneAndUpdate(
+		{ 'username': req.session.username },
+		{ $push: { 'artifacts': artiID } },
+		function (err, artifact) {
+			if (err) return console.log('couldnt update artifact to user');
+		}
+	);
 	return res.redirect('/uploadImage');
 };
 

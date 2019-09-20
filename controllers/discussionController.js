@@ -8,7 +8,7 @@ var Comment = mongoose.model('Comment');
 var addIssue = function (req, res) {
 	var issue = new Issue({
 		'topic': req.body.topic,
-		'author': req.session.username,
+		'author': req.session.userName,
 		'artifactID': storage.artifactId,
 		'content': req.body.description,
 		'status': 'Open'
@@ -22,7 +22,7 @@ var addComment = function (req, res) {
 	var issueID = req.params.issue;
 
 	var comment = new Comment({
-		'author': req.session.username,
+		'author': req.session.userName,
 		'content': req.body.comment
 	});
 
@@ -58,7 +58,11 @@ var closeIssue = function (req, res) {
 
 // Only editable fields: Title?? and description
 var editIssue = function (req, res) {
-	// var issueID = req.params.issue;
+	var issueID = req.params.issue;
+	Issue.findOneAndUpdate(
+		{ '_id': issueID.toString() },
+		{ 'topic': req.body.newTopic, 'content': req.body.newContent }
+	);
 };
 
 module.exports.addIssue = addIssue;

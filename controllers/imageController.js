@@ -27,8 +27,6 @@ var uploadImage = function (req, res) {
 			{ 'primaryImage': imgID },
 			function (err, artifact) {
 				if (err) return console.log('couldnt update artifact image');
-
-				console.log(artifact.name);
 			}
 		);
 

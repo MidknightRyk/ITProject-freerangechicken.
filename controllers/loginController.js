@@ -43,7 +43,8 @@ var login = function (req, res) {
 			if (user.approved) {
 				// Keep user id and name in session storage
 				req.session.user = user._id;
-				req.session.username = user.name;
+				req.session.userName = user.name;
+				req.session.username = user.username;
 				// Set user type
 				if (user.admin) {
 					req.session.userType = 'admin';
