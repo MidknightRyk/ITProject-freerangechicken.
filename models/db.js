@@ -23,3 +23,4 @@ require('./artifact.js');
 require('./image.js');
 require('./issue.js');
 require('./comment.js');
+require('./edits');

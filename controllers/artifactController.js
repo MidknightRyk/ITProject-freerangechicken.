@@ -63,7 +63,7 @@ var groupArtifacts = function (req, res) {
  * ***Does not include image edits***
  */
 var suggestEdits = function (req, res) {
-	var artifactID = req.params.artifact;
+	var artifactID = req.params.artifact || storage.artifactId;
 	Artifact.findById(ObjectId(artifactID),
 	function (err, artifact) {
 		if (err) return console.log(err);

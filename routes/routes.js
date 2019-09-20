@@ -1,14 +1,19 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 var loginController = require('../controllers/loginController.js');
-var imageController = require('../controllers/imageController.js');
-var artifactController = require('../controllers/artifactController.js');
-var discussionController = require('../controllers/discussionController.js');
-var multer = require('multer');
-var upload = multer({ dest: 'uploads/' });
-const path = require('path');
+var admin = require('./adminRoutes.js');
+var artifact = require('./artifactRoutes.js');
+var discus = require('./discussionRoutes.js');
+var image = require('./imageRoutes.js');
 
-// We need to refactor this, this is too convoluted with everything in here
+// External routes
+router.use('/admin', admin);
+router.use('/artifact', artifact);
+router.use('/discussion-board', discus);
+router.use('/images', image);
+
+// GET Requests
 
 // Get homepage
 router.get('/', function (req, res) {
@@ -28,29 +33,7 @@ router.get('/u', function (req, res) {
 // Get profile page
 router.get('/profile', loginController.profile);
 
-// Get upload image page
-router.get('/uploadImage', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/fileupload.html'));
-});
-
-// Get add Artifact page
-router.get('/addArtifact', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/addArtifact.html'));
-});
-
-// Create Issue page
-router.get('/createIssue', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/addArtifact.html'));
-});
-
-// Get Issue Page
-router.get('/issue/:issue', discussionController.getIssue);
-
-// Get images
-router.get('/images/:image', imageController.getImage);
-
-// Get artifacts by id
-router.get('/aritfacts/:artifact', artifactController.getArtifact);
+// POST requests
 
 // Login
 router.post('/login', loginController.login);
@@ -60,15 +43,5 @@ router.post('/logout', loginController.logout);
 
 // Register
 router.post('/register', loginController.register);
-
-// Add Artifact
-router.post('/addArtifact', artifactController.addArtifact);
-
-// Upload Image
-var type = upload.single('myImage');
-router.post('/uploadImage', type, imageController.uploadImage);
-
-// Add Issue to Disscussion Board
-router.post('/createIssue', discussionController.addIssue);
 
 module.exports = router;

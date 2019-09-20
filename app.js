@@ -27,12 +27,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var routes = require('./routes/routes.js');
-var adminRouter = require('./routes/adminRoutes.js');
 
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-app.use('/admin', adminRouter);
 app.use('/', routes);
 // Start the server
 const PORT = process.env.PORT || 3000;
