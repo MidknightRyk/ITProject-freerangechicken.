@@ -61,7 +61,8 @@ ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
                       td.userDate
                       script.
                           var user = !{JSON.stringify(user)};
-                          var date = new Date(user.dateCreated);
+                          console.log(user);
+                          var date = new Date(user.dateJoined);
                           var dd = date.toLocaleString('default', { day: '2-digit'});
                           var mm = date.toLocaleString('default', { month: 'long' });
                           var yyyy = date.getFullYear();

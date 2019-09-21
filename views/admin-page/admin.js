@@ -7,16 +7,12 @@ $(document).ready(function () {
     $('.user-delete-btn').on('click',function() {
         var userId = $(this).attr('data-id');
         $.ajax({
-           method: 'POST',
-           url: '/admin/user-delete',
-           data: {"userId": userId}}).done(
-               function (data) {
-                   if (data === userId){
-                       $(this).closest('tr').find('.text-center').text('Rejected');
-                       $(this).closest('tr').fadeOut();
-                   }
-              }
-        );
+            method: 'POST',
+            url: '/admin/user-delete',
+            data: {"userId": userId}});
+        $(this).closest('td').text('Rejected');
+        $(this).closest('tr').find('.text-center').text('Rejected');
+        $(this).closest('tr').fadeOut();
     });
 
 
@@ -25,32 +21,24 @@ $(document).ready(function () {
     $('.user-accept-btn').on('click',function(){
         var userId = $(this).attr('data-id');
         $.ajax({
-           method: 'POST',
-           url: '/admin/user-approve',
-           data: {"userId": userId}}).done(
-               function (data) {
-                   if (data === userId){
-                       $(this).closest('tr').find('.text-center').text('Approved');
-                       $(this).closest('tr').fadeOut();
-                   }
-              }
-        );
+            method: 'POST',
+            url: '/admin/user-approve',
+            data: {"userId": userId}});
+        $(this).closest('td').text('Uploaded');
+        $(this).closest('tr').find('.text-center').text('Uploaded');
+        $(this).closest('tr').fadeOut();
     });
 
     // Show 'deleted' text then the entire row fades out
-    $('.arti-delete-btn').on('click',function(){
+    $('.arti-delete-btn').on('click', function () {
         var userId = $(this).attr('data-id');
         $.ajax({
-           method: 'POST',
-           url: '/admin/arti-delete',
-           data: {"userId": userId}}).done(
-               function (data) {
-                   if (data === userId){
-                       $(this).closest('tr').find('.text-center').text('Rejected');
-                       $(this).closest('tr').fadeOut();
-                   }
-              }
-        );
+            method: 'POST',
+            url: '/admin/arti-delete',
+            data: {"userId": userId}});
+        $(this).closest('td').text('Rejected');
+        $(this).closest('tr').find('.text-center').text('Rejected');
+        $(this).closest('tr').fadeOut();
     });
 
 
@@ -59,15 +47,11 @@ $(document).ready(function () {
     $('.arti-accept-btn').on('click',function(){
         var userId = $(this).attr('data-id');
         $.ajax({
-           method: 'POST',
-           url: '/admin/arti-approve',
-           data: {"userId": userId}}).done(
-               function (data) {
-                   if (data === userId){
-                       $(this).closest('tr').find('.text-center').text('Uploaded');
-                       $(this).closest('tr').fadeOut();
-                   }
-              }
-        );
+            method: 'POST',
+            url: '/admin/arti-approve',
+            data: {"userId": userId}});
+        $(this).closest('td').text('Uploaded');
+        $(this).closest('tr').find('.text-center').text('Uploaded');
+        $(this).closest('tr').fadeOut();
     });
 });
