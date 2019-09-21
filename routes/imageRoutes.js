@@ -14,11 +14,11 @@ router.get('/uploadImage', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/fileupload.html'));
 });
 
+// Get images
+router.get('/:image', imageController.getImage);
+
 // Upload Image
 var type = upload.single('myImage');
 router.post('/uploadImage', type, imageController.uploadImage);
-
-// Get images
-router.post('/:image', imageController.getImage);
 
 module.exports = router;

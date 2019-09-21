@@ -1,7 +1,8 @@
 const fs = require('fs');
 var storage = require('sessionstorage');
 var mongoose = require('mongoose');
-var defaultDP = mongoose.Types.ObjectId('5d85d612220b38000446b55c');
+var ObjectId = mongoose.Types.ObjectId;
+var defaultDP = ObjectId('5d85d612220b38000446b55c');
 var Image = mongoose.model('Image');
 var Artifact = mongoose.model('Artifact');
 var User = mongoose.model('User');
@@ -53,11 +54,14 @@ var uploadImage = function (req, res) {
 			if (err) return console.log(err);
 			var oldDp = user.displayPic;
 			if (oldDp !== defaultDP) {
+				console.log(oldDp);
 				Image.findOneAndDelete(
 					{ '_id': user.displayPic }
 				);
 			}
 			user.displayPic = imgID;
+			console.log('old img is: ' + oldDp);
+			console.log('new img is: ' + user.displayPic);
 			user.save();
 		});
 
@@ -75,7 +79,7 @@ var uploadImage = function (req, res) {
 
 // Retrive images from mongo
 var getImage = function (req, res) {
-	Image.findOne({ '_id': req.body.image }, function (err, images) {
+	Image.findOne({ '_id': req.params.image }, function (err, images) {
 		if (err) return console.log(err);
 
 		res.contentType(images.contentType);
