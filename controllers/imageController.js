@@ -32,7 +32,7 @@ var uploadImage = function (req, res) {
 		image.artifactId = artifactID;
 		image.usage = 'artifact primary image';
 		image.save();
-		console.log('Image ' + req.file.originalname + 'has been uploaded!');
+		console.log('Image ' + req.file.originalname + ' has been uploaded!');
 		// prob return the artifact page lol
 		return res.redirect('/u');
 
@@ -48,7 +48,7 @@ var uploadImage = function (req, res) {
 		image.artifactId = artifactID;
 		image.usage = 'artifact extra image';
 		image.save();
-		console.log('Image ' + req.file.originalname + 'has been uploaded!');
+		console.log('Image ' + req.file.originalname + ' has been uploaded!');
 		// Go to want to add more/if not then go to artifact page
 		return res.redirect('/u');
 
@@ -61,12 +61,12 @@ var uploadImage = function (req, res) {
 			var oldDp = user.displayPic;
 			if (oldDp !== defaultDP) {
 				console.log(oldDp);
-				Image.findOneAndDelete(
-					{ '_id': user.displayPic }
-				);
+				Image.findByIdAndDelete(oldDp, function (err, img) {
+					if (err) return console.log(err);
+					console.log('deleted: ' + img._id);
+				});
 			}
 			user.displayPic = imgID;
-			console.log('old img is: ' + oldDp);
 			console.log('new img is: ' + user.displayPic);
 			user.save();
 		});
@@ -74,12 +74,12 @@ var uploadImage = function (req, res) {
 		image.userId = userID;
 		image.usage = 'user display picture';
 		image.save();
-		console.log('Image ' + req.file.originalname + 'has been uploaded!');
-		return res.redirect('/profile');
+		console.log('Image ' + req.file.originalname + ' has been uploaded!');
+		return res.redirect('/');
 	} else {
 		image.usage = 'not set/random';
 		image.save();
-		console.log('Image ' + req.file.originalname + 'has been uploaded!');
+		console.log('Image ' + req.file.originalname + ' has been uploaded!');
 		// idek what this is for lol
 		return res.redirect('/');
 	}
