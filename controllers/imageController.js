@@ -32,6 +32,9 @@ var uploadImage = function (req, res) {
 		image.artifactId = artifactID;
 		image.usage = 'artifact primary image';
 		image.save();
+		console.log('Image ' + req.file.originalname + 'has been uploaded!');
+		// prob return the artifact page lol
+		return res.redirect('/u');
 
 	// Add Extra Images to artifact by id
 	} else if (req.body.imageType === 'extraImage') {
@@ -45,6 +48,9 @@ var uploadImage = function (req, res) {
 		image.artifactId = artifactID;
 		image.usage = 'artifact extra image';
 		image.save();
+		console.log('Image ' + req.file.originalname + 'has been uploaded!');
+		// Go to want to add more/if not then go to artifact page
+		return res.redirect('/u');
 
 	// Adds new display photo for user
 	} else if (req.body.imageType === 'userProfilePhoto') {
@@ -68,13 +74,15 @@ var uploadImage = function (req, res) {
 		image.userId = userID;
 		image.usage = 'user display picture';
 		image.save();
+		console.log('Image ' + req.file.originalname + 'has been uploaded!');
+		return res.redirect('/profile');
 	} else {
 		image.usage = 'not set/random';
 		image.save();
+		console.log('Image ' + req.file.originalname + 'has been uploaded!');
+		// idek what this is for lol
+		return res.redirect('/');
 	}
-
-	console.log('Image ' + req.file.originalname + 'has been uploaded!');
-	return res.redirect('/u');
 };
 
 // Retrive images from mongo
