@@ -19,19 +19,12 @@ head
 		.inner
 			// Profile Photo + Username
 			// Update profile photos by clicking on the original profile photo
-			a.profile-info(href='')
+			a.profile-info(href='/images/uploadImage')
 				// Profile Photo
 				img#profile-photo.mr.mt-3(src='../views/profile-page/profile-photo.jpeg' alt='Profile Photo')
 				// Username
 				span.title
 				|    #{user.name}
-			script.
-				$('#profile-photo').faceDetection({
-					complete: function (faces) {
-						console.log(faces);
-						console.log(faces.length);
-					}
-				});
 			// Edit Artifacts Button
 			div(style='float:right;margin-top:10%')
 				button.icon-btn.edit-btn
