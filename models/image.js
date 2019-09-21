@@ -3,8 +3,10 @@ var imageSchema = mongoose.Schema(
 	{
 		name: String,
 		data: Buffer,
-		artifactID: String,
-		contentType: String
+		artifactId: { type: mongoose.Schema.Types.ObjectId, ref: 'Artifact' },
+		userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+		contentType: String,
+		usage: String
 	}, {timestamps: true}
 );
 

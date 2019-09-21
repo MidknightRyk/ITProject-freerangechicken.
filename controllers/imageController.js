@@ -1,6 +1,7 @@
 const fs = require('fs');
 var storage = require('sessionstorage');
 var mongoose = require('mongoose');
+var defaultDP = mongoose.Types.ObjectId('5d85d612220b38000446b55c');
 var Image = mongoose.model('Image');
 var Artifact = mongoose.model('Artifact');
 var User = mongoose.model('User');
@@ -15,7 +16,6 @@ var uploadImage = function (req, res) {
 		'contentType': req.file.mimetype
 	});
 
-	image.save();
 	var imgID = image._id;
 
 	// Add Primary Image to artifact by id
@@ -24,14 +24,13 @@ var uploadImage = function (req, res) {
 		console.log('Updating Primary Image for ' + artifactID);
 		Artifact.findOneAndUpdate(
 			{ '_id': artifactID },
-			{ 'primaryImage': imgID },
-			function (err, artifact) {
-				if (err) return console.log('couldnt update artifact image');
-			}
+			{ 'primaryImage': imgID }
 		);
 
 		// Update image schema link
 		image.artifactId = artifactID;
+		image.usage = 'artifact primary image';
+		image.save();
 
 	// Add Extra Images to artifact by id
 	} else if (req.body.imageType === 'extraImage') {
@@ -43,13 +42,31 @@ var uploadImage = function (req, res) {
 
 		// Update image schema link
 		image.artifactId = artifactID;
+		image.usage = 'artifact extra image';
+		image.save();
+
+	// Adds new display photo for user
 	} else if (req.body.imageType === 'userProfilePhoto') {
 		var userID = req.session.user;
 		console.log('Updating User Profile Photo ' + userID);
-		User.findOneAndUpdate(
-			{ '_id': userID },
-			{ 'displayPic': imgID }
-		);
+		User.findById(userID, function (err, user) {
+			if (err) return console.log(err);
+			var oldDp = user.displayPic;
+			if (oldDp !== defaultDP) {
+				Image.findOneAndDelete(
+					{ '_id': user.displayPic }
+				);
+			}
+			user.displayPic = imgID;
+			user.save();
+		});
+
+		image.userId = userID;
+		image.usage = 'user display picture';
+		image.save();
+	} else {
+		image.usage = 'not set/random';
+		image.save();
 	}
 
 	console.log('Image ' + req.file.originalname + 'has been uploaded!');
@@ -58,10 +75,9 @@ var uploadImage = function (req, res) {
 
 // Retrive images from mongo
 var getImage = function (req, res) {
-	Image.findOne({ 'name': req.params.image }, function (err, images) {
+	Image.findOne({ '_id': req.body.image }, function (err, images) {
 		if (err) return console.log(err);
 
-		console.log(req.params.image);
 		res.contentType(images.contentType);
 		res.send(images.data);
 	});
