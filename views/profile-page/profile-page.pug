@@ -21,7 +21,7 @@ head
 			// Update profile photos by clicking on the original profile photo
 			a.profile-info(href='/images/uploadImage')
 				// Profile Photo
-				img#profile-photo.mr.mt-3(src='../views/profile-page/profile-photo.jpeg' alt='Profile Photo')
+				img#profile-photo.mr.mt-3(src = "../images/"+user.displayPic._id alt='Profile Photo')
 				// Username
 				span.title
 				|    #{user.name}
