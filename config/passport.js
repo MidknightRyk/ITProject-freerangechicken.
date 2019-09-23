@@ -11,14 +11,19 @@ passport.use('user', new LocalStrategy(
 		passwordField: 'pwd'
 	},
 	function (username, password, done) {
-		User.findOne({ 'email': username }, function (err, user, res) {
-			console.log(username);
+		// Authenticate using email
+		User.findOne({$or: [
+			{'email': username},
+			{'username': username}
+		]}, function (err, user, res) {
 			if (!err) {
 				if (!user || !user.validatePassword(password)) {
 					return done(null, false, { errors: { 'email or password': 'is invalid' } });
 				}
 				return done(null, user);
-			} else { throw err; }
+			} else {
+				throw err;
+			}
 		});
 	}
 ));
@@ -28,7 +33,7 @@ passport.serializeUser(function (user, done) {
 	done(null, user.id);
 });
 
-// Find user in the two databases
+// Find user in the database
 passport.deserializeUser(function (id, done) {
 	User.getUserById(id, function (err, user) {
 		done(err, user);

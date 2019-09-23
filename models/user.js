@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
+var defaultDP = mongoose.Types.ObjectId('5d85d612220b38000446b55c');
 var userSchema = mongoose.Schema(
 	{
 		name: String,
@@ -11,7 +12,12 @@ var userSchema = mongoose.Schema(
 		approved: Boolean,
 		dateJoined: { type: Date, default: Date.now },
 		relationship: String,
-		artifacts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Artifact' }]
+		artifacts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Artifact' }],
+		displayPic: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Image',
+			default: defaultDP
+		}
 	}
 );
 

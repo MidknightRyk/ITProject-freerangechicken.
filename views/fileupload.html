@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="../node_modules/jquery.facedetection/dist/jquery.facedetection.min.js"></script>
   <title>MY APP</title>
 </head>
 <body>
@@ -22,15 +24,48 @@
 </form>
 -->
   <!--   PHOTO-->
-<form action="/uploadImage" enctype="multipart/form-data" method="POST">
+<form action="/images/uploadImage" enctype="multipart/form-data" method="POST" id="uploadForm">
 	Image Type: <select name="imageType">
 		<option value="">Image Type...</option>
 		<option value="primaryImage">Primary</option>
 		<option value="extraImage">Extra</option>
+    <option value="userProfilePhoto">User Display Picture</option>
 
-  <input type="file" name="myImage" accept="image/*" />
+  <input type="file" name="myImage" accept="image/*" id="image"/>
   <input type="submit" value="Upload Photo"/>
 </form>
+<img id="preview" hidden/>
+
+<!-- Preview files before input, check if contains a face if uploading display picture -->
+<!-- Source: https://www.codexworld.com/preview-image-before-upload-jquery/ -->
+<script>
+
+    $("#image").change(function () {
+        filePreview(this);
+    });
+    function filePreview(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#uploadForm + embed').remove();
+                $('#uploadForm').after('<embed src="'+e.target.result+'">');
+                $('#preview').attr('src', e.target.result);
+                if (uploadForm.imageType.value === "userProfilePhoto"){
+                    $("#preview").faceDetection({
+                        complete: function (faces) {
+                            console.log(faces);
+                            console.log(faces.length);
+                            if (faces.length != 1) {
+                                alert("Please upload an image with your face only!");
+                            }
+                        }
+                    })
+                }
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 
 </body>
 </html>

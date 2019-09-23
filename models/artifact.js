@@ -3,23 +3,25 @@ var artifactSchema = mongoose.Schema(
 	{
 		name: String,
 		description: String,
-		primaryImage: { type: String, default: null },	// Stores the image object id in mongo
-		extraImages: { type: [String], default: null },
+		// Stores the image object id
+		primaryImage: { type: mongoose.Schema.Types.ObjectId, ref: 'Image' },
+		extraImages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Image' }],
 		author: String,
-		editor: {type: String, default: null},
+		editor: String,
 		dateCreated: { type: Date, default: Date.now },
-		dateEdited: {type: Date, default: null},
+		dateEdited: Date,
 		tags: { type: [String], index: true },
 		placeOrigin: { type: String, default: null },
 		year: { type: Number, index: true },
-		approved: Boolean
+		approved: { type: Boolean, default: false }
 	}
 );
 
-artifactSchema.methods.editArtifact = function (username, attribute, newInfo) {
+artifactSchema.methods.edit = function (username, attribute, newInfo) {
 	this.attribute = newInfo;
 	this.dateEdited = Date.now;
 	this.editor = username;
 };
 
-mongoose.model('Artifact', artifactSchema);
+mongoose.model('Artifact', artifactSchema, 'artifacts');
+mongoose.model('OldArtifact', artifactSchema, 'artifact-logs');

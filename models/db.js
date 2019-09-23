@@ -17,7 +17,10 @@ mongoose.connect(dbURI, options).then(
 	console.log('Error connecting Database instance due to: ', err);
 });
 
-
-
+// Initializes the schema for mongodb
 require('./user.js');
 require('./artifact.js');
+require('./image.js');
+require('./issue.js');
+require('./comment.js');
+require('./edits');
