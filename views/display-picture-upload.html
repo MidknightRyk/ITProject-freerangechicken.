@@ -8,29 +8,8 @@
 </head>
 <body>
 
-
- <!--  SINGLE FILE
-<form action="/uploadfile" enctype="multipart/form-data" method="POST">
-   <input type="file" name="myFile" />
-   <input type="submit" value="Upload a file"/>
-</form>
--->
-
-<!-- MULTIPLE FILES
-
-<form action="/uploadmultiple"  enctype="multipart/form-data" method="POST">
-  Select images: <input type="file" name="myFiles" multiple>
-  <input type="submit" value="Upload your files"/>
-</form>
--->
-  <!--   PHOTO-->
-<form action="/images/uploadImage" enctype="multipart/form-data" method="POST" id="uploadForm">
-	Image Type: <select name="imageType">
-		<option value="">Image Type...</option>
-		<option value="primaryImage">Primary</option>
-		<option value="extraImage">Extra</option>
-    <option value="userProfilePhoto">User Display Picture</option>
-
+<form action="/images/uploadDP" enctype="multipart/form-data" method="POST" id="uploadForm">
+	Choose and Upload Your Display Picture! </br></br>
   <input type="file" name="myImage" accept="image/*" id="image"/>
   <input type="submit" value="Upload Photo"/>
 </form>
