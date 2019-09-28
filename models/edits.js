@@ -6,6 +6,7 @@ var editsSchema = mongoose.Schema(
 		dateEdited: Date,
 		oldArtifact: { type: mongoose.Schema.Types.ObjectId, ref: 'Artifact' },
 		newArtifact: { type: mongoose.Schema.Types.ObjectId, ref: 'Artifact' },
+		deletion: Boolean,
 		approved: Boolean,
 		rejected: Boolean
 	}

@@ -10,15 +10,26 @@ var imageController = require('../controllers/imageController.js');
 // GET requests
 
 // Get upload image page
-router.get('/uploadImage', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/fileupload.html'));
+router.get('/uploadDP', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/display-picture-upload.html'));
+});
+
+// Get upload image page
+router.get('/uploadImages', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/multifiletest.html'));
 });
 
 // Get images
 router.get('/:image', imageController.getImage);
 
-// Upload Image
-var type = upload.single('myImage');
-router.post('/uploadImage', type, imageController.uploadImage);
+// POSTS requests
+
+// upload mutliple pictures
+var type = upload.array('Images', 5);
+router.post('/uploadImages', type, imageController.uploadImages);
+
+// Upload Display Picture
+type = upload.single('myImage');
+router.post('/uploadDP', type, imageController.uploadDisplayPic);
 
 module.exports = router;

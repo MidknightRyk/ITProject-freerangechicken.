@@ -31,7 +31,7 @@ var addArtifact = function (req, res) {
 			if (err) return console.log('couldnt update artifact to user');
 		}
 	);
-	return res.redirect('/images/uploadImage');
+	return res.redirect('/images/uploadImages');
 };
 
 // Gets a single artifact by id
@@ -67,27 +67,42 @@ var suggestEdits = function (req, res) {
 	Artifact.findById(artifactID,
 	function (err, artifact) {
 		if (err) return console.log(err);
-		var editedArtifact = new Artifact({
-			'name': req.body.name || artifact.name,
-			'description': req.body.description || artifact.description,
-			'tags': req.body.tags || artifact.tags,
-			'placeOrigin': req.body.country || artifact.placeOrigin,
-			'year': req.body.year || artifact.year,
-			'approved': false
-		});
 
-		editedArtifact.save(function (err, arti) {
-			if (err) return console.log(err);
+		// If suggesting deletion
+		if (req.body.deletion === true) {
 			var edits = new Edits({
-				description: req.body.description,
+				description: req.body.editDescription,
 				editor: req.session.userName,
 				dateEdited: Date.now,
 				oldArtifact: artifact.id,
-				newArtifact: arti.id,
+				deletion: true,
 				approved: false
 			});
 			edits.save();
-		});
+		} else {
+			var editedArtifact = new Artifact({
+				'name': req.body.name || artifact.name,
+				'description': req.body.description || artifact.description,
+				'tags': req.body.tags || artifact.tags,
+				'placeOrigin': req.body.country || artifact.placeOrigin,
+				'year': req.body.year || artifact.year,
+				'approved': false
+			});
+
+			editedArtifact.save(function (err, arti) {
+				if (err) return console.log(err);
+				var edits = new Edits({
+					description: req.body.editDescription,
+					editor: req.session.userName,
+					dateEdited: Date.now,
+					oldArtifact: artifact.id,
+					newArtifact: arti.id,
+					deletion: false,
+					approved: false
+				});
+				edits.save();
+			});
+		}
 	});
 
 	return res.redirect('/u');
@@ -115,22 +130,31 @@ var editArtifact = function (req, res) {
 				var oldArti = new OldArtifact(artifact);
 				oldArti.save();
 
-				// Replace all the fields of the original artifact with the new info
-				// Deletes the temp artifact
-				Artifact.findOneAndDelete(
-					{ '_id': newartifactID },
-					function (err, newartifact) {
-						if (err) return console.log(err);
+				// If this artifact is flagged for deletion, delete and then return.
+				if (edit.deletion === true) {
+					User.findOneAndUpdate(
+						{ '_id': artifact.author },
+						{ $pull: { 'artifacts': artifactID } }
+					);
+					artifact.remove();
+				} else {
+					// Replace all the fields of the original artifact with the new info
+					// Deletes the temp artifact
+					Artifact.findOneAndDelete(
+						{ '_id': newartifactID },
+						function (err, newartifact) {
+							if (err) return console.log(err);
 
-						artifact.name = newartifact.name;
-						artifact.description = newartifact.description;
-						artifact.tags = newartifact.tags;	// Might need changes to this (array probs amirite)
-						artifact.placeOrigin = newartifact.placeOrigin;
-						artifact.year = newartifact.year;
-						artifact.editor = edit.editor;
-						artifact.dateEdited = edit.dateEdited;
-					});
-				artifact.save();
+							artifact.name = newartifact.name;
+							artifact.description = newartifact.description;
+							artifact.tags = newartifact.tags;	// Might need changes to this (array probs amirite)
+							artifact.placeOrigin = newartifact.placeOrigin;
+							artifact.year = newartifact.year;
+							artifact.editor = edit.editor;
+							artifact.dateEdited = edit.dateEdited;
+						});
+					artifact.save();
+				}
 			});
 
 		// If the changes are rejected, delete the temp artifact
