@@ -14,6 +14,46 @@ button:focus
     outline:0; /* Get rid of the edge around the button after clicking */
 }
 
+/*
+ * Navigation Bar
+*/
+
+#website-logo {
+    width: 12%;
+}
+
+.nav-link
+{
+    font-family: Helvetica, sans-serif;
+}
+
+.nav-link {
+    text-decoration: none;
+    position: relative;
+}
+
+.nav-link :hover {
+    text-decoration: none;
+}
+
+
+.nav-link :after {
+    border-radius: 1em;
+    border-top: .1em solid #2F56B0;
+    content: "";
+    position: absolute;
+    right: 100%;
+    bottom: .14em;
+    left: 0;
+    transition: right .4s cubic-bezier(0,.5,0,1);
+}
+
+.nav-link:hover:after
+{
+    right:0;
+}
+
+
 
 /*
  *  login box section
