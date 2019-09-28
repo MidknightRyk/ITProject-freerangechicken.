@@ -1,0 +1,49 @@
+/* Profile Photo */
+.profile-upload-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    width:120px;
+    height:120px;
+    border-radius: 50%;
+}
+
+.profile-upload-container img
+{
+    width: 120px;
+    height:120px;
+    object-fit: cover; /* avoid stretching */
+    border-radius: 50%;
+    opacity:1;
+}
+
+.profile-upload-container:hover img{
+    opacity: 0.3;
+    transition:0.5s;
+}
+
+.profile-upload-container a {
+    display: block;
+    position: absolute;
+    top: -100%;
+    opacity: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    color: inherit;
+}
+.profile-upload-container:hover a {
+    opacity: 1;
+    top: 3px;
+    z-index: 500;
+    border-radius: 50px;
+    border:0;
+}
+.profile-upload-container:hover a span {
+    top: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+}

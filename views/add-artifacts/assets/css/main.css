@@ -1,0 +1,339 @@
+/* Inspired by Strata from https://html5up.net/ */
+
+/* Form Style */
+input[type="text"],
+select,
+textarea {
+	background: #f7f7f7;
+	border-radius: 0.35em;
+	border: solid 2px transparent;
+	color: inherit;
+	display: block;
+	outline: 0;
+	padding: 0 0.75em;
+	text-decoration: none;
+	width: 95%;
+	box-shadow:none;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+	border-color: #49bf9d;
+}
+
+input[type="text"],
+select {
+	height: 2.75em;
+}
+textarea {
+	padding: 0.75em;
+}
+
+/* customise select arrows */
+select {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='%23dfdfdf' /%3E%3C/svg%3E");
+	background-size: 1.25rem;
+	background-repeat: no-repeat;
+	background-position: calc(100% - 1rem) center;
+	height: 2.75em;
+	padding-right: 2.75em;
+	text-overflow: ellipsis;
+
+	/* To get rid of the default select arrows */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	text-indent: 1px;
+	color:#777;
+}
+
+
+
+
+/* Actions -> Add Artifact Button */
+
+ul.actions {
+	display: flex;
+	cursor: default;
+	list-style: none;
+	margin-left: -1em;
+	padding-left: 0;
+}
+
+ul.actions li {
+	padding: 0 0 0 1.2em;
+	vertical-align: middle;
+}
+
+
+/* Button */
+
+.button {
+	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+	background-color: transparent;
+	border-radius: 0.35em;
+	border: solid 3px #efefef;
+	color: #787878 !important;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: 400;
+	height: calc(2.75em + 6px);
+	line-height: 2.75em;
+	min-width: 10em;
+	padding: 0 1.5em;
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.button:hover {
+	border-color: #49bf9d;
+	color: #49bf9d !important;
+}
+
+.button:active {
+	background-color: rgba(73, 191, 157, 0.1);
+	border-color: #49bf9d;
+	color: #49bf9d !important;
+}
+
+
+/* Header */
+
+#header {
+	display: flex;
+
+	flex-direction: column;
+
+	align-items: flex-end;
+
+	justify-content: space-between;
+	background-color: #1f1815;
+	background-attachment: scroll, scroll;
+	/*background-image: url("images/overlay.png"), url("../../images/bg.jpg");*/
+	background-image: url("images/overlay.png"), url("images/forest.jpg");
+	background-position: top left, top left;
+	background-repeat: repeat, no-repeat;
+	background-size: auto, 200%;
+	color: rgba(255, 255, 255, 0.5);
+	height: 100%;
+	left: 0;
+	padding: 8em 4em;
+	position: fixed;
+	text-align: right;
+	top: 0;
+	width: 35%;
+}
+
+.inner
+{
+	margin-top: -100%;
+}
+		#header strong, #header b {
+			color: #ffffff;
+		}
+
+		#header h2, #header h3, #header h4, #header h5, #header h6 {
+			color: #ffffff;
+		}
+
+		#header h1 {
+			color: rgba(255, 255, 255, 0.5);
+			font-size: 1.35em;
+			line-height: 1.75em;
+			margin: 0;
+		}
+
+		#header .image.avatar {
+			margin: 0 0 1em 0;
+			width: 6.25em;
+		}
+
+
+/* Main */
+
+	#main {
+		margin-left: 35%;
+		max-width: 54em;
+		padding: 8em 4em 4em 4em;
+		width: calc(100% - 35%);
+	}
+
+		#main > section {
+			border-top: solid 2px #efefef;
+			margin: 4em 0 0 0;
+			padding: 4em 0 0 0;
+		}
+
+			#main > section:first-child {
+				border-top: 0;
+				margin-top: 0;
+				padding-top: 0;
+			}
+
+
+
+/* Responsive Adjustment */
+/* XLarge */
+
+	@media screen and (max-width: 1800px) {
+
+		/* Basic */
+
+			body, input, select, textarea {
+				font-size: 12pt;
+			}
+
+		#header {
+
+			padding: 0 3em 3em 3em;
+			width: 30%;
+		}
+
+		#header > .inner {
+			top:-70%;
+		}
+
+
+	}
+
+/* Large */
+
+	@media screen and (max-width: 1280px) {
+
+		/* Header */
+
+			#header {
+
+				padding: 0 3em 3em 3em;
+				width: 30%;
+			}
+
+				#header h1 {
+					font-size: 1.25em;
+				}
+
+					#header h1 br {
+						display: none;
+					}
+
+				#header > .inner {
+					top:-70%;
+				}
+
+
+		/* Main */
+
+			#main {
+				margin-left: 30%;
+				max-width: none;
+				padding: 6em 3em 3em 3em;
+				width: calc(100% - 30%);
+			}
+
+	}
+
+/* Medium */
+
+	@media screen and (max-width: 980px) {
+
+		/* Header */
+
+			#header {
+				background-attachment: scroll;
+				background-position: top left, center center;
+				background-size: auto,		cover;
+				left: auto;
+				padding: 8em 1.5em 3em 0;
+				position: relative;
+				text-align: center;
+				top: auto;
+				width: 100%;
+				display: block;
+			}
+
+				#header h1 {
+					font-size: 1.75em;
+				}
+
+					#header h1 br {
+						display: inline;
+					}
+
+		/* Footer */
+
+			#footer {
+				background-attachment: scroll;
+				background-color: #1f1815;
+				background-image: url("images/overlay.png"), url("../../images/bg.jpg");
+				background-position: top left, bottom center;
+				background-repeat: repeat,no-repeat;
+				background-size: auto,cover;
+				bottom: auto;
+				left: auto;
+				padding: 4em 4em 6em 4em;
+				position: relative;
+				text-align: center;
+				width: 100%;
+			}
+
+		/* Main */
+
+			#main {
+				margin: 0;
+				padding: 6em 4em;
+				width: 100%;
+			}
+
+	}
+
+/* Small */
+
+	@media screen and (max-width: 736px) {
+
+
+		/* Header */
+
+			#header {
+				padding: 8em 1.5em 3em 0;
+			}
+
+				#header h1 {
+					font-size: 1.35em;
+				}
+
+		/* Footer */
+
+			#footer {
+				padding: 2.25em 1.5em;
+			}
+
+		/* Main */
+
+			#main {
+				padding: 2.25em 1.5em 0.25em 1.5em;
+			}
+
+				#main > section {
+					margin: 2.25em 0 0 0;
+					padding: 2.25em 0 0 0;
+				}
+
+	}
+
+/* XSmall */
+
+	@media screen and (max-width: 480px) {
+
+		/* Header */
+			#header {
+				padding: 8em 1.5em 3em 0;
+			}
+
+				#header h1 br {
+					display: none;
+				}
+
+
+	}
+
