@@ -1350,7 +1350,9 @@ input, select, textarea {
 
 		/* Background Color Options */
 		/*background-image: linear-gradient(#661913, #fffdd9) ;*/
-		background-image: linear-gradient(#935c53, #e1d1ce) ;
+		/*background-image: linear-gradient(#935c53, #e1d1ce) ;*/
+		/*background-image: url("images/bg.jpg");*/
+		background-image: url("images/sky.jpg");
 		/*background-image: linear-gradient(#fff0de, #e3bcb6) ;*/
 		/*background-image: linear-gradient(#e7a411, rgba(184,166,128,1));*/
 
