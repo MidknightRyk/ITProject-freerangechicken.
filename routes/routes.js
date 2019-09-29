@@ -30,6 +30,16 @@ router.get('/u', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/awaiting-approval-page/awaiting-approval-page.html'));
 });
 
+// Get catalogue page
+router.get('/catalogue', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/catalogueNew/catalogueNew.html'));
+});
+
+// Get logout page????
+router.get('/logout', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/homepage/logout.html'));
+});
+
 // Get profile page
 router.get('/profile', loginController.profile);
 

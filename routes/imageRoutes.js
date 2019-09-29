@@ -25,7 +25,7 @@ router.get('/uploadDP', function (req, res) {
 		Note to Mar: Group extra images into one document (better O?)
  */
 router.get('/uploadImages', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/multifiletest.html'));
+	res.sendFile(path.join(__dirname, '/../views/artifactImages.html'));
 });
 
 /* !!!! ATTENTION: Add new get pages before this comment !!!

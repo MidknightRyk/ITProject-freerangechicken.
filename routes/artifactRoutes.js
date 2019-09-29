@@ -9,7 +9,7 @@ var artifactController = require('../controllers/artifactController.js');
 
 // Get add Artifact page
 router.get('/addArtifact', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/addArtifact.html'));
+	res.sendFile(path.join(__dirname, '/../views/add-artifacts/add-artifact.html'));
 });
 
 /* !!!! ATTENTION: Add new get pages before this !!!

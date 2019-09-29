@@ -18,7 +18,7 @@ var adminPage = function (req, res) {
 			} else { throw err; }
 		});
 	} else {
-		res.sendFile(path.join(__dirname, '/../views/adminPage.html'));
+		res.sendFile(path.join(__dirname, '/../views/admin-page/no-access.html'));
 	}
 };
 
