@@ -13,7 +13,7 @@ router.use('/artifacts', artifactRoute);
 router.use('/discussion-board', discus);
 router.use('/images', image);
 
-// GET Requests
+/* GET Requests */
 
 // Get homepage
 router.get('/', function (req, res) {
@@ -25,7 +25,7 @@ router.get('/', function (req, res) {
   // dirname : It will resolve to your project folder.
 });
 
-// Get require admin approval page
+// Get wait for admin approval page
 router.get('/u', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/awaiting-approval-page/awaiting-approval-page.html'));
 });
@@ -33,7 +33,7 @@ router.get('/u', function (req, res) {
 // Get profile page
 router.get('/profile', loginController.profile);
 
-// POST requests
+/* POST requests */
 
 // Login
 router.post('/login', loginController.login);

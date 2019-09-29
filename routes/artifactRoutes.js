@@ -5,29 +5,39 @@ var artifactController = require('../controllers/artifactController.js');
 
 // Routes for Artifacts
 
-// Artifacts
+/* GET requests */
+
 // Get add Artifact page
 router.get('/addArtifact', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/addArtifact.html'));
 });
 
-// Add new get pages before this because otherwise
-// it's gonna run this first and give you the stoop objectid error gfdi
+/* !!!! ATTENTION: Add new get pages before this !!!
+ * If you do not heed the warning,
+ * you gon objectid error
+ * YOU HAVE BEEN WARNED
+*/
 
 // Get artifacts by id
+// (currently broken cause there's no page to handle the data retrived)
 router.get('/:artifact', artifactController.getArtifact);
 
-// POST requests
+/* POST requests */
 
-// Artifacts
 // Add Artifact
 router.post('/addArtifact', artifactController.addArtifact);
+
+/* !! The below routes are missing GET pairs delibrately !!
+ * will be implemented when pages for them are implemented
+ * It's also untested so ...
+ * proceed w caution
+ */
 
 // Suggest Edits for artifacts
 router.post('/editArtifact', artifactController.suggestEdits);
 
 // Approve Edits for artifacts
 // ** needs edit ticket id in params **
-router.post('/approveArtifacts', artifactController.editArtifact);
+router.post('/approveEdits', artifactController.editArtifact);
 
 module.exports = router;

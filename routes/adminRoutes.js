@@ -2,12 +2,19 @@ const express = require('express');
 var router = express.Router();
 var adminController = require('../controllers/adminController.js');
 
-// admin specific routes
+/* Admin Access: Restricted to users with admin privlleges
+ * (i cnt spell pls forgib)
+ */
+
+/* GET requests */
+
 // Access but typing culturechive.herokuapp.com/admin/{page you want}
 router.get('/', adminController.adminPage);
 
 // Admin Approval Homepage
 router.get('/homepage', adminController.adminPage);
+
+/* POST requests */
 
 // User approval
 router.post('/user-approve', adminController.userApprove);

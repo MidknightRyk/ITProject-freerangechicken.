@@ -7,15 +7,7 @@ var Image = mongoose.model('Image');
 var Artifact = mongoose.model('Artifact');
 var User = mongoose.model('User');
 
-var multiTest = function (req, res) {
-	var files = req.files;
-	files.forEach(function (thisImg) {
-		console.log(thisImg.originalname);
-	});
-	return res.redirect('/u');
-};
-
-// Upload images
+// Upload images (for artifacts)
 var uploadImages = function (req, res) {
 	var files = req.files;
 
@@ -72,6 +64,7 @@ var uploadImages = function (req, res) {
 	});
 };
 
+// Uploads display picture function
 var uploadDisplayPic = function (req, res) {
 	var imgname = req.file.originalname;
 
@@ -108,15 +101,28 @@ var uploadDisplayPic = function (req, res) {
 
 // Retrive images from mongo
 var getImage = function (req, res) {
-	Image.findOne({ '_id': req.params.image }, function (err, images) {
-		if (err) return console.log(err);
+	var cond = req.params.image;
 
-		res.contentType(images.contentType);
-		res.send(images.data);
+	// Look for image by name
+	Image.findOne({ 'name': cond }, function (err, images) {
+		if (err) return console.log(err);
+		if (images !== null) {
+			// Image found
+			res.contentType(images.contentType);
+			return res.send(images.data);
+		};
+	});
+
+	/* this works but throws and error for some reason grr */
+
+	// If not found look by ID
+	Image.findOne({ '_id': cond }, function (err, img) {
+		if (err) return console.log(err);
+		res.contentType(img.contentType);
+		res.send(img.data);
 	});
 };
 
 module.exports.uploadImages = uploadImages;
 module.exports.getImage = getImage;
 module.exports.uploadDisplayPic = uploadDisplayPic;
-module.exports.multiTest = multiTest;
