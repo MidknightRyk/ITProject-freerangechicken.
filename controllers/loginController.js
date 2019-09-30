@@ -54,7 +54,7 @@ var login = function (req, res) {
 				return res.redirect('/profile');
 			}
 		} else {
-			return res.redirect('/u');
+			return res.redirect('/');
 		}
 	})(req, res);
 };
