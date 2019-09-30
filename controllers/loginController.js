@@ -73,6 +73,7 @@ var profile = function (req, res) {
 
 // Logout function
 var logout = function (req, res) {
+	console.log("'Logging out!'");
 	req.session = null;
 	res.redirect('/');
 };

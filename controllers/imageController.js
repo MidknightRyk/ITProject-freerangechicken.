@@ -104,12 +104,12 @@ var getImage = function (req, res) {
 	var cond = req.params.image;
 
 	// Look for image by name
-	Image.findOne({ 'name': cond }, function (err, images) {
+	Image.findOne({ 'name': cond }, function (err, image) {
 		if (err) return console.log(err);
-		if (images !== null) {
+		if (image) {
 			// Image found
-			res.contentType(images.contentType);
-			return res.send(images.data);
+			res.contentType(image.contentType);
+			return res.send(image.data);
 		};
 	});
 
@@ -122,6 +122,8 @@ var getImage = function (req, res) {
 		res.send(img.data);
 	});
 };
+
+/* need to implement an edit image function */
 
 module.exports.uploadImages = uploadImages;
 module.exports.getImage = getImage;
