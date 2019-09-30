@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var loginController = require('../controllers/loginController.js');
+var userController = require('../controllers/userController.js');
 var admin = require('./adminRoutes.js');
 var artifactRoute = require('./artifactRoutes.js');
 var discus = require('./discussionRoutes.js');
@@ -43,6 +44,9 @@ router.get('/logout', function (req, res) {
 // Get profile page
 router.get('/profile', loginController.profile);
 
+// Get edit profile page?
+router.get('/edit-profile', loginController.profile);
+
 /* POST requests */
 
 // Login
@@ -53,5 +57,8 @@ router.post('/logout', loginController.logout);
 
 // Register
 router.post('/register', loginController.register);
+
+// Edit profile
+router.post('/edit-profile', userController.editProfile);
 
 module.exports = router;
