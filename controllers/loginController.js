@@ -54,7 +54,7 @@ var login = function (req, res) {
 				return res.redirect('/profile');
 			}
 		} else {
-			return res.redirect('/u');
+			return res.redirect('/');
 		}
 	})(req, res);
 };
@@ -73,6 +73,7 @@ var profile = function (req, res) {
 
 // Logout function
 var logout = function (req, res) {
+	console.log("'Logging out!'");
 	req.session = null;
 	res.redirect('/');
 };

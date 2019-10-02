@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var loginController = require('../controllers/loginController.js');
+var userController = require('../controllers/userController.js');
 var admin = require('./adminRoutes.js');
 var artifactRoute = require('./artifactRoutes.js');
 var discus = require('./discussionRoutes.js');
@@ -13,7 +14,7 @@ router.use('/artifacts', artifactRoute);
 router.use('/discussion-board', discus);
 router.use('/images', image);
 
-// GET Requests
+/* GET Requests */
 
 // Get homepage
 router.get('/', function (req, res) {
@@ -25,15 +26,28 @@ router.get('/', function (req, res) {
   // dirname : It will resolve to your project folder.
 });
 
-// Get require admin approval page
+// Get wait for admin approval page
 router.get('/u', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/awaiting-approval-page/awaiting-approval-page.html'));
+});
+
+// Get catalogue page
+router.get('/catalogue', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/catalogueNew/catalogueNew.html'));
+});
+
+// Get logout page????
+router.get('/logout', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/homepage/logout.html'));
 });
 
 // Get profile page
 router.get('/profile', loginController.profile);
 
-// POST requests
+// Get edit profile page?
+router.get('/edit-profile', loginController.profile);
+
+/* POST requests */
 
 // Login
 router.post('/login', loginController.login);
@@ -43,5 +57,8 @@ router.post('/logout', loginController.logout);
 
 // Register
 router.post('/register', loginController.register);
+
+// Edit profile
+router.post('/edit-profile', userController.editProfile);
 
 module.exports = router;

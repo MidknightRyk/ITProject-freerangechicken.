@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Logout</title>
-    <link href="logoutStyle.css" rel="stylesheet" type="text/css" >
+    <link href="../views/homepage/logoutStyle.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
 
 <div class="logout-button">
-    <a class="button" href="">
+  <form id="form1" action="/logout" method="POST">
+    <a href="javascript:;" onclick="document.getElementById('form1').submit();" class="button">
         <img src="https://pic1.zhimg.com/50/v2-61dd73732c1fa00e76638abd975fa260_hd.jpg" alt="profile-photo">
         <div class="logout">LOGOUT</div>
     </a>
+  </form>
 </div>
 
 </body>
