@@ -7,7 +7,7 @@ var Image = mongoose.model('Image');
 var Artifact = mongoose.model('Artifact');
 var User = mongoose.model('User');
 
-// Upload images (for artifacts)
+// Upload artifact images
 var uploadImages = function (req, res) {
 	// collect the images uploaded
 	var files = req.files;
@@ -120,15 +120,9 @@ var getImage = function (req, res) {
 	});
 };
 
-/*
-} else {
-	image.usage = 'not set/random';
-	image.save();
-	console.log('Image ' + thisImg.originalname + ' has been uploaded!');
-	// idek what this is for lol
-	return res.redirect('/');
+var deleteImage = function (req, res) {
+	var imgId = req.body.imageid;
 }
-*/
 
 /* need to implement an edit image function */
 

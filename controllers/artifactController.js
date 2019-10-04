@@ -60,51 +60,69 @@ var groupArtifacts = function (req, res) {
 /* Used to make edits for approval
  * Creates a new artifact with all the edited values,
  * assigns it to a edit suggestion doc.
- * ***Does not include image edits***
  */
-var suggestEdits = function (req, res) {
+
+// Flags Artifact for deletion by submitting a ticket
+var deleteArtifact = function (req, res) {
+	// If suggesting deletion
 	var artifactID = storage.artifactId;
+	var edits = new Edits({
+		description: req.body.editDescription,
+		editor: req.session.userName,
+		dateEdited: Date.now,
+		oldArtifact: artifactID,
+		deletion: true,
+		approved: false
+	});
+	edits.save();
+};
+
+// Creates a duplicate artifact for edits and stores old and new into a ticket
+var cloneArtifact = function (req, res) {
+	var artifactID = storage.artifactId;
+	var edits = new Edits({
+		// description: req.body.editDescription,
+		editor: req.session.userName,
+		dateEdited: Date.now,
+		oldArtifact: artifactID,
+		// newArtifact: arti.id,
+		approved: false
+	});
 	Artifact.findById(artifactID,
 	function (err, artifact) {
 		if (err) return console.log(err);
-
-		// If suggesting deletion
-		if (req.body.deletion === true) {
-			var edits = new Edits({
-				description: req.body.editDescription,
-				editor: req.session.userName,
-				dateEdited: Date.now,
-				oldArtifact: artifact.id,
-				deletion: true,
-				approved: false
-			});
-			edits.save();
-		} else {
-			var editedArtifact = new Artifact({
-				'name': req.body.name || artifact.name,
-				'description': req.body.description || artifact.description,
-				'tags': req.body.tags || artifact.tags,
-				'placeOrigin': req.body.country || artifact.placeOrigin,
-				'year': req.body.year || artifact.year,
-				'approved': false
-			});
-
-			editedArtifact.save(function (err, arti) {
-				if (err) return console.log(err);
-				var edits = new Edits({
-					description: req.body.editDescription,
-					editor: req.session.userName,
-					dateEdited: Date.now,
-					oldArtifact: artifact.id,
-					newArtifact: arti.id,
-					deletion: false,
-					approved: false
-				});
-				edits.save();
-			});
-		}
+		var editedArtifact = new Artifact({
+			'name': artifact.name,
+			'description': artifact.description,
+			'tags': artifact.tags,
+			'placeOrigin': artifact.placeOrigin,
+			'year': artifact.year,
+			'primaryImage': artifact.primaryImage,
+			'extraImages': artifact.extraImages,
+			'approved': false
+		});
+		editedArtifact.save();
+		artifactID = editedArtifact._id;
+		edits.newArtifact = artifactID;
+		storage.artifactId = artifactID;
 	});
+	edits.save();
+	storage.ticketId = edits._id;
+};
 
+var suggestEdits = function (req, res) {
+	Edits.findByOneAndUpdate(storage.ticketId, function (err, ticket) {
+		if (err) return console.log(err);
+		ticket.description = req.body.ticketDescription;
+		Artifact.findById(ticket.newArtifact, function (err, artifact) {
+			if (err) return console.log(err);
+			artifact.name = req.body.name || artifact.name;
+			artifact.description = req.body.description || artifact.description;
+			artifact.tags = req.body.tag.toString() || artifact.tags;
+			artifact.placeOrigin = req.body.placeOrigin || artifact.placeOrigin;
+			artifact.year = req.body.year || artifact.year;
+		});
+	});
 	return res.redirect('/u');
 };
 
@@ -171,5 +189,7 @@ var editArtifact = function (req, res) {
 module.exports.groupArtifacts = groupArtifacts;
 module.exports.addArtifact = addArtifact;
 module.exports.getArtifact = getArtifact;
+module.exports.deleteArtifact = deleteArtifact;
+module.exports.cloneArtifact = cloneArtifact;
 module.exports.suggestEdits = suggestEdits;
 module.exports.editArtifact = editArtifact;

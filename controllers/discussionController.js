@@ -16,7 +16,7 @@ var addIssue = function (req, res) {
 	});
 
 	return issue.save()
-		.then(() => res.redirect('/issue/:issue'));
+		.then(() => res.redirect('/discussionBoard/:issue'));
 };
 
 var addComment = function (req, res) {
@@ -67,5 +67,5 @@ var editIssue = function (req, res) {
 module.exports.addIssue = addIssue;
 module.exports.addComment = addComment;
 module.exports.getIssue = getIssue;
-module.exports.closeIssue = reIssue;
+module.exports.reIssue = reIssue;
 module.exports.editIssue = editIssue;

@@ -36,6 +36,9 @@ router.post('/addArtifact', artifactController.addArtifact);
 // Suggest Edits for artifacts
 router.post('/editArtifact', artifactController.suggestEdits);
 
+// Flag artifact for deletion
+router.post('deleteArtifact', artifactController.deleteArtifact);
+
 // Approve Edits for artifacts
 // ** needs edit ticket id in params **
 router.post('/approveEdits', artifactController.editArtifact);
