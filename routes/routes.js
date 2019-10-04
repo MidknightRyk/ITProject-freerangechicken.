@@ -11,7 +11,7 @@ var image = require('./imageRoutes.js');
 // External routes
 router.use('/admin', admin);
 router.use('/artifacts', artifactRoute);
-router.use('/discussion-board', discus);
+router.use('/discussionBoard', discus);
 router.use('/images', image);
 
 /* GET Requests */

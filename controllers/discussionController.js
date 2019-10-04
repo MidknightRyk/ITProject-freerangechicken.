@@ -40,8 +40,8 @@ var getIssue = function (req, res) {
 	.exec(function (err, issue) {
 		if (err) return console.log(err);
 		// idk the path for this cause we don't have a page for this yet
-		return res.render(path.join(__dirname, '../views/discussion-board/issue-page.pug'),
-		{ issue: issue, comment: [issue.comments] }
+		return res.render(path.join(__dirname, '../views/discussion-board/issue-details-page.html')
+		// { issue: issue, comment: [issue.comments] }
 	);
 	});
 };

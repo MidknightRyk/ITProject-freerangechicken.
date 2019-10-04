@@ -12,7 +12,12 @@ var discussionController = require('../controllers/discussionController.js');
  * will change when the required pages are ready
  */
 router.get('/createIssue', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/addArtifact.html'));
+	res.sendFile(path.join(__dirname, '/../views/discussion-board/start-new-issue.html'));
+});
+
+// Discussion forum page
+router.get('/forumMain', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/discussion-board/discussion-forum-main.html'));
 });
 
 /* !!!! ATTENTION: Add new get pages before this comment !!!
@@ -22,7 +27,7 @@ router.get('/createIssue', function (req, res) {
 */
 
 // Get Issue Page
-router.get('/issue/:issue', discussionController.getIssue);
+router.get('/:issue', discussionController.getIssue);
 
 // ????????? Do we need a page for closing issues ??????????
 
