@@ -21,7 +21,7 @@ router.get('/', function (req, res) {
 	if (!req.session.user) {
 		res.sendFile(path.join(__dirname, '/../views/homepage/homepage.html'));
 	} else {
-		res.redirect('/profile');
+		res.redirect('/catalogue');
 	}
   // dirname : It will resolve to your project folder.
 });

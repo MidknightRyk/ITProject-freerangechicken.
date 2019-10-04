@@ -51,7 +51,7 @@ var login = function (req, res) {
 				} else {
 					req.session.userType = 'user';
 				}
-				return res.redirect('/profile');
+				return res.redirect('/catalogue');
 			}
 		} else {
 			return res.redirect('/');
