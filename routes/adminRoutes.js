@@ -1,5 +1,6 @@
 const express = require('express');
 var router = express.Router();
+var path = require('path');
 var adminController = require('../controllers/adminController.js');
 
 /* Admin Access: Restricted to users with admin privlleges
@@ -13,6 +14,11 @@ router.get('/', adminController.adminPage);
 
 // Admin Approval Homepage
 router.get('/homepage', adminController.adminPage);
+
+// No Access Page
+router.get('/noAccess', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/admin-page/no-access.html'));
+});
 
 /* POST requests */
 

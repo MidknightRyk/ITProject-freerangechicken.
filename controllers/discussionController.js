@@ -10,6 +10,7 @@ var addIssue = function (req, res) {
 	var issue = new Issue({
 		'topic': req.body.topic,
 		'author': req.session.userName,
+		'authorID': req.session.user,
 		'artifactID': storage.artifactId || ObjectId(req.body.artifact_id),
 		'content': req.body.description,
 		'closed': false
@@ -24,6 +25,7 @@ var addComment = function (req, res) {
 
 	var comment = new Comment({
 		'author': req.session.userName,
+		'authorID': req.session.user,
 		'content': req.body.comment
 	});
 
@@ -58,10 +60,18 @@ var reIssue = function (req, res) {
 // Only editable fields: Title and description
 var editIssue = function (req, res) {
 	var issueID = req.params.issue;
-	Issue.findOneAndUpdate(
-		{ '_id': ObjectId(issueID) },
-		{ 'topic': req.body.newTopic, 'content': req.body.newContent }
-	);
+	Issue.findById(ObjectId(issueID))
+	.exec(function (err, issue) {
+		if (err) return console.log(err);
+		if ((req.session.userType === 'admin') ||
+		(req.session.user === issue.authorID)) {
+			issue.topic = req.body.newTopic;
+			issue.content = req.body.newContent;
+		} else {
+			// Only admin/issue author allowed to edit issues
+			return res.redirect('/noAccess');
+		}
+	});
 };
 
 module.exports.addIssue = addIssue;

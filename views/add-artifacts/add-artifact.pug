@@ -32,7 +32,7 @@ html(lang='en')
     // Main Forms
     #main
       .form-container
-        form(method='post', action='/artifacts/addArtifact')
+        form(method='post', action='/artifacts/addArtifact', enctype="multipart/form-data")
           div
             | Name:
             input(type='text', required='', name='name', placeholder='Enter name of artifact')
@@ -325,12 +325,12 @@ html(lang='en')
               // Upload Artifact Image Button
               fieldset.form-group
                 a.button(style=' margin-top:10px ', href='javascript:void(0)', onclick="$('#pro-image').click()") Upload Image
-                input#pro-image.form-control(type='file', name='pro-image', style='display: none;', multiple='')
+                input#pro-image.form-control(type='file', name='pro-image', style='display: none;', multiple='', accept='image/*')
           // Submit Button
           section
-            ul.actions
-              li
-                a.button(href='#') Add Artifact
+          ul.actions
+            li
+              input.button(type='submit', value='Add Artifact')
     // Necessary: the Footer of the Page
     footer#footer
       .inner

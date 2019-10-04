@@ -1,7 +1,7 @@
 var storage = require('sessionstorage');
 var mongoose = require('mongoose');
 var path = require('path');
-var imageController = require('../controllers/imageController.js');
+// var imageController = require('../controllers/imageController.js');
 var Artifact = mongoose.model('Artifact');
 var OldArtifact = mongoose.model('OldArtifact');
 var User = mongoose.model('User');
@@ -9,7 +9,7 @@ var Edits = mongoose.model('Edits');
 
 // Creates a new artifact
 var addArtifact = function (req, res) {
-	console.log(req.body);
+	console.log(req);
 	var artifact = new Artifact({
 		'name': req.body.name,
 		'description': req.body.description,
@@ -32,7 +32,7 @@ var addArtifact = function (req, res) {
 			if (err) return console.log('couldnt update artifact to user');
 		}
 	);
-	imageController.uploadPrimaryImage(req, res);
+	res.redirect(307, '/images/uploadImages');
 };
 
 // Gets a single artifact by id
@@ -111,7 +111,7 @@ var cloneArtifact = function (req, res) {
 	storage.ticketId = edits._id;
 };
 
-var suggestEdits = function (req, res) {
+var editArtifact = function (req, res) {
 	Edits.findByOneAndUpdate(storage.ticketId, function (err, ticket) {
 		if (err) return console.log(err);
 		ticket.description = req.body.ticketDescription;
@@ -131,7 +131,7 @@ var suggestEdits = function (req, res) {
  * Approved: new arifact gets uploaded, old artifact is moved to logs
  * Rejected: new artifact is deleted, old artifact doesn't change
  */
-var editArtifact = function (req, res) {
+var editApproval = function (req, res) {
 	var editID = req.params.edits;
 	Edits.findById(editID, function (err, edit) {
 		if (err) return console.log(err);
@@ -150,7 +150,7 @@ var editArtifact = function (req, res) {
 				oldArti.save();
 
 				// If this artifact is flagged for deletion, delete and then return.
-				if (edit.deletion === true) {
+				if (edit.deletion) {
 					User.findOneAndUpdate(
 						{ '_id': artifact.author },
 						{ $pull: { 'artifacts': artifactID } }
@@ -192,5 +192,5 @@ module.exports.addArtifact = addArtifact;
 module.exports.getArtifact = getArtifact;
 module.exports.deleteArtifact = deleteArtifact;
 module.exports.cloneArtifact = cloneArtifact;
-module.exports.suggestEdits = suggestEdits;
+module.exports.editApproval = editApproval;
 module.exports.editArtifact = editArtifact;

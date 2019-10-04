@@ -46,7 +46,7 @@
 			<div id="main">
 
 				<div class="form-container">
-					<form id="addForm" method="post" action="/artifacts/addArtifact">
+					<form id="addForm" method="post" action="/artifacts/addArtifact" enctype="multipart/form-data">
 						<div>Name: <input type="text" required="" name="name"  placeholder="Enter name of artifact"></div><br>
 						<div>Description: <input type="text" required="" name="description" placeholder="Type in description"><br></div>
 						<div>Tags: <input class="form-control tm-input" type="text" required="" name="tags" placeholder="Tags, separated by commas" data-role="tagsinput"></div><br>
@@ -310,21 +310,15 @@
 							});
 						</script>
 
-
 						<!-- Upload Photos -->
 						<div class="container">
 							<div class="array">
 								<div class="preview-images-zone">
-									<div class="preview-image preview-show-1">
-										<div class="image-zone"><img id="pro-img-1"></div>
-									</div>
-
 								</div>
-
 								<!-- Upload Artifact Image Button -->
 								<fieldset class="form-group">
 									<a class="button" style=" margin-top:10px " href="javascript:void(0)" onclick="$('#pro-image').click()">Upload Image</a>
-									<input accept="image/*" type="file" id="pro-image" name="pImage" style="display: none;" class="form-control">
+									<input accept="image/*" type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
 								</fieldset>
 							</div>
 						</div>
@@ -349,28 +343,48 @@
 
 		<!-- Upload Artifact Images -->
 		<!-- Adapted from : https://bootsnipp.com/snippets/2eNKz -->
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 		<script>
-			$(document).ready(function() {
-				document.getElementById('pro-image').addEventListener('change', readImage, false);
-			});
+		$(document).ready(function() {
+    document.getElementById('pro-image').addEventListener('change', readImage, false);
 
-			function readImage() {
-				if (event.target.files && event.target.files[0]) {
-		            var reader = new FileReader();
-		            reader.onload = function () {
-		                $('#pro-img-1').attr('src', event.target.result);
-		            }
-		            reader.readAsDataURL(event.target.files[0]);
-					$("#pro-image").val('');
-					console.log(event.target.files);
-				} else {
+	    $(document).on('click', '.image-cancel', function() {
+	        let no = $(this).data('no');
+	        $(".preview-image.preview-show-"+no).remove();
+	    });
+		});
 
-				}
-			}
 
+		var num = 1;
+		function readImage() {
+	    if (window.File && window.FileList && window.FileReader) {
+	        var files = event.target.files; //FileList object
+	        var output = $(".preview-images-zone");
+
+	        for (let i = 0; i < files.length; i++) {
+	            var file = files[i];
+	            if (!file.type.match('image')) continue;
+
+	            var picReader = new FileReader();
+
+	            picReader.addEventListener('load', function (event) {
+	                var picFile = event.target;
+	                var html =  '<div class="preview-image preview-show-' + num + '">' +
+	                            '<div class="image-cancel" data-no="' + num + '">x</div>' +
+	                            '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+	                            '</div>';
+
+	                output.append(html);
+	                num = num + 1;
+	            });
+
+	            picReader.readAsDataURL(file);
+	        }
+	    } else {
+	        console.log('Browser not support');
+	    }
+		}
 		</script>
-
 
 	</body>
 </html>

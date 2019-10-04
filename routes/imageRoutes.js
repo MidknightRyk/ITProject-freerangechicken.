@@ -38,12 +38,9 @@ router.get('/:image', imageController.getImage);
 /* POSTS requests */
 
 // upload mutliple pictures (For artifacts)
-// Upload Display Picture
-var type = upload.single('pImage');
-router.post('/uploadPrimaryImage', type, imageController.uploadPrimaryImage);
 
-type = upload.array('Images', 5);
-router.post('/uploadExtraImages', type, imageController.uploadExtraImages);
+var type = upload.array('pro-image', 5);
+router.post('/uploadImages', type, imageController.uploadImages);
 
 // Upload Display Picture
 type = upload.single('myImage');

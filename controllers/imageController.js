@@ -7,16 +7,17 @@ var Image = mongoose.model('Image');
 var Artifact = mongoose.model('Artifact');
 var User = mongoose.model('User');
 
-// Upload Primary Artifact Images
-var uploadPrimaryImage = function (req, res) {
+// Upload artifact images
+var uploadImages = function (req, res) {
+	// collect the images uploaded
+	var files = req.files;
 	// Get the artifact that these images are assigned to
 	var artifactID = storage.artifactId;
-	Artifact.findById(artifactID)
-	.exec(function (err, artifact) {
+	Artifact.findById(artifactID, function (err, artifact) {
 		if (err) return console.log(err);
 
 		// Upload and Assign the Primary image
-		var primary = req.file;
+		var primary = files.shift();
 		var imgname = primary.originalname;
 
 		var image = new Image({
@@ -27,48 +28,32 @@ var uploadPrimaryImage = function (req, res) {
 
 		artifact.primaryImage = image._id;
 		console.log('Updating Primary Image for ' + artifactID);
-
 		// Update image schema link
 		image.artifactId = artifactID;
 		image.usage = 'artifact primary image';
 		image.save();
-		artifact.save();
 		console.log('Primary Image ' + primary.originalname + ' has been uploaded!');
-	});
-};
-
-// Upload artifact extra images
-var uploadExtraImages = function (req, res) {
-	// Get the artifact that these images are assigned to
-	var artifactID = storage.artifactId;
-	// collect the images uploaded
-	var files = req.files;
-	Artifact.findById(artifactID, function (err, artifact) {
-		if (err) return console.log(err);
 
 		// Continue by uploading each of the remaining images as extra images
 		files.forEach(function (thisImg) {
-			var imgname = thisImg.originalname;
-
-			var image = new Image({
+			imgname = thisImg.originalname;
+			image = new Image({
 				'name': imgname,
 				'data': fs.readFileSync(thisImg.path),
 				'contentType': thisImg.mimetype
 			});
-
 			artifact.extraImages.push(image._id);
 			console.log('Updating Extra Images Image for ' + artifactID);
-
 			// Update image schema link
 			image.artifactId = artifactID;
 			image.usage = 'artifact extra image';
 			image.save();
 			console.log('Extra Image ' + thisImg.originalname + ' has been uploaded!');
 		});
-
-		// direct to awaiting approval
-		return res.redirect('/u');
+		artifact.save();
 	});
+	// direct to awaiting approval
+	return res.redirect('/u');
 };
 
 // Uploads display picture function
@@ -132,7 +117,6 @@ var getImage = function (req, res) {
 
 /* need to implement an edit image function */
 
-module.exports.uploadPrimaryImage = uploadPrimaryImage;
-module.exports.uploadExtraImages = uploadExtraImages;
+module.exports.uploadImages = uploadImages;
 module.exports.getImage = getImage;
 module.exports.uploadDisplayPic = uploadDisplayPic;
