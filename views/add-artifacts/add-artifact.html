@@ -46,7 +46,7 @@
 			<div id="main">
 
 				<div class="form-container">
-					<form method="post" action="/artifacts/addArtifact">
+					<form id="addForm" method="post" action="/artifacts/addArtifact">
 						<div>Name: <input type="text" required="" name="name"  placeholder="Enter name of artifact"></div><br>
 						<div>Description: <input type="text" required="" name="description" placeholder="Type in description"><br></div>
 						<div>Tags: <input class="form-control tm-input" type="text" required="" name="tags" placeholder="Tags, separated by commas" data-role="tagsinput"></div><br>
@@ -315,17 +315,8 @@
 						<div class="container">
 							<div class="array">
 								<div class="preview-images-zone">
-
 									<div class="preview-image preview-show-1">
-										<div class="image-cancel" data-no="1">x</div>
-										<div class="image-zone"><img id="pro-img-1" src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" alt="image in queue"></div>
-										<div class="tools-edit-image"><a href="javascript:void(0)" data-no="1" class="btn btn-light btn-edit-image">set</a></div>
-									</div>
-
-									<div class="preview-image preview-show-2">
-										<div class="image-cancel" data-no="2">x</div>
-										<div class="image-zone"><img id="pro-img-2" src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" alt="image in queue"></div>
-										<div class="tools-edit-image"><a href="javascript:void(0)" data-no="2" class="btn btn-light btn-edit-image">set</a></div>
+										<div class="image-zone"><img id="pro-img-1"></div>
 									</div>
 
 								</div>
@@ -333,7 +324,7 @@
 								<!-- Upload Artifact Image Button -->
 								<fieldset class="form-group">
 									<a class="button" style=" margin-top:10px " href="javascript:void(0)" onclick="$('#pro-image').click()">Upload Image</a>
-									<input type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
+									<input accept="image/*" type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control">
 								</fieldset>
 							</div>
 						</div>
@@ -341,7 +332,7 @@
 						<!-- Submit Button -->
 						<section>
 							<ul class="actions">
-								<li><a href="#" class="button">Add Artifact</a></li>
+								<li><input type="submit" value="Add Artifact" class="button"/></li>
 							</ul>
 						</section>
 					</form>
@@ -360,54 +351,17 @@
 		<!-- Adapted from : https://bootsnipp.com/snippets/2eNKz -->
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script>
-			/* Count the number of uploaded images */
-			var nolist = [];
-			//var num = $(".preview-image").length + 1;
-			var num = nolist.length + 1;
 			$(document).ready(function() {
 				document.getElementById('pro-image').addEventListener('change', readImage, false);
-
-				$( ".preview-images-zone" ).sortable();
-
-				$(document).on('click', '.image-cancel', function() {
-					let no = $(this).data('no');
-					$(".preview-image.preview-show-"+no).remove();
-					/*nolist.sort().remove(no);
-					for(let i=1;i<nolist.length;i++){
-						if(nolist[i] - nolist[i-1] > 1){
-							nolist[i] = nolist[i-1] + 1;
-						}
-					}*/
-					num -= 1;
-				});
-
 			});
 
 			function readImage() {
-				if (window.File && window.FileList && window.FileReader && num <= 5) {
-					var files = event.target.files; //FileList object
-					var output = $(".preview-images-zone");
-
-					for (let i = 0; i < files.length; i++) {
-						var file = files[i];
-						if (!file.type.match('image')) continue;
-
-						var picReader = new FileReader();
-
-						picReader.addEventListener('load', function (event) {
-							var picFile = event.target;
-							var html =  '<div class="preview-image preview-show-' + num + '">' +
-									'<div class="image-cancel" data-no="' + num + '">x</div>' +
-									'<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '" alt="img in queue"></div>' +
-									'<div class="tools-edit-image"><a href="javascript:void(0)" data-no="' + num + '" class="btn btn-light btn-edit-image">set</a></div>' +
-									'</div>';
-
-							output.append(html);
-							num = num + 1;
-						});
-
-						picReader.readAsDataURL(file);
-					}
+				if (event.target.files && event.target.files[0]) {
+		            var reader = new FileReader();
+		            reader.onload = function () {
+		                $('#pro-img-1').attr('src', event.target.result);
+		            }
+		            reader.readAsDataURL(event.target.files[0]);
 					$("#pro-image").val('');
 				} else {
 
