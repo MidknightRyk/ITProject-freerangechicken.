@@ -107,7 +107,7 @@ ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
                       tr.artifact-request
                         // Artifact Photo + Artifact Name + User Origin
                         td
-                          img(src='https://i.ytimg.com/vi/CkFCBBNdsZg/maxresdefault.jpg' alt='')
+                          img(src="../images/"+artifact.primaryImage._id alt='')
                           a.artifact-name(href='#') #{artifact.name}
                           span.username-subhead #{artifact.author}
                         // Artifact Uploaded Date

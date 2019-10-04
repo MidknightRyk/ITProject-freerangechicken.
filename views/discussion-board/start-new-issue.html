@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" href="../views/discussion-board/assets/css/discussion-forum-mainStyle.css" />
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/010fb4b3e5.js"></script>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body class="is-preload">
@@ -20,6 +29,11 @@
             <header>
                 <p>discussion board </p>
                 <a class="button large">Start New Issue</a>
+                <script>
+                    $(".button").click(function () {
+                        $(".add-issue").show();
+                    });
+                </script>
             </header>
 
         </section>
@@ -29,11 +43,17 @@
     <div id="main">
 
         <!-- Add new issue -->
-        <article class="add-issue" >
+        <article class="add-issue" style="display:none">
 
             <!-- Author -->
             <header>
                 <a href="#" class="author"><span class="name">Tom Holland</span><img src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" alt="profile photo"/></a>
+                <span class="close">x</span>
+                <script>
+                    $(".close").click(function () {
+                        $(".add-issue").hide();
+                    });
+                </script>
             </header>
 
             <div class="form-container">
