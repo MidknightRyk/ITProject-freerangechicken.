@@ -21,8 +21,6 @@ router.get('/uploadDP', function (req, res) {
 		Using this will just upload the images as an unlinked+untagged images
 		To prevent mongo clutter, please refrain from using this for now
 		TQVM <3
-
-		Note to Mar: Group extra images into one document (better O?)
  */
 router.get('/uploadImages', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/artifactImages.html'));

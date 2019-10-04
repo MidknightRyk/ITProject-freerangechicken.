@@ -46,15 +46,13 @@ var getIssue = function (req, res) {
 	});
 };
 
-// Close issues that are resolve, so basically like archiving?
-var closeIssue = function (req, res) {
+// Close issues that are resolved, so basically like archiving?
+var reIssue = function (req, res) {
 	var issueID = req.body.issueId || req.query.issueId;
 	Issue.findOneAndUpdate(
 		{ '_id': ObjectId(issueID) },
-		{ 'closed': true }
+		{ 'closed': !'closed' }
 	);
-	// Remove the comment functionality for this issue
-	// Also are we able to reopen issues?
 };
 
 // Only editable fields: Title?? and description
@@ -69,5 +67,5 @@ var editIssue = function (req, res) {
 module.exports.addIssue = addIssue;
 module.exports.addComment = addComment;
 module.exports.getIssue = getIssue;
-module.exports.closeIssue = closeIssue;
+module.exports.closeIssue = reIssue;
 module.exports.editIssue = editIssue;

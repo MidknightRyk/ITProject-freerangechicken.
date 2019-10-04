@@ -9,58 +9,55 @@ var User = mongoose.model('User');
 
 // Upload images (for artifacts)
 var uploadImages = function (req, res) {
+	// collect the images uploaded
 	var files = req.files;
 
-	files.forEach(function (thisImg) {
-		var imgname = thisImg.originalname;
+	// Get the artifact that these images are assigned to
+	var artifactID = storage.artifactId;
+	Artifact.findByID(artifactID, function (err, artifact) {
+		if (err) return console.log(err);
+
+		// Upload and Assign the Primary image
+		var primary = files.shift();
+		var imgname = primary.originalname;
 
 		var image = new Image({
 			'name': imgname,
-			'data': fs.readFileSync(thisImg.path),
-			'contentType': thisImg.mimetype
+			'data': fs.readFileSync(primary.path),
+			'contentType': primary.mimetype
 		});
 
-		var imgID = image._id;
+		artifact.primaryImage = image._id;
+		console.log('Updating Primary Image for ' + artifactID);
 
-		// Add Primary Image to artifact by id
-		if (thisImg.imageType === 'primaryImage') {
-			var artifactID = storage.artifactId;
-			console.log('Updating Primary Image for ' + artifactID);
-			Artifact.findOneAndUpdate(
-				{ '_id': artifactID },
-				{ 'primaryImage': imgID }
-			);
+		// Update image schema link
+		image.artifactId = artifactID;
+		image.usage = 'artifact primary image';
+		image.save();
+		console.log('Primary Image ' + primary.originalname + ' has been uploaded!');
 
-			// Update image schema link
-			image.artifactId = artifactID;
-			image.usage = 'artifact primary image';
-			image.save();
-			console.log('Image ' + thisImg.originalname + ' has been uploaded!');
-			// prob return the artifact page lol
-			return res.redirect('/u');
+		// Continue by uploading each of the remaining images as extra images
+		files.forEach(function (thisImg) {
+			imgname = thisImg.originalname;
 
-		// Add Extra Images to artifact by id
-		} else if (thisImg.imageType === 'extraImage') {
+			image = new Image({
+				'name': imgname,
+				'data': fs.readFileSync(thisImg.path),
+				'contentType': thisImg.mimetype
+			});
+
+			artifact.extraImages.push(image._id);
 			console.log('Updating Extra Images Image for ' + artifactID);
-			Artifact.findOneAndUpdate(
-				{ '_id': artifactID },
-				{ $push: { 'extraImages': imgID } }
-			);
 
 			// Update image schema link
 			image.artifactId = artifactID;
 			image.usage = 'artifact extra image';
 			image.save();
-			console.log('Image ' + thisImg.originalname + ' has been uploaded!');
-			// Go to want to add more/if not then go to artifact page
-			return res.redirect('/u');
-		} else {
-			image.usage = 'not set/random';
-			image.save();
-			console.log('Image ' + thisImg.originalname + ' has been uploaded!');
-			// idek what this is for lol
-			return res.redirect('/');
-		}
+			console.log('Extra Image ' + thisImg.originalname + ' has been uploaded!');
+		});
+
+		// direct to awaiting approval
+		return res.redirect('/u');
 	});
 };
 
@@ -122,6 +119,16 @@ var getImage = function (req, res) {
 		res.send(img.data);
 	});
 };
+
+/*
+} else {
+	image.usage = 'not set/random';
+	image.save();
+	console.log('Image ' + thisImg.originalname + ' has been uploaded!');
+	// idek what this is for lol
+	return res.redirect('/');
+}
+*/
 
 /* need to implement an edit image function */
 
