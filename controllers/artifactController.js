@@ -118,7 +118,7 @@ var suggestEdits = function (req, res) {
 			if (err) return console.log(err);
 			artifact.name = req.body.name || artifact.name;
 			artifact.description = req.body.description || artifact.description;
-			artifact.tags = req.body.tag.toString() || artifact.tags;
+			artifact.tags = (req.body.tag).split(',') || artifact.tags;
 			artifact.placeOrigin = req.body.placeOrigin || artifact.placeOrigin;
 			artifact.year = req.body.year || artifact.year;
 		});
