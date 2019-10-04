@@ -1,6 +1,7 @@
 var storage = require('sessionstorage');
 var mongoose = require('mongoose');
 var path = require('path');
+var imageController = require('../controllers/imageController.js');
 var Artifact = mongoose.model('Artifact');
 var OldArtifact = mongoose.model('OldArtifact');
 var User = mongoose.model('User');
@@ -31,7 +32,7 @@ var addArtifact = function (req, res) {
 			if (err) return console.log('couldnt update artifact to user');
 		}
 	);
-	return res.redirect('/images/uploadImages');
+
 };
 
 // Gets a single artifact by id
