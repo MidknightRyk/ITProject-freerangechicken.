@@ -43,7 +43,7 @@ var type = upload.single('pImage');
 router.post('/uploadPrimaryImage', type, imageController.uploadPrimaryImage);
 
 type = upload.array('Images', 5);
-router.post('/uploadExtraImages', type, imageController.uploadImages);
+router.post('/uploadExtraImages', type, imageController.uploadExtraImages);
 
 // Upload Display Picture
 type = upload.single('myImage');

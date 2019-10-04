@@ -37,20 +37,18 @@
             </header>
 
             <div class="form-container">
-                <form method="post" action="">
+                <form method="post" action="/discussionBoard/createIssue">
 
                     <!-- Issue Title -->
-                    <div><input type="text" required="" name="issue-title"  placeholder="Enter Issue Title"></div><br>
+                    <div><input type="text" required="" name="topic"  placeholder="Enter Issue Title"></div><br>
                     <!-- Artifact ID -->
-                    <div><input type="text" required="" name="artifact-id"  placeholder="Artifact ID"></div><br>
-                    <!-- Issue Short Description -->
-                    <div><textarea name="short-description" placeholder="Short Description" ></textarea></div>
+                    <div><input type="text" required="" name="artifact_id"  placeholder="Artifact ID"></div><br>
                     <!-- Issue Description -->
                     <div><textarea name="description" placeholder="Description" ></textarea></div>
 
                     <!-- Post Button -->
                     <ul class="actions">
-                        <li><a href="#" class="button small">Post</a></li>
+                        <li><input type="submit" class="button small" value = "Post"/></li>
                     </ul>
 
                 </form>
