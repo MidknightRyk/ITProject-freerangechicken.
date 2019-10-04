@@ -31,7 +31,7 @@ var addArtifact = function (req, res) {
 			if (err) return console.log('couldnt update artifact to user');
 		}
 	);
-	return res.redirect('/images/uploadImages');
+	return res.redirect(307, '/images/uploadPrimaryImage');
 };
 
 // Gets a single artifact by id
