@@ -32,7 +32,7 @@ var addArtifact = function (req, res) {
 			if (err) return console.log('couldnt update artifact to user');
 		}
 	);
-
+	imageController.uploadPrimaryImage(req, res);
 };
 
 // Gets a single artifact by id
