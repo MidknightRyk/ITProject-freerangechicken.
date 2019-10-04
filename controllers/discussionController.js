@@ -5,18 +5,18 @@ var Issue = mongoose.model('Issue');
 var Comment = mongoose.model('Comment');
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
-// Adds Issue to an artifact, ensure that the session storage has the artifactID
+// Adds Issue to an artifact - ensure that the session storage has the artifactID
 var addIssue = function (req, res) {
 	var issue = new Issue({
 		'topic': req.body.topic,
 		'author': req.session.userName,
-		'artifactID': storage.artifactId,
+		'artifactID': storage.artifactId || ObjectId(req.body.artifact_id),
 		'content': req.body.description,
 		'closed': false
 	});
 
 	return issue.save()
-		.then(() => res.redirect('/discussionBoard/:issue'));
+		.then(() => res.redirect('/discussionBoard/'));
 };
 
 var addComment = function (req, res) {
@@ -46,7 +46,7 @@ var getIssue = function (req, res) {
 	});
 };
 
-// Close issues that are resolved, so basically like archiving?
+// Close issues that are resolved OR reopen issues that need to be revisited
 var reIssue = function (req, res) {
 	var issueID = req.body.issueId || req.query.issueId;
 	Issue.findOneAndUpdate(
@@ -55,7 +55,7 @@ var reIssue = function (req, res) {
 	);
 };
 
-// Only editable fields: Title?? and description
+// Only editable fields: Title and description
 var editIssue = function (req, res) {
 	var issueID = req.params.issue;
 	Issue.findOneAndUpdate(
