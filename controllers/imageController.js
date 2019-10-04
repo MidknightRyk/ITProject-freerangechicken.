@@ -11,7 +11,7 @@ var User = mongoose.model('User');
 var uploadPrimaryImage = function (req, res) {
 	// Get the artifact that these images are assigned to
 	var artifactID = storage.artifactId;
-	Artifact.findByID(artifactID)
+	Artifact.findById(artifactID)
 	.exec(function (err, artifact) {
 		if (err) return console.log(err);
 
@@ -43,7 +43,7 @@ var uploadExtraImages = function (req, res) {
 	var artifactID = storage.artifactId;
 	// collect the images uploaded
 	var files = req.files;
-	Artifact.findByID(artifactID, function (err, artifact) {
+	Artifact.findById(artifactID, function (err, artifact) {
 		if (err) return console.log(err);
 
 		// Continue by uploading each of the remaining images as extra images
