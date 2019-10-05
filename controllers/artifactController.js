@@ -51,16 +51,6 @@ var getArtifact = function (req, res) {
 	});
 };
 
-// Groups all existing artifacts and displays them
-var groupArtifacts = function (req, res) {
-	res.render(path.join(__dirname, '/../views/catalogue/catalogue.pug'),
-		{stuff: Artifact.aggregate(
-			[
-				{ $group: { _id: '$year', artifacts: { $push: '$$ROOT' } } }
-			]
-	)});
-};
-
 /* Used to make edits for approval
  * Creates a new artifact with all the edited values,
  * assigns it to a edit suggestion doc.
