@@ -1,7 +1,6 @@
 var storage = require('sessionstorage');
 var mongoose = require('mongoose');
 var path = require('path');
-// var imageController = require('../controllers/imageController.js');
 var Artifact = mongoose.model('Artifact');
 var OldArtifact = mongoose.model('OldArtifact');
 var Issue = mongoose.model('Issue');
@@ -110,7 +109,7 @@ var cloneArtifact = function (req, res) {
 };
 
 var editArtifact = function (req, res) {
-	Edits.findByOneAndUpdate(storage.ticketId, function (err, ticket) {
+	Edits.findById(storage.ticketId, function (err, ticket) {
 		if (err) return console.log(err);
 		ticket.description = req.body.ticketDescription;
 		Artifact.findById(ticket.newArtifact, function (err, artifact) {
@@ -118,11 +117,12 @@ var editArtifact = function (req, res) {
 			artifact.name = req.body.name || artifact.name;
 			artifact.description = req.body.description || artifact.description;
 			artifact.tags = (req.body.tag).split(',') || artifact.tags;
-			artifact.placeOrigin = req.body.placeOrigin || artifact.placeOrigin;
+			artifact.placeOrigin = req.body.country || artifact.placeOrigin;
 			artifact.year = req.body.year || artifact.year;
+			artifact.save();
 		});
+		ticket.save();
 	});
-	return res.redirect('/u');
 };
 
 /* Used when approving denying artifact edits
