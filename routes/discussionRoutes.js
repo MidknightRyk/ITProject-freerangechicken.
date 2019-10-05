@@ -15,7 +15,7 @@ router.get('/', function (req, res) {
 // Create Issue page
 /* Currently leads to a new page, but i think it's not supposed to?
  */
-router.get('/createIssue', function (req, res) {
+router.get('/create-issue', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/discussion-board/start-new-issue.html'));
 });
 
@@ -33,12 +33,12 @@ router.get('/:issue', discussionController.getIssue);
 /* POST requests */
 
 // Add Issue to Disscussion Board
-router.post('/createIssue', discussionController.addIssue);
+router.post('/create-issue', discussionController.addIssue);
 
 // Edits existing issue
-router.post('/editIssue', discussionController.editIssue);
+router.post('/edit-issue', discussionController.editIssue);
 
 // Toggles the issue's 'resolved' status
-router.post('/reIssue', discussionController.reIssue);
+router.post('/re-issue', discussionController.reIssue);
 
 module.exports = router;
