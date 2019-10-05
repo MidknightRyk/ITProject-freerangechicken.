@@ -74,7 +74,7 @@ html
 			section
 				ul.actions
 					li
-						form#form1(action='/editArtifact', method='POST')
+						form#form1(action='/edit-artifact', method='POST')
 							a.button(href='javascript:;', onclick="document.getElementById('form1').submit();") Edit
 				ul.actions
 					li
@@ -85,7 +85,7 @@ html
 							});
 				ul.actions
 					li
-						form#form1(action='/deleteArtifact', method='POST')
+						form#form1(action='/delete-artifact', method='POST')
 							a.button(href='javascript:;', onclick="document.getElementById('form1').submit();") Delete
 			.row
 				section.tiles
@@ -124,7 +124,7 @@ html
 							$(".add-issue").hide();
 							});
 					.form-container
-						form(method='post', action='/discussionBoard/createIssue')
+						form(method='post', action='/discussionBoard/create-issue')
 							// Issue Title
 							div
 								input(type='text', required='', name='topic', placeholder='Enter Issue Title')

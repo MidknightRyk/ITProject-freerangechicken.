@@ -69,7 +69,7 @@ var editIssue = function (req, res) {
 			issue.content = req.body.newContent;
 		} else {
 			// Only admin/issue author allowed to edit issues
-			return res.redirect('/noAccess');
+			return res.redirect('/no-access');
 		}
 	});
 };

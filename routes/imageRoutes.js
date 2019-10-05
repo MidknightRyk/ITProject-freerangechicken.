@@ -10,7 +10,7 @@ var imageController = require('../controllers/imageController.js');
 /* GET requests */
 
 // Get upload displayPic page
-router.get('/uploadDP', function (req, res) {
+router.get('/upload-DP', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/display-picture-upload.html'));
 });
 
@@ -22,7 +22,7 @@ router.get('/uploadDP', function (req, res) {
 		To prevent mongo clutter, please refrain from using this for now
 		TQVM <3
  */
-router.get('/uploadImages', function (req, res) {
+router.get('/upload-images', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/artifactImages.html'));
 });
 
@@ -40,10 +40,10 @@ router.get('/:image', imageController.getImage);
 // upload mutliple pictures (For artifacts)
 
 var type = upload.array('pro-image', 5);
-router.post('/uploadImages', type, imageController.uploadImages);
+router.post('/upload-images', type, imageController.uploadImages);
 
 // Upload Display Picture
 type = upload.single('myImage');
-router.post('/uploadDP', type, imageController.uploadDisplayPic);
+router.post('/upload-DP', type, imageController.uploadDisplayPic);
 
 module.exports = router;

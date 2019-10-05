@@ -16,7 +16,7 @@ router.get('/', adminController.adminPage);
 router.get('/homepage', adminController.adminPage);
 
 // No Access Page
-router.get('/noAccess', function (req, res) {
+router.get('/no-access', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/admin-page/no-access.html'));
 });
 

@@ -18,7 +18,7 @@ var adminPage = function (req, res) {
 			} else { throw err; }
 		});
 	} else {
-		res.redirect('/noAccess');
+		res.redirect('/no-access');
 	}
 };
 

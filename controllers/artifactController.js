@@ -181,7 +181,6 @@ var editApproval = function (req, res) {
 	});
 };
 
-module.exports.groupArtifacts = groupArtifacts;
 module.exports.addArtifact = addArtifact;
 module.exports.getArtifact = getArtifact;
 module.exports.deleteArtifact = deleteArtifact;
