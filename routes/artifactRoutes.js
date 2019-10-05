@@ -16,7 +16,7 @@ router.get('/addArtifact', function (req, res) {
 
 // Edit Artifact page (currently missing)
 router.get('/editArtifact', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/add-artifacts/add-artifact.html'));
+	res.sendFile(path.join(__dirname, '/../views/edit-artifacts/edit-artifact.html'));
 });
 
 /* !!!! ATTENTION: Add new get pages before this !!!
@@ -36,7 +36,7 @@ var type = upload.array('pro-image', 5);
 router.post('/addArtifact', type, artifactController.addArtifact);
 
 // Submits ticket for edit approvals
-router.post('/editArtifact', artifactController.editArtifact);
+router.post('/edit-artifact', artifactController.editArtifact);
 
 // Flag artifact for deletion (accessed from edit artifact page)
 router.post('/deleteArtifact', artifactController.deleteArtifact);
@@ -48,7 +48,7 @@ router.post('/deleteArtifact', artifactController.deleteArtifact);
  */
 
 // Clones and creates ticket for artifact Edits
-router.post('/createTicket', artifactController.cloneArtifact);
+router.post('/submitTicket', artifactController.cloneArtifact);
 
 // Approve Edits for artifacts
 // ** needs edit ticket id in params **
