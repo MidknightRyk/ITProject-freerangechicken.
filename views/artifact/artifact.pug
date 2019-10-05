@@ -74,10 +74,12 @@ html
 			section
 				ul.actions
 					li
-						a.button(href='../views/editArtifacts/edit-artifact.html', formmethod='post') Edit
+						form#form1(action='/editArtifact', method='POST')
+							a.button(href='javascript:;', onclick="document.getElementById('form1').submit();") Edit
 				ul.actions
 					li
-						a.button(href='../artifact/deleteArtifact', formmethod='post') Delete
+						form#form1(action='/deleteArtifact', method='POST')
+							a.button(href='javascript:;', onclick="document.getElementById('form1').submit();") Delete
 			.row
 				section.tiles
 					// Photos
