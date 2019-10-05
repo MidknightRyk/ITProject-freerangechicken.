@@ -4,6 +4,7 @@ var path = require('path');
 // var imageController = require('../controllers/imageController.js');
 var Artifact = mongoose.model('Artifact');
 var OldArtifact = mongoose.model('OldArtifact');
+var Issue = mongoose.model('Issue');
 var User = mongoose.model('User');
 var Edits = mongoose.model('Edits');
 
@@ -44,10 +45,13 @@ var getArtifact = function (req, res) {
 		Artifact.findById(artifactID, function (err, artifact) {
 			if (err) return console.log(err);
 			storage.artifactId = artifact.id;
+			Issue.find({'artifactID': artifact.id}).deepPopulate('author comments comments.authorID').exec(function (err, issues) {
+				if (err) return console.log(err);
+				return res.render(path.join(__dirname, '../views/artifact/artifact.pug'),
+					{ user: user, artifact: artifact, issues: issues }
+				);
+			});
 			// idk the path for this cause we don't have a page for this yet
-			return res.render(path.join(__dirname, '../views/artifact/artifact.pug'),
-				{ user: user, artifact: artifact }
-			);
 		});
 	});
 };
@@ -181,7 +185,6 @@ var editApproval = function (req, res) {
 	});
 };
 
-module.exports.groupArtifacts = groupArtifacts;
 module.exports.addArtifact = addArtifact;
 module.exports.getArtifact = getArtifact;
 module.exports.deleteArtifact = deleteArtifact;
