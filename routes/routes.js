@@ -45,7 +45,9 @@ router.get('/logout', function (req, res) {
 router.get('/profile', loginController.profile);
 
 // Get edit profile page?
-router.get('/edit-profile', loginController.profile);
+router.get('/editProfile', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/editProfile/editProfile.html'));
+});
 
 /* POST requests */
 
@@ -59,6 +61,6 @@ router.post('/logout', loginController.logout);
 router.post('/register', loginController.register);
 
 // Edit profile
-router.post('/edit-profile', userController.editProfile);
+router.post('/editProfile', userController.editProfile);
 
 module.exports = router;
