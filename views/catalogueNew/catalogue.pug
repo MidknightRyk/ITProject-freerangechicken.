@@ -1,0 +1,127 @@
+doctype html
+// Inspired by design  under the Creative Commons (in HTML5 UP)
+html
+	head
+		title Catalogue
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+		link(rel='stylesheet', href='../views/catalogueNew/assets/css/main.css')
+		noscript
+			link(rel='stylesheet', href='../views/catalogueNew/assets/css/noscript.css')
+		link(rel='stylesheet', href='../views/catalogueNew/assets/css/logout.css')
+	body.landing.is-preload
+		// Page Wrapper
+		#page-wrapper
+			// Header
+			header#header.alt
+				h1
+					a(href='/catalogue') CATALOGUE
+				nav#nav
+					ul
+						li.special
+							a.menuToggle(href='#menu')
+								span Menu
+							// Light Box
+							#menu
+								// Profile Photo
+								.profile-upload-container
+									a(href='#')
+										span.fas.fa-camera
+									img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id)
+								// Username :-> leads to the profile page
+								.user-name(style='text-align: center;')
+									a(href='/profile')
+										h2.underline-animation #{user.name}
+								// User Info
+								.user-info
+									h3#relationship
+										i.fas.fa-users
+										|  #{user.relationship}
+									h3#total-artifacts
+										i.far.fa-gem
+										|  #{user.artifacts.length} Artifacts contributed
+									h3#join-date
+										i.far.fa-clock
+									script.
+										function english_ordinal_suffix(dt)
+										{
+											return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
+										}
+										var user = !{JSON.stringify(user)};
+										var date = new Date(user.dateJoined);
+										console.log(typeof date);
+										var mm = date.toLocaleString('default', { month: 'long' });
+										var yyyy = date.getFullYear();
+										document.getElementById('join-date').appendChild(document.createTextNode(' '+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
+								div(hidden='')
+									| Icons made by
+									a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
+									|  from
+									a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
+								// Home Button
+								.home-button-container
+									a.home-button(href='')
+										img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg')
+										.home HOME
+								// Logout Button
+								.logout-container
+									form#form1(action='/logout', method='POST')
+										a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
+											img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg')
+											.logout LOGOUT
+								//
+									<ul>
+									<li><a href="catalogueNew.html">Home</a></li>
+									<li><a href="catalogueNew.html">Log Out</a></li>
+									</ul>
+			// Banner
+			section#banner
+				.inner
+					h2 CATALOGUE
+					p
+						img(src='../views/catalogueNew/images/logo.png', alt='', style='width:325px;height:95px;border:0;')
+					ul.actions.special
+						li
+							a.button.primary(href='artifacts/addArtifact') Add Artifact
+				a.more.scrolly(href='#one') Family Artifacts
+			// ARTIFACT SECTION
+			section#one.wrapper.style1.special
+				.inner
+					// 2019 Artifacts
+					section#next-section.section.visit-section
+						each group in artifacts
+							.container
+								.row
+									.col-md-12
+										h2.heading(data-aos='fade-up') #{group._id}
+								.row
+									section.tiles
+										each artifact in group.articles
+											// Photos
+											article.style1
+												span.image
+													img.img-fluid.rounded(src="../images/"+artifact.primaryImage._id, alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+												// Link Direct to the Artifact Page
+												a(href='/artifact/'+artifact._id)
+													// the Name of the Artifact
+													h2 #{artifact.name}
+													// the Date Added/Last Modified + Artifact Description
+													.content
+														p.date
+														script.
+															var artifact = !{JSON.stringify(artifact)};
+															var date = new Date(artifact.dateCreated);
+															var dd = date.toLocaleString('default', { day: '2-digit'});
+															var mm = date.toLocaleString('default', { month: 'long' });
+															var yyyy = date.getFullYear();
+															document.getElementsByClassName('date')["#{index}"].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
+														p.description #{artifact.description}
+
+				// Scripts
+				script(src='../views/catalogueNew/assets/js/jquery.min.js')
+				script(src='../views/catalogueNew/assets/js/jquery.scrollex.min.js')
+				script(src='../views/catalogueNew/assets/js/jquery.scrolly.min.js')
+				script(src='../views/catalogueNew/assets/js/browser.min.js')
+				script(src='../views/catalogueNew/assets/js/breakpoints.min.js')
+				script(src='../views/catalogueNew/assets/js/util.js')
+				script(src='../views/catalogueNew/assets/js/main.js')

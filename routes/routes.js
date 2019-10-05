@@ -32,9 +32,7 @@ router.get('/u', function (req, res) {
 });
 
 // Get catalogue page
-router.get('/catalogue', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/catalogueNew/catalogueNew.html'));
-});
+router.get('/catalogue', userController.catalogue);
 
 // Get logout page????
 router.get('/logout', function (req, res) {

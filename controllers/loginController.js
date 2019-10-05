@@ -66,6 +66,7 @@ var profile = function (req, res) {
 	.populate({ path: 'artifacts', model: Artifact })
 	.exec((err, user) => {
 		if (err) return console.log(err);
+		console.log(user);
 		res.render(path.join(__dirname, '/../views/profile-page/profile-page.pug'),
 				{user: user, artifacts: user.artifacts});
 	});

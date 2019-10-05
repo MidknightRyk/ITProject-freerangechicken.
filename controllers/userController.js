@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var Artifact = mongoose.model('Artifact');
+var path = require('path');
 
 var editProfile = function (req, res) {
 	var userID = (req.session.user);
@@ -20,4 +22,21 @@ var editProfile = function (req, res) {
 	return res.redirect('/profile');
 };
 
+// Retrieve user information for catalogue
+var catalogue = function (req, res) {
+	var userID = (req.session.user);
+	User.findById(userID).exec((err, user) => {
+		if (err) return console.log(err);
+		Artifact.aggregate([
+			{ $sort: {year: 1} }, { $group: { _id: '$year', articles: { $push: '$$ROOT' } } }
+		]).exec((err, artifacts) => {
+			if (err) return console.log(err);
+			console.log(artifacts);
+			res.render(path.join(__dirname, '/../views/catalogueNew/catalogue.pug'),
+					{user: user, artifacts: artifacts});
+		});
+	});
+};
+
 module.exports.editProfile = editProfile;
+module.exports.catalogue = catalogue;

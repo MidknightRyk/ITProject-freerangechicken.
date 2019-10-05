@@ -84,7 +84,7 @@ input, select, textarea {
 
 	body {
 		background: #2e3842;
-		
+
 
 	}
 
@@ -1346,7 +1346,7 @@ input, select, textarea {
 		transition: transform 0.5s ease;
 		-webkit-overflow-scrolling: touch;
 
-		
+
 
 		color: #ffffff;
 		height: 100%;
@@ -1438,7 +1438,7 @@ input, select, textarea {
 /* User Info */
 .user-info
 {
-	margin-top: 30%;
+	margin-top: 0%;
 }
 .user-info h3
 {
