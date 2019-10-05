@@ -37,7 +37,7 @@ var addComment = function (req, res) {
 		{ '_id': ObjectId(issueID) },
 		{ $push: { 'comments': comment._id } }
 	);
-	res.redirect('/discussionBoard/' + issueID);
+	res.redirect('/discussion-board/' + issueID);
 };
 
 // Render issue details page
