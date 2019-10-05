@@ -28,13 +28,14 @@ var addComment = function (req, res) {
 		'authorID': req.session.user,
 		'content': req.body.comment
 	});
-
 	comment.save();
 
-	Issue.findOneAndUpdate(
-		{ '_id': ObjectId(issueID) },
-		{ $push: { 'comments': comment._id } }
-	);
+	Issue.findById(ObjectId(issueID))
+	.exec(function (err, issue) {
+		if (err) return console.log(err);
+		console.log('pushing comment ' + comment._id + ' to issue ' + issue._id);
+		issue.comments.push(comment._id);
+	});
 };
 
 var getIssue = function (req, res) {
