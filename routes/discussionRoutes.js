@@ -41,4 +41,7 @@ router.post('/edit-issue', discussionController.editIssue);
 // Toggles the issue's 'resolved' status
 router.post('/re-issue', discussionController.reIssue);
 
+// Add comment to issue
+router.post('/add-comment/:issue', discussionController.addComment);
+
 module.exports = router;
