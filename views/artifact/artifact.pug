@@ -2,7 +2,7 @@ doctype html
 // Inspired by design  under the Creative Commons (in HTML5 UP)
 html
 	head
-		title Catalogue
+		title Artifact
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
 		link(rel='stylesheet', href='../views/catalogueNew/assets/css/main.css')
@@ -69,59 +69,43 @@ html
 										a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
 											img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg')
 											.logout LOGOUT
-								//
-									<ul>
-									<li><a href="catalogueNew.html">Home</a></li>
-									<li><a href="catalogueNew.html">Log Out</a></li>
-									</ul>
-			// Banner
-			section#banner
-				.inner
-					h2 CATALOGUE
-					p
-						img(src='../views/catalogueNew/images/logo.png', alt='', style='width:325px;height:95px;border:0;')
-					ul.actions.special
-						li
-							a.button.primary(href='artifacts/addArtifact') Add Artifact
-				a.more.scrolly(href='#one') Family Artifacts
 			// ARTIFACT SECTION
-			section#one.wrapper.style1.special
-				.inner
-					// 2019 Artifacts
-					section#next-section.section.visit-section
-						each group in artifacts
-							.container
-								.row
-									.col-md-12
-										h2.heading(data-aos='fade-up') #{group._id}
-								.row
-									section.tiles
-										each artifact in group.articles
-											// Photos
-											article.style1
-												span.image
-													img.img-fluid.rounded(src="../images/"+artifact.primaryImage._id, alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-												// Link Direct to the Artifact Page
-												a(href='/artifacts/'+artifact._id)
-													// the Name of the Artifact
-													h2 #{artifact.name}
-													// the Date Added/Last Modified + Artifact Description
-													.content
-														p.date
-														script.
-															var artifact = !{JSON.stringify(artifact)};
-															var date = new Date(artifact.dateCreated);
-															var dd = date.toLocaleString('default', { day: '2-digit'});
-															var mm = date.toLocaleString('default', { month: 'long' });
-															var yyyy = date.getFullYear();
-															document.getElementsByClassName('date')["#{index}"].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
-														p.description #{artifact.description}
-
-				// Scripts
-				script(src='../views/catalogueNew/assets/js/jquery.min.js')
-				script(src='../views/catalogueNew/assets/js/jquery.scrollex.min.js')
-				script(src='../views/catalogueNew/assets/js/jquery.scrolly.min.js')
-				script(src='../views/catalogueNew/assets/js/browser.min.js')
-				script(src='../views/catalogueNew/assets/js/breakpoints.min.js')
-				script(src='../views/catalogueNew/assets/js/util.js')
-				script(src='../views/catalogueNew/assets/js/main.js')
+			// Basic Edit & Delete Buttons
+			section
+				ul.actions
+					li
+						a.button(href='../views/editArtifacts/edit-artifact.html', formmethod='post') Edit
+				ul.actions
+					li
+						a.button(href='../artifact/deleteArtifact', formmethod='post') Delete
+			.row
+				section.tiles
+					// Photos
+					// the Date Added/Last Modified + Artifact Description
+					.content
+						p.date
+						script.
+							var artifact = !{JSON.stringify(artifact)};
+							var date = new Date(artifact.dateCreated);
+							var dd = date.toLocaleString('default', { day: '2-digit'});
+							var mm = date.toLocaleString('default', { month: 'long' });
+							var yyyy = date.getFullYear();
+							document.getElementsByClassName('date')["#{index}"].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
+					article.style1
+						span.image
+							img.img-fluid.rounded(src="../images/"+artifact.primaryImage._id, alt='Image placeholder', data-aos='fade-up', width='250', height='250')
+					section#next-section.section
+						.container
+							.row.mt-5
+								.col-lg-8.ml-auto
+									h3.mb-3 #{artifact.name}
+									p.mb-5 #{artifact.year}
+									p #{artifact.description}
+		// Scripts
+		script(src='../views/catalogueNew/assets/js/jquery.min.js')
+		script(src='../views/catalogueNew/assets/js/jquery.scrollex.min.js')
+		script(src='../views/catalogueNew/assets/js/jquery.scrolly.min.js')
+		script(src='../views/catalogueNew/assets/js/browser.min.js')
+		script(src='../views/catalogueNew/assets/js/breakpoints.min.js')
+		script(src='../views/catalogueNew/assets/js/util.js')
+		script(src='../views/catalogueNew/assets/js/main.js')

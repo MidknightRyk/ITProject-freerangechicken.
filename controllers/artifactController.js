@@ -38,13 +38,17 @@ var addArtifact = function (req, res) {
 // Gets a single artifact by id
 var getArtifact = function (req, res) {
 	var artifactID = req.params.artifact;
-	Artifact.findById(artifactID, function (err, artifact) {
+	var userID = (req.session.user);
+	User.findById(userID).exec((err, user) => {
 		if (err) return console.log(err);
-		storage.artifactId = artifact.id;
-		// idk the path for this cause we don't have a page for this yet
-		return res.render(path.join(__dirname, '../views/artifact-page.pug'),
-			{ artifact: artifact }
-		);
+		Artifact.findById(artifactID, function (err, artifact) {
+			if (err) return console.log(err);
+			storage.artifactId = artifact.id;
+			// idk the path for this cause we don't have a page for this yet
+			return res.render(path.join(__dirname, '../views/artifact/artifact.pug'),
+				{ user: user, artifact: artifact }
+			);
+		});
 	});
 };
 
