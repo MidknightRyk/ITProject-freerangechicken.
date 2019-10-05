@@ -5,7 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!-- Bootstrap Tagsinput CSS -->
-		<link rel="stylesheet" href="../editProfile/assets/css/bootstrap-tagsinput.css">
+		<link rel="stylesheet" href="../views/editProfile/assets/css/bootstrap-tagsinput.css">
 
 		<!-- Lottie-player Animations -->
 		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -18,14 +18,14 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 
 		<!-- Bootstrap Tagsinput JS -->
-		<script src="../editProfile/assets/js/bootstrap-tagsinput.js"></script>
+		<script src="../views/editProfile/assets/js/bootstrap-tagsinput.js"></script>
 
 		<!-- Font Awesome CDN -->
 		<script src="https://kit.fontawesome.com/010fb4b3e5.js"></script>
 
-		<link rel="stylesheet" href="../editProfile/assets/css/main.css"/>
-		<link rel="stylesheet" href="../editProfile/assets/css/uploadStyle.css"/>
-		<link rel="stylesheet" href="../editProfile/assets/css/profile-photo-style.css">
+		<link rel="stylesheet" href="../views/editProfile/assets/css/main.css"/>
+		<link rel="stylesheet" href="../views/editProfile/assets/css/uploadStyle.css"/>
+		<link rel="stylesheet" href="../views/editProfile/assets/css/profile-photo-style.css">
 	</head>
 	<body class="is-preload">
 
@@ -45,16 +45,17 @@
 			<div id="main">
 
 				<div class="form-container">
-					<form method="post" action="/artifacts/addArtifact">
+					<form method="post" action="/editProfile" id="form1">
+						<!-- Metta: Please display original info instead of blank spaces -->
 						<div>Name: <input type="text" required="" name="name"  placeholder="Enter your name"></div><br>
-						<div>Username: <input type="text" required="" name="name"  placeholder="Enter new username"></div><br>
-						<div>Relationship: <input type="text" required="" name="name"  placeholder="Your relationship with the client"></div><br>
-						<div>Email: <input type="text" required="" name="name"  placeholder="Enter your email"></div><br>
+						<div>Username: <input type="text" required="" name="username"  placeholder="Enter new username"></div><br>
+						<div>Relationship: <input type="text" required="" name="relationship"  placeholder="Your relationship with the client"></div><br>
+						<div>Email: <input type="text" required="" name="email"  placeholder="Enter your email"></div><br>
 
 						<!-- Edit Profile Button (trigger modal on clicking) -->
 						<section>
 							<ul class="actions">
-								<li><a href="#" class="button" data-toggle="modal" data-target="#myModal" formmethod="post">Edit Profile</a></li>
+								<li><a href="javascript:;" onclick="document.getElementById('form1').submit();" class="button" data-toggle="modal" data-target="#myModal" formmethod="post">Accept changes</a></li>
 							</ul>
 						</section>
 					</form>
@@ -65,15 +66,23 @@
 
 							<!-- Modal content-->
 							<div class="modal-content">
-							<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Profile edit request sent!</h4>
-							</div>
+								<div class="modal-header">
+									<button type="button" onclick="myFunction()" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Profile edited!</h4>
+								</div>
 							</div>
 							</div>
 					</div>
 				</div>
 			</div>
+
+			<script>
+				function myFunction() {
+			    setTimeout(function(){
+		      	window.location.href = "/profile";
+					}, 1000);
+				}
+			</script>
 
 	</body>
 </html>

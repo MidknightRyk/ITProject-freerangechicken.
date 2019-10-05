@@ -312,7 +312,6 @@
 
 						<!-- Upload Photos -->
 						<div class="container">
-							<div class="array">
 								<div class="preview-images-zone">
 								</div>
 								<!-- Upload Artifact Image Button -->
@@ -320,7 +319,6 @@
 									<a class="button" style=" margin-top:10px " href="javascript:void(0)" onclick="$('#pro-image').click()">Upload Image</a>
 									<input accept="image/*" type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
 								</fieldset>
-							</div>
 						</div>
 
 						<!-- Submit Button -->
@@ -344,7 +342,7 @@
 		<!-- Upload Artifact Images -->
 		<!-- Adapted from : https://bootsnipp.com/snippets/2eNKz -->
 
-		<script>
+		<script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'>
 		$(document).ready(function() {
     document.getElementById('pro-image').addEventListener('change', readImage, false);
 
@@ -352,6 +350,8 @@
 	        let no = $(this).data('no');
 	        $(".preview-image.preview-show-"+no).remove();
 	    });
+
+			$(".preview-images-zone" ).sortable()
 		});
 
 
