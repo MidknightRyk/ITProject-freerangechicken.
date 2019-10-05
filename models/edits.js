@@ -3,7 +3,7 @@ var editsSchema = mongoose.Schema(
 	{
 		description: String,	// Used to describe the changes
 		editor: String,
-		dateEdited: Date,
+		dateEdited: { type: Date, default: Date.now },
 		oldArtifact: { type: mongoose.Schema.Types.ObjectId, ref: 'Artifact' },
 		newArtifact: { type: mongoose.Schema.Types.ObjectId, ref: 'Artifact' },
 		deletion: Boolean,
