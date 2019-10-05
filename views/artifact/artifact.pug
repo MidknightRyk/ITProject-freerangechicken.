@@ -124,7 +124,7 @@ html
 							$(".add-issue").hide();
 							});
 					.form-container
-						form(method='post', action='/discussionBoard/create-issue')
+						form(method='post', action='/discussion-board/create-issue')
 							// Issue Title
 							div
 								input(type='text', required='', name='topic', placeholder='Enter Issue Title')
@@ -143,7 +143,7 @@ html
 							// Issue title + short description
 							.issue-title
 								h2
-									a(href='/discussionBoard'+issue._id) #{issue.topic}
+									a(href='/discussion-board'+issue._id) #{issue.topic}
 							// Posted Time + Profile photo
 							.issue-info
 								p#date
@@ -167,7 +167,7 @@ html
 							// Get rid of this
 							ul.actions
 								li
-									a.button.small(href='/discussionBoard'+issue._id) Continue Reading
+									a.button.small(href='/discussion-board'+issue._id) Continue Reading
 							// the Number of Likes and Comments
 							ul.stats
 								li

@@ -3,7 +3,7 @@ var storage = require('sessionstorage');
 var path = require('path');
 var Issue = mongoose.model('Issue');
 var Comment = mongoose.model('Comment');
-var ObjectId = mongoose.Schema.Types.ObjectId;
+var ObjectId = mongoose.Types.ObjectId;
 
 // Adds Issue to an artifact - ensure that the session storage has the artifactID
 var addIssue = function (req, res) {
@@ -11,13 +11,13 @@ var addIssue = function (req, res) {
 		'topic': req.body.topic,
 		'author': req.session.userName,
 		'authorID': req.session.user,
-		'artifactID': storage.artifactId || ObjectId(req.body.artifact_id),
+		'artifactID': storage.artifactId || ObjectId(req.body.artifactId),
 		'content': req.body.description,
 		'closed': false
 	});
 
 	return issue.save()
-		.then(() => res.redirect('/discussionBoard/'));
+		.then(() => res.redirect('/discussion-board/'));
 };
 
 var addComment = function (req, res) {
