@@ -74,7 +74,15 @@ html
 			section
 				ul.actions
 					li
-						a.button(href='/artifacts/add-artifact') Add
+						a.button Dummy button
+				ul.actions
+					li
+						a.button#issue-button(href='#add-issue') Start New Issue
+						script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+						script.
+							$("#issue-button").click(function () {
+								$("#add-issue").show();
+							});
 				ul.actions
 					li
 						a.button(href='/artifacts/edit-artifact') Edit
@@ -108,7 +116,7 @@ html
 									p #{artifact.description}
 			section
 				// Add new issue
-				article.add-issue(style='display:none;')
+				article#add-issue(style='display:none;')
 					// Author
 					header
 						p.author
