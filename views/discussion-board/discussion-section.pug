@@ -1,0 +1,157 @@
+doctype html
+html(lang='en')
+	head
+		title  Start a New Issue Page
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+		link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.0.8/css/all.css')
+		link(rel='stylesheet', href='../views/discussion-board/assets/css/discussion-forum-mainStyle.css')
+		// Font Awesome CDN
+		script(src='https://kit.fontawesome.com/010fb4b3e5.js')
+		// Bootstrap CDN
+		link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+		script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
+		// Jquery
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+	body.is-preload
+		// Wrapper
+		#wrapper
+			// Sidebar + Header
+			section#sidebar
+				// Intro
+				section#intro
+					// <a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
+					header
+						p discussion board
+						a.button.large Start New Issue
+						script.
+							$(".button").click(function () {
+							$(".add-issue").show();
+							});
+			// Main
+			#main
+				// Add new issue
+				article.add-issue(style='display:none;')
+					// Author
+					header
+						a.author(href='#')
+							span.name Tom Holland
+							img(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
+						span.close x
+						script.
+							$(".close").click(function () {
+							$(".add-issue").hide();
+							});
+					.form-container
+						form(method='post', action='/discussionBoard/createIssue')
+							// Issue Title
+							div
+								input(type='text', required='', name='topic', placeholder='Enter Issue Title')
+							br
+							// Artifact ID
+							div
+								input(type='text', required='', name='artifact_id', placeholder='Artifact ID')
+							br
+							// Issue Description
+							div
+								textarea(name='description', placeholder='Description')
+							// Post Button
+							ul.actions
+								li
+									input.button.small(type='submit', value='Post')
+				// Issue 1
+				article.issue
+					header
+						// Issue title + short description
+						.issue-title
+							h2
+								a(href='issue-details-page.html') Issue Title
+							p short description
+						// Posted Time + Profile photo
+						.issue-info
+							time.published(datetime='2015-11-01') November 1, 2015
+							a.author(href='#')
+								span.name Tom Holland
+								img(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
+					// Image if there's any
+					a.image.featured(href='#')
+						img(src='', alt='')
+					// Details
+					p talk talk talk talk talk........
+					footer
+						// Get rid of this
+						ul.actions
+							li
+								a.button.small(href='issue-details-page.html') Continue Reading
+						// the Number of Likes and Comments
+						ul.stats
+							li
+								a.icon.solid.fa-heart(href='#') 28
+							li
+								a.icon.solid.fa-comment(href='#') 128
+				// Issue 2
+				article.issue
+					header
+						// Issue title + short description
+						.issue-title
+							h2
+								a(href='#') Issue Title
+							p short description
+						// Posted Time + Profile photo
+						.issue-info
+							time.published(datetime='2015-11-01') November 1, 2015
+							a.author(href='#')
+								span.name Tom Holland
+								img(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
+					// Image if there's any
+					a.image.featured(href='#')
+						img(src='../views/discussion-board/assets/css/images/galaxy.jpg', alt='')
+					// Details
+					p talk talk talk talk talk........
+					footer
+						// Get rid of this
+						ul.actions
+							li
+								a.button.small(href='#') Continue Reading
+						// the Number of Likes and Comments
+						ul.stats
+							li
+								a.icon.solid.fa-heart(href='#') 28
+							li
+								a.icon.solid.fa-comment(href='#') 128
+				// Issue 3
+				article.issue
+					header
+						// Issue title + short description
+						.issue-title
+							h2
+								a(href='#') Issue Title
+							p short description
+						// Posted Time + Profile photo
+						.issue-info
+							time.published(datetime='2015-11-01') November 1, 2015
+							a.author(href='#')
+								span.name Tom Holland
+								img(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
+					// Image if there's any
+					a.image.featured(href='#')
+						img(src='../views/discussion-board/assets/css/images/galaxy.jpg', alt='')
+					// Details
+					p talk talk talk talk talk........
+					footer
+						// Get rid of this
+						ul.actions
+							li
+								a.button.small(href='#') Continue Reading
+						// the Number of Likes and Comments
+						ul.stats
+							li
+								a.icon.solid.fa-heart(href='#') 28
+							li
+								a.icon.solid.fa-comment(href='#') 128
+				// Pagination
+				ul.actions.pagination
+					li
+						a.disabled.button.large.previous(href='') Previous Page
+					li
+						a.button.large.next(href='#') Next Page
