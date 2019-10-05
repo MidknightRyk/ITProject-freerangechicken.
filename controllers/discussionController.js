@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 var storage = require('sessionstorage');
 var path = require('path');
+var User = mongoose.model('User');
 var Issue = mongoose.model('Issue');
 var Comment = mongoose.model('Comment');
-var ObjectId = mongoose.Schema.Types.ObjectId;
+var ObjectId = mongoose.Types.ObjectId;
 
 // Adds Issue to an artifact - ensure that the session storage has the artifactID
 var addIssue = function (req, res) {
@@ -20,31 +21,39 @@ var addIssue = function (req, res) {
 		.then(() => res.redirect('/discussionBoard/'));
 };
 
+// Add comment to issue from params
 var addComment = function (req, res) {
 	var issueID = req.params.issue;
-
+	console.log(issueID);
 	var comment = new Comment({
 		'author': req.session.userName,
 		'authorID': req.session.user,
 		'content': req.body.comment
 	});
-
+	console.log(comment);
 	Issue.findOneAndUpdate(
 		{ '_id': ObjectId(issueID) },
-		{ $push: { 'comments': comment } }
+		{ $push: { 'comments': comment._id } }
 	);
+	res.redirect('/discussionBoard/' + issueID);
 };
 
+// Render issue details page
 var getIssue = function (req, res) {
 	var issueID = req.params.issue;
-	Issue.findById(ObjectId(issueID))
-	.populate({ path: 'comments', model: Comment })
-	.exec(function (err, issue) {
+	var userID = req.session.user;
+	User.findById(userID).exec((err, user) => {
 		if (err) return console.log(err);
-		// idk the path for this cause we don't have a page for this yet
-		return res.render(path.join(__dirname, '../views/discussion-board/issue-details-page.html')
-		// { issue: issue, comment: [issue.comments] }
-	);
+		Issue.findById(ObjectId(issueID))
+		.deepPopulate('authorID comments comments.authorID')
+		.exec(function (err, issue) {
+			if (err) return console.log(err);
+			// idk the path for this cause we don't have a page for this yet
+			return res.render(path.join(__dirname, '../views/discussion-board/issue-details-page.pug'),
+				{ user: user, issue: issue }
+			);
+		});
+			// { issue: issue, comment: [issue.comments] }
 	});
 };
 

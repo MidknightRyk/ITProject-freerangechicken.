@@ -144,7 +144,7 @@ html
 							// Issue title + short description
 							.issue-title
 								h2
-									a(href='/discussionBoard'+issue._id) #{issue.topic}
+									a(href='/discussionBoard/'+issue._id) #{issue.topic}
 							// Posted Time + Profile photo
 							.issue-info
 								p#date
@@ -168,17 +168,11 @@ html
 							// Get rid of this
 							ul.actions
 								li
-									a.button.small(href='/discussionBoard'+issue._id) Continue Reading
-							// the Number of Likes and Comments
+									a.button.small(href='/discussionBoard/'+issue._id) Continue Reading
+							// the Number of Comments
 							ul.stats
 								li
 									a.icon.solid.fa-comment(href='#') #{issue.comments.length}
-				// Pagination
-				ul.actions.pagination
-					li
-						a.disabled.button.large.previous(href='') Previous Page
-					li
-						a.button.large.next(href='#') Next Page
 		// Scripts
 		script(src='../views/catalogueNew/assets/js/jquery.min.js')
 		script(src='../views/catalogueNew/assets/js/jquery.scrollex.min.js')

@@ -1,0 +1,94 @@
+doctype html
+html(lang='en')
+	head
+		title Issue Details Page
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+		link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.0.8/css/all.css')
+		link(rel='stylesheet', href='../views/discussion-board/assets/css/discussion-forum-mainStyle.css')
+		link(rel='stylesheet', href='../views/discussion-board/assets/css/issue-details-extraStyle.css')
+	body.is-preload
+		// Wrapper
+		#wrapper
+			#main
+				// Issue 1
+				article.issue
+					// Author
+					header
+						a.author(href='#')
+							img(src="../images/"+issue.authorID.displayPic._id, alt='profile photo')
+						h4 #{issue.topic}
+					// Details
+					p #{issue.content}
+					footer
+						// Number of comments
+						ul.stats
+							li
+								a.icon.solid.fa-comment(href='#') #{issue.comments.length}
+						ul.posted-time
+							p#date
+							script.
+								function english_ordinal_suffix(dt)
+								{
+									return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
+								}
+								var user = !{JSON.stringify(issue)};
+								var date = new Date(issue.dateCreated);
+								console.log(typeof date);
+								var mm = date.toLocaleString('default', { month: 'long' });
+								var yyyy = date.getFullYear();
+								document.getElementById('date').appendChild(document.createTextNode("Created on "+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
+						ul
+							a(href='#direct-reply')
+								i.fas.fa-reply
+				// Posted Replies
+				article.comment-container
+					// the Number of Total Comments
+					header
+						h4 Comment (#{issue.comments.length})
+					.comment-wrapper
+						each comment in issue.comments
+							.comment
+								// Profile Photo + Username
+								a.comment-author(href='#')
+									img(src="../images/"+comment.authorID.displayPic._id, alt='profile photo')
+									| #{comment.author}
+								// Actual Comment
+								p.comment-content  #{comment.content}
+				// Direct reply to the thread
+				article#direct-reply.issue
+					header
+						a.author(href='#')
+							img(src="../images/"+user.displayPic._id, alt='profile photo')
+					.form-container
+						form#form1(method='post', action="/discussionBoard/add-comment/"+issue._id )
+							// Reply Input
+							div
+								textarea(name='comment', placeholder='Comment here...')
+							// Comment Button
+							ul.actions
+								li
+									a.button.small(href='javascript:;' onclick="document.getElementById('form1').submit();") Comment
+				// Back to original artifact
+				ul.actions
+					li
+						a.button.large.next(href="/artifacts/"+issue.artifactID) Back to artifact
+		// Reply Button Toggle
+		script.
+			$(document).ready(function(){
+			$(document).on('click' , '.reply-button' , function(){
+			var closestDiv = $(this).closest('footer'); // also you can use $(this).parent()
+			//closestDiv.fadeOut();
+			// $('.comment_reply').not(closestDiv.next('.comment_reply')).hide();
+			//$('.rep').closest('div').not(closestDiv).show()
+			closestDiv.next('.form-container').slideToggle(100);
+			});
+			$(document).on('click' , '.fa-comment' , function(){
+			var closestDiv = $(this).closest('footer'); // also you can use $(this).parent()
+			//closestDiv.fadeOut();
+			// $('.comment_reply').not(closestDiv.next('.comment_reply')).hide();
+			//$('.rep').closest('div').not(closestDiv).show()
+			closestDiv.next('.form-container').slideToggle(100);
+			});
+			});
