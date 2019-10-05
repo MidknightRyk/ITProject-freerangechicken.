@@ -136,42 +136,42 @@ html
 							ul.actions
 								li
 									input.button.small(type='submit', value='Post')
-                each issue in issues
-    				// Issue 1
-    				article.issue
-    					header
-    						// Issue title + short description
-    						.issue-title
-    							h2
-    								a(href='/discussionBoard'+issue._id) #{issue.topic}
-    						// Posted Time + Profile photo
-    						.issue-info
-    							p#date
-                                script.
-                					function english_ordinal_suffix(dt)
-                					{
-                						return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
-                					}
-                					var user = !{JSON.stringify(issue)};
-                					var date = new Date(issue.dateCreated);
-                					console.log(typeof date);
-                					var mm = date.toLocaleString('default', { month: 'long' });
-                					var yyyy = date.getFullYear();
-                					document.getElementById('date').appendChild(document.createTextNode("Created on "+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
-    							p.author
-    								span.name #{issue.author}
-    								img(src="../images/"+issue.authorID.displayPic._id}, alt='profile photo')
-    					// Details
-    					p #{issue.description}
-    					footer
-    						// Get rid of this
-    						ul.actions
-    							li
-    								a.button.small(href='/discussionBoard'+issue._id) Continue Reading
-    						// the Number of Likes and Comments
-    						ul.stats
-    							li
-    								a.icon.solid.fa-comment(href='#') #{issue.comments.length}
+										each issue in issues
+								// Issue 1
+								article.issue
+									header
+										// Issue title + short description
+										.issue-title
+											h2
+												a(href='/discussionBoard'+issue._id) #{issue.topic}
+										// Posted Time + Profile photo
+										.issue-info
+											p#date
+												script.
+function english_ordinal_suffix(dt)
+{
+	return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
+}
+var user = !{JSON.stringify(issue)};
+var date = new Date(issue.dateCreated);
+console.log(typeof date);
+var mm = date.toLocaleString('default', { month: 'long' });
+var yyyy = date.getFullYear();
+document.getElementById('date').appendChild(document.createTextNode("Created on "+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
+	p.author
+		span.name #{issue.author}
+		img(src="../images/"+issue.authorID.displayPic._id}, alt='profile photo')
+									// Details
+									p #{issue.description}
+									footer
+										// Get rid of this
+										ul.actions
+											li
+												a.button.small(href='/discussionBoard'+issue._id) Continue Reading
+										// the Number of Likes and Comments
+										ul.stats
+											li
+												a.icon.solid.fa-comment(href='#') #{issue.comments.length}
 				// Pagination
 				ul.actions.pagination
 					li
