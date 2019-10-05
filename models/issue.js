@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 var issueSchema = mongoose.Schema(
 	{
 		topic: String,
@@ -11,5 +12,5 @@ var issueSchema = mongoose.Schema(
 		closed: Boolean
 	}
 );
-
+issueSchema.plugin(deepPopulate);
 mongoose.model('Issue', issueSchema);

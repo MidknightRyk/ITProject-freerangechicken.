@@ -44,8 +44,9 @@ var getArtifact = function (req, res) {
 		Artifact.findById(artifactID, function (err, artifact) {
 			if (err) return console.log(err);
 			storage.artifactId = artifact.id;
-			Issue.find({'artifactID': artifact.id}).deepPopulate('author comments comments.authorID').exec(function (err, issues) {
+			Issue.find({'artifactID': artifact.id}).deepPopulate('authorID comments comments.authorID', (err, issues) => {
 				if (err) return console.log(err);
+				console.log(issues);
 				return res.render(path.join(__dirname, '../views/artifact/artifact.pug'),
 					{ user: user, artifact: artifact, issues: issues }
 				);
