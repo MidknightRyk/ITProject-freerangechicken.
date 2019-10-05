@@ -74,22 +74,17 @@ html
 			section
 				ul.actions
 					li
-						form#form1(action='/edit-artifact', method='POST')
-							a.button(href='javascript:;', onclick="document.getElementById('form1').submit();") Edit
+						a.button(href='/artifacts/add-artifact') Add
 				ul.actions
 					li
-						a.button#issue-button Start New Issue
-						script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
-						script.
-							$("#issue-button").click(function () {
-								$(".add-issue").show();
-							});
+						a.button(href='/artifacts/edit-artifact') Edit
 				ul.actions
 					li
-						form#form1(action='/delete-artifact', method='POST')
-							a.button(href='javascript:;', onclick="document.getElementById('form1').submit();") Delete
+						a.button(href='/artifacts/delete-artifact') Delete
 			.row
 				section.tiles
+
+
 					// Photos
 					// the Date Added/Last Modified + Artifact Description
 					.content
@@ -125,7 +120,7 @@ html
 							$(".add-issue").hide();
 							});
 					.form-container
-						form(method='post', action='/discussionBoard/create-issue')
+						form(method='post', action='/discussion-board/create-issue')
 							// Issue Title
 							div
 								input(type='text', required='', name='topic', placeholder='Enter Issue Title')
@@ -144,7 +139,7 @@ html
 							// Issue title + short description
 							.issue-title
 								h2
-									a(href='/discussionBoard/'+issue._id) #{issue.topic}
+									a(href='/discussion-board/'+issue._id) #{issue.topic}
 							// Posted Time + Profile photo
 							.issue-info
 								p#date
@@ -168,8 +163,8 @@ html
 							// Get rid of this
 							ul.actions
 								li
-									a.button.small(href='/discussionBoard/'+issue._id) Continue Reading
-							// the Number of Comments
+									a.button.small(href='/discussion-board'+issue._id) Continue Reading
+							// the Number of Likes and Comments
 							ul.stats
 								li
 									a.icon.solid.fa-comment(href='#') #{issue.comments.length}

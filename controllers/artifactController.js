@@ -79,16 +79,8 @@ var deleteArtifact = function (req, res) {
 // Creates a duplicate artifact for edits and stores old and new into a ticket
 var cloneArtifact = function (req, res) {
 	var artifactID = storage.artifactId;
-	var edits = new Edits({
-		// description: req.body.editDescription,
-		editor: req.session.userName,
-		dateEdited: Date.now,
-		oldArtifact: artifactID,
-		// newArtifact: arti.id,
-		approved: false
-	});
-	Artifact.findById(artifactID,
-	function (err, artifact) {
+	Artifact.findById(artifactID)
+	.exec(function (err, artifact) {
 		if (err) return console.log(err);
 		var editedArtifact = new Artifact({
 			'name': artifact.name,
@@ -101,23 +93,33 @@ var cloneArtifact = function (req, res) {
 			'approved': false
 		});
 		editedArtifact.save();
-		artifactID = editedArtifact._id;
-		edits.newArtifact = artifactID;
-		storage.artifactId = artifactID;
+		var editID = editedArtifact._id;
+		storage.artifactId = editID;
+		var edits = new Edits({
+			// description: req.body.editDescription,
+			editor: req.session.userName,
+			oldArtifact: artifactID,
+			newArtifact: editID,
+			approved: false
+		});
+		edits.save();
+		console.log(edits);
+		storage.ticketId = edits._id;
+		console.log('ticketid = ' + storage.ticketId);
 	});
-	edits.save();
-	storage.ticketId = edits._id;
+	return res.redirect('/artifacts/make-edits');
 };
 
 var editArtifact = function (req, res) {
 	Edits.findById(storage.ticketId, function (err, ticket) {
+		console.log('edits being sent according to: ' + ticket);
 		if (err) return console.log(err);
 		ticket.description = req.body.ticketDescription;
 		Artifact.findById(ticket.newArtifact, function (err, artifact) {
 			if (err) return console.log(err);
 			artifact.name = req.body.name || artifact.name;
 			artifact.description = req.body.description || artifact.description;
-			artifact.tags = (req.body.tag).split(',') || artifact.tags;
+			// artifact.tags = (req.body.tag).split(',') || artifact.tags;
 			artifact.placeOrigin = req.body.country || artifact.placeOrigin;
 			artifact.year = req.body.year || artifact.year;
 			artifact.save();

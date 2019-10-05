@@ -15,7 +15,9 @@ router.get('/add-artifact', function (req, res) {
 });
 
 // Edit Artifact page (currently missing)
-router.get('/edit-artifact', function (req, res) {
+router.get('/edit-artifact', artifactController.cloneArtifact);
+
+router.get('/make-edits', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/edit-artifacts/edit-artifact.html'));
 });
 

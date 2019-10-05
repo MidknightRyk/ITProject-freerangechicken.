@@ -12,13 +12,13 @@ var addIssue = function (req, res) {
 		'topic': req.body.topic,
 		'author': req.session.userName,
 		'authorID': req.session.user,
-		'artifactID': storage.artifactId || ObjectId(req.body.artifact_id),
+		'artifactID': storage.artifactId || ObjectId(req.body.artifactId),
 		'content': req.body.description,
 		'closed': false
 	});
 
 	return issue.save()
-		.then(() => res.redirect('/discussionBoard/'));
+		.then(() => res.redirect('/discussion-board/'));
 };
 
 // Add comment to issue from params
@@ -30,7 +30,9 @@ var addComment = function (req, res) {
 		'authorID': req.session.user,
 		'content': req.body.comment
 	});
-	console.log(comment);
+
+	comment.save();
+
 	Issue.findOneAndUpdate(
 		{ '_id': ObjectId(issueID) },
 		{ $push: { 'comments': comment._id } }
