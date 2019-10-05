@@ -37,6 +37,8 @@ var addComment = function (req, res) {
 		if (err) return console.log(err);
 		console.log('pushing comment ' + comment._id + ' to issue ' + issue._id);
 		issue.comments.push(comment._id);
+		issue.save();
+		res.redirect('/discussion-board/' + issueID);
 	});
 };
 
