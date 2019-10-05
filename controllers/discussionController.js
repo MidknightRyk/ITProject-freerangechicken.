@@ -29,9 +29,11 @@ var addComment = function (req, res) {
 		'content': req.body.comment
 	});
 
+	comment.save();
+
 	Issue.findOneAndUpdate(
 		{ '_id': ObjectId(issueID) },
-		{ $push: { 'comments': comment } }
+		{ $push: { 'comments': comment._id } }
 	);
 };
 
