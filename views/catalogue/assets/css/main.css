@@ -84,7 +84,7 @@ input, select, textarea {
 
 	body {
 		background: #2e3842;
-		background-image: url("../../images/backdrop.jpg");
+		background-image: url("../../images/wallpaper.jpg");
 		background-repeat: no-repeat;
 		background-size: 100% 25%;
 
@@ -326,23 +326,56 @@ input, select, textarea {
 		margin: 0 0 2em 0;
 	}
 
+
 /* Actions */
 
-	ul.actions {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		cursor: default;
-		list-style: none;
-		margin-left: -1em;
-		padding-left: 0;
-	}
+/* Add Artifact Button */
+ul.actions {
+	display: flex;
+	cursor: default;
+	list-style: none;
+	margin-left: -1em;
+	padding-left: 42%;
+}
 
-		ul.actions li {
-			padding: 0 0 0 1em;
-			vertical-align: middle;
-		}
+ul.actions li {
+	padding: 0 0 0 1.2em;
+	vertical-align: middle;
+}
+
+
+/* Button */
+.button {
+	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+	background-color: transparent;
+	border-radius: 0.35em;
+	border: solid 3px #efefef;
+	color: #787878 !important;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: 400;
+	height: calc(2.75em + 6px);
+	line-height: 2.75em;
+	min-width: 10em;
+	padding: 0 1.5em;
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.button:hover {
+	border-color: #080f53;
+	color: #080f53 !important;
+}
+
+.button:active {
+	background-color: rgba(73, 191, 157, 0.1);
+	border-color: #01031a;
+	color: #01031a !important;
+}
+
+
+	
 
 		ul.actions.special {
 			-moz-justify-content: center;
