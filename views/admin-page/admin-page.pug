@@ -162,32 +162,32 @@ ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
 									tbody
 										each delete, index in deletes
 											tr.delete-request
-												// Artifact Photo + Artifact Name + User Origin
-												td
-													img(src="../images/"+delete.oldArtifact.primaryImage alt='')
-													a.delete-name(href='#') #{delete.oldArtifact.name}
-													span.username-subhead #{delete.oldArtifact.author}
-												// Artifact Deleted Date
-												td.deleteDate
-												script.
-													var artifact = !{JSON.stringify(delete)};
-													var date = new Date(artifact.dateEdited);
-													var dd = date.toLocaleString('default', { day: '2-digit'});
-													var mm = date.toLocaleString('default', { month: 'long' });
-													var yyyy = date.getFullYear();
-													document.getElementsByClassName('deleteDate')["#{index}"].appendChild(document.createTextNode(dd+" "+mm+" "+yyyy));
-												td
-													span #{delete.editor}
-												// Approve + Delete Buttons
-												td(style='width: 20%;')
-													a.appr-delete-btn.table-link.text-success(data-id="" + delete._id)
-														span.fa-stack
-															i.fa.fa-square.fa-stack-2x
-															i.fas.fa-check.fa-stack-1x.fa-inverse
-													a.reje-delete-btn.table-link.text-danger(data-id="" + delete._id)
-														span.fa-stack
-															i.fa.fa-square.fa-stack-2x
-															i.fa.fa-trash-o.fa-stack-1x.fa-inverse
-												// Description
-												td
-													span #{delete.description}
+											// Artifact Photo + Artifact Name + User Origin
+											td
+												img(src="../images/"+delete.oldArtifact.primaryImage alt='')
+												a.delete-name(href='#') #{delete.oldArtifact.name}
+												span.username-subhead #{delete.oldArtifact.author}
+											// Artifact Deleted Date
+											td.deleteDate
+											script.
+												var artifact = !{JSON.stringify(delete)};
+												var date = new Date(artifact.dateEdited);
+												var dd = date.toLocaleString('default', { day: '2-digit'});
+												var mm = date.toLocaleString('default', { month: 'long' });
+												var yyyy = date.getFullYear();
+												document.getElementsByClassName('deleteDate')["#{index}"].appendChild(document.createTextNode(dd+" "+mm+" "+yyyy));
+											td
+												span #{delete.editor}
+											// Approve + Delete Buttons
+											td(style='width: 20%;')
+												a.appr-delete-btn.table-link.text-success(data-id="" + delete._id)
+													span.fa-stack
+														i.fa.fa-square.fa-stack-2x
+														i.fas.fa-check.fa-stack-1x.fa-inverse
+												a.reje-delete-btn.table-link.text-danger(data-id="" + delete._id)
+													span.fa-stack
+														i.fa.fa-square.fa-stack-2x
+														i.fa.fa-trash-o.fa-stack-1x.fa-inverse
+											// Description
+											td
+												span #{delete.description}
