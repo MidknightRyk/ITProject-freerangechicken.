@@ -1,3 +1,6 @@
+// Code for reset functionality adapted from:
+// http://sahatyalkabov.com/how-to-implement-password-reset-in-nodejs/
+
 var express = require('express');
 var router = express.Router();
 var path = require('path');
@@ -47,6 +50,14 @@ router.get('/edit-profile', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/editProfile/editProfile.html'));
 });
 
+// Forgot password page
+router.get('/forgot', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/forgotPassword/forgotPassword.html'));
+});
+
+// Reset password page
+router.get('/reset/:token', loginController.reset);
+
 /* POST requests */
 
 // Login
@@ -60,5 +71,11 @@ router.post('/register', loginController.register);
 
 // Edit profile
 router.post('/edit-profile', userController.editProfile);
+
+// Forgot Password
+router.post('/forgot', loginController.forgot);
+
+// Reset password
+router.post('/reset/:token', loginController.resetPassword);
 
 module.exports = router;

@@ -1,11 +1,12 @@
 // Set up express
 var express = require('express');
 var app = express();
+var flash = require('express-flash');
 var bodyParser = require('body-parser');
 var session = require('cookie-session');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(flash());
 app.use(express.static(__dirname));
 app.use(session({
 	secret: 'itproject',

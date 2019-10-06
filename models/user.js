@@ -17,7 +17,9 @@ var userSchema = mongoose.Schema(
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Image',
 			default: defaultDP
-		}
+		},
+		resetPasswordToken: String,
+		resetPasswordExpires: Date
 	}
 );
 
