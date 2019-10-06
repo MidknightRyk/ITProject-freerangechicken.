@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1d712f2b-1b63-468d-b642-fd7687846d42" name="Default Changelist" comment="Will try to make a better-looking comment box">
+      <change afterPath="$PROJECT_DIR$/.idea/ITProject-freerangechicken..iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/addArtifactOld.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/catalogue/artefact.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/catalogue/catalogue.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/catalogue/css/catalogue-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/catalogue/css/logout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/profile-page/5d81fb92cd521a6b0be20db3.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/add-artifacts/add-artifact.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/add-artifacts/add-artifact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/add-artifacts/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/add-artifacts/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/admin-page/artifact-approval.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin-page/artifact-approval.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/catalogueNew/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/catalogueNew/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/catalogueNew/assets/sass/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/views/catalogueNew/assets/sass/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/catalogueNew/catalogueNew.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/catalogueNew/catalogueNew.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/discussion-board/assets/css/discussion-forum-mainStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/discussion-board/assets/css/discussion-forum-mainStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/discussion-board/discussion-forum-main.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/discussion-board/discussion-forum-main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/discussion-board/issue-details-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/discussion-board/issue-details-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/discussion-board/start-new-issue.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/discussion-board/start-new-issue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/discussion-board/test-issue-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/discussion-board/test-issue-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/edit-profile/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/edit-profile/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/edit-profile/edit-profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/edit-profile/edit-profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/homepage/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/homepage/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/profile-page/profile-page-old.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/profile-page/profile-page-old.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/profile-page/profile-page-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/profile-page/profile-page-style.css" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/profile-page/profile-page-old.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="31" column="79" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/catalogueNew/catalogueNew.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-31">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#p#0;n#div#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/profile-page/profile-page-style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1904">
+              <caret line="480" column="3" selection-start-line="480" selection-start-column="3" selection-end-line="480" selection-end-column="3" />
+              <folding>
+                <element signature="e#7595#7669#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/catalogueNew/assets/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-18908">
+              <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/add-artifacts/add-artifact.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="71" />
+              <folding>
+                <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#lottie-player#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#fieldset#0;n#div#5;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#fieldset#0;n#div#5;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>meta</find>
+      <find>post</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>issue-info</replace>
+      <replace>post</replace>
+      <replace>issue</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/views/awaiting-approval-page/awaiting-approval-page.html" />
+        <option value="$PROJECT_DIR$/views/admin-page/no-access.html" />
+        <option value="$PROJECT_DIR$/views/admin-page/request-approval.html" />
+        <option value="$PROJECT_DIR$/views/catalogue/artefact.html" />
+        <option value="$PROJECT_DIR$/views/homepage/delete.html" />
+        <option value="$PROJECT_DIR$/views/homepage/deleteStyle.css" />
+        <option value="$PROJECT_DIR$/views/catalogue/css/catalogue-style.css" />
+        <option value="$PROJECT_DIR$/views/catalogue/css/logout.css" />
+        <option value="$PROJECT_DIR$/views/catalogueNew/assets/css/logout.css" />
+        <option value="$PROJECT_DIR$/views/homepage/logout.html" />
+        <option value="$PROJECT_DIR$/views/catalogue/catalogue.html" />
+        <option value="$PROJECT_DIR$/views/add-artifacts/addArtifact.html" />
+        <option value="$PROJECT_DIR$/views/add-artifacts/assets/jquery-swapsies.js" />
+        <option value="$PROJECT_DIR$/views/add-artifacts/a.html" />
+        <option value="$PROJECT_DIR$/views/add-artifacts/assets/uploadStyle.css" />
+        <option value="$PROJECT_DIR$/views/add-artifacts/assets/bootstrap-tagsinput-latest/src/bootstrap-tagsinput.css" />
+        <option value="$PROJECT_DIR$/views/add-artifacts/index.html" />
+        <option value="$PROJECT_DIR$/views/add-artifacts/assets/css/profile-photo-style.css" />
+        <option value="$PROJECT_DIR$/views/discussion-board/test-issue-page.html" />
+        <option value="$PROJECT_DIR$/views/add-artifacts/assets/js.js" />
+        <option value="$PROJECT_DIR$/views/add-artifacts/test-pleaseIgnore.html" />
+        <option value="$PROJECT_DIR$/views/add-artifacts/assets/css/uploadStyle.css" />
+        <option value="$PROJECT_DIR$/views/discussion-board/discussion-board.html" />
+        <option value="$PROJECT_DIR$/views/discussion-board/assets/sass/components/_post.scss" />
+        <option value="$PROJECT_DIR$/views/discussion-board/assets/sass/layout/_sidebar.scss" />
+        <option value="$PROJECT_DIR$/views/catalogueNew/assets/sass/main.scss" />
+        <option value="$PROJECT_DIR$/views/discussion-board/index.html" />
+        <option value="$PROJECT_DIR$/views/discussion-board/test-inputbutton.html" />
+        <option value="$PROJECT_DIR$/views/discussion-board/single.html" />
+        <option value="$PROJECT_DIR$/views/discussion-board/test-clicked.html" />
+        <option value="$PROJECT_DIR$/views/discussion-board/test.html" />
+        <option value="$PROJECT_DIR$/views/discussion-board/assets/css/main.css" />
+        <option value="$PROJECT_DIR$/views/discussion-board/assets/css/issue-details-extraStyle.css" />
+        <option value="$PROJECT_DIR$/views/discussion-board/discussion-forum-main.html" />
+        <option value="$PROJECT_DIR$/views/discussion-board/start-new-issue.html" />
+        <option value="$PROJECT_DIR$/views/edit-profile/assets/css/main.css" />
+        <option value="$PROJECT_DIR$/views/profile-page/dynamic-test.html" />
+        <option value="$PROJECT_DIR$/views/edit-profile/edit-profile.html" />
+        <option value="$PROJECT_DIR$/views/homepage/homepage.html" />
+        <option value="$PROJECT_DIR$/views/catalogueNew/catalogueNew.html" />
+        <option value="$PROJECT_DIR$/views/profile-page/textarea-test.html" />
+        <option value="$PROJECT_DIR$/views/catalogueNew/assets/css/main.css" />
+        <option value="$PROJECT_DIR$/views/add-artifacts/assets/css/main.css" />
+        <option value="$PROJECT_DIR$/views/add-artifacts/add-artifact.html" />
+        <option value="$PROJECT_DIR$/views/discussion-board/emoji-test.html" />
+        <option value="$PROJECT_DIR$/views/discussion-board/emoji.html" />
+        <option value="$PROJECT_DIR$/views/admin-page/artifact-approval.html" />
+        <option value="$PROJECT_DIR$/views/discussion-board/issue-details-page.html" />
+        <option value="$PROJECT_DIR$/views/discussion-board/assets/css/discussion-forum-mainStyle.css" />
+        <option value="$PROJECT_DIR$/views/profile-page/profile-page-style.css" />
+        <option value="$PROJECT_DIR$/views/profile-page/profile-page-old.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-11" />
+    <option name="y" value="24" />
+    <option name="width" value="1440" />
+    <option name="height" value="810" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="add-artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="add-artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="add-artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="add-artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="add-artifact.pug" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="artifact" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="artifact" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="artifact" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="artifact" type="462c0819:PsiDirectoryNode" />
+              <item name="artifact.pug" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="catalogueNew" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="catalogueNew" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="catalogueNew" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="catalogueNew" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="edit-profile" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
+              <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="profile-page" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/profile-page" />
+      <recent name="$PROJECT_DIR$/views/discussion-board" />
+      <recent name="$PROJECT_DIR$/views/discussion-board/assets/css" />
+      <recent name="$PROJECT_DIR$/views/add-artifacts/assets/css/images" />
+      <recent name="$PROJECT_DIR$/views/catalogueNew/assets/css/images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/discussion-board/emoji-assets/css" />
+      <recent name="$PROJECT_DIR$/views/add-artifacts/assets/js" />
+      <recent name="$PROJECT_DIR$/views/add-artifacts/assets/css" />
+      <recent name="$PROJECT_DIR$/views/add-artifacts/assets" />
+      <recent name="$PROJECT_DIR$/views/add-artifacts" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.add-artifact.html">
+    <configuration name="add-artifact.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ITProject-freerangechicken./views/add-artifacts/add-artifact.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="catalogueNew.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ITProject-freerangechicken./views/catalogueNew/catalogueNew.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="edit-profile.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ITProject-freerangechicken./views/edit-profile/edit-profile.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="homepage.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ITProject-freerangechicken./views/homepage/homepage.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="textarea-test.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ITProject-freerangechicken./views/profile-page/textarea-test.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.add-artifact.html" />
+        <item itemvalue="JavaScript Debug.homepage.html" />
+        <item itemvalue="JavaScript Debug.catalogueNew.html" />
+        <item itemvalue="JavaScript Debug.textarea-test.html" />
+        <item itemvalue="JavaScript Debug.edit-profile.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1d712f2b-1b63-468d-b642-fd7687846d42" name="Default Changelist" comment="" />
+      <created>1566433301736</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1566433301736</updated>
+      <workItem from="1566433304318" duration="1790000" />
+      <workItem from="1566810769224" duration="864000" />
+      <workItem from="1566811642100" duration="10533000" />
+      <workItem from="1566824701989" duration="606000" />
+      <workItem from="1566902318815" duration="3746000" />
+      <workItem from="1566976203624" duration="2611000" />
+      <workItem from="1567038777399" duration="3220000" />
+      <workItem from="1567135870471" duration="28760000" />
+      <workItem from="1567584165407" duration="1728000" />
+      <workItem from="1567643236096" duration="1742000" />
+      <workItem from="1567949787548" duration="1518000" />
+      <workItem from="1568074668602" duration="20661000" />
+      <workItem from="1568107195385" duration="27000" />
+      <workItem from="1568188736291" duration="22000" />
+      <workItem from="1568190765844" duration="370000" />
+      <workItem from="1568636580500" duration="4180000" />
+      <workItem from="1568790716361" duration="4565000" />
+      <workItem from="1568809526519" duration="1049000" />
+      <workItem from="1568811341540" duration="349000" />
+      <workItem from="1568812384895" duration="1235000" />
+      <workItem from="1568813834812" duration="22000" />
+      <workItem from="1568855972036" duration="1106000" />
+      <workItem from="1569154578020" duration="5408000" />
+      <workItem from="1569229707840" duration="10586000" />
+      <workItem from="1569393566425" duration="2625000" />
+      <workItem from="1569416342084" duration="309000" />
+      <workItem from="1569419526854" duration="808000" />
+      <workItem from="1569574971910" duration="11749000" />
+      <workItem from="1569662667451" duration="6919000" />
+      <workItem from="1569674647434" duration="226000" />
+      <workItem from="1569674908534" duration="9249000" />
+      <workItem from="1569688651496" duration="3022000" />
+      <workItem from="1569692100837" duration="2093000" />
+      <workItem from="1569834760310" duration="32337000" />
+      <workItem from="1569938949236" duration="217000" />
+      <workItem from="1570010683705" duration="15505000" />
+      <workItem from="1570063019914" duration="246000" />
+      <workItem from="1570188376417" duration="281000" />
+      <workItem from="1570189302524" duration="308000" />
+      <workItem from="1570263982302" duration="11392000" />
+      <workItem from="1570323905821" duration="6226000" />
+      <workItem from="1570334664691" duration="4023000" />
+    </task>
+    <task id="LOCAL-00001" summary="Register/Login Form">
+      <created>1566822488215</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1566822488216</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Register/Login Form">
+      <created>1566822525972</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1566822525972</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Register/Login Form Added">
+      <created>1566824359146</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1566824359146</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Register/Login Form Added">
+      <created>1566824811140</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1566824811140</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Initial Profile Page">
+      <created>1567173053809</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1567173053809</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Admin Page Combined">
+      <created>1568105521594</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1568105521595</updated>
+    </task>
+    <task id="LOCAL-00007" summary="One Single Artifact Admin Page">
+      <created>1568105710237</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1568105710237</updated>
+    </task>
+    <task id="LOCAL-00008" summary="A simple awaiting approval page">
+      <created>1568640291722</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1568640291722</updated>
+    </task>
+    <task id="LOCAL-00009" summary="updated css">
+      <created>1568791472935</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1568791472935</updated>
+    </task>
+    <task id="LOCAL-00010" summary="updated css">
+      <created>1568791796670</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1568791796671</updated>
+    </task>
+    <task id="LOCAL-00011" summary="No Access to the Admin Page">
+      <created>1568813583620</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1568813583620</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ref fixed">
+      <created>1568860371263</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1568860371263</updated>
+    </task>
+    <task id="LOCAL-00013" summary="minor change">
+      <created>1568860410666</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1568860410666</updated>
+    </task>
+    <task id="LOCAL-00014" summary="no change">
+      <created>1568860434470</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1568860434470</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Light Box Added">
+      <created>1569242320606</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1569242320607</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Single Logout Button (Reusable)">
+      <created>1569242747474</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1569242747474</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Username on the light box added">
+      <created>1569420257208</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1569420257208</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Add Artifact Page 90% implemented *Still tryign to figure out how to dynamically count the number of uploaded artifact images*">
+      <created>1569694394934</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1569694394935</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Light box background changed">
+      <created>1569694681961</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1569694681961</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Discussion Forum Homepage p.s navigation bar will be added later on">
+      <created>1570027935986</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1570027935986</updated>
+    </task>
+    <task id="LOCAL-00021" summary="A very simple `Add New Issue` page">
+      <created>1570028047179</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1570028047179</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Will try to make a better-looking comment box">
+      <created>1570028273049</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1570028273049</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="214233000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-11" y="24" width="1440" height="810" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8180113" visible="true" weight="0.18816067" />
+      <window_info id="Structure" order="1" sideWeight="0.18198875" side_tool="true" weight="0.18816067" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32914925" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32775453" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32867134" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32867134" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.25766018" />
+      <window_info anchor="bottom" id="Messages" order="11" visible="true" weight="0.32775453" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8180113" visible="true" weight="0.18816067" />
+      <window_info id="Structure" order="1" sideWeight="0.18198875" side_tool="true" visible="true" weight="0.18816067" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32914925" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32775453" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32867134" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32867134" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.25766018" />
+      <window_info anchor="bottom" id="Messages" order="11" visible="true" weight="0.32775453" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Register/Login Form" />
+    <MESSAGE value="Register/Login Form Added" />
+    <MESSAGE value="Initial Profile Page" />
+    <MESSAGE value="Admin Page Combined" />
+    <MESSAGE value="One Single Artifact Admin Page" />
+    <MESSAGE value="A simple awaiting approval page" />
+    <MESSAGE value="updated css" />
+    <MESSAGE value="No Access to the Admin Page" />
+    <MESSAGE value="ref fixed" />
+    <MESSAGE value="minor change" />
+    <MESSAGE value="no change" />
+    <MESSAGE value="Light Box Added" />
+    <MESSAGE value="Single Logout Button (Reusable)" />
+    <MESSAGE value="Username on the light box added" />
+    <MESSAGE value="Add Artifact Page 90% implemented. *Still trying to figure out how to dynamically count the number of uploaded artifacts images*" />
+    <MESSAGE value="Add Artifact Page 90% implemented" />
+    <MESSAGE value="Add Artifact Page 90% implemented *Still tryign to figure out how to dynamically count the number of uploaded artifact images*" />
+    <MESSAGE value="Light box background changed" />
+    <MESSAGE value="Discussion Forum Homepage p.s navigation bar will be added later on" />
+    <MESSAGE value="A very simple `Add New Issue` page" />
+    <MESSAGE value="Will try to make a better-looking comment box" />
+    <option name="LAST_COMMIT_MESSAGE" value="Will try to make a better-looking comment box" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/views/add-artifacts/assets/js/jquery-swapsies.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/display-picture-upload.html" />
+    <entry file="file://$PROJECT_DIR$/views/adminPage.html" />
+    <entry file="file://$PROJECT_DIR$/views/add-artifacts/assets/css/uploadStyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/discussion-board.html" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/assets/sass/components/_post.scss" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/assets/sass/layout/_wrapper.scss" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/assets/sass/layout/_sidebar.scss" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/assets/sass/layout/_footer.scss" />
+    <entry file="file://$PROJECT_DIR$/views/catalogueNew/assets/sass/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="98" column="10" selection-start-line="98" selection-start-column="10" selection-end-line="98" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/index.html" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/test-inputbutton.html" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/test-clicked.html" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/single.html" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/assets/css/fontawesome-all.min.css" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/test.html" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/assets/css/main.css" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/images/pic02.jpg" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/images/pic03.jpg" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/images/pic07.jpg" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/images/logo.jpg" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/images/avatar.jpg" />
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/test-issue-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/start-new-issue.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="33" column="47" lean-forward="true" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+          <folding>
+            <element signature="n#style#0;n#article#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/discussion-forum-main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/assets/css/issue-details-extraStyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1745">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/discussion-forum.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/discussion-forum.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/edit-profile/assets/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2070">
+          <caret line="138" column="68" selection-start-line="138" selection-start-column="68" selection-end-line="138" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/edit-profile/edit-profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="57" column="124" selection-start-line="57" selection-start-column="124" selection-end-line="57" selection-end-column="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/homepage/homepage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="8" column="84" selection-start-line="8" selection-start-column="84" selection-end-line="8" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/catalogueNew/images/backdrop.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/jquery.emojiarea.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/emoji-test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/docs/_config.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/docs/assets/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/add-artifacts/test-pleaseIgnore.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-684">
+          <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/catalogueNew/assets/css/images/sky.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/profile-page/textarea-test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="111" selection-start-line="15" selection-start-column="111" selection-end-line="15" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/emoji.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="8" lean-forward="true" selection-start-line="16" selection-start-column="8" selection-end-line="21" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/issue-details-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4335">
+          <caret line="289" column="26" selection-start-line="289" selection-start-column="26" selection-end-line="289" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#article#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#article#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#article#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#article#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discussion-board/assets/css/discussion-forum-mainStyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="534" column="23" lean-forward="true" selection-start-line="534" selection-start-column="23" selection-end-line="534" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/admin-page/artifact-approval.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="90" lean-forward="true" selection-start-line="6" selection-start-column="90" selection-end-line="6" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/add-artifacts/assets/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-282">
+          <caret line="74" column="30" lean-forward="true" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/profile-page/gradient.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/profile-page/dynamic-test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/profile-page/profile-page-old.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="31" column="79" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/catalogueNew/catalogueNew.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#p#0;n#div#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/profile-page/profile-page-style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1904">
+          <caret line="480" column="3" selection-start-line="480" selection-start-column="3" selection-end-line="480" selection-end-column="3" />
+          <folding>
+            <element signature="e#7595#7669#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/add-artifacts/add-artifact.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="71" />
+          <folding>
+            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#lottie-player#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#fieldset#0;n#div#5;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#fieldset#0;n#div#5;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/catalogueNew/assets/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-18908">
+          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

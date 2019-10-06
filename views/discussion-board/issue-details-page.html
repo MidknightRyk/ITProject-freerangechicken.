@@ -6,8 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-    <link rel="stylesheet" href="../views/discussion-board/assets/css/discussion-forum-mainStyle.css" />
-    <link rel="stylesheet" href="../views/discussion-board/assets/css/issue-details-extraStyle.css">
+    <link rel="stylesheet" href="../discussion-board/assets/css/discussion-forum-mainStyle.css" />
+    <link rel="stylesheet" href="../discussion-board/assets/css/issue-details-extraStyle.css">
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="./emoji-assets/css/reset.css">
+    <link rel="stylesheet" href="./emoji-assets/css/style.css">
+    <link rel="stylesheet" href="./emoji-assets/css/stylesheet.css">
+
+    <script src="./emoji-assets/js/jquery.emojiarea.js"></script>
+    <script src="./emoji-assets/js/main.js"></script>
 
 </head>
 
@@ -102,8 +111,14 @@
                     <div class="form-container" style="display:none;">
                         <form method="post" action="">
 
-                            <!-- Reply Input  -->
-                            <div><textarea name="reply" placeholder="I am think ..." ></textarea></div>
+                            <!-- Reply Input -->
+                            <div class="example">
+                                <div data-emojiarea data-type="unicode" data-global-picker="true">
+                                    <div class="emoji-button">&#x1f604;</div>
+                                    <textarea name="reply" id="input1" rows="5" placeholder="I am thinking ..."></textarea>
+                                </div>
+                            </div>
+
 
                             <!-- Comment Button -->
                             <ul class="actions">
@@ -143,8 +158,13 @@
                         <div class="form-container" style="display:none;">
                             <form method="post" action="">
 
-                                <!-- Reply Input  -->
-                                <div><textarea name="reply" placeholder="I am think ..." ></textarea></div>
+                                <!-- Reply Input -->
+                                <div class="example">
+                                    <div data-emojiarea data-type="unicode" data-global-picker="true">
+                                        <div class="emoji-button">&#x1f604;</div>
+                                        <textarea name="reply" id="input1" rows="5" placeholder="I am thinking ..."></textarea>
+                                    </div>
+                                </div>
 
                                 <!-- Comment Button -->
                                 <ul class="actions">
@@ -182,8 +202,13 @@
                             <div class="form-container" style="display:none;">
                                 <form method="post" action="">
 
-                                    <!-- Reply Input  -->
-                                    <div><textarea name="reply" placeholder="I am think ..." ></textarea></div>
+                                    <!-- Reply Input -->
+                                    <div class="example">
+                                        <div data-emojiarea data-type="unicode" data-global-picker="true">
+                                            <div class="emoji-button">&#x1f604;</div>
+                                            <textarea name="reply" id="input1" rows="5" placeholder="I am thinking ..."></textarea>
+                                        </div>
+                                    </div>
 
                                     <!-- Comment Button -->
                                     <ul class="actions">
@@ -225,8 +250,13 @@
                         <div class="form-container" style="display:none;">
                             <form method="post" action="">
 
-                                <!-- Reply Input  -->
-                                <div><textarea name="reply" placeholder="I am think ..." ></textarea></div>
+                                <!-- Reply Input -->
+                                <div class="example">
+                                    <div data-emojiarea data-type="unicode" data-global-picker="true">
+                                        <div class="emoji-button">&#x1f604;</div>
+                                        <textarea name="reply" id="input1" rows="5" placeholder="I am thinking ..."></textarea>
+                                    </div>
+                                </div>
 
                                 <!-- Comment Button -->
                                 <ul class="actions">
@@ -251,8 +281,13 @@
             <div class="form-container">
                 <form method="post" action="">
 
-                    <!-- Reply Input  -->
-                    <div><textarea name="reply" placeholder="I am think ..." ></textarea></div>
+                    <!-- Reply Input -->
+                    <div class="example">
+                        <div data-emojiarea data-type="unicode" data-global-picker="true">
+                            <div class="emoji-button">&#x1f604;</div>
+                            <textarea name="reply" id="input1" rows="5" placeholder="I am thinking ..."></textarea>
+                        </div>
+                    </div>
 
                     <!-- Comment Button -->
                     <ul class="actions">
@@ -285,7 +320,6 @@
 //$('.rep').closest('div').not(closestDiv).show()
             closestDiv.next('.form-container').slideToggle(100);
         });
-
         $(document).on('click' , '.fa-comment' , function(){
             var closestDiv = $(this).closest('footer'); // also you can use $(this).parent()
 //closestDiv.fadeOut();
@@ -294,7 +328,6 @@
             closestDiv.next('.form-container').slideToggle(100);
         });
     });
-
 </script>
 
 

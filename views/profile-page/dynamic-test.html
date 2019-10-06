@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+
+</head>
+<body>
+
+
+
+<body class="is-preload">
+
+<!-- Header -->
+<header id="header" style="z-index:9;">
+    <lottie-player
+            src="https://assets8.lottiefiles.com/temp/lf20_RTai6J.json"  background="transparent"  speed="0.2"  style="width: 100px; height: 100px; margin-top:-80px;"  loop autoplay>
+    </lottie-player>
+
+    <div class="profile-upload-container inner">
+        <a href="#"><span class="fas fa-camera"></span></a>
+
+    </div>
+
+</header>
+
+<!-- Main Forms -->
+<div id="main">
+
+
+
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" onclick="myFunction()" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Profile edited!</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function myFunction() {
+        setTimeout(function(){
+            window.location.href = "/profile";
+        }, 1000);
+    }
+</script>
+
+
+</body>
+
+
+
+</body>
+</html>

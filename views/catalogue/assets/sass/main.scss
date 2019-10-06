@@ -4,7 +4,6 @@
 @import 'libs/vendor';
 @import 'libs/breakpoints';
 @import 'libs/html-grid';
-@import 'fontawesome-all.min.css';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic');
 
 /*
@@ -97,7 +96,7 @@
 /* Basic */
 
 	@-ms-viewport {
-		width: device-width;
+		//width: device-width;
 	}
 
 	// Set box model to border-box.
@@ -440,7 +439,7 @@
 	}
 
 	input[type="checkbox"],
-	input[type="radio"], {
+	input[type="radio"]{
 		@include vendor('appearance', 'none');
 		display: block;
 		float: left;
@@ -1196,7 +1195,7 @@
 			}
 
 			input[type="checkbox"],
-			input[type="radio"], {
+			input[type="radio"]{
 				& + label {
 					color: _palette($p, fg);
 
@@ -1437,7 +1436,7 @@
 		}
 
 		.close {
-			background-image: url('images/close.svg');
+			//background-image: url('images/close.svg');
 			background-position: 4.85em 1em;
 			background-repeat: no-repeat;
 			border: 0;
@@ -1534,7 +1533,7 @@
 							position: relative;
 
 							&:after {
-								background-image: url('images/bars.svg');
+								//background-image: url('images/bars.svg');
 								background-position: right center;
 								background-repeat: no-repeat;
 								content: '';
@@ -1651,7 +1650,7 @@
 			z-index: 1;
 
 			&:after {
-				background-image: url('images/arrow.svg');
+				//background-image: url('images/arrow.svg');
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: contain;
