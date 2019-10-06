@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var path = require('path');
 var Artifact = mongoose.model('Artifact');
 var User = mongoose.model('User');
+var Edits = mongoose.model('Edits');
 var nodemailer = require('nodemailer');
 
 // Gets unapproved users and artifacts
@@ -12,8 +13,13 @@ var adminPage = function (req, res) {
 			if (!err) {
 				Artifact.find({'approved': 0}).lean().exec(function (err, artifacts) {
 					if (!err) {
-						res.render(path.join(__dirname, '/../views/admin-page/admin-page.pug'),
-							{users: users, artifacts: artifacts});
+						Edits.find({'deletion': true}).lean().populate('oldArtifact').exec(function (err, deletes) {
+							if (!err) {
+								console.log(deletes);
+								res.render(path.join(__dirname, '/../views/admin-page/admin-page.pug'),
+									{users: users, artifacts: artifacts, deletes: deletes});
+							} else { throw err; }
+						});
 					} else { throw err; }
 				});
 			} else { throw err; }
@@ -30,7 +36,6 @@ var userApprove = function (req, res) {
 		if (err) {
 			throw err;
 		} else {
-
 			var smtpTransport = nodemailer.createTransport('smtps://freerangechickenfeed%40gmail.com:' + encodeURIComponent('comp2019') + '@smtp.gmail.com:465');
 			var mailOptions = {
 				to: user.email,

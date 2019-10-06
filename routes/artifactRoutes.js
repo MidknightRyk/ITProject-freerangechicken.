@@ -57,4 +57,7 @@ router.post('/submit-ticket', artifactController.cloneArtifact);
 // ** needs edit ticket id in params **
 router.post('/approve-edits', artifactController.editApproval);
 
+// Approve deletion for Artifacts
+router.post('/approve-delete', artifactController.deleteApproval);
+
 module.exports = router;

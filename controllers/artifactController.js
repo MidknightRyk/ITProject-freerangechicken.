@@ -150,6 +150,7 @@ var editArtifact = function (req, res) {
  */
 var editApproval = function (req, res) {
 	var editID = req.params.edits;
+	var approval = req.body.approval || req.query.approval;
 	Edits.findById(editID, function (err, edit) {
 		if (err) return console.log(err);
 
@@ -157,7 +158,7 @@ var editApproval = function (req, res) {
 		var newartifactID = edit.newArtifact;
 
 		// If the edits have been approved, the make the changes
-		if (req.body.approval /* approved */) {
+		if (approval /* approved */) {
 			edit.approved = true;
 
 			Artifact.findById(artifactID, function (err, artifact) {
@@ -196,13 +197,14 @@ var editApproval = function (req, res) {
 };
 
 var deleteApproval = function (req, res) {
-	var editID = req.params.edits;
+	var editID = req.body.edits || req.query.edits;
+	var approval = req.body.approval || req.query.approval;
 	Edits.findById(editID, function (err, edit) {
 		if (err) return console.log(err);
 
 		var artifactID = edit.oldArtifact;
 		// If this is approved, delete artifact.
-		if (req.body.approval /* approved */) {
+		if (approval /* approved */) {
 			edit.approved = true;
 
 			Artifact.findOneAndDelete(
@@ -220,7 +222,6 @@ var deleteApproval = function (req, res) {
 					);
 				});
 		} else {
-			edit.approval = true;
 			edit.rejected = true;
 		}
 		edit.save();
