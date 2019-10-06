@@ -28,7 +28,7 @@ ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
 				| Artifact Request
 				span#artifact-request-count.badge.badge-danger.badge-pill #{artifacts.length}
 	li.nav-item
-		a#pills-artifact-tab.nav-link.btn-outline-warning(data-toggle='pill' href='#pills-artifact' role='tab' aria-controls='pills-artifact' aria-selected='false' style='')
+		a#pills-artifact-tab.nav-link.btn-outline-warning(data-toggle='pill' href='#pills-delete' role='tab' aria-controls='pills-artifact' aria-selected='false' style='')
 			i.fa.fa-trash
 				| Delete Request
 				span#delete-request-count.badge.badge-danger.badge-pill #{deletes.length}
@@ -137,6 +137,7 @@ ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
 												// Description
 												td
 													span #{artifact.description}
+	// Content under delete request tab
 	#pills-delete.tab-pane.fade(role='tabpanel' aria-labelledby='pills-delete-tab')
 		// Delete Request Box
 		.container
@@ -159,35 +160,35 @@ ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
 												span Approval
 											th
 												span Description
-									tbody
-										each delete, index in deletes
-											tr.delete-request
-											// Artifact Photo + Artifact Name + User Origin
-											td
-												img(src="../images/"+delete.oldArtifact.primaryImage alt='')
-												a.delete-name(href='#') #{delete.oldArtifact.name}
-												span.username-subhead #{delete.oldArtifact.author}
-											// Artifact Deleted Date
-											td.deleteDate
-											script.
-												var artifact = !{JSON.stringify(delete)};
-												var date = new Date(artifact.dateEdited);
-												var dd = date.toLocaleString('default', { day: '2-digit'});
-												var mm = date.toLocaleString('default', { month: 'long' });
-												var yyyy = date.getFullYear();
-												document.getElementsByClassName('deleteDate')["#{index}"].appendChild(document.createTextNode(dd+" "+mm+" "+yyyy));
-											td
-												span #{delete.editor}
-											// Approve + Delete Buttons
-											td(style='width: 20%;')
-												a.appr-delete-btn.table-link.text-success(data-id="" + delete._id)
-													span.fa-stack
-														i.fa.fa-square.fa-stack-2x
-														i.fas.fa-check.fa-stack-1x.fa-inverse
-												a.reje-delete-btn.table-link.text-danger(data-id="" + delete._id)
-													span.fa-stack
-														i.fa.fa-square.fa-stack-2x
-														i.fa.fa-trash-o.fa-stack-1x.fa-inverse
-											// Description
-											td
-												span #{delete.description}
+												tbody
+													each del, ind in deletes
+														tr.delete-request
+															// Artifact Photo + Artifact Name + User Origin
+															td
+																img(src="../images/"+del.oldArtifact.primaryImage alt='')
+																a.delete-name(href='#') #{del.oldArtifact.name}
+																span.username-subhead #{del.oldArtifact.author}
+															// Artifact Deleted Date
+															td.deleteDate
+															script.
+																var artifact = !{JSON.stringify(del)};
+																var date = new Date(artifact.dateEdited);
+																var dd = date.toLocaleString('default', { day: '2-digit'});
+																var mm = date.toLocaleString('default', { month: 'long' });
+																var yyyy = date.getFullYear();
+																document.getElementsByClassName('deleteDate')["#{ind}"].appendChild(document.createTextNode(dd+" "+mm+" "+yyyy));
+															td
+																span #{del.editor}
+															// Approve + Delete Buttons
+															td(style='width: 20%;')
+																a.appr-delete-btn.table-link.text-success(data-id="" + del._id)
+																	span.fa-stack
+																		i.fa.fa-square.fa-stack-2x
+																		i.fas.fa-check.fa-stack-1x.fa-inverse
+																a.reje-delete-btn.table-link.text-danger(data-id="" + del._id)
+																	span.fa-stack
+																		i.fa.fa-square.fa-stack-2x
+																		i.fa.fa-trash-o.fa-stack-1x.fa-inverse
+															// Description
+															td
+																span #{del.description}
