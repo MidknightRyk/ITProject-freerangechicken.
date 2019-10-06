@@ -121,8 +121,9 @@ var cloneArtifact = function (req, res) {
 		console.log(edits);
 		storage.ticketId = edits._id;
 		console.log('ticketid = ' + storage.ticketId);
+		return res.render(path.join(__dirname, '../views/edit-artifact/edit-artifact.pug'),
+			{artifact: editedArtifact});
 	});
-	return res.redirect('/artifacts/make-edits');
 };
 
 var editArtifact = function (req, res) {
