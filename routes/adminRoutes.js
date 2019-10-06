@@ -9,11 +9,8 @@ var adminController = require('../controllers/adminController.js');
 
 /* GET requests */
 
-// Access but typing culturechive.herokuapp.com/admin/{page you want}
+// Access by typing culturechive.herokuapp.com/admin/{page you want}
 router.get('/', adminController.adminPage);
-
-// Admin Approval Homepage
-router.get('/homepage', adminController.adminPage);
 
 // No Access Page
 router.get('/no-access', function (req, res) {
