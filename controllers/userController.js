@@ -32,7 +32,7 @@ var catalogue = function (req, res) {
 		]).exec((err, artifacts) => {
 			if (err) return console.log(err);
 			console.log(artifacts);
-			res.render(path.join(__dirname, '/../views/catalogueNew/catalogue.pug'),
+			res.render(path.join(__dirname, '/../views/catalogue/catalogue.pug'),
 					{user: user, artifacts: artifacts});
 		});
 	});
