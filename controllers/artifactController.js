@@ -55,6 +55,21 @@ var getArtifact = function (req, res) {
 	});
 };
 
+// Gets all artifacts with requested tag
+var getTag = function (req, res) {
+	var tag = req.params.tag;
+	var userID = (req.session.user);
+	User.findById(userID).exec((err, user) => {
+		if (err) return console.log(err);
+		Artifact.find({ 'tags': { $elemMatch: tag } }, function (err, artifacts) {
+			if (err) return console.log(err);
+			return res.render(path.join(__dirname, '../views/artifact/tag.pug'),
+				{user: user, artifacts: artifacts});
+			// idk the path for this cause we don't have a page for this yet
+		});
+	});
+};
+
 /* Used to make edits for approval
  * Creates a new artifact with all the edited values,
  * assigns it to a edit suggestion doc.
@@ -189,6 +204,7 @@ var editApproval = function (req, res) {
 
 module.exports.addArtifact = addArtifact;
 module.exports.getArtifact = getArtifact;
+module.exports.getTag = getTag;
 module.exports.deleteArtifact = deleteArtifact;
 module.exports.cloneArtifact = cloneArtifact;
 module.exports.editApproval = editApproval;
