@@ -480,3 +480,10 @@ body.is-touch .tiles article .content {
     background: rgb(28,165,195);
     background: linear-gradient(180deg, rgba(28,165,195,1) 0%, rgba(210,163,181,0.617926217765043) 34%, rgba(255,255,255,1) 86%);
 }
+
+a, a:hover, i, i:hover
+{
+    text-decoration: none;
+    border:0;
+    color:black; /* fix the text color later!!*/
+}

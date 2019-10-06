@@ -13,6 +13,10 @@
     <!-- Bootstrap CDN-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue"></script>
+
 </head>
 
 
@@ -46,11 +50,71 @@
             </div>
 
             <header>
+
                 <!-- First Join Date + Relationship with Mrs Tan + the Number of Total Artifacts Added -->
-                <!-- <i> tags are character icons from FontAwesome -->
-                <p id="join-date"><i class="far fa-clock"></i>  Joined on August 30th</p>
-                <p id="relationship"><i class="fas fa-users"></i> Mrs Tan's Uncle</p>
-                <p id="total-artifacts"><i class="far fa-gem"></i> 9 Artifacts contributed</p>
+
+                <div class="form-container1" id="eip">
+
+                    <form v-for="field in fields">
+
+                        <div class="field">
+                            <i :class="field.icon"></i> {{field.name}}: <span type="text" class="data" v-show="!field.edit">{{ field.value }}</span>
+
+                            <input type="text" v-model="field.value" v-show="field.edit" v-bind:id="field.id" v-on:blur="saveEdit(field)" :ref="field.id">
+
+                            <a href="#" v-on:click.prevent="toggleEdit(field, $event)"><i class="fas fa-pencil-alt">  </i></a>
+                        </div>
+                    </form>
+
+
+                    <script>
+                        var eip = new Vue({
+                            el: '#eip',
+                            data: {
+                                fields: [{
+                                    value: 'Tom Holland',
+                                    edit: false,
+                                    name: 'Name',
+                                    id: 'name',
+                                    icon: 'fas fa-file-signature'
+                                }, {
+                                    value: 'th',
+                                    edit: false,
+                                    name: 'Username',
+                                    id: 'username',
+                                    icon: 'fas far fa-user'
+                                },{
+                                    value: 'aha@gmail.com',
+                                    edit: false,
+                                    name: 'Email',
+                                    id: 'email',
+                                    icon: 'fas fa-envelope'
+                                },{
+                                    value: 'Unknown',
+                                    edit: false,
+                                    name: 'Relationship',
+                                    id: 'relationship',
+                                    icon: 'fas fa-users'
+                                }]
+                            },
+
+                            methods: {
+                                toggleEdit: function(field, e) {
+                                    field.edit = true;
+                                    this.$nextTick(()=>{
+                                        this.$refs[field.id][0].focus();
+                                    })
+
+
+                                },
+                                saveEdit: function(field) {
+                                    field.edit = false;
+                                }
+                            }
+                        });
+                    </script>
+
+                </div>
             </header>
 
         </div>
@@ -168,6 +232,7 @@
         </div>
     </div>
 </div>
+
 
 </body>
 </html>
