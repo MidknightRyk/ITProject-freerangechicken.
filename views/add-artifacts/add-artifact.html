@@ -6,7 +6,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<!-- Bootstrap Tagsinput CSS -->
-	<link rel="stylesheet" href="../views/add-artifacts/assets/css/bootstrap-tagsinput.css">
+	<link rel="stylesheet" href="../add-artifacts/assets/css/bootstrap-tagsinput.css">
 
 	<!-- Lottie-player Animations -->
 	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -19,14 +19,14 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 
 	<!-- Bootstrap Tagsinput JS -->
-	<script src="../views/add-artifacts/assets/js/bootstrap-tagsinput.js"></script>
+	<script src="../add-artifacts/assets/js/bootstrap-tagsinput.js"></script>
 
 	<!-- Font Awesome CDN -->
 	<script src="https://kit.fontawesome.com/010fb4b3e5.js"></script>
 
-	<link rel="stylesheet" href="../views/add-artifacts/assets/css/main.css" />
-	<link rel="stylesheet" href="../views/add-artifacts/assets/css/uploadStyle.css" />
-	<link rel="stylesheet" href="../views/add-artifacts/assets/css/profile-photo-style.css">
+	<link rel="stylesheet" href="../add-artifacts/assets/css/main.css" />
+	<link rel="stylesheet" href="../add-artifacts/assets/css/uploadStyle.css" />
+	<link rel="stylesheet" href="../add-artifacts/assets/css/profile-photo-style.css">
 </head>
 
 <body class="is-preload">
@@ -317,7 +317,10 @@
 						</div>
 						<!-- Upload Artifact Image Button -->
 						<fieldset class="form-group">
-							<a class="button" style=" margin-top:10px " href="javascript:void(0)" onclick="$('#pro-image').click()">Upload Image</a>
+							<a class="button" style=" margin-top:10px; text-decoration: none;" href="javascript:void(0)" onclick="$('#pro-image').click()">Upload Image</a>
+
+							<!-- I know this looks ugly but i really dont know how to add this maximum 5 and make it pretty at the same time. -->
+							<span style="font-size:10px; color: #8ba5b4;">(5)</span>
 							<input accept="image/*" type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
 						</fieldset>
 					</div>
