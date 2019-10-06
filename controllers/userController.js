@@ -28,11 +28,11 @@ var catalogue = function (req, res) {
 	User.findById(userID).exec((err, user) => {
 		if (err) return console.log(err);
 		Artifact.aggregate([
-			{ $sort: {year: 1} }, { $group: { _id: '$year', articles: { $push: '$$ROOT' } } }
+			{ $match: {'approved': true} }, { $sort: {year: 1} }, { $group: { _id: '$year', articles: { $push: '$$ROOT' } } }
 		]).exec((err, artifacts) => {
 			if (err) return console.log(err);
 			console.log(artifacts);
-			res.render(path.join(__dirname, '/../views/catalogueNew/catalogue.pug'),
+			res.render(path.join(__dirname, '/../views/catalogue/catalogue.pug'),
 					{user: user, artifacts: artifacts});
 		});
 	});

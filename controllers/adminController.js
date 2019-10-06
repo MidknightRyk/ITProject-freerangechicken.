@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var path = require('path');
 var Artifact = mongoose.model('Artifact');
 var User = mongoose.model('User');
+var nodemailer = require('nodemailer');
 
 // Gets unapproved users and artifacts
 // Displays them on admin page
@@ -25,15 +26,26 @@ var adminPage = function (req, res) {
 // Approves user
 var userApprove = function (req, res) {
 	var userId = req.body.userId || req.query.userId;
-	User.findOneAndUpdate({_id: userId}, {approved: 1}).then(
-		function (err, res) {
-			if (err) {
-				throw err;
-			} else {
-				res.send(userId);
-			}
+	User.findOneAndUpdate({_id: userId}, {approved: 1}, function (err, user, done) {
+		if (err) {
+			throw err;
+		} else {
+			console.log(user);
+			var smtpTransport = nodemailer.createTransport('smtps://freerangechickenfeed%40gmail.com:' + encodeURIComponent('comp2019') + '@smtp.gmail.com:465');
+			var mailOptions = {
+				to: user.email,
+				from: 'freerangechickenfeed@gmail.com',
+				subject: 'Culturchive - Account approved',
+				text: 'Hello' + user.name + ',\n\n' +
+				'This is to inform you that your account has been approved.\n' +
+				'Click the link below to sign in.\n' +
+				'http://culturchive.herokuapp.com\n\nBest regards,\nFree Range Chicken Team'
+			};
+			smtpTransport.sendMail(mailOptions, function (err) {
+				done(err);
+			});
 		}
-	);
+	});
 };
 
 // Approves artifact
