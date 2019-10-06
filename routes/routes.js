@@ -62,6 +62,11 @@ router.get('/reset/:token', loginController.reset);
 // Get tag page
 router.get('/tag/:tag', artifactController.getTag);
 
+// No Access Page
+router.get('/no-access', function (req, res) {
+	res.sendFile(path.join(__dirname, '/../views/admin-page/no-access.html'));
+});
+
 /* POST requests */
 
 // Login

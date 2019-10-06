@@ -9,7 +9,7 @@ var Edits = mongoose.model('Edits');
 
 // Creates a new artifact
 var addArtifact = function (req, res) {
-	console.log(req);
+
 	var artifact = new Artifact({
 		'name': req.body.name,
 		'description': req.body.description,
@@ -32,7 +32,7 @@ var addArtifact = function (req, res) {
 			if (err) return console.log('couldnt update artifact to user');
 		}
 	);
-	res.redirect(307, '/images/uploadImages');
+	res.redirect(307, '/images/upload-images');
 };
 
 // Gets a single artifact by id

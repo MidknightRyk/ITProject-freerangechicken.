@@ -51,7 +51,7 @@ $(document).ready(function () {
             url: '/admin/arti-approve',
             data: {"userId": userId}});
         $(this).closest('td').text('Uploaded');
-        $(this).closest('tr').find('.text-center').text('Uploaded');
+        $(this).closest('tr').find('.text-center').text('Approved');
         $(this).closest('tr').fadeOut();
     });
 });

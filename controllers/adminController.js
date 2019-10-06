@@ -30,13 +30,13 @@ var userApprove = function (req, res) {
 		if (err) {
 			throw err;
 		} else {
-			console.log(user);
+
 			var smtpTransport = nodemailer.createTransport('smtps://freerangechickenfeed%40gmail.com:' + encodeURIComponent('comp2019') + '@smtp.gmail.com:465');
 			var mailOptions = {
 				to: user.email,
 				from: 'freerangechickenfeed@gmail.com',
 				subject: 'Culturchive - Account approved',
-				text: 'Hello' + user.name + ',\n\n' +
+				text: 'Hello ' + user.name + ',\n\n' +
 				'This is to inform you that your account has been approved.\n' +
 				'Click the link below to sign in.\n' +
 				'http://culturchive.herokuapp.com\n\nBest regards,\nFree Range Chicken Team'
