@@ -46,14 +46,12 @@ var register = function (req, res) {
 
 // Login function
 var login = function (req, res) {
-
 	passport.authenticate('user', (err, user, info) => {
 		if (err) {
 			console.log(err);
 			return res.redirect('/');
 		}
 		if (user) {
-
 			if (user.approved) {
 				// Keep user id and name in session storage
 				req.session.user = user._id;
