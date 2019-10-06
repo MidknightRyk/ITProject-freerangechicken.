@@ -108,13 +108,16 @@ ul.actions li {
 	align-items: flex-end;
 
 	justify-content: space-between;
-	background-color: #1f1815;
+
+	/*background-color: #1f1815;*/
 	background-attachment: scroll, scroll;
 	/*background-image: url("images/overlay.png"), url("../../images/bg.jpg");*/
-	background-image: url("images/overlay.png"), url("images/forest.jpg");
+	background-image: url("images/overlay.png"), url("images/gradient.jpg");
 	background-position: top left, top left;
 	background-repeat: repeat, no-repeat;
-	background-size: auto, 200%;
+	background-size: auto, 350%;
+	background-color: rgb(37,37,43);
+
 	color: rgba(255, 255, 255, 0.5);
 	height: 100%;
 	left: 0;

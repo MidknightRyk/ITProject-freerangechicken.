@@ -2,6 +2,7 @@
 
 /* Form Style */
 input[type="text"],
+input[type="email"],
 select,
 textarea {
 	background: #f7f7f7;
@@ -17,12 +18,14 @@ textarea {
 }
 
 input[type="text"]:focus,
+input[type="email"]:focus,
 select:focus,
 textarea:focus {
 	border-color: #49bf9d;
 }
 
 input[type="text"],
+input[type="email"],
 select {
 	height: 2.75em;
 }

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>textarea</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+<!-- Edit Artifacts Button -->
+<div class="">
+    <button class="icon-btn edit-btn">
+        <div class="edit-icon"></div>
+
+        <!-- Direct to Edit/Add Artifacts Page -->
+        <a href="../edit-profile/edit-profile.html" style="text-decoration: none;"><div class="btn-txt" ><b>Add Profile</b></div></a>
+    </button>
+</div>
+
+
+<style>
+    .icon-btn {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #cdcdcd;
+        background: white;
+        border-radius: 25px;
+        overflow: hidden;
+        position: relative;
+        transition: width 0.2s ease-in-out;
+    }
+    .edit-btn:hover {
+        width: 150px;
+    }
+    .edit-btn::before,
+    .edit-btn::after {
+        transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+        content: "";
+        position: absolute;
+        height: 4px;
+        width: 10px;
+        top: calc(50% - 2px);
+        background: #dd0e5a;
+    }
+    .edit-btn::after {
+        right: 14px;
+        overflow: hidden;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+    .edit-btn::before {
+        left: 14px;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+    }
+
+    .icon-btn:focus {
+        outline: none;
+    }
+
+    .btn-txt {
+        opacity: 0;
+        transition: opacity 0.2s;
+        color: #260613;
+
+    }
+
+
+    .edit-btn:hover::before,
+    .edit-btn:hover::after {
+        width: 4px;
+        border-radius: 2px;
+    }
+    .edit-btn:hover .btn-txt {
+        opacity: 1;
+    }
+
+    .edit-icon::after,
+    .edit-icon::before {
+        transition: all 0.2s ease-in-out;
+        content: "";
+        position: absolute;
+        height: 20px;
+        width: 2px;
+        top: calc(50% - 10px);
+        background: #dd0e5a;
+        overflow: hidden;
+    }
+    .edit-icon::before {
+        left: 22px;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+    }
+    .edit-icon::after {
+        right: 22px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+    .edit-btn:hover .edit-icon::before {
+        left: 15px;
+        height: 4px;
+        top: calc(50% - 2px);
+    }
+    .edit-btn:hover .edit-icon::after {
+        right: 15px;
+        height: 4px;
+        top: calc(50% - 2px);
+    }
+</style>
+
+</body>
+</html>
