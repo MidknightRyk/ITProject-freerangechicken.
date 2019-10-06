@@ -77,7 +77,7 @@ var login = function (req, res) {
 var profile = function (req, res) {
 	var userID = (req.session.user);
 	User.findById(userID)
-	.populate({ path: 'artifacts', model: Artifact })
+	.populate({ path: 'artifacts', match: {approved: true}, model: Artifact })
 	.exec((err, user) => {
 		if (err) return console.log(err);
 
