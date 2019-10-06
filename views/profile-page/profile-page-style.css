@@ -477,6 +477,6 @@ body.is-touch .tiles article .content {
 #header
 {
     margin-bottom: 50px;
-    background: rgb(38,123,142);
-    background: linear-gradient(180deg, rgba(38,123,142,1) 0%, rgba(210,163,181,1) 50%, rgba(252,252,252,1) 100%);
+    background: rgb(28,165,195);
+    background: linear-gradient(180deg, rgba(28,165,195,1) 0%, rgba(210,163,181,0.617926217765043) 34%, rgba(255,255,255,1) 86%);
 }
