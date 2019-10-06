@@ -21,8 +21,6 @@ router.get('/make-edits', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/edit-artifacts/edit-artifact.html'));
 });
 
-router.get('/:tag', artifactController.getTag);
-
 /* !!!! ATTENTION: Add new get pages before this !!!
  * If you do not heed the warning,
  * you gon objectid error

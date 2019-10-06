@@ -6,6 +6,7 @@ var router = express.Router();
 var path = require('path');
 var loginController = require('../controllers/loginController.js');
 var userController = require('../controllers/userController.js');
+var artifactController = require('../controllers/adminController.js');
 var admin = require('./adminRoutes.js');
 var artifactRoute = require('./artifactRoutes.js');
 var discus = require('./discussionRoutes.js');
@@ -57,6 +58,9 @@ router.get('/forgot', function (req, res) {
 
 // Reset password page
 router.get('/reset/:token', loginController.reset);
+
+// Get tag page
+router.get('/tag/:tag', artifactController.getTag);
 
 /* POST requests */
 
