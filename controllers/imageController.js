@@ -2,7 +2,7 @@ const fs = require('fs');
 var storage = require('sessionstorage');
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
-var defaultDP = ObjectId('5d85d612220b38000446b55c');
+var defaultDP = ObjectId('5d8b3762f8e40e67dab64acd');
 var Image = mongoose.model('Image');
 var Artifact = mongoose.model('Artifact');
 var User = mongoose.model('User');
@@ -94,7 +94,7 @@ var uploadDisplayPic = function (req, res) {
 // Retrive images from mongo
 var getImage = function (req, res) {
 	var cond = req.params.image;
-
+	console.log('getting image: ' + cond);
 	// Look for image by name
 	Image.findOne({ 'name': cond }, function (err, image) {
 		if (err) return console.log(err);
@@ -105,7 +105,7 @@ var getImage = function (req, res) {
 		};
 	});
 
-	/* this works but throws and error for some reason grr */
+	/* this works but throws an error for some reason grr */
 
 	// If not found look by ID
 	Image.findOne({ '_id': cond }, function (err, img) {

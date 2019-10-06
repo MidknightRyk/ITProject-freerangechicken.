@@ -11,7 +11,7 @@ var artifactController = require('../controllers/artifactController.js');
 
 // Add Artifact page
 router.get('/add-artifact', function (req, res) {
-	res.render(path.join(__dirname, '/../views/add-artifacts/add-artifact.pug'));
+	res.sendFile(path.join(__dirname, '/../views/add-artifacts/add-artifact.html'));
 });
 
 // Edit Artifact page (currently missing)
@@ -21,6 +21,7 @@ router.get('/make-edits', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/edit-artifacts/edit-artifact.html'));
 });
 
+router.get('/delete-artifact', artifactController.deleteArtifact);
 /* !!!! ATTENTION: Add new get pages before this !!!
  * If you do not heed the warning,
  * you gon objectid error
@@ -51,9 +52,5 @@ router.post('/delete-artifact', artifactController.deleteArtifact);
 
 // Clones and creates ticket for artifact Edits
 router.post('/submit-ticket', artifactController.cloneArtifact);
-
-// Approve Edits for artifacts
-// ** needs edit ticket id in params **
-router.post('/approve-edits', artifactController.editApproval);
 
 module.exports = router;

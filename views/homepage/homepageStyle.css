@@ -2,12 +2,15 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: #fff;
-    background-color: #faf2f2;
+   /* background-color: #faf2f2;*/
     font-size: 1.1em;
     line-height: 1.5;
     text-align: center;
-    height: 100%
+    height: 100%;
+    background: rgb(28,165,195);
+    background: linear-gradient(180deg, rgba(28,165,195,1) 0%, rgba(210,163,181,0.617926217765043) 34%, rgba(255,255,255,1) 86%);
 }
+
 
 button:focus
 {
@@ -71,6 +74,44 @@ button:focus
     text-align:center;
     background-color: rgba(17, 2, 38, 0.6);
     border-radius:2px;
+}
+
+/* Welcome Button  */
+#welcome {
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    background-color: transparent;
+    border-radius: 0.35em;
+    border: solid 3px #efefef;
+    color:white;
+    /*color: #787878 !important;*/
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    height: calc(2.75em + 6px);
+    line-height: 2.75em;
+    min-width: 10em;
+    padding: 0 1.5em;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    margin: auto auto auto auto;
+}
+
+#welcome:hover {
+    border-color: #49bf9d;
+    color: #49bf9d !important;
+}
+
+#welcome:active {
+    background-color: rgba(73, 191, 157, 0.1);
+    border-color: #49bf9d;
+    color: #49bf9d !important;
+}
+
+/* Finger Animation Position */
+#finger-animation
+{
+    margin-left: 90%;
 }
 
 /* the outer toggle rectangle */

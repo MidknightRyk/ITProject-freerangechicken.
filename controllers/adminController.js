@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 var path = require('path');
 var Artifact = mongoose.model('Artifact');
+var OldArtifact = mongoose.model('OldArtifact');
 var User = mongoose.model('User');
+var Edits = mongoose.model('Edits');
 var nodemailer = require('nodemailer');
 
 // Gets unapproved users and artifacts
@@ -12,8 +14,13 @@ var adminPage = function (req, res) {
 			if (!err) {
 				Artifact.find({'approved': 0}).lean().exec(function (err, artifacts) {
 					if (!err) {
-						res.render(path.join(__dirname, '/../views/admin-page/admin-page.pug'),
-							{users: users, artifacts: artifacts});
+						Edits.find({'deletion': true, 'approved': false}).lean().populate('oldArtifact').exec(function (err, deletes) {
+							if (!err) {
+								console.log(deletes);
+								res.render(path.join(__dirname, '/../views/admin-page/admin-page.pug'),
+									{users: users, artifacts: artifacts, deletes: deletes});
+							} else { throw err; }
+						});
 					} else { throw err; }
 				});
 			} else { throw err; }
@@ -30,13 +37,12 @@ var userApprove = function (req, res) {
 		if (err) {
 			throw err;
 		} else {
-			console.log(user);
 			var smtpTransport = nodemailer.createTransport('smtps://freerangechickenfeed%40gmail.com:' + encodeURIComponent('comp2019') + '@smtp.gmail.com:465');
 			var mailOptions = {
 				to: user.email,
 				from: 'freerangechickenfeed@gmail.com',
 				subject: 'Culturchive - Account approved',
-				text: 'Hello' + user.name + ',\n\n' +
+				text: 'Hello ' + user.name + ',\n\n' +
 				'This is to inform you that your account has been approved.\n' +
 				'Click the link below to sign in.\n' +
 				'http://culturchive.herokuapp.com\n\nBest regards,\nFree Range Chicken Team'
@@ -91,8 +97,96 @@ var artiDelete = function (req, res) {
 	);
 };
 
+/* Used when approving denying artifact edits
+ * Approved: new arifact gets uploaded, old artifact is moved to logs
+ * Rejected: new artifact is deleted, old artifact doesn't change
+ */
+var editApproval = function (req, res) {
+	var editID = req.params.edits;
+	var approval = req.body.approval || req.query.approval;
+	Edits.findById(editID, function (err, edit) {
+		if (err) return console.log(err);
+
+		var artifactID = edit.oldArtifact;
+		var newartifactID = edit.newArtifact;
+
+		// If the edits have been approved, the make the changes
+		if (approval /* approved */) {
+			edit.approved = true;
+
+			Artifact.findById(artifactID, function (err, artifact) {
+				if (err) return console.log(err);
+				// Place the old artifact into logs, to keep track of changes
+				var oldArti = new OldArtifact(artifact);
+				oldArti.save();
+
+				// Replace all the fields of the original artifact with the new info
+				// Deletes the temp artifact
+				Artifact.findOneAndDelete(
+					{ '_id': newartifactID },
+					function (err, newartifact) {
+						if (err) return console.log(err);
+
+						artifact.name = newartifact.name;
+						artifact.description = newartifact.description;
+						artifact.tags = newartifact.tags;	// Might need changes to this (array probs amirite)
+						artifact.placeOrigin = newartifact.placeOrigin;
+						artifact.year = newartifact.year;
+						artifact.editor = edit.editor;
+						artifact.dateEdited = edit.dateEdited;
+					});
+				artifact.save();
+			});
+
+		// If the changes are rejected, delete the temp artifact
+		} else {
+			edit.approval = true;
+			edit.rejected = true;
+
+			Artifact.findOneAndDelete({ '_id': newartifactID });
+		};
+		edit.save();
+	});
+};
+
+var deleteApproval = function (req, res) {
+	var editID = req.body.editID || req.query.editID;
+	var approval = req.body.approval || req.query.approval;
+	Edits.findById(editID, function (err, edit) {
+		if (err) return console.log(err);
+		console.log(editID);
+		console.log(approval);
+		var artifactID = edit.oldArtifact;
+		// If this is approved, delete artifact.
+		if (approval /* approved */) {
+			edit.approved = true;
+
+			Artifact.findOneAndDelete(
+				{ '_id': artifactID },
+				function (err, artifact) {
+					if (err) return console.log(err);
+					// Place the old artifact into logs, to keep track of changes
+					var oldArti = new OldArtifact(artifact);
+					oldArti.save();
+
+					// delete from user
+					User.findOneAndUpdate(
+						{ '_id': artifact.author },
+						{ $pull: { 'artifacts': artifactID } }
+					);
+				});
+		} else {
+			edit.deletion = false;
+			edit.rejected = true;
+		}
+		edit.save();
+	});
+};
+
 module.exports.adminPage = adminPage;
 module.exports.userApprove = userApprove;
 module.exports.userDelete = userDelete;
 module.exports.artiApprove = artiApprove;
 module.exports.artiDelete = artiDelete;
+module.exports.editApproval = editApproval;
+module.exports.deleteApproval = deleteApproval;

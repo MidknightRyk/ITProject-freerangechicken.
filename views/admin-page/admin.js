@@ -10,7 +10,7 @@ $(document).ready(function () {
             method: 'POST',
             url: '/admin/user-delete',
             data: {"userId": userId}});
-        $(this).closest('td').text('Rejected');
+        $(this).closest('td').text('Approved');
         $(this).closest('tr').find('.text-center').text('Rejected');
         $(this).closest('tr').fadeOut();
     });
@@ -24,7 +24,7 @@ $(document).ready(function () {
             method: 'POST',
             url: '/admin/user-approve',
             data: {"userId": userId}});
-        $(this).closest('td').text('Uploaded');
+        $(this).closest('td').text('Approved');
         $(this).closest('tr').find('.text-center').text('Approved');
         $(this).closest('tr').fadeOut();
     });
@@ -50,8 +50,34 @@ $(document).ready(function () {
             method: 'POST',
             url: '/admin/arti-approve',
             data: {"userId": userId}});
-        $(this).closest('td').text('Uploaded');
-        $(this).closest('tr').find('.text-center').text('Uploaded');
+        $(this).closest('td').text('Approved');
+        $(this).closest('tr').find('.text-center').text('Approved');
+        $(this).closest('tr').fadeOut();
+    });
+
+    // Show 'deleted' text then the entire row fades out
+    $('.appr-delete-btn').on('click', function () {
+        var editID = $(this).attr('data-id');
+        $.ajax({
+            method: 'POST',
+            url: '/admin/approve-delete',
+            data: {'editID': editID, 'approval': true}});
+        $(this).closest('td').text('Approved');
+        $(this).closest('tr').find('.text-center').text('Approved');
+        $(this).closest('tr').fadeOut();
+    });
+
+
+
+    // Show 'uploaded' text then the entire row fades out
+    $('.reje-delete-btn').on('click',function(){
+        var editID = $(this).attr('data-id');
+        $.ajax({
+            method: 'POST',
+            url: '/admin/approve-delete',
+            data: {'editID': editID, 'approval': false}});
+        $(this).closest('td').text('Rejected');
+        $(this).closest('tr').find('.text-center').text('Rejected');
         $(this).closest('tr').fadeOut();
     });
 });
