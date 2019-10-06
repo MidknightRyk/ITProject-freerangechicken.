@@ -13,7 +13,7 @@ var nodemailer = require('nodemailer');
 // Registration function
 var register = function (req, res) {
 	// If email is not registered
-	console.log(req);
+
 	User.findOne({ email: req.body.email }).then(function (user) {
 		if (user) {
 			req.flash('error', 'That user already exists!');
@@ -46,11 +46,14 @@ var register = function (req, res) {
 
 // Login function
 var login = function (req, res) {
+
 	passport.authenticate('user', (err, user, info) => {
 		if (err) {
+			console.log(err);
 			return res.redirect('/');
 		}
 		if (user) {
+
 			if (user.approved) {
 				// Keep user id and name in session storage
 				req.session.user = user._id;
@@ -77,7 +80,7 @@ var profile = function (req, res) {
 	.populate({ path: 'artifacts', model: Artifact })
 	.exec((err, user) => {
 		if (err) return console.log(err);
-		console.log(user);
+
 		res.render(path.join(__dirname, '/../views/profile-page/profile-page.pug'),
 				{user: user, artifacts: user.artifacts});
 	});

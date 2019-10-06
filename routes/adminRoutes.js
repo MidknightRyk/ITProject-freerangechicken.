@@ -12,11 +12,6 @@ var adminController = require('../controllers/adminController.js');
 // Access by typing culturechive.herokuapp.com/admin/{page you want}
 router.get('/', adminController.adminPage);
 
-// No Access Page
-router.get('/no-access', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/admin-page/no-access.html'));
-});
-
 /* POST requests */
 
 // User approval
