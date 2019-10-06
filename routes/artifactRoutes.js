@@ -21,6 +21,7 @@ router.get('/make-edits', function (req, res) {
 	res.sendFile(path.join(__dirname, '/../views/edit-artifacts/edit-artifact.html'));
 });
 
+router.get('/delete-artifact', artifactController.deleteArtifact);
 /* !!!! ATTENTION: Add new get pages before this !!!
  * If you do not heed the warning,
  * you gon objectid error
@@ -55,5 +56,8 @@ router.post('/submit-ticket', artifactController.cloneArtifact);
 // Approve Edits for artifacts
 // ** needs edit ticket id in params **
 router.post('/approve-edits', artifactController.editApproval);
+
+// Approve deletion for Artifacts
+router.post('/approve-delete', artifactController.deleteApproval);
 
 module.exports = router;
