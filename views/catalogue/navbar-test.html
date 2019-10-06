@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/css/logout.css">
+
+</head>
+<body>
+
+<header id="header" class="alt" style="background-color: midnightblue;">
+    <h1><a href="/catalogue">CATALOGUE</a></h1>
+    <nav id="nav">
+        <ul>
+            <li class="special">
+
+                <!-- Menu Dropdown -->
+                <a href="#menu" class="menuToggle"><span>Menu</span></a>
+
+                <!-- Light Box -->
+                <div id="menu">
+
+                    <!-- Profile Photo -->
+                    <div class="profile-upload-container">
+                        <a href="#"><span class="fas fa-camera"></span></a>
+                        <img src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" class="img-thumbnail img-circle img-responsive">
+                    </div>
+
+                    <!-- Username :-> leads to the profile page -->
+                    <div class="user-name" style="text-align: center;">
+                        <a href="#" ><h2 class="underline-animation">Tom Holland</h2></a>
+                    </div>
+
+                    <!-- User Profile Information -->
+                    <div class="user-info">
+                        <h3>Relationship</h3>
+                        <h3>No. of Artifacts Added</h3>
+                        <h3>Date Joined</h3>
+                    </div>
+
+                    <div hidden>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
+
+                    <!-- Home Button -->
+                    <div class="home-button-container">
+                        <a class="home-button" href="">
+                            <img id="home-icon-img" src="https://image.flaticon.com/icons/svg/1300/1300624.svg">
+                            <div class="home">HOME</div>
+                        </a>
+                    </div>
+
+                    <!-- Logout Button -->
+                    <div class="logout-container">
+                        <form id="form1" action="/logout" method="POST">
+                            <a href="javascript:;" onclick="document.getElementById('form1').submit();" class="logout-button">
+                                <img id="logout-photo" src="https://image.flaticon.com/icons/svg/1300/1300674.svg">
+                                <div class="logout">LOGOUT</div>
+                            </a>
+                    </div>
+
+                </div>
+
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Scripts -->
+<script src="../catalogue/assets/js/jquery.min.js"></script>
+<script src="../catalogue/assets/js/jquery.scrollex.min.js"></script>
+<script src="../catalogue/assets/js/jquery.scrolly.min.js"></script>
+<script src="../catalogue/assets/js/browser.min.js"></script>
+<script src="../catalogue/assets/js/breakpoints.min.js"></script>
+<script src="../catalogue/assets/js/util.js"></script>
+<script src="../catalogue/assets/js/main.js"></script>
+
+<style>
+
+    @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
+
+    a {
+        -moz-transition: color 0.2s ease, border-bottom-color 0.2s ease;
+        -webkit-transition: color 0.2s ease, border-bottom-color 0.2s ease;
+        -ms-transition: color 0.2s ease, border-bottom-color 0.2s ease;
+        transition: color 0.2s ease, border-bottom-color 0.2s ease;
+        border-bottom: dotted 1px;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    a:hover {
+        border-bottom-color: transparent;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+
+        font-family: "Open Sans", Helvetica, sans-serif;
+        color: #fff;
+        font-weight: 800;
+        letter-spacing: 0.225em;
+        line-height: 1em;
+        margin: 0 0 1em 0;
+        text-transform: uppercase;
+    }
+
+
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    /* Header */
+    #header {
+        -moz-transition: background-color 0.2s ease;
+        -webkit-transition: background-color 0.2s ease;
+        -ms-transition: background-color 0.2s ease;
+        transition: background-color 0.2s ease;
+        background: #2e3842;
+        height: 3em;
+        left: 0;
+        line-height: 3em;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10000;
+    }
+
+    #header h1 {
+        -moz-transition: opacity 0.2s ease;
+        -webkit-transition: opacity 0.2s ease;
+        -ms-transition: opacity 0.2s ease;
+        transition: opacity 0.2s ease;
+        height: inherit;
+        left: 1.25em;
+        line-height: inherit;
+        position: absolute;
+        top: 0;
+    }
+
+    #header h1 a {
+        border: 0;
+        display: block;
+        height: inherit;
+        line-height: inherit;
+    }
+
+    @media screen and (max-width: 736px) {
+
+        #header h1 a {
+            font-size: 0.8em;
+        }
+
+    }
+
+    #header nav {
+        height: inherit;
+        line-height: inherit;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    #header nav > ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        white-space: nowrap;
+    }
+
+    #header nav > ul > li {
+        display: inline-block;
+        padding: 0;
+    }
+
+    #header nav > ul > li > a {
+        border: 0;
+        color: #fff;
+        display: block;
+        font-size: 0.8em;
+        letter-spacing: 0.225em;
+        padding: 0 1.5em;
+        text-transform: uppercase;
+    }
+
+    #header nav > ul > li > a.menuToggle {
+        outline: 0;
+        position: relative;
+    }
+
+    #header nav > ul > li > a.menuToggle:after {
+        background-image: url("images/bars.svg");
+        background-position: right center;
+        background-repeat: no-repeat;
+        content: '';
+        display: inline-block;
+        height: 3.75em;
+        vertical-align: top;
+        width: 2em;
+    }
+
+    @media screen and (max-width: 736px) {
+
+        #header nav > ul > li > a.menuToggle {
+            padding: 0 1.5em;
+        }
+
+        #header nav > ul > li > a.menuToggle span {
+            display: none;
+        }
+
+    }
+
+    @media screen and (max-width: 736px) {
+
+        #header nav > ul > li > a {
+            padding: 0 0 0 1.5em;
+        }
+
+    }
+
+    #header nav > ul > li:first-child {
+        margin-left: 0;
+    }
+
+    #header.alt {
+        background: transparent;
+    }
+
+    #header.alt h1 {
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    /* Page Wrapper + Menu */
+    #page-wrapper {
+        -moz-transition: opacity 0.5s ease;
+        -webkit-transition: opacity 0.5s ease;
+        -ms-transition: opacity 0.5s ease;
+        transition: opacity 0.5s ease;
+        opacity: 1;
+        padding-top: 3em;
+    }
+
+    #page-wrapper:before {
+        background: rgba(0, 0, 0, 0);
+        content: '';
+        display: block;
+        display: none;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10001;
+    }
+
+    /* Light Box */
+    #menu {
+        -moz-transform: translateX(20em);
+        -webkit-transform: translateX(20em);
+        -ms-transform: translateX(20em);
+        transform: translateX(20em);
+        -moz-transition: -moz-transform 0.5s ease;
+        -webkit-transition: -webkit-transform 0.5s ease;
+        -ms-transition: -ms-transform 0.5s ease;
+        transition: transform 0.5s ease;
+        -webkit-overflow-scrolling: touch;
+
+        /* Background Color Options */
+        /*background-image: linear-gradient(#661913, #fffdd9) ;*/
+        /*background-image: linear-gradient(#935c53, #e1d1ce) ;*/
+        /*background-image: url("images/bg.jpg");*/
+        background-image: url("images/sky.jpg");
+        /*background-image: linear-gradient(#fff0de, #e3bcb6) ;*/
+        /*background-image: linear-gradient(#e7a411, rgba(184,166,128,1));*/
+
+        color: #880d0d;
+        height: 100%;
+        max-width: 80%;
+        overflow-y: auto;
+        padding: 3em 2em;
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 20em;
+        z-index: 10002;
+    }
+
+    /* Profile Photo */
+    .profile-upload-container {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        width:120px;
+        height:120px;
+        border:5px solid white; /* Profile Photo Border */
+        border-radius: 50%;
+        margin-left: 25%;
+        margin-top: 15%;
+    }
+
+    .profile-upload-container img
+    {
+        width: 120px;
+        height:120px;
+        object-fit: cover; /* avoid stretching */
+        border-radius: 50%;
+        opacity:1;
+    }
+
+    .profile-upload-container:hover img{
+        opacity: 0.5;
+        transition:0.5s;
+    }
+
+    .profile-upload-container a {
+        display: block;
+        position: absolute;
+        top: -100%;
+        opacity: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        text-align: center;
+        color: inherit;
+    }
+    .profile-upload-container:hover a {
+        opacity: 1;
+        top: 3px;
+        z-index: 500;
+        border-radius: 50px;
+        border:0;
+    }
+    .profile-upload-container:hover a span {
+        top: 50%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+    }
+
+    /* Username */
+
+    .user-name h2.underline-animation:after {
+        content: '';
+        position: absolute;
+        left: 15%;
+        display: inline-block;
+        height: 1em;
+        width: 70%;
+        border-bottom: 1px solid;
+        margin-top: 10px;
+        opacity: 0;
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        transition: opacity 0.35s, transform 0.35s;
+        -webkit-transform: scale(0,1);
+        transform: scale(0,1);
+    }
+
+    .user-name h2.underline-animation:hover:after {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    /* User Info */
+    .user-info
+    {
+        margin-top: 30%;
+    }
+    .user-info h3
+    {
+        text-align: center;
+        font-size: 12px;
+    }
+
+
+
+
+
+    #menu ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    #menu ul > li {
+        border-top: solid 1px rgba(0, 0, 0, 0.125);
+        margin: 0.5em 0 0 0;
+        padding: 0.5em 0 0 0;
+    }
+
+    #menu ul > li:first-child {
+        border-top: 0 !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    #menu ul > li > a {
+        border: 0;
+        color: inherit;
+        display: block;
+        font-size: 0.8em;
+        letter-spacing: 0.225em;
+        outline: 0;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    @media screen and (max-width: 736px) {
+
+        #menu ul > li > a {
+            line-height: 3em;
+        }
+
+    }
+
+    #menu .close {
+        background-image: url("images/close.svg");
+        background-position: 4.85em 1em;
+        background-repeat: no-repeat;
+        border: 0;
+        cursor: pointer;
+        display: block;
+        height: 3em;
+        position: absolute;
+        right: 0;
+        top: 0;
+        vertical-align: middle;
+        width: 7em;
+    }
+
+    @media screen and (max-width: 736px) {
+
+        #menu {
+            padding: 3em 1.5em;
+        }
+
+    }
+
+    body.is-menu-visible #page-wrapper {
+        opacity: 0.35;
+    }
+
+    body.is-menu-visible #page-wrapper:before {
+        display: block;
+    }
+
+    body.is-menu-visible #menu {
+        -moz-transform: translateX(0);
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+    }
+</style>
+
+</body>
+</html>

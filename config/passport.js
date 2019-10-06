@@ -17,6 +17,7 @@ passport.use('user', new LocalStrategy(
 			{'username': username}
 		]}, function (err, user, res) {
 			if (!err) {
+
 				if (!user || !user.validatePassword(password)) {
 					return done(null, false, { errors: { 'email or password': 'is invalid' } });
 				}
