@@ -105,7 +105,7 @@ var getImage = function (req, res) {
 		};
 	});
 
-	/* this works but throws and error for some reason grr */
+	/* this works but throws an error for some reason grr */
 
 	// If not found look by ID
 	Image.findOne({ '_id': cond }, function (err, img) {
