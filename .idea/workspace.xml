@@ -21,9 +21,9 @@
       <change beforePath="$PROJECT_DIR$/views/add-artifacts/add-artifact.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/add-artifacts/add-artifact.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/add-artifacts/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/add-artifacts/assets/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/admin-page/artifact-approval.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin-page/artifact-approval.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/catalogueNew/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/catalogueNew/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/catalogueNew/assets/sass/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/views/catalogueNew/assets/sass/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/catalogueNew/catalogueNew.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/catalogueNew/catalogueNew.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/catalogue/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/catalogue/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/catalogue/assets/sass/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/views/catalogue/assets/sass/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/catalogue/catalogue.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/catalogue/catalogue.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/discussion-board/assets/css/discussion-forum-mainStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/discussion-board/assets/css/discussion-forum-mainStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/discussion-board/discussion-forum-main.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/discussion-board/discussion-forum-main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/discussion-board/issue-details-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/discussion-board/issue-details-page.html" afterDir="false" />
@@ -59,7 +59,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/catalogueNew/catalogueNew.html">
+        <entry file="file://$PROJECT_DIR$/views/catalogue/catalogue.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-31">
               <caret line="14" selection-start-line="14" selection-end-line="14" />
@@ -84,7 +84,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/catalogueNew/assets/css/main.css">
+        <entry file="file://$PROJECT_DIR$/views/catalogue/assets/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-18908">
               <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
@@ -143,7 +143,7 @@
         <option value="$PROJECT_DIR$/views/homepage/deleteStyle.css" />
         <option value="$PROJECT_DIR$/views/catalogue/css/catalogue-style.css" />
         <option value="$PROJECT_DIR$/views/catalogue/css/logout.css" />
-        <option value="$PROJECT_DIR$/views/catalogueNew/assets/css/logout.css" />
+        <option value="$PROJECT_DIR$/views/catalogue/assets/css/logout.css" />
         <option value="$PROJECT_DIR$/views/homepage/logout.html" />
         <option value="$PROJECT_DIR$/views/catalogue/catalogue.html" />
         <option value="$PROJECT_DIR$/views/add-artifacts/addArtifact.html" />
@@ -160,7 +160,7 @@
         <option value="$PROJECT_DIR$/views/discussion-board/discussion-board.html" />
         <option value="$PROJECT_DIR$/views/discussion-board/assets/sass/components/_post.scss" />
         <option value="$PROJECT_DIR$/views/discussion-board/assets/sass/layout/_sidebar.scss" />
-        <option value="$PROJECT_DIR$/views/catalogueNew/assets/sass/main.scss" />
+        <option value="$PROJECT_DIR$/views/catalogue/assets/sass/main.scss" />
         <option value="$PROJECT_DIR$/views/discussion-board/index.html" />
         <option value="$PROJECT_DIR$/views/discussion-board/test-inputbutton.html" />
         <option value="$PROJECT_DIR$/views/discussion-board/single.html" />
@@ -174,9 +174,9 @@
         <option value="$PROJECT_DIR$/views/profile-page/dynamic-test.html" />
         <option value="$PROJECT_DIR$/views/edit-profile/edit-profile.html" />
         <option value="$PROJECT_DIR$/views/homepage/homepage.html" />
-        <option value="$PROJECT_DIR$/views/catalogueNew/catalogueNew.html" />
+        <option value="$PROJECT_DIR$/views/catalogue/catalogue.html" />
         <option value="$PROJECT_DIR$/views/profile-page/textarea-test.html" />
-        <option value="$PROJECT_DIR$/views/catalogueNew/assets/css/main.css" />
+        <option value="$PROJECT_DIR$/views/catalogue/assets/css/main.css" />
         <option value="$PROJECT_DIR$/views/add-artifacts/assets/css/main.css" />
         <option value="$PROJECT_DIR$/views/add-artifacts/add-artifact.html" />
         <option value="$PROJECT_DIR$/views/discussion-board/emoji-test.html" />
@@ -273,20 +273,20 @@
               <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
               <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="catalogueNew" type="462c0819:PsiDirectoryNode" />
+              <item name="catalogue" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
               <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="catalogueNew" type="462c0819:PsiDirectoryNode" />
+              <item name="catalogue" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
               <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="catalogueNew" type="462c0819:PsiDirectoryNode" />
+              <item name="catalogue" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -294,7 +294,7 @@
               <item name="ITProject-freerangechicken." type="b2602c69:ProjectViewProjectNode" />
               <item name="ITProject-freerangechicken." type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="catalogueNew" type="462c0819:PsiDirectoryNode" />
+              <item name="catalogue" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
               <item name="images" type="462c0819:PsiDirectoryNode" />
@@ -333,7 +333,7 @@
       <recent name="$PROJECT_DIR$/views/discussion-board" />
       <recent name="$PROJECT_DIR$/views/discussion-board/assets/css" />
       <recent name="$PROJECT_DIR$/views/add-artifacts/assets/css/images" />
-      <recent name="$PROJECT_DIR$/views/catalogueNew/assets/css/images" />
+      <recent name="$PROJECT_DIR$/views/catalogue/assets/css/images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/views/discussion-board/emoji-assets/css" />
@@ -359,7 +359,7 @@
     <configuration name="add-artifact.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ITProject-freerangechicken./views/add-artifacts/add-artifact.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="catalogueNew.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ITProject-freerangechicken./views/catalogueNew/catalogueNew.html" useBuiltInWebServerPort="true">
+    <configuration name="catalogue.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ITProject-freerangechicken./views/catalogue/catalogue.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="edit-profile.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ITProject-freerangechicken./views/edit-profile/edit-profile.html" useBuiltInWebServerPort="true">
@@ -375,7 +375,7 @@
       <list>
         <item itemvalue="JavaScript Debug.add-artifact.html" />
         <item itemvalue="JavaScript Debug.homepage.html" />
-        <item itemvalue="JavaScript Debug.catalogueNew.html" />
+        <item itemvalue="JavaScript Debug.catalogue.html" />
         <item itemvalue="JavaScript Debug.textarea-test.html" />
         <item itemvalue="JavaScript Debug.edit-profile.html" />
       </list>
@@ -700,7 +700,7 @@
     <entry file="file://$PROJECT_DIR$/views/discussion-board/assets/sass/layout/_wrapper.scss" />
     <entry file="file://$PROJECT_DIR$/views/discussion-board/assets/sass/layout/_sidebar.scss" />
     <entry file="file://$PROJECT_DIR$/views/discussion-board/assets/sass/layout/_footer.scss" />
-    <entry file="file://$PROJECT_DIR$/views/catalogueNew/assets/sass/main.scss">
+    <entry file="file://$PROJECT_DIR$/views/catalogue/assets/sass/main.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
           <caret line="98" column="10" selection-start-line="98" selection-start-column="10" selection-end-line="98" selection-end-column="10" />
@@ -781,7 +781,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/catalogueNew/images/backdrop.jpg">
+    <entry file="file://$PROJECT_DIR$/views/catalogue/images/backdrop.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/views/discussion-board/jquery.emojiarea.js">
@@ -811,7 +811,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/catalogueNew/assets/css/images/sky.jpg">
+    <entry file="file://$PROJECT_DIR$/views/catalogue/assets/css/images/sky.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/views/profile-page/textarea-test.html">
@@ -882,7 +882,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/catalogueNew/catalogueNew.html">
+    <entry file="file://$PROJECT_DIR$/views/catalogue/catalogue.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-31">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
@@ -916,7 +916,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/catalogueNew/assets/css/main.css">
+    <entry file="file://$PROJECT_DIR$/views/catalogue/assets/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-18908">
           <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />

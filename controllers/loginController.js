@@ -13,16 +13,19 @@ var nodemailer = require('nodemailer');
 // Registration function
 var register = function (req, res) {
 	// If email is not registered
+	console.log(req);
 	User.findOne({ email: req.body.email }).then(function (user) {
 		if (user) {
 			req.flash('error', 'That user already exists!');
-			return res.redirect('/register');
+			console.log('user exists');
+			return res.redirect('back');
 		} else {
 			// If username is not taken
 			User.findOne({username: req.body.name}).then(function (name) {
 				if (name) {
 					req.flash('error', 'Username taken!');
-					return res.redirect('/register');
+					console.log('username taken');
+					return res.redirect('back');
 				} else {
 					// Create new user and redirect to awaiting approval page
 					var user = new User({
@@ -113,13 +116,7 @@ var forgot = function (req, res, next) {
 			});
 		},
 		function (token, user, done) {
-			var smtpTransport = nodemailer.createTransport('SMTP', {
-				service: 'Gmail',
-				auth: {
-					user: 'freerangechickenfeed@gmail.com',
-					pass: 'comp2019'
-				}
-			});
+			var smtpTransport = nodemailer.createTransport('smtps://freerangechickenfeed%40gmail.com:' + encodeURIComponent('comp2019') + '@smtp.gmail.com:465');
 			var mailOptions = {
 				to: user.email,
 				from: 'freerangechickenfeed@gmail.com',
@@ -183,13 +180,7 @@ var resetPassword = function (req, res) {
 			});
 		},
 		function (user, done) {
-			var smtpTransport = nodemailer.createTransport('SMTP', {
-				service: 'Gmail',
-				auth: {
-					user: 'freerangechickenfeed@gmail.com',
-					pass: 'comp2019'
-				}
-			});
+			var smtpTransport = nodemailer.createTransport('smtps://freerangechickenfeed%40gmail.com:' + encodeURIComponent('comp2019') + '@smtp.gmail.com:465');
 			var mailOptions = {
 				to: user.email,
 				from: 'freerangechickenfeed@gmail.com',
