@@ -1,6 +1,5 @@
 const express = require('express');
 var router = express.Router();
-var path = require('path');
 var adminController = require('../controllers/adminController.js');
 
 /* Admin Access: Restricted to users with admin privlleges
@@ -25,5 +24,12 @@ router.post('/arti-approve', adminController.artiApprove);
 
 // Artifact delete
 router.post('/arti-delete', adminController.artiDelete);
+
+// Approve Edits for artifacts
+// ** needs edit ticket id in params **
+router.post('/approve-edits', adminController.editApproval);
+
+// Approve deletion for Artifacts
+router.post('/approve-delete', adminController.deleteApproval);
 
 module.exports = router;
