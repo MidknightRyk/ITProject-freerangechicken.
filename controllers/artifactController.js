@@ -32,7 +32,7 @@ var addArtifact = function (req, res) {
 			if (err) return console.log('couldnt update artifact to user');
 		}
 	);
-	res.redirect(307, '/images/uploadImages');
+	res.redirect(307, '/images/upload-images');
 };
 
 // Gets a single artifact by id
@@ -79,15 +79,17 @@ var getTag = function (req, res) {
 var deleteArtifact = function (req, res) {
 	// If suggesting deletion
 	var artifactID = storage.artifactId;
+	console.log('deleting artifact: ' + artifactID);
 	var edits = new Edits({
 		description: req.body.editDescription,
 		editor: req.session.userName,
-		dateEdited: Date.now,
 		oldArtifact: artifactID,
 		deletion: true,
 		approved: false
 	});
 	edits.save();
+	console.log(edits);
+	res.redirect('/catalogue');
 };
 
 // Creates a duplicate artifact for edits and stores old and new into a ticket
@@ -164,31 +166,22 @@ var editApproval = function (req, res) {
 				var oldArti = new OldArtifact(artifact);
 				oldArti.save();
 
-				// If this artifact is flagged for deletion, delete and then return.
-				if (edit.deletion) {
-					User.findOneAndUpdate(
-						{ '_id': artifact.author },
-						{ $pull: { 'artifacts': artifactID } }
-					);
-					artifact.remove();
-				} else {
-					// Replace all the fields of the original artifact with the new info
-					// Deletes the temp artifact
-					Artifact.findOneAndDelete(
-						{ '_id': newartifactID },
-						function (err, newartifact) {
-							if (err) return console.log(err);
+				// Replace all the fields of the original artifact with the new info
+				// Deletes the temp artifact
+				Artifact.findOneAndDelete(
+					{ '_id': newartifactID },
+					function (err, newartifact) {
+						if (err) return console.log(err);
 
-							artifact.name = newartifact.name;
-							artifact.description = newartifact.description;
-							artifact.tags = newartifact.tags;	// Might need changes to this (array probs amirite)
-							artifact.placeOrigin = newartifact.placeOrigin;
-							artifact.year = newartifact.year;
-							artifact.editor = edit.editor;
-							artifact.dateEdited = edit.dateEdited;
-						});
-					artifact.save();
-				}
+						artifact.name = newartifact.name;
+						artifact.description = newartifact.description;
+						artifact.tags = newartifact.tags;	// Might need changes to this (array probs amirite)
+						artifact.placeOrigin = newartifact.placeOrigin;
+						artifact.year = newartifact.year;
+						artifact.editor = edit.editor;
+						artifact.dateEdited = edit.dateEdited;
+					});
+				artifact.save();
 			});
 
 		// If the changes are rejected, delete the temp artifact
@@ -202,10 +195,43 @@ var editApproval = function (req, res) {
 	});
 };
 
+var deleteApproval = function (req, res) {
+	var editID = req.params.edits;
+	Edits.findById(editID, function (err, edit) {
+		if (err) return console.log(err);
+
+		var artifactID = edit.oldArtifact;
+		// If this is approved, delete artifact.
+		if (req.body.approval /* approved */) {
+			edit.approved = true;
+
+			Artifact.findOneAndDelete(
+				{ '_id': artifactID },
+				function (err, artifact) {
+					if (err) return console.log(err);
+					// Place the old artifact into logs, to keep track of changes
+					var oldArti = new OldArtifact(artifact);
+					oldArti.save();
+
+					// delete from user
+					User.findOneAndUpdate(
+						{ '_id': artifact.author },
+						{ $pull: { 'artifacts': artifactID } }
+					);
+				});
+		} else {
+			edit.approval = true;
+			edit.rejected = true;
+		}
+		edit.save();
+	});
+};
+
 module.exports.addArtifact = addArtifact;
 module.exports.getArtifact = getArtifact;
 module.exports.getTag = getTag;
 module.exports.deleteArtifact = deleteArtifact;
 module.exports.cloneArtifact = cloneArtifact;
 module.exports.editApproval = editApproval;
+module.exports.deleteApproval = deleteApproval;
 module.exports.editArtifact = editArtifact;

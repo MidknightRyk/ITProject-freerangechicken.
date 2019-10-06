@@ -94,7 +94,7 @@ var uploadDisplayPic = function (req, res) {
 // Retrive images from mongo
 var getImage = function (req, res) {
 	var cond = req.params.image;
-
+	console.log('getting image: ' + cond);
 	// Look for image by name
 	Image.findOne({ 'name': cond }, function (err, image) {
 		if (err) return console.log(err);
