@@ -9,7 +9,6 @@ var Edits = mongoose.model('Edits');
 
 // Creates a new artifact
 var addArtifact = function (req, res) {
-
 	var artifact = new Artifact({
 		'name': req.body.name,
 		'description': req.body.description,
