@@ -15,12 +15,14 @@ var register = function (req, res) {
 	// If email is not registered
 	User.findOne({ email: req.body.email }).then(function (user) {
 		if (user) {
-			return res.status(400).send('That user already exisits!');
+			req.flash('error', 'That user already exists!');
+			return res.redirect('/register');
 		} else {
 			// If username is not taken
 			User.findOne({username: req.body.name}).then(function (name) {
 				if (name) {
-					return res.status(400).send('Username taken!');
+					req.flash('error', 'Username taken!');
+					return res.redirect('/register');
 				} else {
 					// Create new user and redirect to awaiting approval page
 					var user = new User({
@@ -161,15 +163,22 @@ var resetPassword = function (req, res) {
 					return res.redirect('back');
 				}
 
-				user.password = req.body.password;
+				user.setPassword(req.body.password);
 				user.resetPasswordToken = undefined;
 				user.resetPasswordExpires = undefined;
 
 				user.save(function (err) {
 					if (err) return console.log(err);
-					req.logIn(user, function (err) {
-						done(err, user);
-					});
+					req.session.user = user._id;
+					req.session.userName = user.name;
+					req.session.username = user.username;
+					// Set user type
+					if (user.admin) {
+						req.session.userType = 'admin';
+					} else {
+						req.session.userType = 'user';
+					}
+					return res.redirect('/catalogue');
 				});
 			});
 		},
