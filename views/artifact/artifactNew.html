@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<title>Artifact</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!-- Bootstrap Tagsinput CSS -->
+	<link rel="stylesheet" href="../views/artifact/assets/css/bootstrap-tagsinput.css">
+
+	<!-- Lottie-player Animations -->
+	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+	<!-- Bootstrap Date Picker-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+	<!-- Bootstrap Tagsinput JS -->
+	<script src="../artifact/assets/js/bootstrap-tagsinput.js"></script>
+
+	<!-- Font Awesome CDN -->
+	<script src="https://kit.fontawesome.com/010fb4b3e5.js"></script>
+
+	<link rel="stylesheet" href="../views/artifact/assets/css/main.css" />
+	<link rel="stylesheet" href="../views/artifact/assets/css/uploadStyle.css" />
+	<link rel="stylesheet" href="../views/artifact/assets/css/profile-photo-style.css">
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header" style="z-index:9;">
+		<lottie-player src="https://assets8.lottiefiles.com/temp/lf20_RTai6J.json" background="transparent" speed="0.2" style="width: 100px; height: 100px; margin-top:-80px;" loop autoplay>
+		</lottie-player>
+
+		
+			<div class="slideshow-container">
+			
+				<div class="mySlides fade">
+					<img src="images/dragon.jpg" style="width:100%">
+				</div>
+			
+				<div class="mySlides fade">
+					<img src="images/lantern.jpg" style="width:100%">
+				</div>
+			
+				<div class="mySlides fade">
+					<img src="images/dragon.jpg" style="width:100%">
+				</div>
+			
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+			
+			</div>
+			<br>
+			
+						
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<style>
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0}
+        .mySlides {display: none}
+        img {vertical-align: middle;}
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 400px;
+            position: relative;
+			margin: auto;
+			margin-top: 50%;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 15px;
+            margin-top: 25%;
+            color: white;
+            font-weight: bold;
+            font-size: -22px;
+            transition: 0.8s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        
+        /* Fading animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+            .prev, .next,.text {font-size: 11px}
+        }
+    	</style>
+	</head>
+
+
+	</header>
+
+	<!-- Main Forms -->
+	<div id="main">
+
+		<div class="form-container">
+			<form id="addForm" method="post" action="/artifacts/add-artifact" enctype="multipart/form-data">
+				<!-- Upload Photos -->
+				<div class="container">
+					<div class="array">
+						<div class="preview-images-zone">
+						</div>
+						
+				<div id="name"> ARTIFACT NAME</div>
+				<div id="year"> 2019 </div><br>
+				<div id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe omnis beatae libero quisquam ex nostrum repellendus, consectetur suscipit. Velit iusto ducimus sit quos officiis nesciunt libero, officia, aliquam doloremque totam.
+					Ratione natus expedita iusto, minus cumque vitae quo culpa reiciendis aspernatur aliquam veritatis magnam non, dicta nemo inventore, nisi quas dolores. Modi laboriosam sunt aliquid rem, deserunt quis? Porro, hic.
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe omnis beatae libero quisquam ex nostrum repellendus, consectetur suscipit. Velit iusto ducimus sit quos officiis nesciunt libero, officia, aliquam doloremque totam.
+					Ratione natus expedita iusto, minus cumque vitae quo culpa reiciendis aspernatur aliquam veritatis magnam non, dicta nemo inventore, nisi quas dolores. Modi laboriosam sunt aliquid rem, deserunt quis? Porro, hic.</div><br>
+				<div id="tags">Tags: #ancient, #precious</div><br>
+				
+				
+				<!-- Edit Artifact Button -->
+				<section>
+						<ul class="actions">
+							<li><input type="submit" value="Edit Artifact" class="button" /></li>
+						</ul>
+					</section>
+				
+			</form>
+		</div>
+	</div>
+
+
+
+	<!-- Delete Artifact Button (trigger modal on clicking for deletion of artifact) -->
+	<section>
+			<ul class="actions">
+				<li><a href="javascript:;" onclick="document.getElementById('form1').submit();" class="button" data-toggle="modal" data-target="#myModal" formmethod="post">Delete Artifact</a></li>
+			</ul>
+		</section>
+	</form>
+
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" onclick="myFunction()" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Ticket Issued!</h4>
+				</div>
+				<div class="modal-body">
+					<p>Your request to delete the artifact has been sent to admin! </p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Necessary: the Footer of the Page -->
+	<footer id="footer">
+		<div class="inner">
+		</div>
+	</footer>
+
+
+
+		<!-- Upload Artifact Images -->
+		<!-- Adapted from : https://bootsnipp.com/snippets/2eNKz -->
+		<script>
+		$(document).ready(function() {
+    document.getElementById('pro-image').addEventListener('change', readImage, false);
+	    $(document).on('click', '.image-cancel', function() {
+	        let no = $(this).data('no');
+	        $(".preview-image.preview-show-"+no).remove();
+	    });
+		});
+		var num = 1;
+		function readImage() {
+	    if (window.File && window.FileList && window.FileReader) {
+	        var files = event.target.files; //FileList object
+	        var output = $(".preview-images-zone");
+	        for (let i = 0; i < files.length; i++) {
+	            var file = files[i];
+	            if (!file.type.match('image')) continue;
+	            var picReader = new FileReader();
+	            picReader.addEventListener('load', function (event) {
+	                var picFile = event.target;
+	                var html =  '<div class="preview-image preview-show-' + num + '">' +
+	                            '<div class="image-cancel" data-no="' + num + '">x</div>' +
+	                            '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+	                            '</div>';
+	                output.append(html);
+	                num = num + 1;
+	            });
+	            picReader.readAsDataURL(file);
+	        }
+	    } else {
+	        console.log('Browser not support');
+	    }
+		}
+		</script>
+
+		<script>
+			var slideIndex = 1;
+			showSlides(slideIndex);
+
+			function plusSlides(n) {
+				showSlides(slideIndex += n);
+			}
+
+			function currentSlide(n) {
+				showSlides(slideIndex = n);
+			}
+
+			function showSlides(n) {
+				var i;
+				var slides = document.getElementsByClassName("mySlides");
+				var dots = document.getElementsByClassName("dot");
+				if (n > slides.length) {slideIndex = 1}
+				if (n < 1) {slideIndex = slides.length}
+				for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = "none";
+				}
+				for (i = 0; i < dots.length; i++) {
+					dots[i].className = dots[i].className.replace(" active", "");
+				}
+				slides[slideIndex-1].style.display = "block";
+				dots[slideIndex-1].className += " active";
+			}
+		</script>
+
+	</body>
+</html>
