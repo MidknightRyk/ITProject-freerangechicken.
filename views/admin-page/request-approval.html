@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>Free Range User Approval Page</title>
 
-    <link href="../views/admin-user-style.css" rel="stylesheet" type="text/css" >
-    <link href="../views/admin-artifact-style.css" rel="stylesheet" type="text/css">
+    <link href="admin-user-style.css" rel="stylesheet" type="text/css" >
+    <link href="admin-artifact-style.css" rel="stylesheet" type="text/css">
 
     <!-- Font Awesome CDN-->
     <script src="https://kit.fontawesome.com/010fb4b3e5.js"></script>
@@ -19,11 +19,71 @@
 
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<body>
+
+    <!-- Navigation Bar -->
+    <link rel="stylesheet" href="../navigation-bar/assets/css/nav-main.css" />
+    <noscript><link rel="stylesheet" href="../navigation-bar/assets/css/noscript.css"/></noscript>
+    <link rel="stylesheet" href="../navigation-bar/assets/css/logout.css">
+
+
+    <!-- Navigation Bar  -->
+    <header id="navigation-header">
+        <h1><a href="">Catalogue</a></h1>
+        <nav id="nav">
+            <ul>
+                <li class="special">
+                    <!-- menu text deleted -->
+                    <a href="#menu" class="menuToggle"></a>
+                    <div id="menu">
+                        <!-- Profile Photo -->
+                        <div class="navigation-profile-upload-container">
+                            <a href="#"><span class="fas fa-camera"></span></a>
+                            <img src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" class="img-thumbnail img-circle img-responsive" alt="profile photo">
+                        </div>
+
+                        <!-- Username :-> leads to the profile page -->
+                        <div class="user-name" style="text-align: center; margin-left: 0;">
+                            <a href="#" ><h2 class="underline-animation" >Tom Holland</h2></a>
+                        </div>
+
+                        <!-- User Profile Information -->
+                        <div class="user-info">
+                            <h3>Relationship</h3>
+                            <h3>No. of Artifacts Added</h3>
+                            <h3>Date Joined</h3>
+                        </div>
+
+                        <div hidden>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
+
+                        <!-- Home Button -->
+                        <div class="home-button-container">
+                            <a class="home-button" href="">
+                                <img id="home-icon-img" src="https://image.flaticon.com/icons/svg/1300/1300624.svg" alt="home-button">
+                                <div class="home">HOME</div>
+                            </a>
+                        </div>
+
+                        <!-- Logout Button -->
+                        <div class="logout-container">
+                            <form id="form1" action="/logout" method="POST">
+                                <a href="javascript:;" onclick="document.getElementById('form1').submit();" class="logout-button">
+                                    <img id="logout-photo" src="https://image.flaticon.com/icons/svg/1300/1300674.svg" alt="logout button">
+                                    <div class="logout">LOGOUT</div>
+                                </a>
+                            </form>
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+<body  style="margin-top: 60px;">
 
 <!-- Navigation Tabs : User Request + Artifact Request -->
 
-<ul class="nav nav-pills mb-3 mt-3 ml-5" id="pills-tab" role="tablist" >
+<ul class="nav nav-pills mb-3 mt-3 ml-5" id="pills-tab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active btn-outline-info" id="pills-user-tab" data-toggle="pill" href="#pills-user" role="tab" aria-controls="pills-user" aria-selected="true">
             <i class="fas fa-user-check"> User Request <span id="user-request-count" class="badge badge-danger badge-pill">0</span></i>
@@ -591,6 +651,14 @@
     });
 </script>
 
+<!-- Navigation Bar Scripts -->
+<script src="../navigation-bar/assets/js/jquery.min.js"></script>
+<script src="../navigation-bar/assets/js/jquery.scrollex.min.js"></script>
+<script src="../navigation-bar/assets/js/jquery.scrolly.min.js"></script>
+<script src="../navigation-bar/assets/js/browser.min.js"></script>
+<script src="../navigation-bar/assets/js/breakpoints.min.js"></script>
+<script src="../navigation-bar/assets/js/util.js"></script>
+<script src="../navigation-bar/assets/js/main.js"></script>
 
 </body>
 </html>
