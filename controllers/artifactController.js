@@ -117,15 +117,15 @@ var cloneArtifact = function (req, res) {
 			approved: false
 		});
 		edits.save();
-		console.log(edits);
 		storage.ticketId = edits._id;
-		console.log('ticketid = ' + storage.ticketId);
 		return res.render(path.join(__dirname, '../views/edit-artifact/edit-artifact.pug'),
 			{artifact: editedArtifact});
 	});
 };
 
 var editArtifact = function (req, res) {
+	console.log(req.files);
+	console.log(req.body);
 	Edits.findById(storage.ticketId, function (err, ticket) {
 		console.log('edits being sent according to: ' + ticket);
 		if (err) return console.log(err);
@@ -141,6 +141,7 @@ var editArtifact = function (req, res) {
 		});
 		ticket.save();
 	});
+	// res.redirect(307, '/images/upload-images');
 };
 
 module.exports.addArtifact = addArtifact;
