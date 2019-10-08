@@ -128,6 +128,13 @@ ul li
     padding-left: 0;
 }
 
+@media screen and (max-width:500px){
+    .comment-container
+    {
+        padding-bottom: 30px;
+    }
+}
+
 
 @media screen and (max-width: 480px) {
 
