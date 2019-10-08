@@ -1,44 +1,75 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 	<head>
 		<title>Navigation Bar</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/nav-main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="assets/css/logout.css">
 	</head>
-	<body class="is-preload">
-	
+	<body>
+	<!-- Navigation Bar  -->
+	<header id="navigation-header">
+		<h1><a href="">Catalogue</a></h1>
+		<nav id="nav">
+			<ul>
+				<li class="special">
+					<!-- menu text deleted -->
+					<a href="#menu" class="menuToggle"></a>
+					<div id="menu">
+						<!-- Profile Photo -->
+						<div class="navigation-profile-upload-container">
+							<a href="#"><span class="fas fa-camera"></span></a>
+							<img src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" class="img-thumbnail img-circle img-responsive" alt="profile photo">
+						</div>
 
-			<body class="landing is-preload">
+						<!-- Username :-> leads to the profile page -->
+						<div class="user-name" style="text-align: center;">
+							<a href="#" ><h2 class="underline-animation">Tom Holland</h2></a>
+						</div>
 
-			<!-- Page Wrapper -->
-			<div id="page-wrapper">
+						<!-- User Profile Information -->
+						<div class="user-info">
+							<h3>Relationship</h3>
+							<h3>No. of Artifacts Added</h3>
+							<h3>Date Joined</h3>
+						</div>
 
-				<!-- Header -->
-					<header id="header">
-						<h1><a href="">Catalogue</a></h1>
-						<nav id="nav">
-							<ul>
-								<li class="special">
-									<a href="#menu" class="menuToggle"><span>Menu</span></a>
-									<div id="menu">
-										
-									</div>
-								</li>
-							</ul>
-						</nav>
-					</header>
-			</div>
+						<div hidden>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+						<!-- Home Button -->
+						<div class="home-button-container">
+							<a class="home-button" href="">
+								<img id="home-icon-img" src="https://image.flaticon.com/icons/svg/1300/1300624.svg" alt="home-button">
+								<div class="home">HOME</div>
+							</a>
+						</div>
+
+						<!-- Logout Button -->
+						<div class="logout-container">
+							<form id="form1" action="/logout" method="POST">
+								<a href="javascript:;" onclick="document.getElementById('form1').submit();" class="logout-button">
+									<img id="logout-photo" src="https://image.flaticon.com/icons/svg/1300/1300674.svg" alt="logout button">
+									<div class="logout">LOGOUT</div>
+								</a>
+							</form>
+						</div>
+
+					</div>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 
 	</body>
 </html>

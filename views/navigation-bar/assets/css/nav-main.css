@@ -17,7 +17,7 @@ section, summary, time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	font-family: inherit;
 	vertical-align: baseline;}
 
 
@@ -35,28 +35,23 @@ section, summary, time, mark, audio, video {
 		box-sizing: inherit;
 	}
 
-	body {
-		background: #ffffff;
-	}
+body.is-preload *, body.is-preload *:before, body.is-preload *:after {
+	-moz-animation: none !important;
+	-webkit-animation: none !important;
+	animation: none !important;
+	-moz-transition: none !important;
+	-webkit-transition: none !important;
+	transition: none !important;
+}
 
-		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
-			-moz-animation: none !important;
-			-webkit-animation: none !important;
-			-ms-animation: none !important;
-			animation: none !important;
-			-moz-transition: none !important;
-			-webkit-transition: none !important;
-			-ms-transition: none !important;
-			transition: none !important;
-		}
 
 	body, input, select, textarea {
-		color: #fff;
+		/*color: #fff;*/
 		font-family: "Open Sans", Helvetica, sans-serif;
-		font-size: 15pt;
+		font-size: 13pt;
 		font-weight: 400;
-		letter-spacing: 0.075em;
-		line-height: 1.65em;
+		letter-spacing: 0.045em;
+		line-height: 1.45em;
 	}
 
 		@media screen and (max-width: 1680px) {
@@ -87,9 +82,8 @@ section, summary, time, mark, audio, video {
 	a {
 		-moz-transition: color 0.2s ease, border-bottom-color 0.2s ease;
 		-webkit-transition: color 0.2s ease, border-bottom-color 0.2s ease;
-		-ms-transition: color 0.2s ease, border-bottom-color 0.2s ease;
+
 		transition: color 0.2s ease, border-bottom-color 0.2s ease;
-		border-bottom: dotted 1px;
 		color: inherit;
 		text-decoration: none;
 	}
@@ -171,28 +165,6 @@ section, summary, time, mark, audio, video {
 	
 /* Page Wrapper + Menu */
 
-	#page-wrapper {
-		-moz-transition: opacity 0.5s ease;
-		-webkit-transition: opacity 0.5s ease;
-		-ms-transition: opacity 0.5s ease;
-		transition: opacity 0.5s ease;
-		opacity: 1;
-		padding-top: 3em;
-	}
-
-		#page-wrapper:before {
-			background: rgba(0, 0, 0, 0);
-			content: '';
-			display: block;
-			display: none;
-			height: 100%;
-			left: 0;
-			position: fixed;
-			top: 0;
-			width: 100%;
-			z-index: 10001;
-		}
-
 	#menu {
 		-moz-transform: translateX(20em);
 		-webkit-transform: translateX(20em);
@@ -200,10 +172,9 @@ section, summary, time, mark, audio, video {
 		transform: translateX(20em);
 		-moz-transition: -moz-transform 0.5s ease;
 		-webkit-transition: -webkit-transform 0.5s ease;
-		-ms-transition: -ms-transform 0.5s ease;
 		transition: transform 0.5s ease;
 		-webkit-overflow-scrolling: touch;
-		background: #7c1b48;
+		background: #0d3853;
 		color: #ffffff;
 		height: 100%;
 		max-width: 80%;
@@ -292,7 +263,7 @@ section, summary, time, mark, audio, video {
 
 /* Header */
 
-	#header {
+	#navigation-header {
 		-moz-transition: background-color 0.2s ease;
 		-webkit-transition: background-color 0.2s ease;
 		-ms-transition: background-color 0.2s ease;
@@ -307,7 +278,7 @@ section, summary, time, mark, audio, video {
 		z-index: 10000;
 	}
 
-		#header h1 {
+		#navigation-header h1 {
 			-moz-transition: opacity 0.2s ease;
 			-webkit-transition: opacity 0.2s ease;
 			-ms-transition: opacity 0.2s ease;
@@ -319,7 +290,7 @@ section, summary, time, mark, audio, video {
 			top: 0;
 		}
 
-			#header h1 a {
+			#navigation-header h1 a {
 				border: 0;
 				display: block;
 				height: inherit;
@@ -328,13 +299,13 @@ section, summary, time, mark, audio, video {
 
 				@media screen and (max-width: 736px) {
 
-					#header h1 a {
+					#navigation-header h1 a {
 						font-size: 0.8em;
 					}
 
 				}
 
-		#header nav {
+		#navigation-header nav {
 			height: inherit;
 			line-height: inherit;
 			position: absolute;
@@ -342,19 +313,19 @@ section, summary, time, mark, audio, video {
 			top: 0;
 		}
 
-			#header nav > ul {
+			#navigation-header nav > ul {
 				list-style: none;
 				margin: 0;
 				padding: 0;
 				white-space: nowrap;
 			}
 
-				#header nav > ul > li {
+				#navigation-header nav > ul > li {
 					display: inline-block;
 					padding: 0;
 				}
 
-					#header nav > ul > li > a {
+					#navigation-header nav > ul > li > a {
 						border: 0;
 						color: #fff;
 						display: block;
@@ -364,12 +335,12 @@ section, summary, time, mark, audio, video {
 						text-transform: uppercase;
 					}
 
-						#header nav > ul > li > a.menuToggle {
+						#navigation-header nav > ul > li > a.menuToggle {
 							outline: 0;
 							position: relative;
 						}
 
-							#header nav > ul > li > a.menuToggle:after {
+							#navigation-header nav > ul > li > a.menuToggle:after {
 								background-image: url("images/bars.svg");
 								background-position: right center;
 								background-repeat: no-repeat;
@@ -382,11 +353,11 @@ section, summary, time, mark, audio, video {
 
 							@media screen and (max-width: 736px) {
 
-								#header nav > ul > li > a.menuToggle {
+								#navigation-header nav > ul > li > a.menuToggle {
 									padding: 0 1.5em;
 								}
 
-									#header nav > ul > li > a.menuToggle span {
+									#navigation-header nav > ul > li > a.menuToggle span {
 										display: none;
 									}
 
@@ -394,21 +365,21 @@ section, summary, time, mark, audio, video {
 
 						@media screen and (max-width: 736px) {
 
-							#header nav > ul > li > a {
+							#navigation-header nav > ul > li > a {
 								padding: 0 0 0 1.5em;
 							}
 
 						}
 
-					#header nav > ul > li:first-child {
+					#navigation-header nav > ul > li:first-child {
 						margin-left: 0;
 					}
 
-		#header.alt {
+		#navigation-header.alt {
 			background: transparent;
 		}
 
-			#header.alt h1 {
+			#navigation-header.alt h1 {
 				pointer-events: none;
 				opacity: 0;
 			}
@@ -458,28 +429,7 @@ section, summary, time, mark, audio, video {
 	}
 
 
-/* Page Wrapper + Menu */
-#page-wrapper {
-	-moz-transition: opacity 0.5s ease;
-	-webkit-transition: opacity 0.5s ease;
-	-ms-transition: opacity 0.5s ease;
-	transition: opacity 0.5s ease;
-	opacity: 1;
-	padding-top: 3em;
-}
-
-	#page-wrapper:before {
-		background: rgba(0, 0, 0, 0);
-		content: '';
-		display: block;
-		display: none;
-		height: 100%;
-		left: 0;
-		position: fixed;
-		top: 0;
-		width: 100%;
-		z-index: 10001;
-	}
+/* Menu */
 
 /* Light Box */
 #menu {
@@ -514,19 +464,19 @@ section, summary, time, mark, audio, video {
 }
 
 /* Profile Photo */
-.profile-upload-container {
+.navigation-profile-upload-container {
 position: relative;
 display: inline-block;
 overflow: hidden;
 width:120px;
 height:120px;
-border:5px solid white; /* Profile Photo Border */
+/*border:5px solid white; *//* Profile Photo Border */
 border-radius: 50%;
 margin-left: 25%;
 margin-top: 15%;
 }
 
-.profile-upload-container img
+.navigation-profile-upload-container img
 {
 width: 120px;
 height:120px;
@@ -535,12 +485,12 @@ border-radius: 50%;
 opacity:1;
 }
 
-.profile-upload-container:hover img{
+.navigation-profile-upload-container:hover img{
 opacity: 0.5;
 transition:0.5s;
 }
 
-.profile-upload-container a {
+.navigation-profile-upload-container a {
 display: block;
 position: absolute;
 top: -100%;
@@ -551,14 +501,14 @@ right: 0;
 text-align: center;
 color: inherit;
 }
-.profile-upload-container:hover a {
+.navigation-profile-upload-container:hover a {
 opacity: 1;
 top: 3px;
 z-index: 500;
 border-radius: 50px;
 border:0;
 }
-.profile-upload-container:hover a span {
+.navigation-profile-upload-container:hover a span {
 top: 50%;
 position: absolute;
 left: 0;
