@@ -82,15 +82,17 @@ body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 	a {
 		-moz-transition: color 0.2s ease, border-bottom-color 0.2s ease;
 		-webkit-transition: color 0.2s ease, border-bottom-color 0.2s ease;
-
 		transition: color 0.2s ease, border-bottom-color 0.2s ease;
 		color: inherit;
 		text-decoration: none;
 	}
 
-		a:hover {
-			border-bottom-color: transparent;
-		}
+/*  get rid of text underline */
+a:hover {
+	border-bottom-color: transparent;
+	text-decoration: none;
+	border: none;
+}
 
 	strong, b {
 		color: #fff;
@@ -105,7 +107,8 @@ body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 		margin: 0 0 2em 0;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
+	/* to avoid h2 clashes*/
+	h1, h3, h4, h5, h6, .underline-animation {
 		color: #fff;
 		font-weight: 800;
 		letter-spacing: 0.225em;
@@ -233,7 +236,7 @@ body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 			height: 3em;
 			position: absolute;
 			right: 0;
-			top: 0;
+			top: 10px; /* updated */
 			vertical-align: middle;
 			width: 7em;
 		}
