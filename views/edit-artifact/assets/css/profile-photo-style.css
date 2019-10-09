@@ -1,3 +1,16 @@
+/* Light Box Profile Photo */
+.navigation-profile-upload-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    width:120px;
+    height:120px;
+    /*border:5px solid white; *//* Profile Photo Border */
+    border-radius: 50%;
+    margin-left: 25%;
+    margin-top: 15%;
+}
+
 /* Profile Photo */
 .profile-upload-container {
     position: relative;
@@ -5,6 +18,7 @@
     overflow: hidden;
     width:120px;
     height:120px;
+    margin-top: 0; /* to fix nav-bar clashes*/
     border-radius: 50%;
 }
 
