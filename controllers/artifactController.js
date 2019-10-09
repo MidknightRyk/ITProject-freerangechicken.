@@ -154,7 +154,11 @@ var editArtifact = function (req, res) {
 		});
 		ticket.save();
 	});
-	// res.redirect(307, '/images/upload-images');
+	if (!req.files) {
+		return res.redirect('/catalogue');
+	} else {
+		return res.redirect(307, '/images/reupload-images');
+	}
 };
 
 module.exports.addArtifact = addArtifact;

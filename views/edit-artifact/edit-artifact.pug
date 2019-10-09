@@ -23,7 +23,7 @@ html
 		#main
 			.form-container
 				// Metta: Pls replace empty fields with original info
-				form#form1(method='post', action='/artifacts/edit-artifact')
+				form#form1(method='post', action='/artifacts/edit-artifact', enctype='multipart/form-data')
 					div
 						| Name: #{artifact.name}
 						input(type='text', required='', name='name', placeholder='Enter new name of artifact')

@@ -56,6 +56,21 @@ var uploadImages = function (req, res) {
 	return res.redirect('/u');
 };
 
+var reuploadImages = function (req, res) {
+	Artifact.findById(storage.artifactId)
+	.exec(function (err, artifact) {
+		if (err) return console.log(err);
+		Image.findByIdAndDelete(artifact.primaryImage);
+		var i;
+		for (i = 0; i < artifact.extraImages.length; i++) {
+			// Delete all the images in the extra array
+			Image.findByIdAndDelete(artifact.extraImages[i]);
+		}
+		artifact.extraImages = [];
+	});
+	res.redirect(307, '/images/upload-images');
+};
+
 // Uploads display picture function
 var uploadDisplayPic = function (req, res) {
 	var imgname = req.file.originalname;
@@ -119,4 +134,5 @@ var getImage = function (req, res) {
 
 module.exports.uploadImages = uploadImages;
 module.exports.getImage = getImage;
+module.exports.reuploadImages = reuploadImages;
 module.exports.uploadDisplayPic = uploadDisplayPic;
