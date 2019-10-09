@@ -5,6 +5,7 @@ var Artifact = mongoose.model('Artifact');
 var Issue = mongoose.model('Issue');
 var User = mongoose.model('User');
 var Edits = mongoose.model('Edits');
+var ObjectId = mongoose.Types.ObjectId;
 
 // Creates a new artifact
 var addArtifact = function (req, res) {
@@ -137,8 +138,6 @@ var cancelEdits = function (req, res) {
 };
 
 var editArtifact = function (req, res) {
-	console.log(req.files);
-	console.log(req.body);
 	Edits.findById(storage.ticketId, function (err, ticket) {
 		console.log('edits being sent according to: ' + ticket);
 		if (err) return console.log(err);
@@ -150,9 +149,16 @@ var editArtifact = function (req, res) {
 			// artifact.tags = (req.body.tag).split(',') || artifact.tags;
 			artifact.placeOrigin = req.body.country || artifact.placeOrigin;
 			artifact.year = req.body.year || artifact.year;
+			var i;
+			var toDel = req.body.toDelete.split(',');
+			for (i = 0; i < toDel.length; i++) {
+				artifact.extraImages.pull(ObjectId(toDel[i]));
+			}
 			artifact.save();
 		});
 		ticket.save();
+		storage.artifactId = ticket.newArtifact;
+		console.log(ticket.newArtifact);
 	});
 	if (!req.files) {
 		return res.redirect('/catalogue');

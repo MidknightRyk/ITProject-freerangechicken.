@@ -57,18 +57,33 @@ var uploadImages = function (req, res) {
 };
 
 var reuploadImages = function (req, res) {
-	Artifact.findById(storage.artifactId)
+	// collect the images uploaded
+	var files = req.files;
+	// Get the artifact that these images are assigned to
+	var artifactID = storage.artifactId;
+	console.log(artifactID);
+	// update the relevant artifact
+	Artifact.findById(artifactID)
 	.exec(function (err, artifact) {
 		if (err) return console.log(err);
-		Image.findByIdAndDelete(artifact.primaryImage);
-		var i;
-		for (i = 0; i < artifact.extraImages.length; i++) {
-			// Delete all the images in the extra array
-			Image.findByIdAndDelete(artifact.extraImages[i]);
-		}
-		artifact.extraImages = [];
+		files.forEach(function (thisImg) {
+			var imgname = thisImg.originalname;
+			var image = new Image({
+				'name': imgname,
+				'data': fs.readFileSync(thisImg.path),
+				'contentType': thisImg.mimetype
+			});
+			artifact.extraImages.push(image._id);
+			console.log('Updating Extra Images Image for ' + artifactID);
+			// Update image schema link
+			image.artifactId = artifactID;
+			image.usage = 'artifact extra image';
+			image.save();
+			console.log('Extra Image ' + thisImg.originalname + ' has been uploaded!');
+		});
+		artifact.save();
 	});
-	res.redirect(307, '/images/upload-images');
+	res.redirect('/catalogue');
 };
 
 // Uploads display picture function
