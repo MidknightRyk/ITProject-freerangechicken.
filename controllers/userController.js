@@ -3,6 +3,7 @@ var User = mongoose.model('User');
 var Artifact = mongoose.model('Artifact');
 var path = require('path');
 
+// Edit user profile
 var editProfile = function (req, res) {
 	var userID = (req.session.user);
 	console.log('Editing ' + userID + ' profile information');
