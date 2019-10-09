@@ -307,17 +307,18 @@ html
 					.container
 						.array
 							| Edit Photos:
+							| Current images uploaded to this artifact:
+							.preview-images-zone-old
+							.preview-image.preview-show-old-1
+								.image-zone
+									img#pro-img-1-old(src="../images/"+artifact.primaryImage._id, alt='Image placeholder')
+							each img, ind in artifact.extraImages
+								- var numi = (ind+2)
+									.preview-image(class='preview-show-old'+numi)
+										.image-zone
+											img(id='pro-img-'+numi+'old' src="../images/"+img._id, alt='Image placeholder')
+							| Uploaded images for replacement:
 							.preview-images-zone
-								.preview-image.preview-show-1
-									.image-cancel(data-no='1') x
-									.image-zone
-										img#pro-img-1(src="../images/"+artifact.primaryImage._id, alt='Image placeholder')
-								each img, ind in artifact.extraImages
-									- var numi = (ind+2)
-										.preview-image(class='preview-show-'+numi)
-											.image-cancel(data-no=numi) x
-											.image-zone
-												img(id='pro-img-'+numi src="../images/"+img._id, alt='Image placeholder')
 							
 							// Upload Artifact Image Button
 							fieldset.form-group
@@ -361,7 +362,6 @@ html
 			document.getElementById('pro-image').addEventListener('change', readImage, false);
 			$(document).on('click', '.image-cancel', function() {
 			let no = $(this).data('no');
-			var 
 			$(".preview-image.preview-show-"+no).remove();
 			});
 			});
