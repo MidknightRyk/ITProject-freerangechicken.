@@ -5,22 +5,12 @@ html
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
 		// Bootstrap Tagsinput CSS
-		link(rel='stylesheet', href='../views/edit-artifacts/assets/css/bootstrap-tagsinput.css')
-		// Lottie-player Animations
-		script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
-		// Bootstrap Date Picker
-		script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
-		script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js')
-		link(href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css', rel='stylesheet')
-		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
-		// Bootstrap Tagsinput JS
-		script(src='../views/edit-artifacts/assets/js/bootstrap-tagsinput.js')
-		// Font Awesome CDN
-		script(src='https://kit.fontawesome.com/010fb4b3e5.js')
-		link(rel='stylesheet', href='../views/edit-artifacts/assets/css/main.css')
-		link(rel='stylesheet', href='../views/edit-artifacts/assets/css/uploadStyle.css')
-		link(rel='stylesheet', href='../views/edit-artifacts/assets/css/profile-photo-style.css')
+		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+		link(rel='stylesheet', href='../views/edit-artifact/assets/css/bootstrap-tagsinput.css')
+		link(rel='stylesheet', href='../views/edit-artifact/assets/css/main.css')
+		link(rel='stylesheet', href='../views/edit-artifact/assets/css/uploadStyle.css')
+		link(rel='stylesheet', href='../views/edit-artifact/assets/css/profile-photo-style.css')
 	body.is-preload
 		// Header
 		header#header(style='z-index:9;')
@@ -39,15 +29,15 @@ html
 						input(type='text', required='', name='name', placeholder='Enter new name of artifact')
 					br
 					div
-						| Description: 
-						input(type='text', required='', name='description', placeholder='Type in description')
+						| Description: #{artifact.description}
+						input(type='text', required='', name='description', placeholder='Enter new description')
 						br
 					div
-						| Tags: 
+						| Tags: #{artifact.tags}
 						input.form-control.tm-input(type='text', required='', name='tags', placeholder='Tags, separated by commas', data-role='tagsinput')
 					br
 					div
-						| Region: 
+						| Region: #{artifact.country}
 						select(name='country')
 							option.test(value='') Country...
 							option(value='Afganistan') Afghanistan
@@ -298,7 +288,7 @@ html
 							option(value='Zimbabwe') Zimbabwe
 					br
 					div
-						| Year: 
+						| Year: #{artifact.year}
 						input#date.form-control(type='text', required='', name='year', placeholder='Format: YYYY')
 					br
 					// Date Picker
@@ -317,7 +307,19 @@ html
 					.container
 						.array
 							| Edit Photos:
+							| Current images uploaded to this artifact:
+							.preview-images-zone-old
+							.preview-image.preview-show-old-1
+								.image-zone
+									img#pro-img-1-old(src="../images/"+artifact.primaryImage._id, alt='Image placeholder')
+							each img, ind in artifact.extraImages
+								- var numi = (ind+2)
+									.preview-image(class='preview-show-old'+numi)
+										.image-zone
+											img(id='pro-img-'+numi+'old' src="../images/"+img._id, alt='Image placeholder')
+							| Uploaded images for replacement:
 							.preview-images-zone
+							
 							// Upload Artifact Image Button
 							fieldset.form-group
 								a.button(style=' margin-top:10px ', href='javascript:void(0)', onclick="$('#pro-image').click()") Upload Images
@@ -340,6 +342,19 @@ html
 		// Necessary: the Footer of the Page
 		footer#footer
 			.inner
+			
+		// Scripts
+		// Lottie-player Animations
+		script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
+		// Bootstrap Date Picker
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+		// Bootstrap Tagsinput JS
+		script(src='../views/edit-artifact/assets/js/bootstrap-tagsinput.js')
+		// Font Awesome CDN
+		script(src='https://kit.fontawesome.com/010fb4b3e5.js')
+		
 		// Upload Artifact Images
 		// Adapted from : https://bootsnipp.com/snippets/2eNKz
 		script.
@@ -371,6 +386,8 @@ html
 			picReader.readAsDataURL(file);
 			}
 			} else {
-			console.log('Browser not support');
+			console.log('Browser not supported');
 			}
 			}
+			
+			
