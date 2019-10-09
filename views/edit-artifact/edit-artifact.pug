@@ -291,6 +291,10 @@ html
 						| Year: #{artifact.year}
 						input#date.form-control(type='text', required='', name='year', placeholder='Format: YYYY')
 					br
+					// Bootstrap Date Picker
+					script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+					script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js')
+					script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
 					// Date Picker
 					script(type='text/javascript').
 						$('#date').datepicker({
@@ -300,7 +304,7 @@ html
 						});
 					// User must give reason for editing artifact details
 					div
-						| *Reason for editing artifact (mandatory): 
+						| *Reason for editing artifact (mandatory):
 						input(required='', type='text', name='ticketDescription', placeholder='Why do you want to edit this?')
 						br
 					// Display Artifact Photos
@@ -309,13 +313,12 @@ html
 							| Edit Photos:
 							.preview-images-zone
 								.preview-image.preview-show-1
-									.image-cancel(data-no='1') x
 									.image-zone
 										img#pro-img-1(src="../images/"+artifact.primaryImage._id, alt='Image placeholder')
 								each img, ind in artifact.extraImages
 									- var numi = (ind+2)
 										.preview-image(class='preview-show-'+numi)
-											.image-cancel(data-no=numi) x
+											.image-cancel(data-no=numi data-id=img._id) x
 											.image-zone
 												img(id='pro-img-'+numi src="../images/"+img._id, alt='Image placeholder')
 
@@ -323,6 +326,7 @@ html
 							fieldset.form-group
 								a.button(style=' margin-top:10px ', href='javascript:void(0)', onclick="$('#pro-image').click()") Upload Images
 								input#pro-image.form-control(type='file', name='pro-image', style='display: none;', multiple='')
+					input#images-to-delete.form-control(type="hidden", name="to-delete")
 					// Confirm Edit Button (trigger modal on clicking for edits)
 					section
 						ul.actions
@@ -337,7 +341,7 @@ html
 								button.close(type='button', onclick='myFunction()', data-dismiss='modal') ×
 								h4.modal-title Ticket Issued!
 							.modal-body
-								p Thank you for submitting. All your edits have been sent for admin approval. 
+								p Thank you for submitting. All your edits have been sent for admin approval.
 		// Necessary: the Footer of the Page
 		footer#footer
 			.inner
@@ -357,11 +361,17 @@ html
 		// Upload Artifact Images
 		// Adapted from : https://bootsnipp.com/snippets/2eNKz
 		script.
+			var toDelete = [];
 			$(document).ready(function() {
 			document.getElementById('pro-image').addEventListener('change', readImage, false);
 			$(document).on('click', '.image-cancel', function() {
 			let no = $(this).data('no');
 			$(".preview-image.preview-show-"+no).remove();
+			if ($(this).data('id'))
+			{
+				toDelete.push($(this).data('id'));
+				$("#images-to-delete").val(toDelete);
+			}
 			});
 			});
 			var num = 1;
