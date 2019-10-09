@@ -96,7 +96,7 @@ html
 										h2.heading(data-aos='fade-up') #{group._id}
 								.row
 									section.tiles
-										each artifact in group.articles
+										each artifact, index in group.articles
 											// Photos
 											article.style1
 												span.image
@@ -107,14 +107,14 @@ html
 													h2 #{artifact.name}
 													// the Date Added/Last Modified + Artifact Description
 													.content
-														p.date
+														p.create-date
 														script.
 															var artifact = !{JSON.stringify(artifact)};
 															var date = new Date(artifact.dateCreated);
 															var dd = date.toLocaleString('default', { day: '2-digit'});
 															var mm = date.toLocaleString('default', { month: 'long' });
 															var yyyy = date.getFullYear();
-															document.getElementsByClassName('date')["#{index}"].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
+															document.getElementsByClassName("create-date")[#{index}].innerHTML = "Created on " + dd+" "+mm+" "+yyyy;
 														p.description #{artifact.description}
 
 				// Scripts
