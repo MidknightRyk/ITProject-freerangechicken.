@@ -5,6 +5,7 @@ var Artifact = mongoose.model('Artifact');
 var Issue = mongoose.model('Issue');
 var User = mongoose.model('User');
 var Edits = mongoose.model('Edits');
+var ObjectId = mongoose.Types.ObjectId;
 
 // Creates a new artifact
 var addArtifact = function (req, res) {
@@ -37,6 +38,7 @@ var addArtifact = function (req, res) {
 var getArtifact = function (req, res) {
 	var artifactID = req.params.artifact;
 	var userID = (req.session.user);
+	// Find user, artifact and populate its issues
 	User.findById(userID).exec((err, user) => {
 		if (err) return console.log(err);
 		Artifact.findById(artifactID, function (err, artifact) {
@@ -123,9 +125,22 @@ var cloneArtifact = function (req, res) {
 	});
 };
 
+// Deletes the clone and ticket made by starting edit
+var cancelEdits = function (req, res) {
+	// Delete the clone
+	Artifact.findByIdAndDelete(storage.artifactId);
+
+	// Delete the ticket created and replace the storage id with the original artifact id
+	Edits.findByIdAndDelete(storage.ticketId)
+	.exec(function (err, edits) {
+		if (err) return console.log(err);
+		storage.artifactId = edits.oldArtifact;
+	});
+	return res.redirect('/artifacts/' + storage.artifactId.toString());
+};
+
+// Edits artifact
 var editArtifact = function (req, res) {
-	console.log(req.files);
-	console.log(req.body);
 	Edits.findById(storage.ticketId, function (err, ticket) {
 		console.log('edits being sent according to: ' + ticket);
 		if (err) return console.log(err);
@@ -137,11 +152,22 @@ var editArtifact = function (req, res) {
 			// artifact.tags = (req.body.tag).split(',') || artifact.tags;
 			artifact.placeOrigin = req.body.country || artifact.placeOrigin;
 			artifact.year = req.body.year || artifact.year;
+			var i;
+			var toDel = req.body.toDelete.split(',');
+			for (i = 0; i < toDel.length; i++) {
+				artifact.extraImages.pull(ObjectId(toDel[i]));
+			}
 			artifact.save();
 		});
 		ticket.save();
+		storage.artifactId = ticket.newArtifact;
+		console.log(ticket.newArtifact);
 	});
-	// res.redirect(307, '/images/upload-images');
+	if (!req.files) {
+		return res.redirect('/catalogue');
+	} else {
+		return res.redirect(307, '/images/reupload-images');
+	}
 };
 
 module.exports.addArtifact = addArtifact;
@@ -149,4 +175,5 @@ module.exports.getArtifact = getArtifact;
 module.exports.getTag = getTag;
 module.exports.deleteArtifact = deleteArtifact;
 module.exports.cloneArtifact = cloneArtifact;
+module.exports.cancelEdits = cancelEdits;
 module.exports.editArtifact = editArtifact;

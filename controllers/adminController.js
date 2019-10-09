@@ -32,12 +32,15 @@ var adminPage = function (req, res) {
 
 // Approves user
 var userApprove = function (req, res) {
+	// Fetch data from body/query
 	var userId = req.body.userId || req.query.userId;
 	User.findOneAndUpdate({_id: userId}, {approved: 1}, function (err, user, done) {
 		if (err) {
 			throw err;
 		} else {
+			// Email authorisation
 			var smtpTransport = nodemailer.createTransport('smtps://freerangechickenfeed%40gmail.com:' + encodeURIComponent('comp2019') + '@smtp.gmail.com:465');
+			// Mail content
 			var mailOptions = {
 				to: user.email,
 				from: 'freerangechickenfeed@gmail.com',

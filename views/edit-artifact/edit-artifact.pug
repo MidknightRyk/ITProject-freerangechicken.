@@ -22,8 +22,7 @@ html
 		// Main Forms
 		#main
 			.form-container
-				// Metta: Pls replace empty fields with original info
-				form#form1(method='post', action='/artifacts/edit-artifact')
+				form#form1(method='post', action='/artifacts/edit-artifact', enctype='multipart/form-data')
 					div
 						| Name: #{artifact.name}
 						input(type='text', required='', name='name', placeholder='Enter new name of artifact')
@@ -37,7 +36,7 @@ html
 						input.form-control.tm-input(type='text', required='', name='tags', placeholder='Tags, separated by commas', data-role='tagsinput')
 					br
 					div
-						| Region: #{artifact.country}
+						| Region: #{artifact.placeOrigin}
 						select(name='country')
 							option.test(value='') Country...
 							option(value='Afganistan') Afghanistan
@@ -291,6 +290,10 @@ html
 						| Year: #{artifact.year}
 						input#date.form-control(type='text', required='', name='year', placeholder='Format: YYYY')
 					br
+					// Bootstrap Date Picker
+					script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+					script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js')
+					script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
 					// Date Picker
 					script(type='text/javascript').
 						$('#date').datepicker({
@@ -300,35 +303,34 @@ html
 						});
 					// User must give reason for editing artifact details
 					div
-						| *Reason for editing artifact (mandatory): 
+						| *Reason for editing artifact (mandatory):
 						input(required='', type='text', name='ticketDescription', placeholder='Why do you want to edit this?')
 						br
 					// Display Artifact Photos
 					.container
 						.array
 							| Edit Photos:
-							| Current images uploaded to this artifact:
-							.preview-images-zone-old
-							.preview-image.preview-show-old-1
-								.image-zone
-									img#pro-img-1-old(src="../images/"+artifact.primaryImage._id, alt='Image placeholder')
-							each img, ind in artifact.extraImages
-								- var numi = (ind+2)
-									.preview-image(class='preview-show-old'+numi)
-										.image-zone
-											img(id='pro-img-'+numi+'old' src="../images/"+img._id, alt='Image placeholder')
-							| Uploaded images for replacement:
 							.preview-images-zone
-							
+								.preview-image.preview-show-1
+									.image-zone
+										img#pro-img-1(src="../images/"+artifact.primaryImage._id, alt='Image placeholder')
+								each img, ind in artifact.extraImages
+									- var numi = (ind+2)
+										.preview-image(class='preview-show-'+numi)
+											.image-cancel(data-no=numi data-id=img._id) x
+											.image-zone
+												img(id='pro-img-'+numi src="../images/"+img._id, alt='Image placeholder')
+
 							// Upload Artifact Image Button
 							fieldset.form-group
 								a.button(style=' margin-top:10px ', href='javascript:void(0)', onclick="$('#pro-image').click()") Upload Images
 								input#pro-image.form-control(type='file', name='pro-image', style='display: none;', multiple='')
+					input#images-to-delete.form-control(type="hidden", name='toDelete')
 					// Confirm Edit Button (trigger modal on clicking for edits)
 					section
 						ul.actions
 							li
-								a.button(href='javascript:;', onclick="document.getElementById('form1').submit();", data-toggle='modal', data-target='#myModal', formmethod='post') Accept changes
+								a.button(href='javascript:;', onclick="checkNImages()", formmethod='post') Accept changes
 				// Modal
 				#myModal.modal.fade(role='dialog')
 					.modal-dialog
@@ -338,11 +340,11 @@ html
 								button.close(type='button', onclick='myFunction()', data-dismiss='modal') ×
 								h4.modal-title Ticket Issued!
 							.modal-body
-								p Thank you for submitting. All your edits have been sent for admin approval. 
+								p Thank you for submitting. All your edits have been sent for admin approval.
 		// Necessary: the Footer of the Page
 		footer#footer
 			.inner
-			
+
 		// Scripts
 		// Lottie-player Animations
 		script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
@@ -354,17 +356,36 @@ html
 		script(src='../views/edit-artifact/assets/js/bootstrap-tagsinput.js')
 		// Font Awesome CDN
 		script(src='https://kit.fontawesome.com/010fb4b3e5.js')
-		
+
 		// Upload Artifact Images
 		// Adapted from : https://bootsnipp.com/snippets/2eNKz
 		script.
+			var toDelete = [];
 			$(document).ready(function() {
 			document.getElementById('pro-image').addEventListener('change', readImage, false);
 			$(document).on('click', '.image-cancel', function() {
 			let no = $(this).data('no');
 			$(".preview-image.preview-show-"+no).remove();
+			if ($(this).data('id'))
+			{
+				toDelete.push($(this).data('id'));
+				$("#images-to-delete").val(toDelete);
+			}
 			});
 			});
+
+			function checkNImages(){
+				var nImages = #{artifact.extraImages.length} + toDelete.length + num - 1;
+				console.log(nImages);
+				if (nImages > 4){
+					alert("You are not allowed more than 4 extra images!");
+				}
+				else{
+					$("#myModal").modal();
+					document.getElementById("form1").submit();
+				}
+			}
+
 			var num = 1;
 			function readImage() {
 			if (window.File && window.FileList && window.FileReader) {
@@ -389,5 +410,3 @@ html
 			console.log('Browser not supported');
 			}
 			}
-			
-			
