@@ -123,6 +123,19 @@ var cloneArtifact = function (req, res) {
 	});
 };
 
+var cancelEdits = function (req, res) {
+	// Delete the clone
+	Artifact.findByIdAndDelete(storage.artifactId);
+
+	// Delete the ticket created and replace the storage id with the original artifact id
+	Edits.findByIdAndDelete(storage.ticketId)
+	.exec(function (err, edits) {
+		if (err) return console.log(err);
+		storage.artifactId = edits.oldArtifact;
+	});
+	return res.redirect('/artifacts/' + storage.artifactId.toString());
+};
+
 var editArtifact = function (req, res) {
 	console.log(req.files);
 	console.log(req.body);
@@ -149,4 +162,5 @@ module.exports.getArtifact = getArtifact;
 module.exports.getTag = getTag;
 module.exports.deleteArtifact = deleteArtifact;
 module.exports.cloneArtifact = cloneArtifact;
+module.exports.cancelEdits = cancelEdits;
 module.exports.editArtifact = editArtifact;

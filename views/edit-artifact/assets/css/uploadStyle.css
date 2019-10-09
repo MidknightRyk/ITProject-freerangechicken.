@@ -7,15 +7,6 @@
     overflow:auto;
 }
 
-.preview-images-zone-old {
-    width: 100%;
-    min-height: 0;
-    /* display: flex; */
-    padding: 5px 5px 0 0;
-    position: relative;
-    overflow:auto;
-}
-
 .array{
     width: 74.5%;
     min-height: 50px;
