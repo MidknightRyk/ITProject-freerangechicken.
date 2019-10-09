@@ -39,16 +39,13 @@ var type = upload.array('pro-image', 5);
 router.post('/add-artifact', type, artifactController.addArtifact);
 
 // Submits ticket for edit approvals
-router.post('/edit-artifact', artifactController.editArtifact);
+router.post('/edit-artifact', type, artifactController.editArtifact);
+
+// Deletes the ticket and clone created for the editing system
+router.post('/cancel-edits', artifactController.cancelEdits);
 
 // Flag artifact for deletion (accessed from edit artifact page)
 router.post('/delete-artifact', artifactController.deleteArtifact);
-
-/* !! The below routes are missing GET pairs delibrately !!
- * will be implemented when pages for them are implemented
- * It's also untested so ...
- * proceed w caution
- */
 
 // Clones and creates ticket for artifact Edits
 router.post('/submit-ticket', artifactController.cloneArtifact);

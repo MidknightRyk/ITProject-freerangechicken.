@@ -56,6 +56,36 @@ var uploadImages = function (req, res) {
 	return res.redirect('/u');
 };
 
+var reuploadImages = function (req, res) {
+	// collect the images uploaded
+	var files = req.files;
+	// Get the artifact that these images are assigned to
+	var artifactID = storage.artifactId;
+	console.log(artifactID);
+	// update the relevant artifact
+	Artifact.findById(artifactID)
+	.exec(function (err, artifact) {
+		if (err) return console.log(err);
+		files.forEach(function (thisImg) {
+			var imgname = thisImg.originalname;
+			var image = new Image({
+				'name': imgname,
+				'data': fs.readFileSync(thisImg.path),
+				'contentType': thisImg.mimetype
+			});
+			artifact.extraImages.push(image._id);
+			console.log('Updating Extra Images Image for ' + artifactID);
+			// Update image schema link
+			image.artifactId = artifactID;
+			image.usage = 'artifact extra image';
+			image.save();
+			console.log('Extra Image ' + thisImg.originalname + ' has been uploaded!');
+		});
+		artifact.save();
+	});
+	res.redirect('/catalogue');
+};
+
 // Uploads display picture function
 var uploadDisplayPic = function (req, res) {
 	var imgname = req.file.originalname;
@@ -119,4 +149,5 @@ var getImage = function (req, res) {
 
 module.exports.uploadImages = uploadImages;
 module.exports.getImage = getImage;
+module.exports.reuploadImages = reuploadImages;
 module.exports.uploadDisplayPic = uploadDisplayPic;
