@@ -22,7 +22,6 @@ html
 		// Main Forms
 		#main
 			.form-container
-				// Metta: Pls replace empty fields with original info
 				form#form1(method='post', action='/artifacts/edit-artifact', enctype='multipart/form-data')
 					div
 						| Name: #{artifact.name}
@@ -37,7 +36,7 @@ html
 						input.form-control.tm-input(type='text', required='', name='tags', placeholder='Tags, separated by commas', data-role='tagsinput')
 					br
 					div
-						| Region: #{artifact.country}
+						| Region: #{artifact.placeOrigin}
 						select(name='country')
 							option.test(value='') Country...
 							option(value='Afganistan') Afghanistan
