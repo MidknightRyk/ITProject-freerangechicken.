@@ -2,6 +2,7 @@
 node_modules/
 uploads/
 culturechive/
+.idea/
 
 # Don't track these files, used for heroku deployment
 Procfile
@@ -18,3 +19,4 @@ Procfile
 *.rar
 *.tar
 *.zip
+*.idea
