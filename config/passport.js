@@ -11,13 +11,12 @@ passport.use('user', new LocalStrategy(
 		passwordField: 'pwd'
 	},
 	function (username, password, done) {
-		// Authenticate using email
+		// Authenticate using email or username
 		User.findOne({$or: [
 			{'email': username},
 			{'username': username}
 		]}, function (err, user, res) {
 			if (!err) {
-
 				if (!user || !user.validatePassword(password)) {
 					return done(null, false, { errors: { 'email or password': 'is invalid' } });
 				}

@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>Free Range User Approval Page</title>
 
-    <link href="admin-user-style.css" rel="stylesheet" type="text/css" >
-    <link href="admin-artifact-style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/admin-user-style.css" rel="stylesheet" type="text/css" >
+    <link href="assets/css/admin-artifact-style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/editArtifact-approval-style.css" rel="stylesheet" type="text/css">
 
     <!-- Font Awesome CDN-->
     <script src="https://kit.fontawesome.com/010fb4b3e5.js"></script>
@@ -90,9 +91,16 @@
         </a>
 
     </li>
+
     <li class="nav-item">
         <a class="nav-link btn-outline-warning" id="pills-artifact-tab" data-toggle="pill" href="#pills-artifact" role="tab" aria-controls="pills-artifact" aria-selected="false" style="">
             <i class="fab fa-earlybirds"> Artifact Request <span id="artifact-request-count" class="badge badge-danger badge-pill">0</span></i>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link btn-outline-success" id="pills-editArtifact-tab" data-toggle="pill" href="#pills-editArtifact" role="tab" aria-controls="pills-editArtifact" aria-selected="false" style="">
+            <i class="fab fa-earlybirds"> Edited Artifact Request <span id="editArtifact-request-count" class="badge badge-danger badge-pill">0</span></i>
         </a>
     </li>
 
@@ -605,8 +613,315 @@
 
     </div>
 
+
+    <!-- The content under Edit Artifact Request Tab -->
+    <div class="tab-pane fade" id="pills-editArtifact" role="tabpanel" aria-labelledby="pills-editArtifact-tab">
+
+        <div class="container comparision-lightbox">
+
+            <!-- Close Light Box Button -->
+            <img class="cross" src="close.svg">
+
+            <!-- Before -->
+            <div class="before">
+                <!-- Artifact Name -->
+                <div class="before-info name">
+                    Artifact Name: <h5>spoon</h5>
+                </div>
+                <!-- Tags -->
+                <div class="before-info tags">
+                    <p class="tag-title">Tags</p>
+                    <h5 class="tag" style="display:inline-block;">food</h5>
+                    <h5 class="tag" style="display:inline-block;">?</h5>
+                    <h5 class="tag" style="display:inline-block;">?</h5>
+                </div>
+                <!-- Region -->
+                <div class="before-info region">
+                    Region:<h5>AAAAAA</h5>
+
+                </div>
+                <!-- Year -->
+                <div class="before-info year">
+                    Year:<h5>1999</h5>
+
+                </div>
+                <!-- Images -->
+                <div class="before-info artifact-image">
+                    <p class="image-title">Images</p>
+                    <img src="../navigation-bar/assets/css/images/sky.jpg">
+                    <img src="../navigation-bar/assets/css/images/sky.jpg">
+                    <img src="../navigation-bar/assets/css/images/sky.jpg">
+                    <img src="../navigation-bar/assets/css/images/sky.jpg">
+                    <img src="../navigation-bar/assets/css/images/sky.jpg">
+
+                </div>
+
+                <!-- Description -->
+                <div class="before-info description">
+                    Description:<h5>hsfhshkjhkehdshkjshfjsdhsjdhfskhfjsdhjkfhksjhdfkjhkshfksdhfkjhskjdhjejkshjhfjkhsjkhjeh</h5>
+
+                </div>
+                <!-- Reason for editing artifact-->
+                <div class="before-info reason">
+                    Reason:<h5>sffjskejeksjhkhefshfjkdshjkdshfjkhsdjkfhdsjkhfjksdhfjkdshfjkshjfdhsjkhjkdshfkjskjhsjkfhsefjk</h5>
+                </div>
+
+            </div>
+
+            <!-- After -->
+            <div class="after">
+                <!-- Artifact Name -->
+                <div class="after-info name" style="margin-left: 50px;">
+                    Artifact Name:<h5>spoon</h5>
+                </div>
+
+                <!-- Tags -->
+                <div class="after-info tags" style="margin-left: 50px;">
+                    <p class="tag-title">Tags</p>
+                    <h5 class="tag" style="display:inline-block;">food</h5>
+                    <h5 class="tag" style="display:inline-block;">?</h5>
+                    <h5 class="tag" style="display:inline-block;">?</h5>
+                </div>
+                <!-- Region -->
+                <div class="after-info region" style="margin-left: 50px;">
+                    Region:<h5>BBBBBB</h5>
+                </div>
+                <!-- Year -->
+                <div class="after-info year" style="margin-left: 50px;">
+                    Year:<h5>1999</h5>
+                </div>
+                <!-- Images -->
+                <div class="after-info artifact-image" style="margin-left: 50px;">
+                    <p class="image-title">Images</p>
+                    <img src="../navigation-bar/assets/css/images/sky.jpg">
+                    <img src="../navigation-bar/assets/css/images/sky.jpg">
+                    <img src="../navigation-bar/assets/css/images/sky.jpg">
+                    <img src="../navigation-bar/assets/css/images/sky.jpg">
+                    <img src="../navigation-bar/assets/css/images/sky.jpg">
+                </div>
+                <!-- Description -->
+                <div class="after-info description" style="margin-left: 50px;">
+                    Description:<h5>sffjskejeksjhkhefshfjkdshjkdshfjkhsdjkfhdsjkhfjksdhfjkdshfjkshjfdhsjkhjkdshfkjskjhsjkfhsefjk</h5>
+                </div>
+                <!-- Reason for editing artifact-->
+                <div class="after-info reason" style="margin-left: 50px;">
+                    Reason:<h5>sffjskejeksjhkhefshfjkdshjkdshfjkhsdjkfhdsjkhfjksdhfjkdshfjkshjfdhsjkhjkdshfkjskjhsjkfhsefjk</h5>
+                </div>
+
+             </div>
+
+
+        </div>
+
+        <!-- Edit Artifact Request Box -->
+        <div class="container editArtifact-container" style="">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="main-box no-header">
+                        <div class="main-box-body">
+                            <div class="table-responsive">
+
+                                <table class="table editArtifact-list">
+
+                                    <!-- Header -->
+                                    <thead>
+                                    <tr>
+                                        <th><span>Artifact</span></th>
+                                        <th><span>Edited</span></th>
+                                        <th><span>Approval</span></th>
+                                        <th><span>Description</span></th>
+
+                                        <th class="text-center"><span>Status</span></th>
+                                    </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                    <!-- Artifact Approval 1 -->
+                                    <tr class="artifact-request">
+                                        <!-- Artifact Photo + Artifact Name + User Origin -->
+                                        <td>
+                                            <img src="https://i.ytimg.com/vi/CkFCBBNdsZg/maxresdefault.jpg" alt="">
+                                            <a href="#" id="edit1" class="artifact-name">ArtifactName1</a>
+                                            <span class="username-subhead">Andy Lau</span>
+                                        </td>
+
+                                        <!-- Artifact Uploaded Date -->
+                                        <td>10/09/2019</td>
+
+                                        <!-- Approve + Delete Buttons -->
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+                                        </td>
+
+                                        <!-- Description -->
+                                        <td>
+                                            <span>a tea cup</span>
+                                        </td>
+
+                                        <!-- Request Status: Pending / Accepted-->
+                                        <td class="text-center">
+                                            <span class="label">pending</span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Artifact Approval 2 -->
+                                    <tr class="artifact-request">
+
+                                        <td>
+                                            <img src="https://images-na.ssl-images-amazon.com/images/I/51a0K1S1nKL._UY500_.jpg" alt="">
+                                            <a href="#" class="artifact-name">ArtifactName2</a>
+                                            <span class="username-subhead">Username2</span>
+                                        </td>
+
+
+
+                                        <td>10/09/2019</td>
+
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <span>Elena's necklace</span>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <span class="label">pending</span>
+                                        </td>
+
+                                    </tr>
+
+                                    <!-- Artifact Approval 3 -->
+                                    <tr class="artifact-request">
+
+                                        <td>
+                                            <img src="https://gw.alicdn.com/bao/uploaded/i4/34362852/TB26oiHsr0kpuFjy0FjXXcBbVXa_!!34362852.jpg_b.jpg" alt="">
+                                            <a href="#" class="artifact-name">ArtifactName3</a>
+                                            <span class="username-subhead">Username3</span>
+                                        </td>
+
+                                        <td>10/09/2019</td>
+
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <span>仲天骐的耳钉</span>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <span class="label">pending</span>
+                                        </td>
+
+                                    </tr>
+
+                                    <!-- Artifact Approval 4 -->
+                                    <tr class="artifact-request">
+
+                                        <td>
+                                            <img src="https://i.redd.it/7hjgfhg6hz401.png" alt="">
+                                            <a href="#" class="artifact-name">ArtifactName1</a>
+                                            <span class="username-subhead">Username4</span>
+                                        </td>
+
+                                        <td>10/09/2019</td>
+
+                                        <td style="width: 20%;">
+
+                                            <a href="#" class="accept-btn table-link text-success">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+
+                                            <a href="#" class="delete-btn table-link text-danger">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <span>Starew Valley Artifacts</span>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <span class="label">accepted</span>
+                                        </td>
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
+<!-- Open / Close the Comparision Light Box -->
+<script>
+    $(document).ready(function () {
+        $('#edit1').click(function() {
+            $('.comparision-lightbox').fadeIn(800);
+            $('.editArtifact-container').fadeOut(50);
+
+        });
+
+        $('.cross').click(function() {
+            $('.comparision-lightbox').fadeOut(100);
+            $('.editArtifact-container').fadeIn(50);
+        });
+    });
+</script>
 
 <script>
 

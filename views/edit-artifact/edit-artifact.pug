@@ -22,7 +22,6 @@ html
 		// Main Forms
 		#main
 			.form-container
-				// Metta: Pls replace empty fields with original info
 				form#form1(method='post', action='/artifacts/edit-artifact', enctype='multipart/form-data')
 					div
 						| Name: #{artifact.name}
@@ -37,7 +36,7 @@ html
 						input.form-control.tm-input(type='text', required='', name='tags', placeholder='Tags, separated by commas', data-role='tagsinput')
 					br
 					div
-						| Region: #{artifact.country}
+						| Region: #{artifact.placeOrigin}
 						select(name='country')
 							option.test(value='') Country...
 							option(value='Afganistan') Afghanistan
@@ -331,7 +330,7 @@ html
 					section
 						ul.actions
 							li
-								a.button(href='javascript:;', onclick="document.getElementById('form1').submit();", data-toggle='modal', data-target='#myModal', formmethod='post') Accept changes
+								a.button(href='javascript:;', onclick="checkNImages()", formmethod='post') Accept changes
 				// Modal
 				#myModal.modal.fade(role='dialog')
 					.modal-dialog
@@ -374,27 +373,40 @@ html
 			}
 			});
 			});
+
+			function checkNImages(){
+				var nImages = #{artifact.extraImages.length} + toDelete.length + num - 1;
+				console.log(nImages);
+				if (nImages > 4){
+					alert("You are not allowed more than 4 extra images!");
+				}
+				else{
+					$("#myModal").modal();
+					document.getElementById("form1").submit();
+				}
+			}
+			
 			var num = 5;
 			function readImage() {
-			if (window.File && window.FileList && window.FileReader) {
-			var files = event.target.files; //FileList object
-			var output = $(".preview-images-zone");
-			for (let i = 0; i < files.length; i++) {
-			var file = files[i];
-			if (!file.type.match('image')) continue;
-			var picReader = new FileReader();
-			picReader.addEventListener('load', function (event) {
-			var picFile = event.target;
-			var html =  '<div class="preview-image preview-show-' + num + '">' +
-			'<div class="image-cancel" data-no="' + num + '">x</div>' +
-			'<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
-			'</div>';
-			output.append(html);
-			num = num + 1;
-			});
-			picReader.readAsDataURL(file);
-			}
-			} else {
-			console.log('Browser not supported');
-			}
-			}
+				if (window.File && window.FileList && window.FileReader) {
+					var files = event.target.files; //FileList object
+					var output = $(".preview-images-zone");
+					for (let i = 0; i < files.length; i++) {
+						var file = files[i];
+						if (!file.type.match('image')) continue;
+						var picReader = new FileReader();
+						picReader.addEventListener('load', function (event) {
+							var picFile = event.target;
+							var html =  '<div class="preview-image preview-show-' + num + '">' +
+							'<div class="image-cancel" data-no="' + num + '">x</div>' +
+							'<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+							'</div>';
+							output.append(html);
+							num = num + 1;
+							});
+							picReader.readAsDataURL(file);
+						}
+						} else {
+							console.log('Browser not supported');
+						}
+					}

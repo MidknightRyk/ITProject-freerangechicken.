@@ -38,6 +38,7 @@ var addArtifact = function (req, res) {
 var getArtifact = function (req, res) {
 	var artifactID = req.params.artifact;
 	var userID = (req.session.user);
+	// Find user, artifact and populate its issues
 	User.findById(userID).exec((err, user) => {
 		if (err) return console.log(err);
 		Artifact.findById(artifactID, function (err, artifact) {
@@ -124,6 +125,7 @@ var cloneArtifact = function (req, res) {
 	});
 };
 
+// Deletes the clone and ticket made by starting edit
 var cancelEdits = function (req, res) {
 	// Delete the clone
 	Artifact.findByIdAndDelete(storage.artifactId);
@@ -137,6 +139,7 @@ var cancelEdits = function (req, res) {
 	return res.redirect('/artifacts/' + storage.artifactId.toString());
 };
 
+// Edits artifact
 var editArtifact = function (req, res) {
 	Edits.findById(storage.ticketId, function (err, ticket) {
 		console.log('edits being sent according to: ' + ticket);
