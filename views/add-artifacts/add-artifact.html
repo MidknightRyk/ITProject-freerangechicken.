@@ -389,7 +389,7 @@
 				<!-- Submit Button -->
 				<section>
 					<ul class="actions">
-						<li><input type="submit" value="Add Artifact" class="button" /></li>
+						<li><input type="submit" onclick="myFunction()" value="Add Artifact" class="button" /></li>
 					</ul>
 				</section>
 			</form>
@@ -437,6 +437,11 @@
 	    } else {
 	        console.log('Browser not support');
 	    }
+		}
+		function myFunction() {
+			setTimeout(function(){
+				window.location.href = "/profile";
+			}, 1000);
 		}
 		</script>
 
