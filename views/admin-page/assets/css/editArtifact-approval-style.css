@@ -1,0 +1,212 @@
+.container
+{
+    padding-top:30px;
+}
+/* Top Edge */
+.main-box.no-header {
+    padding-top: 0;
+}
+
+.main-box {
+    background: #FFFFFF;
+
+    -webkit-box-shadow: 1px 1px 2px 1px #CCCCCC;
+    box-shadow: 1px 1px 2px 1px #CCCCCC;
+
+    -webikt-border-radius: 6px;
+    border-radius: 6px;
+
+    margin-bottom: 16px;
+}
+
+/* Header */
+.table thead th {
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.artifact-name {
+    display: block;
+    padding-top: 1px;
+    margin-left: 80px;
+    font-size: 15px;
+    color: #333333;
+
+}
+
+/* Subhead */
+.username-subhead {
+    font-size: 12px;
+    font-style: italic;
+}
+.table tbody tr td:first-child {
+    font-weight: 300;
+}
+
+/* Restrict the size of the profile photo */
+.editArtifact-list tbody td>img {
+    position: relative;
+    max-width: 65px;
+    float: left;
+    margin-right: 15px;
+}
+
+
+/* To get rid of the underline caused by using font awesome icon
+ * And the hotlink underline
+ */
+a {
+    outline: none!important;
+}
+a:hover{
+    text-decoration: none!important;
+}
+
+/* Styles for each cell */
+.table tbody tr td {
+    font-size: 13px;
+    vertical-align: middle;
+    padding: 12px 8px;
+}
+
+/* Status Column */
+.label {
+    border-radius: 1px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
+
+
+/* Before / After */
+.before
+{
+    float:left;
+    width:400px;
+    height:500px;
+}
+.after
+{
+    border-left:1px dotted lightgray;
+    height:100%;
+    margin-left: 440px;
+    margin-top: 0;
+}
+
+/* Comparison Light Box Close */
+
+.cross {
+    /* background-image: url(""); */
+    border: 0;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 150px;
+    top: 150px; /* updated */
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+}
+
+.cross:hover
+{
+    width:18px;
+    height:18px;
+    transition:0.8s;
+}
+
+.comparision-lightbox
+{
+    display:none;
+    background: rgb(15,115,136);
+    background: linear-gradient(180deg, rgba(15,115,136,0.8342762212643678) 0%, rgba(158,109,129,0.6158854166666667) 72%);
+    height:auto;
+}
+.reason
+{
+    margin-bottom: 50px;
+}
+
+/* 'Tags' Text Style + 'Images' Text Style */
+.tag-title, .image-title
+{
+    margin-bottom: 5px;
+}
+
+/* Tag Style */
+ .tag {
+     background: #eee;
+     border-radius: 3px 0 0 3px;
+     color: #999;
+     display: inline-block;
+     height: 26px;
+     line-height: 26px;
+     padding: 0 20px 0 23px;
+     position: relative;
+     margin: 0 10px 10px 0;
+     text-decoration: none;
+     -webkit-transition: color 0.2s;
+     cursor:pointer;
+ }
+
+/* triangle before */
+.tag::before {
+    background: rgb(113,146,162);
+    border-radius: 10px;
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+    content: '';
+    height: 6px;
+    left: 10px;
+    position: absolute;
+    width: 6px;
+    top: 10px;
+}
+
+/* triangle after */
+.tag::after {
+    background: rgb(113,146,162);
+    border-bottom: 13px solid transparent;
+    border-left: 10px solid #eee;
+    border-top: 13px solid transparent;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.tag:hover {
+    background-color: crimson;
+    color: white;
+}
+
+.tag:hover::after {
+    border-left-color: crimson;
+}
+
+/* Images */
+.artifact-image img
+{
+    width:50px;
+    height:50px;
+    object-fit: cover;
+}
+
+/* Description + Reason : Auto Line Break */
+.before-info.description,
+.before-info.reason,
+.after-info.description,
+.after-info.reason
+{
+    display:inline-block;
+    width:430px;
+    word-wrap: break-word;
+}
+
+.before-info.description h5,
+.before-info.reason h5,
+.after-info.description h5,
+.after-info.reason h5{
+    font-weight: 600;
+    text-transform: none;
+}
