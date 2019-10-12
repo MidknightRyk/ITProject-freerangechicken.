@@ -28,6 +28,20 @@ function showPassword () {
 	}
 }
 
+/* Reset Show Password Checkbox */
+function resetShowPassword () {
+	var input1 = document.getElementById('reset-password');
+	var input2 = document.getElementById('confirm-password');
+
+	if ((input1.type === 'password') || (input2.type === 'password')) {
+		input1.type = 'text';
+		input2.type = 'text';
+	} else {
+		input1.type = 'password';
+		input2.type = 'password';
+	}
+}
+
 // Validate sign up form
 function formValidation () {
     // JavaScript form validation
