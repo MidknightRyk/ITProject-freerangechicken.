@@ -36,29 +36,12 @@
 		<lottie-player src="https://assets8.lottiefiles.com/temp/lf20_RTai6J.json" background="transparent" speed="0.2" style="width: 100px; height: 100px; margin-top:-80px;" loop autoplay>
 		</lottie-player>
 
+		<div class="slideshow-container" style="max-width:500px">
+				<img class="mySlides" src="images/dragon.jpg" style="width:100%">
+				<img class="mySlides" src="images/lantern.jpg" style="width:100%">
+			  </div>
+			  
 
-			<div class="slideshow-container">
-
-				<div class="mySlides fade">
-					<img src="images/dragon.jpg" style="width:100%">
-				</div>
-
-				<div class="mySlides fade">
-					<img src="images/lantern.jpg" style="width:100%">
-				</div>
-
-				<div class="mySlides fade">
-					<img src="images/dragon.jpg" style="width:100%">
-				</div>
-
-				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-				<a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-			</div>
-			<br>
-
-
-		<meta name="viewport" content="width=device-width, initial-scale=1">
     	<style>
         * {box-sizing: border-box}
         body {font-family: Verdana, sans-serif; margin:0}
@@ -72,34 +55,6 @@
 			margin: auto;
 			margin-top: 50%;
         }
-
-        /* Next & previous buttons */
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 15px;
-            margin-top: 25%;
-            color: white;
-            font-weight: bold;
-            font-size: -22px;
-            transition: 0.8s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-        }
-
-        /* Position the "next button" to the right */
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        /* On hover, add a black background color with a little bit see-through */
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-
 
         /* Fading animation */
         .fade {
@@ -148,8 +103,15 @@
 					Ratione natus expedita iusto, minus cumque vitae quo culpa reiciendis aspernatur aliquam veritatis magnam non, dicta nemo inventore, nisi quas dolores. Modi laboriosam sunt aliquid rem, deserunt quis? Porro, hic.</div><br>
 				<div id="tags">Tags: #ancient, #precious</div><br>
 
+				
+				<!-- Start Issue Artifact Button (navigate to discussion forum) -->
+				<section>
+						<ul class="actions">
+							<li><input type="submit" value="Start Issue" class="button" /></li>
+						</ul>
+					</section>
 
-				<!-- Edit Artifact Button -->
+				<!-- Edit Artifact Button (navigate to edit arrtifact page) -->
 				<section>
 						<ul class="actions">
 							<li><input type="submit" value="Edit Artifact" class="button" /></li>
@@ -159,7 +121,6 @@
 			</form>
 		</div>
 	</div>
-
 
 
 	<!-- Delete Artifact Button (trigger modal on clicking for deletion of artifact) -->
@@ -181,86 +142,28 @@
 					<h4 class="modal-title">Ticket Issued!</h4>
 				</div>
 				<div class="modal-body">
-					<p>Your request to delete the artifact has been sent to admin! </p>
+					<p>Your request to delete the artifact has been sent for admin approval! </p>
 				</div>
 			</div>
 
 		</div>
 	</div>
 
-
-	<!-- Necessary: the Footer of the Page -->
-	<footer id="footer">
-		<div class="inner">
-		</div>
-	</footer>
-
-
-
-		<!-- Upload Artifact Images -->
-		<!-- Adapted from : https://bootsnipp.com/snippets/2eNKz -->
-		<script>
-		$(document).ready(function() {
-    document.getElementById('pro-image').addEventListener('change', readImage, false);
-	    $(document).on('click', '.image-cancel', function() {
-	        let no = $(this).data('no');
-	        $(".preview-image.preview-show-"+no).remove();
-	    });
-		});
-		var num = 1;
-		function readImage() {
-	    if (window.File && window.FileList && window.FileReader) {
-	        var files = event.target.files; //FileList object
-	        var output = $(".preview-images-zone");
-	        for (let i = 0; i < files.length; i++) {
-	            var file = files[i];
-	            if (!file.type.match('image')) continue;
-	            var picReader = new FileReader();
-	            picReader.addEventListener('load', function (event) {
-	                var picFile = event.target;
-	                var html =  '<div class="preview-image preview-show-' + num + '">' +
-	                            '<div class="image-cancel" data-no="' + num + '">x</div>' +
-	                            '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
-	                            '</div>';
-	                output.append(html);
-	                num = num + 1;
-	            });
-	            picReader.readAsDataURL(file);
-	        }
-	    } else {
-	        console.log('Browser not support');
-	    }
-		}
-		</script>
-
-		<script>
-			var slideIndex = 1;
-			showSlides(slideIndex);
-
-			function plusSlides(n) {
-				showSlides(slideIndex += n);
+	<script>
+			var myIndex = 0;
+			carousel();
+			
+			function carousel() {
+			  var i;
+			  var x = document.getElementsByClassName("mySlides");
+			  for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";  
+			  }
+			  myIndex++;
+			  if (myIndex > x.length) {myIndex = 1}    
+			  x[myIndex-1].style.display = "block";  
+			  setTimeout(carousel, 3000);     // Change image every 3 seconds
 			}
-
-			function currentSlide(n) {
-				showSlides(slideIndex = n);
-			}
-
-			function showSlides(n) {
-				var i;
-				var slides = document.getElementsByClassName("mySlides");
-				var dots = document.getElementsByClassName("dot");
-				if (n > slides.length) {slideIndex = 1}
-				if (n < 1) {slideIndex = slides.length}
-				for (i = 0; i < slides.length; i++) {
-					slides[i].style.display = "none";
-				}
-				for (i = 0; i < dots.length; i++) {
-					dots[i].className = dots[i].className.replace(" active", "");
-				}
-				slides[slideIndex-1].style.display = "block";
-				dots[slideIndex-1].className += " active";
-			}
-		</script>
-
+			</script>
 	</body>
 </html>
