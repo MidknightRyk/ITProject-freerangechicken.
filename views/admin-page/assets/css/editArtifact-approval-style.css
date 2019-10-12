@@ -1,3 +1,10 @@
+/* description word break*/
+.editArtifact-description
+{
+    display: inline-block;
+    width:230px;
+    word-break: break-word;
+}
 .container
 {
     padding-top:30px;
@@ -209,4 +216,125 @@ a:hover{
 .after-info.reason h5{
     font-weight: 600;
     text-transform: none;
+}
+
+@media screen and (max-width: 990px){
+    .before-info.reason{
+        padding-bottom: 0;
+    }
+    .before{
+        margin-left: 5%;
+    }
+    .after
+    {
+        margin-top: 70%;
+        margin-left: -2%;
+        border-left:0;
+        border-top:1px dotted lightgray;
+    }
+    .after-info.name{
+        margin-top: 50px;
+    }
+    .cross {
+        border: 0;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        right: 150px;
+        top: 150px; /* updated */
+        vertical-align: middle;
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .before-info.reason{
+        padding-bottom: 0;
+    }
+    .before{
+        margin-left: 5%;
+    }
+    .after
+    {
+        margin-top: 75%;
+        margin-left: -2%;
+        border-left:0;
+        border-top:1px dotted lightgray;
+    }
+    .after-info.name{
+        margin-top: 50px;
+    }
+    .cross {
+        border: 0;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        right: 150px;
+        top: 150px; /* updated */
+        vertical-align: middle;
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media screen and (max-width: 762px){
+    .before-info.reason{
+        padding-bottom: 0;
+    }
+    .before{
+        margin-left: 5%;
+    }
+    .after
+    {
+        margin-top: 90%;
+        margin-left: -5%;
+        border-left:0;
+        border-top:1px dotted lightgray;
+    }
+    .after-info.name{
+        margin-top: 50px;
+    }
+    .cross {
+        border: 0;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        right: 110px;
+        top: 150px; /* updated */
+        vertical-align: middle;
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media screen and (max-width: 605px){
+    .before-info.reason{
+        padding-bottom: 0;
+    }
+    .before{
+        margin-left: 5%;
+    }
+    .after
+    {
+        margin-top: 90%;
+        margin-left: -5%;
+        border-left:0;
+        border-top:1px dotted lightgray;
+    }
+    .after-info.name{
+        margin-top: 50px;
+    }
+    .cross {
+        border: 0;
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        right: 50px;
+        top: 180px; /* updated */
+        vertical-align: middle;
+        width: 15px;
+        height: 15px;
+    }
+
 }
