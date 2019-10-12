@@ -76,3 +76,10 @@ a:hover{
     font-weight: 600;
     text-transform: lowercase;
 }
+
+/* Description word break*/
+.addArtifact-description{
+    display:inline-block;
+    width:230px;
+    word-wrap: break-word;"
+}
