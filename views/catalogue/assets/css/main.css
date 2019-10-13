@@ -349,8 +349,8 @@ ul.actions li {
 	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 	background-color: transparent;
 	border-radius: 0.35em;
-	border: solid 3px #efefef;
-	color: #787878 !important;
+	border: solid 3px lightgrey;
+	color: #6e6e6e !important;
 	cursor: pointer;
 	display: inline-block;
 	font-weight: 400;
@@ -364,18 +364,17 @@ ul.actions li {
 }
 
 .button:hover {
-	border-color: #080f53;
-	color: #080f53 !important;
+	border-color: #dbdbdb;
+	color: white!important;
+	transition:0.5s;
 }
 
 .button:active {
-	background-color: rgba(73, 191, 157, 0.1);
-	border-color: #01031a;
-	color: #01031a !important;
+	background-color: rgba(73, 191, 157, 0.2);
+	border-color: #ffffff;
+	color: #ffffff !important;
 }
 
-
-	
 
 		ul.actions.special {
 			-moz-justify-content: center;
@@ -846,7 +845,8 @@ ul.actions li {
 		}
 
 		.wrapper.style1 {
-			background-color: #80220b;
+			background: rgb(223,72,79);
+			background: linear-gradient(180deg, rgba(223,72,79,0.5387676886792453) 0%, rgba(12,92,108,0.8217865566037736) 58%);
 			color: #c8ece9;
 		}
 
@@ -1453,6 +1453,7 @@ ul.actions li {
 	right: 0;
 	transform: translateY(-50%);
 }
+
 /* Username */
 
 .user-name h2.underline-animation:after {
@@ -1566,7 +1567,6 @@ ul.actions li {
 	}
 
 /* Header */
-
 	#header {
 		-moz-transition: background-color 0.2s ease;
 		-webkit-transition: background-color 0.2s ease;
@@ -1580,7 +1580,10 @@ ul.actions li {
 		top: 0;
 		width: 100%;
 		z-index: 10000;
+
+		padding:0 0 0 0; /* to fix profile page css clashes */
 	}
+
 
 		#header h1 {
 			-moz-transition: opacity 0.2s ease;
@@ -1709,6 +1712,15 @@ ul.actions li {
 		overflow: hidden;
 		position: relative;
 		text-align: center;
+	}
+
+	#banner a
+	{
+		color:#6e6e6e !important;
+	}
+	#banner a:hover{
+		color:white !important;
+		transition:0.5s;
 	}
 
 		#banner h2 {
@@ -1877,6 +1889,12 @@ ul.actions li {
 		opacity: 1;
 	}
 
+	/* Artifact Year */
+	.col-md-12
+	{
+		margin-top: 50px;
+	}
+
 /* Main */
 
 	#main > header {
@@ -1985,3 +2003,126 @@ ul.actions li {
 		background-color: #1d242a;
 	}
 
+/* Add Artifact Button Responsive */
+@media screen and (max-width: 800px){
+	#banner ul li a
+	{
+		margin-left: -55px;
+		width:200px;
+	}
+}
+
+@media screen and (max-width: 500px){
+		#banner ul li a
+		{
+			margin-left: -70px;
+			width:200px;
+		}
+	}
+
+/* Artifact Image Layout */
+/* image ratio: 1:1 */
+@media screen and (max-width:692px){
+	.tiles article > .image {
+
+		transition: transform 0.5s ease;
+		position: relative;
+		display: block;
+		width: 250px;
+		border-radius: 4px;
+		overflow: hidden;
+
+	}
+
+	.tiles article > .image img {
+		display: block;
+		width:250px;
+		height: 250px;
+		object-fit: cover;
+	}
+
+	.tiles article > .image:before {
+		pointer-events: none;
+		transition: background-color 0.5s ease, opacity 0.5s ease;
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 250px;
+		height: 250px;
+		z-index: 1;
+		opacity: 0.4;
+	}
+
+	.tiles article > .image:after {
+		pointer-events: none;
+		transition: opacity 0.5s ease;
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 250px;
+		height: 250px;
+		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		opacity: 0.25;
+		z-index: 2;
+	}
+}
+
+/* image ratio: 1:1 */
+@media screen and (max-width:555px){
+	.tiles article > .image {
+
+		transition: transform 0.5s ease;
+		position: relative;
+		display: block;
+		width: 200px;
+		border-radius: 4px;
+		overflow: hidden;
+
+	}
+
+	.tiles article > .image img {
+		display: block;
+		width:200px;
+		height: 200px;
+		object-fit: cover;
+	}
+
+	.tiles article > .image:before {
+		pointer-events: none;
+		transition: background-color 0.5s ease, opacity 0.5s ease;
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 200px;
+		height: 200px;
+		z-index: 1;
+		opacity: 0.4;
+	}
+
+	.tiles article > .image:after {
+		pointer-events: none;
+		transition: opacity 0.5s ease;
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 200px;
+		height: 200px;
+		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		opacity: 0.25;
+		z-index: 2;
+	}
+}
