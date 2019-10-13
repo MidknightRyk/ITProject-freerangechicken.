@@ -1,157 +1,123 @@
 doctype html
-html(lang='en')
+// Inspired by HTML5 UP Future Imperfect
+html
 	head
-		title  Start a New Issue Page
+		title Discussion Forum 
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
 		link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.0.8/css/all.css')
 		link(rel='stylesheet', href='../views/discussion-board/assets/css/discussion-forum-mainStyle.css')
-		// Font Awesome CDN
-		script(src='https://kit.fontawesome.com/010fb4b3e5.js')
-		// Bootstrap CDN
-		link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
-		script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
+		// Navigation Bar
+		link(rel='stylesheet', href='../views/navigation-bar/assets/css/nav-main.css')
+		noscript
+			link(rel='stylesheet', href='../views/navigation-bar/assets/css/noscript.css')
+		link(rel='stylesheet', href='../views/navigation-bar/assets/css/logout.css')
 		// Jquery
 		script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+	// Navigation Bar
 	body.is-preload
+		header#navigation-header
+			h1
+				a(href='/catalogue') Catalogue
+			nav#nav
+				ul
+					li.special
+						// menu text deleted
+						a.menuToggle(href='#menu')
+						#menu
+							// Profile Photo
+							.navigation-profile-upload-container
+								a(href='#')
+									span.fas.fa-camera
+								img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id, alt='profile photo')
+							// Username :-> leads to the profile page
+							.user-name(style='text-align: center;')
+								a(href='#')
+									h2.underline-animation #{user.name}
+							// User Profile Information
+							.user-info
+								h3 #{user.relationship}
+								h3 #{user.artifacts.length} Artifacts contributed
+								h3#join-date
+									i.far.fa-clock
+								script.
+									function english_ordinal_suffix(dt)
+									{
+										return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
+									}
+									var user = !{JSON.stringify(user)};
+									var date = new Date(user.dateJoined);
+									console.log(typeof date);
+									var mm = date.toLocaleString('default', { month: 'long' });
+									var yyyy = date.getFullYear();
+									document.getElementById('join-date').appendChild(document.createTextNode(' '+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
+								div(hidden='')
+									| Icons made by
+									a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
+									|  from
+									a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
+							// Home Button
+							.home-button-container
+								a.home-button(href='')
+									img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg', alt='home-button')
+									.home HOME
+							// Logout Button
+							.logout-container
+								form#form1(action='/logout', method='POST')
+									a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
+										img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg', alt='logout button')
+										.logout LOGOUT
 		// Wrapper
-		#wrapper
+		#wrapper(style='margin-top: 50px;')
 			// Sidebar + Header
 			section#sidebar
 				// Intro
 				section#intro
 					// <a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
 					header
-						p discussion board
-						a.button.large Start New Issue
-						script.
-							$(".button").click(function () {
-							$(".add-issue").show();
-							});
+						p discussion board 
 			// Main
 			#main
-				// Add new issue
-				article.add-issue(style='display:none;')
-					// Author
-					header
-						a.author(href='#')
-							span.name Tom Holland
-							img(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
-						span.close x
-						script.
-							$(".close").click(function () {
-							$(".add-issue").hide();
-							});
-					.form-container
-						form(method='post', action='/discussion-board/create-issue')
-							// Issue Title
-							div
-								input(type='text', required='', name='topic', placeholder='Enter Issue Title')
-							br
-							// Artifact ID
-							div
-								input(type='text', required='', name='artifact_id', placeholder='Artifact ID')
-							br
-							// Issue Description
-							div
-								textarea(name='description', placeholder='Description')
-							// Post Button
-							ul.actions
-								li
-									input.button.small(type='submit', value='Post')
-				// Issue 1
+			each issue in issues
+				// Issues
 				article.issue
 					header
 						// Issue title + short description
 						.issue-title
 							h2
-								a(href='issue-details-page.html') Issue Title
-							p short description
+								a(href='/discussion-board/'+issue.id) #{issue.topic}
 						// Posted Time + Profile photo
 						.issue-info
-							time.published(datetime='2015-11-01') November 1, 2015
+							time.published() #{issue.dateCreated}
 							a.author(href='#')
-								span.name Tom Holland
-								img(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
+								span.name #{issue.author}
+								img(src="../images/"+issue.authorID.displayPic._id, alt='profile photo')
 					// Image if there's any
 					a.image.featured(href='#')
 						img(src='', alt='')
 					// Details
-					p talk talk talk talk talk........
+					p #{issue.content}
 					footer
 						// Get rid of this
 						ul.actions
 							li
-								a.button.small(href='issue-details-page.html') Continue Reading
+								a.button.small(href='/discussion-board/'+issue.id) Continue Reading
 						// the Number of Likes and Comments
 						ul.stats
 							li
-								a.icon.solid.fa-heart(href='#') 28
-							li
-								a.icon.solid.fa-comment(href='#') 128
-				// Issue 2
-				article.issue
-					header
-						// Issue title + short description
-						.issue-title
-							h2
-								a(href='#') Issue Title
-							p short description
-						// Posted Time + Profile photo
-						.issue-info
-							time.published(datetime='2015-11-01') November 1, 2015
-							a.author(href='#')
-								span.name Tom Holland
-								img(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
-					// Image if there's any
-					a.image.featured(href='#')
-						img(src='../views/discussion-board/assets/css/images/galaxy.jpg', alt='')
-					// Details
-					p talk talk talk talk talk........
-					footer
-						// Get rid of this
-						ul.actions
-							li
-								a.button.small(href='#') Continue Reading
-						// the Number of Likes and Comments
-						ul.stats
-							li
-								a.icon.solid.fa-heart(href='#') 28
-							li
-								a.icon.solid.fa-comment(href='#') 128
-				// Issue 3
-				article.issue
-					header
-						// Issue title + short description
-						.issue-title
-							h2
-								a(href='#') Issue Title
-							p short description
-						// Posted Time + Profile photo
-						.issue-info
-							time.published(datetime='2015-11-01') November 1, 2015
-							a.author(href='#')
-								span.name Tom Holland
-								img(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
-					// Image if there's any
-					a.image.featured(href='#')
-						img(src='../views/discussion-board/assets/css/images/galaxy.jpg', alt='')
-					// Details
-					p talk talk talk talk talk........
-					footer
-						// Get rid of this
-						ul.actions
-							li
-								a.button.small(href='#') Continue Reading
-						// the Number of Likes and Comments
-						ul.stats
-							li
-								a.icon.solid.fa-heart(href='#') 28
-							li
-								a.icon.solid.fa-comment(href='#') 128
-				// Pagination
-				ul.actions.pagination
-					li
-						a.disabled.button.large.previous(href='') Previous Page
-					li
-						a.button.large.next(href='#') Next Page
+								a.icon.solid.fa-comment(href='#') #{issue.comments.length}
+						br
+			// Pagination
+			ul.actions.pagination
+				li
+					a.disabled.button.large.previous(href='') Previous Page
+				li
+					a.button.large.next(href='#') Next Page
+			// Navigation Bar Scripts
+			script(src='../views/navigation-bar/assets/js/jquery.min.js')
+			script(src='../views/navigation-bar/assets/js/jquery.scrollex.min.js')
+			script(src='../views/navigation-bar/assets/js/jquery.scrolly.min.js')
+			script(src='../views/navigation-bar/assets/js/browser.min.js')
+			script(src='../views/navigation-bar/assets/js/breakpoints.min.js')
+			script(src='../views/navigation-bar/assets/js/util.js')
+			script(src='../views/navigation-bar/assets/js/main.js')
