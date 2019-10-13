@@ -364,7 +364,7 @@
 						<option value="Zimbabwe">Zimbabwe</option>
 					</select></div><br>
 
-				<div>Year: <input type="text" placeholder="Choose..." class="form-control" name="year" id="date" ></div><br>
+				<div>Year: <input type="text" placeholder="Choose the date..." class="form-control" name="year" id="date" ></div><br>
 				<!-- Date Picker -->
 				<script type="text/javascript">
 					$('#date').datepicker({
@@ -379,7 +379,7 @@
 				<div>*Reason for editing artifact: <input required="" type="text" name="ticketDescription" placeholder="Why do you want to edit this?"><br></div>
 
 
-				<!-- Existed Photos -->
+				<!-- Existing Photos -->
 				<div class="existing-container">
 					<div class="existing-array">
 						<div class="existing-preview-images-zone">
@@ -398,7 +398,6 @@
 						<fieldset class="form-group">
 							<a class="button" style=" margin-top:10px; text-decoration: none;" href="javascript:void(0)" onclick="$('#pro-image').click()">Edit Image(s)</a>
 
-							<!-- I know this looks ugly but i really dont know how to add this maximum 5 and make it pretty at the same time. -->
 							<span style="font-size:10px; color: #8ba5b4;">(5)</span>
 							<input accept="image/*" type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
 						</fieldset>
@@ -411,25 +410,10 @@
 						<li><input type="submit" formmethod="POST" value="Submit Changes" class="button" href="" /></li><br>
 					</ul>
 				</section>
-
-
 			</form>
-
 		</div>
-
-		<button id="close_account">Show</button>
-
-
 	</div>
 	
-
-	<!-- Necessary: the Footer of the Page -->
-	<footer id="footer">
-		<div class="inner">
-		</div>
-	</footer>
-
-
 		<!-- Upload Artifact Images -->
 		<!-- Adapted from : https://bootsnipp.com/snippets/2eNKz -->
 		<script>
@@ -464,54 +448,9 @@
 	        console.log('Browser not support');
 	    }
 		}
-
-
-
-
-		$(document).ready(function() {
-				$("#close_account").on("click", function(e) {
-					var buttons = $('<div>')
-					.append(createButton('Ok', function() {
-					swal.close();
-					console.log('ok'); 
-					})).append(createButton('Later', function() {
-					swal.close();
-					console.log('Later'); 
-					})).append(createButton('Cancel', function() {
-					swal.close();
-					console.log('Cancel');
-					}));
-					
-					e.preventDefault();
-					Swal.fire({
-						title: 'Are you sure?',
-						text: "You won't be able to revert this!",
-						type: 'warning',
-						showCancelButton: true,
-						confirmButtonColor: '#3085d6',
-						cancelButtonColor: '#d33',
-						confirmButtonText: 'Yes, delete it!'
-						}).then((result) => {
-						if (result.value) {
-							Swal.fire(
-							'Deleted!',
-							'Your file has been deleted.',
-							'success'
-							)
-						}
-						})
-									});
-								});
-
-						function createButton(text, cb) {
-						return $('<button>' + text + '</button>').on('click', cb);
-						}
-
-
 		</script>
 
 		
-
 	<!-- Scripts -->
 	<script src="../navigation-bar/assets/js/jquery.min.js"></script>
 	<script src="../navigation-bar/assets/js/jquery.scrollex.min.js"></script>
