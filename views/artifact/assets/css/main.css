@@ -22,6 +22,13 @@ textarea:focus {
 	border-color: #49bf9d;
 }
 
+input[type="submit"]:focus
+{
+	box-shadow: none;
+	border:0;
+	outline: 0;
+}
+
 input[type="text"],
 select {
 	height: 2.75em;
@@ -87,14 +94,97 @@ ul.actions li {
 }
 
 .button:hover {
-	border-color: #49bf9d;
-	color: #49bf9d !important;
+	border-color: #0f859e;
+	color: #0f859e !important;
 }
 
 .button:active {
 	background-color: rgba(73, 191, 157, 0.1);
-	border-color: #49bf9d;
-	color: #49bf9d !important;
+	border-color: #0f859e;
+	color: #0f859e !important;
+}
+
+/* Year */
+#name{
+	font-family: sans-serif;
+	text-transform: capitalize;
+	font-weight: 800;
+	font-size: 20px;
+
+	background: linear-gradient(to right, #0c809e 0%, #330867 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+}
+#year
+{
+	color:#999;
+	font-family: sans-serif;
+}
+
+/* Description */
+#description
+{
+	width:90%;
+	font-family: Arial, sans-serif;
+	word-spacing: 2px;
+}
+
+@media screen and (max-width: 988px){
+	#description{
+		width:100%;
+	}
+
+}
+
+/* Tag Style */
+.tag {
+	background: #eee;
+	border-radius: 3px 0 0 3px;
+	color: #999;
+	display: inline-block;
+	height: 26px;
+	line-height: 26px;
+	padding: 0 20px 0 23px;
+	position: relative;
+	margin: 0 10px 10px 0;
+	text-decoration: none;
+	-webkit-transition: color 0.2s;
+	cursor:pointer;
+}
+
+/* triangle before */
+.tag::before {
+	background: white; /* triangle color */
+	border-radius: 10px;
+	box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+	content: '';
+	height: 6px;
+	left: 10px;
+	position: absolute;
+	width: 6px;
+	top: 10px;
+}
+
+/* triangle after */
+.tag::after {
+	background: white; /* triangle color */
+	border-bottom: 13px solid transparent;
+	border-left: 10px solid #eee;
+	border-top: 13px solid transparent;
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.tag:hover {
+	background-color: crimson;
+	color: white;
+}
+
+.tag:hover::after {
+	border-left-color: crimson;
 }
 
 

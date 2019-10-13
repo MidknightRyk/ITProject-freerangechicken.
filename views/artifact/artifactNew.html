@@ -114,6 +114,10 @@
 			margin-top: 50%;
         }
 
+		.mySlides
+		{
+			border: 5px solid white;
+		}
         /* Fading animation */
         .fade {
             -webkit-animation-name: fade;
@@ -132,6 +136,20 @@
             to {opacity: 1}
         }
 
+		/* responsive artifact photo display responsive */
+		@media screen and (max-width: 988px){
+			.slideshow-container
+			{
+				margin-top: -80px;
+
+			}
+			.mySlides
+			{
+				height:300px;
+				object-fit: cover;
+				margin-left: 2%;
+			}
+		}
         /* On smaller screens, decrease text size */
         @media only screen and (max-width: 300px) {
             .prev, .next,.text {font-size: 11px}
@@ -157,7 +175,10 @@
 					Ratione natus expedita iusto, minus cumque vitae quo culpa reiciendis aspernatur aliquam veritatis magnam non, dicta nemo inventore, nisi quas dolores. Modi laboriosam sunt aliquid rem, deserunt quis? Porro, hic.
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe omnis beatae libero quisquam ex nostrum repellendus, consectetur suscipit. Velit iusto ducimus sit quos officiis nesciunt libero, officia, aliquam doloremque totam.
 					Ratione natus expedita iusto, minus cumque vitae quo culpa reiciendis aspernatur aliquam veritatis magnam non, dicta nemo inventore, nisi quas dolores. Modi laboriosam sunt aliquid rem, deserunt quis? Porro, hic.</div><br>
-				<div id="tags">Tags: #ancient, #precious</div><br>
+						<div id="tags">
+							<span class="tag">#ancient</span>
+							<span class="tag">#precious</span>
+						</div><br>
 
 				
 				<!-- Start Issue Artifact Button (navigate to discussion forum) -->
@@ -170,7 +191,7 @@
 				<!-- Edit Artifact Button (navigate to edit arrtifact page) -->
 				<section>
 						<ul class="actions">
-							<li><input type="submit" value="Edit Artifact" class="button" /></li>
+							<li><input type="submit" value="Edit Artifact" class="edit-artifact button" /></li>
 						</ul><br>
 					</section>
 
@@ -182,7 +203,9 @@
 	<!-- Delete Artifact Button (trigger modal on clicking for deletion of artifact) -->
 	<section>
 			<ul class="actions">
-				<li><a href="javascript:;" onclick="document.getElementById('form1').submit();" class="button" data-toggle="modal" data-target="#myModal" formmethod="post">Delete Artifact</a></li>
+
+				<!-- tag changed to <button></button> to avoid css clash -->
+				<li><button href="javascript:;" onclick="document.getElementById('form1').submit();" class="delete-artifact button" data-toggle="modal" data-target="#myModal" formmethod="post">Delete Artifact</button></li>
 			</ul>
 		</section>
 	</form>
