@@ -86,11 +86,11 @@ a:before {
 
 a:hover {
 	border-bottom-color: transparent;
-	color: #2ebaae !important;
+	color: #0f859e !important;
 }
 
 a:hover:before {
-	color: #2ebaae !important;
+	color: #0f859e !important;
 }
 
 strong, b {
@@ -197,8 +197,8 @@ ul li .button.small
 }
 
 .button:hover {
-	box-shadow: inset 0 0 0 3px #2ebaae;
-	color: #2ebaae;
+	box-shadow: inset 0 0 0 3px #0f859e;
+	color: #58bcd8;
 }
 
 .button:hover:active {
@@ -954,8 +954,8 @@ textarea:invalid {
 input[type="text"]:focus,
 select:focus,
 textarea:focus {
-	border-color: #2ebaae;
-	box-shadow: inset 0 0 0 1px #2ebaae;
+	border-color: #0f859e;
+	box-shadow: inset 0 0 0 1px #0f859e;
 }
 
 input[type="text"],

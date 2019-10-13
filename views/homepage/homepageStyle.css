@@ -98,14 +98,14 @@ button:focus
 }
 
 #welcome:hover {
-    border-color: #49bf9d;
-    color: #49bf9d !important;
+    border-color: #0cbde1;
+    color: #0cbde1 !important;
 }
 
 #welcome:active {
     background-color: rgba(73, 191, 157, 0.1);
-    border-color: #49bf9d;
-    color: #49bf9d !important;
+    border-color: #0cbde1 ;
+    color: #0cbde1  !important;
 }
 
 /* Finger Animation Position */
