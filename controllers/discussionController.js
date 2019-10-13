@@ -87,8 +87,29 @@ var editIssue = function (req, res) {
 	});
 };
 
+// Retrieve information for discussion forum
+var forum = function (req, res) {
+	var userID = (req.session.user);
+	User.findById(userID)
+	.exec((err, user) => {
+		if (err) return console.log(err);
+		Issue.find({})
+		.sort({date: 1})
+		.deepPopulate('authorID comments comments.authorID')
+		.exec((err, issues) => {
+			if (err) return console.log(err);
+			console.log(issues);
+			res.render(path.join(__dirname, '/../views/discussion-board/discussion-section.pug'),
+				{ user: user,
+					issues: issues
+				});
+		});
+	});
+};
+
 module.exports.addIssue = addIssue;
 module.exports.addComment = addComment;
 module.exports.getIssue = getIssue;
 module.exports.reIssue = reIssue;
 module.exports.editIssue = editIssue;
+module.exports.forum = forum;

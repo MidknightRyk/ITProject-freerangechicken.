@@ -8,9 +8,7 @@ var discussionController = require('../controllers/discussionController.js');
 /* GET requests */
 
 // Discussion forum page
-router.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/discussion-board/discussion-forum-main.html'));
-});
+router.get('/', discussionController.forum);
 
 // Create Issue page
 /* Currently leads to a new page, but i think it's not supposed to?
