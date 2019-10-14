@@ -48,12 +48,12 @@ router.get('/profile', loginController.profile);
 
 // Get edit profile page?
 router.get('/edit-profile', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/editProfile/editProfile.html'));
+	res.sendFile(path.join(__dirname, '/../views/edit-profile/edit-profile.html'));
 });
 
 // Forgot password page
 router.get('/forgot', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/forgotPassword/forgotPassword.html'));
+	res.sendFile(path.join(__dirname, '/../views/homepage/forgot-password.html'));
 });
 
 // Reset password page
