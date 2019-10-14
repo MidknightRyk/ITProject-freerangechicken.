@@ -22,6 +22,7 @@ html(lang='en')
     link(rel='stylesheet', href='../views/edit-profile/assets/css/uploadStyle.css')
     link(rel='stylesheet', href='../views/edit-profile/assets/css/profile-photo-style.css')
     script(src='https://unpkg.com/vue')
+    script(src='https://unpkg.com/axios/dist/axios.min.js')
   body.is-preload
     // Header
     header#header(style='z-index:9;')
@@ -34,7 +35,7 @@ html(lang='en')
     #main
       .form-container
         #eip.form-container1
-          form(v-for='field in fields' id='form1' method='post' action='/edit-profile')
+          form(v-for='field in fields')
             .field
               | {{field.name}}: 
               span.data(type='text', v-show='!field.edit') {{ field.value }}
@@ -44,7 +45,15 @@ html(lang='en')
           section
             ul.actions
               li
-                a.button(href='javascript:;', onclick="document.getElementById('form1').submit();", data-toggle='modal', data-target='#myModal') Accept changes
+                a.button(href='#', @click='submitEntry', data-toggle='modal', data-target='#myModal') Accept changes    
+          // Modal
+          #myModal.modal.fade(role='dialog', ref='myModal')
+            .modal-dialog
+              // Modal content
+              .modal-content
+                .modal-header
+                  button.close(type='button', onclick='myFunction()', data-dismiss='modal') ×
+                  h4.modal-title Profile edited!
           script.
             var eip = new Vue({
             el: '#eip',
@@ -80,17 +89,18 @@ html(lang='en')
             },
             saveEdit: function(field) {
             field.edit = false;
+            },
+            submitEntry: function() {
+                axios.post('/edit-profile', this.fields).then(response => {
+                    console.log(data)
+                }).catch((err) => {
+                    console.log(err)
+                })
+                let element = this.$refs.myModal.el;
+                $(element).modal();
             }
             }
             });
-          // Modal
-          #myModal.modal.fade(role='dialog')
-            .modal-dialog
-              // Modal content
-              .modal-content
-                .modal-header
-                  button.close(type='button', onclick='myFunction()', data-dismiss='modal') ×
-                  h4.modal-title Profile edited!
       script.
         function myFunction() {
         setTimeout(function(){
