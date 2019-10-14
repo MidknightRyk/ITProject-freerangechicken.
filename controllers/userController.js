@@ -3,6 +3,17 @@ var User = mongoose.model('User');
 var Artifact = mongoose.model('Artifact');
 var path = require('path');
 
+// Get edit profile Page
+var getProfileEdit = function (req, res) {
+	var userID = (req.session.user);
+	User.findById(userID, function (err, user) {
+		if (err) return console.log(err);
+		res.render(path.join(__dirname, '/../views/edit-profile/edit-profile.pug'),
+			{ user: user }
+		);
+	});
+};
+
 // Edit user profile
 var editProfile = function (req, res) {
 	var userID = (req.session.user);
@@ -41,3 +52,4 @@ var catalogue = function (req, res) {
 
 module.exports.editProfile = editProfile;
 module.exports.catalogue = catalogue;
+module.exports.getProfileEdit = getProfileEdit;

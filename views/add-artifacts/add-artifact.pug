@@ -29,6 +29,57 @@ html(lang='en')
         a(href='#')
           span.fas.fa-camera
         img.img-thumbnail.img-circle.img-responsive(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
+        header#navigation-header
+    			h1
+    				a(href='/catalogue') Catalogue
+    			nav#nav
+    				ul
+    					li.special
+    						// menu text deleted
+    						a.menuToggle(href='#menu')
+    						#menu
+    							// Profile Photo
+    							.navigation-profile-upload-container
+    								a(href='#')
+    									span.fas.fa-camera
+    								img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id, alt='profile photo')
+    							// Username :-> leads to the profile page
+    							.user-name(style='text-align: center;')
+    								a(href='#')
+    									h2.underline-animation #{user.name}
+    							// User Profile Information
+    							.user-info
+    								h3 #{user.relationship}
+    								h3 #{user.artifacts.length} Artifacts contributed
+    								h3#join-date
+    									i.far.fa-clock
+    								script.
+    									function english_ordinal_suffix(dt)
+    									{
+    										return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
+    									}
+    									var user = !{JSON.stringify(user)};
+    									var date = new Date(user.dateJoined);
+    									console.log(typeof date);
+    									var mm = date.toLocaleString('default', { month: 'long' });
+    									var yyyy = date.getFullYear();
+    									document.getElementById('join-date').appendChild(document.createTextNode(' '+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
+    								div(hidden='')
+    									| Icons made by
+    									a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
+    									|  from
+    									a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
+    							// Home Button
+    							.home-button-container
+    								a.home-button(href='')
+    									img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg', alt='home-button')
+    									.home HOME
+    							// Logout Button
+    							.logout-container
+    								form#form1(action='/logout', method='POST')
+    									a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
+    										img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg', alt='logout button')
+    										.logout LOGOUT
     // Main Forms
     #main
       .form-container

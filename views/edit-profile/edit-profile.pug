@@ -1,0 +1,99 @@
+doctype html
+html(lang='en')
+  head
+    title Edit Profile
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+    // Bootstrap Tagsinput CSS
+    link(rel='stylesheet', href='../views/edit-profile/assets/css/bootstrap-tagsinput.css')
+    // Lottie-player Animations
+    script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
+    // Bootstrap Date Picker
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js')
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css', rel='stylesheet')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
+    // Bootstrap Tagsinput JS
+    script(src='../views/edit-profile/assets/js/bootstrap-tagsinput.js')
+    // Font Awesome CDN
+    script(src='https://kit.fontawesome.com/010fb4b3e5.js')
+    link(rel='stylesheet', href='../views/edit-profile/assets/css/main.css')
+    link(rel='stylesheet', href='../views/edit-profile/assets/css/uploadStyle.css')
+    link(rel='stylesheet', href='../views/edit-profile/assets/css/profile-photo-style.css')
+    script(src='https://unpkg.com/vue')
+  body.is-preload
+    // Header
+    header#header(style='z-index:9;')
+      lottie-player(src='https://assets8.lottiefiles.com/temp/lf20_RTai6J.json', background='transparent', speed='0.2', style='width: 100px; height: 100px; margin-top:-80px;', loop='', autoplay='')
+      .profile-upload-container.inner
+        a(href='/images/upload-DP')
+          span.fas.fa-camera
+        img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id, alt='profile photo')
+    // Main Forms
+    #main
+      .form-container
+        #eip.form-container1
+          form(v-for='field in fields')
+            .field
+              | {{field.name}}: 
+              span.data(type='text', v-show='!field.edit') {{ field.value }}
+              input(type='text', v-model='field.value', v-show='field.edit', v-bind:id='field.id', v-on:blur='saveEdit(field)', :ref='field.id')
+              a(href='#', v-on:click.prevent='toggleEdit(field, $event)')
+                i.fas.fa-pencil-alt
+          section
+            ul.actions
+              li
+                a.button(href='javascript:;', onclick="document.getElementById('form1').submit();", data-toggle='modal', data-target='#myModal', formmethod='post') Accept changes
+          script.
+            var eip = new Vue({
+            el: '#eip',
+            data: {
+            fields: [{
+            value: user.name,
+            edit: false,
+            name: 'Name',
+            id: 'name'
+            }, {
+            value: user.username,
+            edit: false,
+            name: 'Username',
+            id: 'username'
+            },{
+            value: user.email,
+            edit: false,
+            name: 'Email',
+            id: 'email'
+            },{
+            value: user.relationship,
+            edit: false,
+            name: 'Relationship',
+            id: 'relationship'
+            }]
+            },
+            methods: {
+            toggleEdit: function(field, e) {
+            field.edit = true;
+            this.$nextTick(()=>{
+            this.$refs[field.id][0].focus();
+            })
+            },
+            saveEdit: function(field) {
+            field.edit = false;
+            }
+            }
+            });
+          // Modal
+          #myModal.modal.fade(role='dialog')
+            .modal-dialog
+              // Modal content
+              .modal-content
+                .modal-header
+                  button.close(type='button', onclick='myFunction()', data-dismiss='modal') ×
+                  h4.modal-title Profile edited!
+      script.
+        function myFunction() {
+        setTimeout(function(){
+        window.location.href = "/profile";
+        }, 1000);
+        }

@@ -11,7 +11,7 @@ var imageController = require('../controllers/imageController.js');
 
 // Get upload displayPic page
 router.get('/upload-DP', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/display-picture-upload.html'));
+	res.sendFile(path.join(__dirname, '/../views/image-uploads/display-picture-upload.html'));
 });
 
 // Get upload artifact image page

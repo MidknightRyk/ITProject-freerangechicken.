@@ -47,9 +47,7 @@ router.get('/logout', function (req, res) {
 router.get('/profile', loginController.profile);
 
 // Get edit profile page?
-router.get('/edit-profile', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/edit-profile/edit-profile.html'));
-});
+router.get('/edit-profile', userController.getProfileEdit);
 
 // Forgot password page
 router.get('/forgot', function (req, res) {
