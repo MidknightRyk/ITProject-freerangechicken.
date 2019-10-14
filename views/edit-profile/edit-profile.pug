@@ -34,7 +34,7 @@ html(lang='en')
     #main
       .form-container
         #eip.form-container1
-          form(v-for='field in fields')
+          form(v-for='field in fields' id='form1' method='post' action='/edit-profile')
             .field
               | {{field.name}}: 
               span.data(type='text', v-show='!field.edit') {{ field.value }}
@@ -44,28 +44,28 @@ html(lang='en')
           section
             ul.actions
               li
-                a.button(href='javascript:;', onclick="document.getElementById('form1').submit();", data-toggle='modal', data-target='#myModal', formmethod='post') Accept changes
+                a.button(href='javascript:;', onclick="document.getElementById('form1').submit();", data-toggle='modal', data-target='#myModal') Accept changes
           script.
             var eip = new Vue({
             el: '#eip',
             data: {
             fields: [{
-            value: user.name,
+            value: '#{user.name}',
             edit: false,
             name: 'Name',
             id: 'name'
             }, {
-            value: user.username,
+            value: '#{user.username}',
             edit: false,
             name: 'Username',
             id: 'username'
             },{
-            value: user.email,
+            value: '#{user.email}',
             edit: false,
             name: 'Email',
             id: 'email'
             },{
-            value: user.relationship,
+            value: '#{user.relationship}',
             edit: false,
             name: 'Relationship',
             id: 'relationship'

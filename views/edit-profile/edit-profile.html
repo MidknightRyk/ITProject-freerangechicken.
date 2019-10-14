@@ -69,11 +69,12 @@
 						</form>
 						<section>
 							<ul class="actions">
-								<li><a href="javascript:;" onclick="document.getElementById('form1').submit();" class="button" data-toggle="modal" data-target="#myModal" formmethod="post">Accept changes</a></li>
+								<li><a href="javascript:;" onclick="document.getElementById('form1').submit();" class="button" data-toggle="modal" data-target="#myModal">Accept changes</a></li>
 							</ul>
 						</section>
 
 						<script>
+						  var Vue = require("vue/dist/vue.js");
 							var eip = new Vue({
 								el: '#eip',
 								data: {
@@ -82,7 +83,7 @@
 										edit: false,
 										name: 'Name',
 										id: 'name'
-									}, {
+									},{
 										value: 'th',
 										edit: false,
 										name: 'Username',
@@ -105,8 +106,6 @@
 										this.$nextTick(()=>{
 											this.$refs[field.id][0].focus();
 										})
-
-
 									},
 									saveEdit: function(field) {
 										field.edit = false;
