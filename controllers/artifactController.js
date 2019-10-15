@@ -7,6 +7,17 @@ var User = mongoose.model('User');
 var Edits = mongoose.model('Edits');
 var ObjectId = mongoose.Types.ObjectId;
 
+// Add artifact page
+var getAddArtifact = function (req, res) {
+	var userID = (req.session.user);
+	User.findById(userID)
+	.exec((err, user) => {
+		if (err) return console.log(err);
+		res.render(path.join(__dirname, '/../views/add-artifacts/add-artifact.pug'),
+			{ user: user });
+	});
+};
+
 // Creates a new artifact
 var addArtifact = function (req, res) {
 	var artifact = new Artifact({
@@ -171,6 +182,7 @@ var editArtifact = function (req, res) {
 };
 
 module.exports.addArtifact = addArtifact;
+module.exports.getAddArtifact = getAddArtifact;
 module.exports.getArtifact = getArtifact;
 module.exports.getTag = getTag;
 module.exports.deleteArtifact = deleteArtifact;
