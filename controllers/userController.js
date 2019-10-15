@@ -16,17 +16,15 @@ var getProfileEdit = function (req, res) {
 
 // Edit user profile
 var editProfile = function (req, res) {
+	console.log(req.body);
 	var userID = (req.session.user);
 	console.log('Editing ' + userID + ' profile information');
 	User.findById(userID, function (err, user) {
 		if (err) return console.log(err);
-		console.log(req);
-		user.name = req.body.name || user.name;
-		user.username = req.body.username || user.username;
-		user.email = req.body.email || user.email;
-		user.relationship = req.body.relationship || user.relationship;
-		console.log(user.name);
-		console.log(req.body.name);
+		user.name = req.body[0].value || user.name;
+		user.username = req.body[1].value || user.username;
+		user.email = req.body[2].value || user.email;
+		user.relationship = req.body[3].value || user.relationship;
 
 		// Update session info
 		req.session.userName = user.name;
