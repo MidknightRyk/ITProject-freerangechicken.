@@ -20,6 +20,7 @@ var editProfile = function (req, res) {
 	console.log('Editing ' + userID + ' profile information');
 	User.findById(userID, function (err, user) {
 		if (err) return console.log(err);
+		console.log(req);
 		user.name = req.body.name || user.name;
 		user.username = req.body.username || user.username;
 		user.email = req.body.email || user.email;
@@ -32,6 +33,7 @@ var editProfile = function (req, res) {
 		req.session.username = user.username;
 		user.save();
 	});
+	res.redirect('/profile');
 };
 
 // Retrieve user information for catalogue

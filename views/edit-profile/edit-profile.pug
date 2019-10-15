@@ -34,7 +34,7 @@ html(lang='en')
     #main
       .form-container
         #eip.form-container1
-          form(v-for='field in fields' id='form1' method='post' action='/edit-profile')
+          form#form1(v-for='field in fields', method='post', action='/edit-profile')
             .field
               | {{field.name}}: 
               span.data(type='text', v-show='!field.edit') {{ field.value }}
