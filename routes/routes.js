@@ -51,7 +51,7 @@ router.get('/edit-profile', userController.getProfileEdit);
 
 // Forgot password page
 router.get('/forgot', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/homepage/forgot-password.html'));
+	res.render(path.join(__dirname, '/../views/homepage/forgot-password.pug'));
 });
 
 // Reset password page
