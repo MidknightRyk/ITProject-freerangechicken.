@@ -5,38 +5,45 @@
     overflow: hidden;
     width:120px;
     height:120px;
-    /*border:5px solid white; *//* Profile Photo Border */
+    /*border:5px solid white; */ /* Profile Photo Border */
     border-radius: 50%;
     margin-left: 25%;
     margin-top: 15%;
+
 }
 
-/* Profile Photo */
+/* Profile Photo / Page Title  */
 .profile-upload-container {
     position: relative;
     display: inline-block;
     overflow: hidden;
     width:120px;
     height:120px;
-    margin-top: 0; /* to fix nav-bar clashes*/
-    border-radius: 50%;
+    margin-top: 0;
+    font-weight: bold;
+/* to fix nav-bar clashes*/
+    /*border-radius: 50%;*/
 }
 
-.profile-upload-container img
+.page-name
+{
+    text-shadow: 2px 1px 3px rgb(147,58,66);"
+}
+/*.profile-upload-container img
 {
     width: 120px;
     height:120px;
-    object-fit: cover; /* avoid stretching */
+    object-fit: cover;
     border-radius: 50%;
     opacity:1;
-}
+}*/
 
-.profile-upload-container:hover img{
+/*.profile-upload-container:hover img{
     opacity: 0.3;
     transition:0.5s;
-}
+}*/
 
-.profile-upload-container a {
+/*.profile-upload-container a {
     display: block;
     position: absolute;
     top: -100%;
@@ -60,4 +67,4 @@
     left: 0;
     right: 0;
     transform: translateY(-50%);
-}
+}*/
