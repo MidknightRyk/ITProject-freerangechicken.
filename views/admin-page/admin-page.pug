@@ -289,7 +289,7 @@ ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
 												// Artifact Photo + Artifact Name + User Origin
 												td
 													img(src="../images/"+ticket.oldArtifact.primaryImage, alt='')
-													a#edit1.artifact-name(href='#') #{ticket.oldArtifact.name}
+													a.edit1.artifact-name(href='#') #{ticket.oldArtifact.name}
 													span.username-subhead #{ticket.oldArtifact.author}
 												// Artifact Edited Date
 												td.editDate
@@ -305,30 +305,91 @@ ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
 													span #{ticket.editor}
 												// Approve + Delete Buttons
 												td(style='width: 20%;')
-													a.accept-btn.table-link.text-success(href='#')
+													a.edit-accept-btn.table-link.text-success(data-id=""+ticket._id)
 														span.fa-stack
 															i.fa.fa-square.fa-stack-2x
 															i.fas.fa-check.fa-stack-1x.fa-inverse
-													a.delete-btn.table-link.text-danger(href='#')
+													a.edit-delete-btn.table-link.text-danger(data-id=""+ticket._id)
 														span.fa-stack
 															i.fa.fa-square.fa-stack-2x
 															i.fa.fa-trash-o.fa-stack-1x.fa-inverse
 												// Description
 												td
 													span.editArtifact-description #{ticket.description}
+											tr.lightbox-container
+												td.container.comparison-lightbox(colspan='5')
+													// Close Light Box Button
+													i.fa.fa-window-close.cross
+													.before
+														// Artifact Name
+														.before-info.name
+															| Artifact Name:
+															h5 #{ticket.oldArtifact.name}
+														// Tags
+														.before-info.tags
+															p.tag-title Tags
+															each artifactTag in ticket.oldArtifact.tags
+																h5.tag(style='display:inline-block;') #{artifactTag}
+														// Region
+														.before-info.region
+															| Region:
+															h5 #{ticket.oldArtifact.placeOrigin}
+														// Year
+														.before-info.year
+															| Year:
+															h5 #{ticket.oldArtifact.year}
+														// Images
+														.before-info.artifact-image
+															p.image-title Images
+															img(src='../images/'+ticket.oldArtifact.primaryImage)
+															each image in ticket.oldArtifact.extraImages			
+																img(src='../images/'+image)
+														// Description
+														.before-info.description
+															| Description:
+															h5
+																| #{ticket.oldArtifact.description}
+														// Reason for editing artifact
+														.before-info.reason
+															| Reason:
+															h5
+																| #{ticket.description}
+													// After
+													.after
+														// Artifact Name
+														.after-info.name(style='margin-left: 50px;')
+															| Artifact Name:
+															h5 #{ticket.newArtifact.name}
+														// Tags
+														.after-info.tags(style='margin-left: 50px;')
+															p.tag-title Tags
+															each artifactTag in ticket.newArtifact.tags
+																h5.tag(style='display:inline-block;') #{artifactTag}
+														// Region
+														.after-info.region(style='margin-left: 50px;')
+															| Region:
+															h5 #{ticket.oldArtifact.placeOrigin}
+														// Year
+														.after-info.year(style='margin-left: 50px;')
+															| Year:
+															h5 #{ticket.oldArtifact.year}
+														// Images
+														.after-info.artifact-image(style='margin-left: 50px;')
+															p.image-title Images
+															img(src='../images/'+ticket.newArtifact.primaryImage)
+															each image in ticket.newArtifact.extraImages			
+																img(src='../images/'+image)
+														// Description
+														.after-info.description(style='margin-left: 50px;')
+															| Description:
+															h5
+																| #{ticket.newArtifact.description}
+														// Reason for editing artifact
+														.after-info.reason(style='margin-left: 50px;')
+															| Reason:
+															h5
+																| #{ticket.description}
 
-	// Open / Close the Comparision Light Box
-	script.
-		$(document).ready(function() {
-		$('#edit1').click(function() {
-		$('.comparision-lightbox').fadeIn(800);
-		$('.editArtifact-container').fadeOut(50);
-		});
-		$('.cross').click(function() {
-		$('.comparision-lightbox').fadeOut(100);
-		$('.editArtifact-container').fadeIn(50);
-		});
-		});
 	// Navigation Bar Scripts
 	script(src='../views/navigation-bar/assets/js/jquery.min.js')
 	script(src='../views/navigation-bar/assets/js/jquery.scrollex.min.js')

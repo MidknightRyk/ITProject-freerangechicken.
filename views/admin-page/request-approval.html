@@ -617,7 +617,7 @@
     <!-- The content under Edit Artifact Request Tab -->
     <div class="tab-pane fade" id="pills-editArtifact" role="tabpanel" aria-labelledby="pills-editArtifact-tab">
 
-        <div class="container comparision-lightbox">
+        <div class="container comparison-lightbox">
 
             <!-- Close Light Box Button -->
             <img class="cross" src="close.svg">
@@ -905,17 +905,17 @@
 
 </div>
 
-<!-- Open / Close the Comparision Light Box -->
+<!-- Open / Close the comparison Light Box -->
 <script>
     $(document).ready(function () {
         $('#edit1').click(function() {
-            $('.comparision-lightbox').fadeIn(800);
+            $('.comparison-lightbox').fadeIn(800);
             $('.editArtifact-container').fadeOut(50);
 
         });
 
         $('.cross').click(function() {
-            $('.comparision-lightbox').fadeOut(100);
+            $('.comparison-lightbox').fadeOut(100);
             $('.editArtifact-container').fadeIn(50);
         });
     });

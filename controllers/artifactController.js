@@ -117,7 +117,7 @@ var cloneArtifact = function (req, res) {
 			'year': artifact.year,
 			'primaryImage': artifact.primaryImage,
 			'extraImages': artifact.extraImages,
-			'approved': false
+			'approved': true
 		});
 		editedArtifact.save();
 		var editID = editedArtifact._id;
