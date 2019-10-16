@@ -10,15 +10,43 @@ var nodemailer = require('nodemailer');
 // Displays them on admin page
 var adminPage = function (req, res) {
 	if (req.session.userType === 'admin') {
-		User.find({'approved': 0}).lean().exec(function (err, users) {
+		var userID = (req.session.user);
+		User.findById(userID)
+		.exec((err, user) => {
 			if (!err) {
-				Artifact.find({'approved': 0}).lean().exec(function (err, artifacts) {
+				User.find({'approved': 0})
+				.lean()
+				.exec(function (err, users) {
 					if (!err) {
-						Edits.find({'deletion': true, 'approved': false}).lean().populate('oldArtifact').exec(function (err, deletes) {
+						Artifact.find({'approved': 0})
+						.lean()
+						.exec(function (err, artifacts) {
 							if (!err) {
-								console.log(deletes);
-								res.render(path.join(__dirname, '/../views/admin-page/admin-page.pug'),
-									{users: users, artifacts: artifacts, deletes: deletes});
+								Edits.find({'deletion': true, 'approved': false})
+								.lean()
+								.populate('oldArtifact')
+								.exec(function (err, deletes) {
+									if (!err) {
+										Edits.find({'approved': false})
+										.lean()
+										.populate('oldArtifact')
+										.populate('newArtifact')
+										.exec(function (err, edits) {
+											if (!err) {
+												console.log(deletes);
+												console.log(edits);
+												res.render(path.join(__dirname, '/../views/admin-page/admin-page.pug'),
+													{
+														user: user,
+														users: users,
+														artifacts: artifacts,
+														deletes: deletes,
+														edits: edits
+													});
+											} else { throw err; }
+										});
+									} else { throw err; }
+								});
 							} else { throw err; }
 						});
 					} else { throw err; }

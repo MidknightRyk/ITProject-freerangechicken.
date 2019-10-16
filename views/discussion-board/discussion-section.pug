@@ -78,41 +78,48 @@ html
 						p discussion board 
 			// Main
 			#main
-			each issue in issues
-				// Issues
-				article.issue
-					header
-						// Issue title + short description
-						.issue-title
-							h2
-								a(href='/discussion-board/'+issue.id) #{issue.topic}
-						// Posted Time + Profile photo
-						.issue-info
-							time.published() #{issue.dateCreated}
-							a.author(href='#')
-								span.name #{issue.author}
-								img(src="../images/"+issue.authorID.displayPic._id, alt='profile photo')
-					// Image if there's any
-					a.image.featured(href='#')
-						img(src='', alt='')
-					// Details
-					p #{issue.content}
-					footer
-						// Get rid of this
-						ul.actions
-							li
-								a.button.small(href='/discussion-board/'+issue.id) Continue Reading
-						// the Number of Likes and Comments
-						ul.stats
-							li
-								a.icon.solid.fa-comment(href='#') #{issue.comments.length}
-						br
-			// Pagination
-			ul.actions.pagination
-				li
-					a.disabled.button.large.previous(href='') Previous Page
-				li
-					a.button.large.next(href='#') Next Page
+				each issue, index in issues
+					// Issues
+					article.issue
+						header
+							// Issue title + short description
+							.issue-title
+								h2
+									a(href='/discussion-board/'+issue.id) #{issue.topic}
+							// Posted Time + Profile photo
+							.issue-info
+								time.published#published
+								script.
+									var issue = !{JSON.stringify(issue)};
+									var date = new Date(issue.dateCreated);
+									var dd = date.toLocaleString('default', { day: '2-digit'});
+									var mm = date.toLocaleString('default', { month: 'long' });
+									var yyyy = date.getFullYear();
+									document.getElementsByClassName("published")[#{index}].innerHTML = "Published on " + "</br>" + dd+" "+mm+" "+yyyy;
+								a.author(href='#')
+									span.name #{issue.author}
+									img(src="../images/"+issue.authorID.displayPic._id, alt='profile photo')
+						// Image if there's any
+						a.image.featured(href='#')
+							img(src='', alt='')
+						// Details
+						p #{issue.content}
+						footer
+							// Get rid of this
+							ul.actions
+								li
+									a.button.small(href='/discussion-board/'+issue.id) Continue Reading
+							// the Number of Likes and Comments
+							ul.stats
+								li
+									a.icon.solid.fa-comment(href='#') #{issue.comments.length}
+							br
+				// Pagination
+				ul.actions.pagination
+					li
+						a.disabled.button.large.previous(href='') Previous Page
+					li
+						a.button.large.next(href='#') Next Page
 			// Navigation Bar Scripts
 			script(src='../views/navigation-bar/assets/js/jquery.min.js')
 			script(src='../views/navigation-bar/assets/js/jquery.scrollex.min.js')

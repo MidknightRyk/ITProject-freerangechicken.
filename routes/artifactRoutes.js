@@ -10,9 +10,7 @@ var artifactController = require('../controllers/artifactController.js');
 /* GET requests */
 
 // Add Artifact page
-router.get('/add-artifact', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/add-artifacts/add-artifact.html'));
-});
+router.get('/add-artifact', artifactController.getAddArtifact);
 
 // Edit Artifact page (currently missing)
 router.get('/edit-artifact', artifactController.cloneArtifact);

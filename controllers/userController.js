@@ -3,24 +3,35 @@ var User = mongoose.model('User');
 var Artifact = mongoose.model('Artifact');
 var path = require('path');
 
+// Get edit profile Page
+var getProfileEdit = function (req, res) {
+	var userID = (req.session.user);
+	User.findById(userID, function (err, user) {
+		if (err) return console.log(err);
+		res.render(path.join(__dirname, '/../views/edit-profile/edit-profile.pug'),
+			{ user: user }
+		);
+	});
+};
+
 // Edit user profile
 var editProfile = function (req, res) {
+	console.log(req.body);
 	var userID = (req.session.user);
 	console.log('Editing ' + userID + ' profile information');
 	User.findById(userID, function (err, user) {
 		if (err) return console.log(err);
-		user.name = req.body.name || user.name;
-		user.username = req.body.username || user.username;
-		user.email = req.body.email || user.email;
-		user.relationship = req.body.relationship || user.relationship;
-		console.log(user.name);
-		console.log(req.body.name);
+		user.name = req.body[0].value || user.name;
+		user.username = req.body[1].value || user.username;
+		user.email = req.body[2].value || user.email;
+		user.relationship = req.body[3].value || user.relationship;
 
 		// Update session info
 		req.session.userName = user.name;
 		req.session.username = user.username;
 		user.save();
 	});
+	res.redirect('/profile');
 };
 
 // Retrieve user information for catalogue
@@ -41,3 +52,4 @@ var catalogue = function (req, res) {
 
 module.exports.editProfile = editProfile;
 module.exports.catalogue = catalogue;
+module.exports.getProfileEdit = getProfileEdit;

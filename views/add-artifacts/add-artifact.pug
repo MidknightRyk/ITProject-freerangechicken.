@@ -1,377 +1,432 @@
 doctype html
 html(lang='en')
-  head
-    title Add Artifact Page
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
-    // Bootstrap Tagsinput CSS
-    link(rel='stylesheet', href='../views/add-artifacts/assets/css/bootstrap-tagsinput.css')
-    // Lottie-player Animations
-    script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
-    // Bootstrap Date Picker
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js')
-    link(href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css', rel='stylesheet')
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
-    // Bootstrap Tagsinput JS
-    script(src='../views/add-artifacts/assets/js/bootstrap-tagsinput.js')
-    // Font Awesome CDN
-    script(src='https://kit.fontawesome.com/010fb4b3e5.js')
-    link(rel='stylesheet', href='../views/add-artifacts/assets/css/main.css')
-    link(rel='stylesheet', href='../views/add-artifacts/assets/css/uploadStyle.css')
-    link(rel='stylesheet', href='../views/add-artifacts/assets/css/profile-photo-style.css')
-  body.is-preload
-    // Header
-    header#header(style='z-index:9;')
-      lottie-player(src='https://assets8.lottiefiles.com/temp/lf20_RTai6J.json', background='transparent', speed='0.2', style='width: 100px; height: 100px; margin-top:-80px;', loop='', autoplay='')
-      .profile-upload-container.inner
-        a(href='#')
-          span.fas.fa-camera
-        img.img-thumbnail.img-circle.img-responsive(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
-    // Main Forms
-    #main
-      .form-container
-        form(method='post', action='/artifacts/add-artifact', enctype="multipart/form-data")
-          div
-            | Name:
-            input(type='text', required='', name='name', placeholder='Enter name of artifact')
-          br
-          div
-            | Description:
-            input(type='text', required='', name='description', placeholder='Type in description')
-            br
-          div
-            | Tags:
-            input.form-control.tm-input(type='text', required='', name='tags', placeholder='Tags, separated by commas', data-role='tagsinput')
-          br
-          div
-            | Region:
-            select(name='country')
-              option.test(value='') Country...
-              option(value='Afganistan') Afghanistan
-              option(value='Albania') Albania
-              option(value='Algeria') Algeria
-              option(value='American Samoa') American Samoa
-              option(value='Andorra') Andorra
-              option(value='Angola') Angola
-              option(value='Anguilla') Anguilla
-              option(value='Antigua &amp; Barbuda') Antigua &amp; Barbuda
-              option(value='Argentina') Argentina
-              option(value='Armenia') Armenia
-              option(value='Aruba') Aruba
-              option(value='Australia') Australia
-              option(value='Austria') Austria
-              option(value='Azerbaijan') Azerbaijan
-              option(value='Bahamas') Bahamas
-              option(value='Bahrain') Bahrain
-              option(value='Bangladesh') Bangladesh
-              option(value='Barbados') Barbados
-              option(value='Belarus') Belarus
-              option(value='Belgium') Belgium
-              option(value='Belize') Belize
-              option(value='Benin') Benin
-              option(value='Bermuda') Bermuda
-              option(value='Bhutan') Bhutan
-              option(value='Bolivia') Bolivia
-              option(value='Bonaire') Bonaire
-              option(value='Bosnia &amp; Herzegovina') Bosnia &amp; Herzegovina
-              option(value='Botswana') Botswana
-              option(value='Brazil') Brazil
-              option(value='British Indian Ocean Ter') British Indian Ocean Ter
-              option(value='Brunei') Brunei
-              option(value='Bulgaria') Bulgaria
-              option(value='Burkina Faso') Burkina Faso
-              option(value='Burundi') Burundi
-              option(value='Cambodia') Cambodia
-              option(value='Cameroon') Cameroon
-              option(value='Canada') Canada
-              option(value='Canary Islands') Canary Islands
-              option(value='Cape Verde') Cape Verde
-              option(value='Cayman Islands') Cayman Islands
-              option(value='Central African Republic') Central African Republic
-              option(value='Chad') Chad
-              option(value='Channel Islands') Channel Islands
-              option(value='Chile') Chile
-              option(value='China') China
-              option(value='Christmas Island') Christmas Island
-              option(value='Cocos Island') Cocos Island
-              option(value='Colombia') Colombia
-              option(value='Comoros') Comoros
-              option(value='Congo') Congo
-              option(value='Cook Islands') Cook Islands
-              option(value='Costa Rica') Costa Rica
-              option(value='Cote DIvoire') Cote D'Ivoire
-              option(value='Croatia') Croatia
-              option(value='Cuba') Cuba
-              option(value='Curaco') Curacao
-              option(value='Cyprus') Cyprus
-              option(value='Czech Republic') Czech Republic
-              option(value='Denmark') Denmark
-              option(value='Djibouti') Djibouti
-              option(value='Dominica') Dominica
-              option(value='Dominican Republic') Dominican Republic
-              option(value='East Timor') East Timor
-              option(value='Ecuador') Ecuador
-              option(value='Egypt') Egypt
-              option(value='El Salvador') El Salvador
-              option(value='Equatorial Guinea') Equatorial Guinea
-              option(value='Eritrea') Eritrea
-              option(value='Estonia') Estonia
-              option(value='Ethiopia') Ethiopia
-              option(value='Falkland Islands') Falkland Islands
-              option(value='Faroe Islands') Faroe Islands
-              option(value='Fiji') Fiji
-              option(value='Finland') Finland
-              option(value='France') France
-              option(value='French Guiana') French Guiana
-              option(value='French Polynesia') French Polynesia
-              option(value='French Southern Ter') French Southern Ter
-              option(value='Gabon') Gabon
-              option(value='Gambia') Gambia
-              option(value='Georgia') Georgia
-              option(value='Germany') Germany
-              option(value='Ghana') Ghana
-              option(value='Gibraltar') Gibraltar
-              option(value='Great Britain') Great Britain
-              option(value='Greece') Greece
-              option(value='Greenland') Greenland
-              option(value='Grenada') Grenada
-              option(value='Guadeloupe') Guadeloupe
-              option(value='Guam') Guam
-              option(value='Guatemala') Guatemala
-              option(value='Guinea') Guinea
-              option(value='Guyana') Guyana
-              option(value='Haiti') Haiti
-              option(value='Hawaii') Hawaii
-              option(value='Honduras') Honduras
-              option(value='Hungary') Hungary
-              option(value='Iceland') Iceland
-              option(value='India') India
-              option(value='Indonesia') Indonesia
-              option(value='Iran') Iran
-              option(value='Iraq') Iraq
-              option(value='Ireland') Ireland
-              option(value='Isle of Man') Isle of Man
-              option(value='Israel') Israel
-              option(value='Italy') Italy
-              option(value='Jamaica') Jamaica
-              option(value='Japan') Japan
-              option(value='Jordan') Jordan
-              option(value='Kazakhstan') Kazakhstan
-              option(value='Kenya') Kenya
-              option(value='Kiribati') Kiribati
-              option(value='Korea North') Korea North
-              option(value='Korea Sout') Korea South
-              option(value='Kuwait') Kuwait
-              option(value='Kyrgyzstan') Kyrgyzstan
-              option(value='Laos') Laos
-              option(value='Latvia') Latvia
-              option(value='Lebanon') Lebanon
-              option(value='Lesotho') Lesotho
-              option(value='Liberia') Liberia
-              option(value='Libya') Libya
-              option(value='Liechtenstein') Liechtenstein
-              option(value='Lithuania') Lithuania
-              option(value='Luxembourg') Luxembourg
-              option(value='Macau') Macau
-              option(value='Macedonia') Macedonia
-              option(value='Madagascar') Madagascar
-              option(value='Malaysia') Malaysia
-              option(value='Malawi') Malawi
-              option(value='Maldives') Maldives
-              option(value='Mali') Mali
-              option(value='Malta') Malta
-              option(value='Marshall Islands') Marshall Islands
-              option(value='Martinique') Martinique
-              option(value='Mauritania') Mauritania
-              option(value='Mauritius') Mauritius
-              option(value='Mayotte') Mayotte
-              option(value='Mexico') Mexico
-              option(value='Midway Islands') Midway Islands
-              option(value='Moldova') Moldova
-              option(value='Monaco') Monaco
-              option(value='Mongolia') Mongolia
-              option(value='Montserrat') Montserrat
-              option(value='Morocco') Morocco
-              option(value='Mozambique') Mozambique
-              option(value='Myanmar') Myanmar
-              option(value='Nambia') Nambia
-              option(value='Nauru') Nauru
-              option(value='Nepal') Nepal
-              option(value='Netherland Antilles') Netherland Antilles
-              option(value='Netherlands') Netherlands (Holland, Europe)
-              option(value='Nevis') Nevis
-              option(value='New Caledonia') New Caledonia
-              option(value='New Zealand') New Zealand
-              option(value='Nicaragua') Nicaragua
-              option(value='Niger') Niger
-              option(value='Nigeria') Nigeria
-              option(value='Niue') Niue
-              option(value='Norfolk Island') Norfolk Island
-              option(value='Norway') Norway
-              option(value='Oman') Oman
-              option(value='Pakistan') Pakistan
-              option(value='Palau Island') Palau Island
-              option(value='Palestine') Palestine
-              option(value='Panama') Panama
-              option(value='Papua New Guinea') Papua New Guinea
-              option(value='Paraguay') Paraguay
-              option(value='Peru') Peru
-              option(value='Phillipines') Philippines
-              option(value='Pitcairn Island') Pitcairn Island
-              option(value='Poland') Poland
-              option(value='Portugal') Portugal
-              option(value='Puerto Rico') Puerto Rico
-              option(value='Qatar') Qatar
-              option(value='Republic of Montenegro') Republic of Montenegro
-              option(value='Republic of Serbia') Republic of Serbia
-              option(value='Reunion') Reunion
-              option(value='Romania') Romania
-              option(value='Russia') Russia
-              option(value='Rwanda') Rwanda
-              option(value='St Barthelemy') St Barthelemy
-              option(value='St Eustatius') St Eustatius
-              option(value='St Helena') St Helena
-              option(value='St Kitts-Nevis') St Kitts-Nevis
-              option(value='St Lucia') St Lucia
-              option(value='St Maarten') St Maarten
-              option(value='St Pierre &amp; Miquelon') St Pierre &amp; Miquelon
-              option(value='St Vincent &amp; Grenadines') St Vincent &amp; Grenadines
-              option(value='Saipan') Saipan
-              option(value='Samoa') Samoa
-              option(value='Samoa American') Samoa American
-              option(value='San Marino') San Marino
-              option(value='Sao Tome &amp; Principe') Sao Tome &amp; Principe
-              option(value='Saudi Arabia') Saudi Arabia
-              option(value='Senegal') Senegal
-              option(value='Serbia') Serbia
-              option(value='Seychelles') Seychelles
-              option(value='Sierra Leone') Sierra Leone
-              option(value='Singapore') Singapore
-              option(value='Slovakia') Slovakia
-              option(value='Slovenia') Slovenia
-              option(value='Solomon Islands') Solomon Islands
-              option(value='Somalia') Somalia
-              option(value='South Africa') South Africa
-              option(value='Spain') Spain
-              option(value='Sri Lanka') Sri Lanka
-              option(value='Sudan') Sudan
-              option(value='Suriname') Suriname
-              option(value='Swaziland') Swaziland
-              option(value='Sweden') Sweden
-              option(value='Switzerland') Switzerland
-              option(value='Syria') Syria
-              option(value='Tahiti') Tahiti
-              option(value='Taiwan') Taiwan
-              option(value='Tajikistan') Tajikistan
-              option(value='Tanzania') Tanzania
-              option(value='Thailand') Thailand
-              option(value='Togo') Togo
-              option(value='Tokelau') Tokelau
-              option(value='Tonga') Tonga
-              option(value='Trinidad &amp; Tobago') Trinidad &amp; Tobago
-              option(value='Tunisia') Tunisia
-              option(value='Turkey') Turkey
-              option(value='Turkmenistan') Turkmenistan
-              option(value='Turks &amp; Caicos Is') Turks &amp; Caicos Is
-              option(value='Tuvalu') Tuvalu
-              option(value='Uganda') Uganda
-              option(value='Ukraine') Ukraine
-              option(value='United Arab Erimates') United Arab Emirates
-              option(value='United Kingdom') United Kingdom
-              option(value='United States of America') United States of America
-              option(value='Uraguay') Uruguay
-              option(value='Uzbekistan') Uzbekistan
-              option(value='Vanuatu') Vanuatu
-              option(value='Vatican City State') Vatican City State
-              option(value='Venezuela') Venezuela
-              option(value='Vietnam') Vietnam
-              option(value='Virgin Islands (Brit)') Virgin Islands (Brit)
-              option(value='Virgn Islands (USA)') Virgin Islands (USA)
-              option(value='Wake Island') Wake Island
-              option(value='Wallis &amp; Futana Is') Wallis &amp; Futana Is
-              option(value='Yemen') Yemen
-              option(value='Zaire') Zaire
-              option(value='Zambia') Zambia
-              option(value='Zimbabwe') Zimbabwe
-          br
-          div
-            | Year:
-            input#date.form-control(type='text', required='', name='year', placeholder='Format: YYYY')
-          // Date Picker
-          script(type='text/javascript').
-            $('#date').datepicker({
-            minViewMode: 2,
-            format: 'yyyy',
-            autoclose: true,
-            });
-          // Upload Photos
-          .container
-            .array
-              .preview-images-zone
-                .preview-image.preview-show-1
-                  .image-cancel(data-no='1') x
-                  .image-zone
-                    img#pro-img-1(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='image in queue')
-                  .tools-edit-image
-                    a.btn.btn-light.btn-edit-image(href='javascript:void(0)', data-no='1') set
-                .preview-image.preview-show-2
-                  .image-cancel(data-no='2') x
-                  .image-zone
-                    img#pro-img-2(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='image in queue')
-                  .tools-edit-image
-                    a.btn.btn-light.btn-edit-image(href='javascript:void(0)', data-no='2') set
-              // Upload Artifact Image Button
-              fieldset.form-group
-                a.button(style=' margin-top:10px ', href='javascript:void(0)', onclick="$('#pro-image').click()") Upload Image
-                input#pro-image.form-control(type='file', name='pro-image', style='display: none;', multiple='', accept='image/*')
-          // Submit Button
-          section
-          ul.actions
-            li
-              input.button(type='submit', value='Add Artifact')
-    // Necessary: the Footer of the Page
-    footer#footer
-      .inner
-    // Upload Artifact Images
-    // Adapted from : https://bootsnipp.com/snippets/2eNKz
-    script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
-    script.
-      /* Count the number of uploaded images */
-      //var nolist = [];
-      var num = $(".preview-images-zone div").length/4 + 1;
-      console.log(num);
-      //var num = nolist.length + 1;
-      $(document).ready(function() {
-      document.getElementById('pro-image').addEventListener('change', readImage, false);
-      $( ".preview-images-zone" ).sortable();
-      $(document).on('click', '.image-cancel', function() {
-      let no = $(this).data('no');
-      $(".preview-image.preview-show-"+no).remove();
-      });
-      });
-      function readImage() {
-      if (window.File && window.FileList && window.FileReader && num <= 5) {
-      var files = event.target.files; //FileList object
-      var output = $(".preview-images-zone");
-      for (let i = 0; i < files.length; i++) {
-      var file = files[i];
-      if (!file.type.match('image')) continue;
-      var picReader = new FileReader();
-      picReader.addEventListener('load', function (event) {
-      var picFile = event.target;
-      var html =  '<div class="preview-image preview-show-' + num + '">' +
-      '<div class="image-cancel" data-no="' + num + '">x</div>' +
-      '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '" alt="img in queue"></div>' +
-      '<div class="tools-edit-image"><a href="javascript:void(0)" data-no="' + num + '" class="btn btn-light btn-edit-image">set</a></div>' +
-      '</div>';
-      output.append(html);
-      num = num + 1;
-      });
-      picReader.readAsDataURL(file);
-      }
-      $("#pro-image").val('');
-      } else {
-      }
-      }
+	head
+		title Add Artifact
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+		// Bootstrap Tagsinput CSS
+		link(rel='stylesheet', href='../views/add-artifacts/assets/css/bootstrap-tagsinput.css')
+		// Lottie-player Animations
+		script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
+		// Bootstrap Date Picker
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js')
+		link(href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css', rel='stylesheet')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
+		// Bootstrap Tagsinput JS
+		script(src='../views/add-artifacts/assets/js/bootstrap-tagsinput.js')
+		// Font Awesome CDN
+		script(src='https://kit.fontawesome.com/010fb4b3e5.js')
+		link(rel='stylesheet', href='../views/add-artifacts/assets/css/main.css')
+		link(rel='stylesheet', href='../views/add-artifacts/assets/css/uploadStyle.css')
+		link(rel='stylesheet', href='../views/add-artifacts/assets/css/profile-photo-style.css')
+		// Navigation Bar
+		link(rel='stylesheet', href='../views/navigation-bar/assets/css/nav-main.css')
+		noscript
+			link(rel='stylesheet', href='../views/navigation-bar/assets/css/noscript.css')
+		link(rel='stylesheet', href='../views/navigation-bar/assets/css/logout.css')
+		// Jquery
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+	body.is-preload
+		header#navigation-header
+			h1
+				a(href='/catalogue') Catalogue
+			nav#nav
+				ul
+					li.special
+						// menu text deleted
+						a.menuToggle(href='#menu')
+						#menu
+							// Profile Photo
+							.navigation-profile-upload-container
+								a(href='#')
+									span.fas.fa-camera
+								img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id, alt='profile photo')
+							// Username :-> leads to the profile page
+							.user-name(style='text-align: center;')
+								a(href='#')
+									h2.underline-animation #{user.name}
+							// User Profile Information
+							.user-info
+								h3 #{user.relationship}
+								h3 #{user.artifacts.length} Artifacts contributed
+								h3#join-date
+									i.far.fa-clock
+								script.
+									function english_ordinal_suffix(dt)
+									{
+										return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
+									}
+									var user = !{JSON.stringify(user)};
+									var date = new Date(user.dateJoined);
+									console.log(typeof date);
+									var mm = date.toLocaleString('default', { month: 'long' });
+									var yyyy = date.getFullYear();
+									document.getElementById('join-date').appendChild(document.createTextNode(' '+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
+								div(hidden='')
+									| Icons made by
+									a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
+									|  from
+									a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
+							// Home Button
+							.home-button-container
+								a.home-button(href='')
+									img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg', alt='home-button')
+									.home HOME
+							// Logout Button
+							.logout-container
+								form#form1(action='/logout', method='POST')
+									a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
+										img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg', alt='logout button')
+										.logout LOGOUT
+		// Header
+		header#header(style='z-index:9;')
+			lottie-player(src='https://assets8.lottiefiles.com/temp/lf20_RTai6J.json', background='transparent', speed='0.2', style='width: 100px; height: 100px; margin-top:-80px;', loop='', autoplay='')
+			.profile-upload-container.inner
+				a(href='#')
+					span.fas.fa-camera
+				img.img-thumbnail.img-circle.img-responsive(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
+		// Main Forms
+		#main
+			.form-container
+				form#addForm(method='post', action='/artifacts/add-artifact', enctype='multipart/form-data')
+					div
+						| Name: 
+						input(type='text', required='', name='name', placeholder='Enter name of artifact')
+					br
+					div
+						| Tags: 
+						input.form-control.tm-input(type='text', required='', name='tags', placeholder='Tags, separated by commas', data-role='tagsinput')
+					br
+					div
+						| Region: 
+						select(name='country')
+							option.test(value='') Country...
+							option(value='Afganistan') Afghanistan
+							option(value='Albania') Albania
+							option(value='Algeria') Algeria
+							option(value='American Samoa') American Samoa
+							option(value='Andorra') Andorra
+							option(value='Angola') Angola
+							option(value='Anguilla') Anguilla
+							option(value='Antigua &amp; Barbuda') Antigua &amp; Barbuda
+							option(value='Argentina') Argentina
+							option(value='Armenia') Armenia
+							option(value='Aruba') Aruba
+							option(value='Australia') Australia
+							option(value='Austria') Austria
+							option(value='Azerbaijan') Azerbaijan
+							option(value='Bahamas') Bahamas
+							option(value='Bahrain') Bahrain
+							option(value='Bangladesh') Bangladesh
+							option(value='Barbados') Barbados
+							option(value='Belarus') Belarus
+							option(value='Belgium') Belgium
+							option(value='Belize') Belize
+							option(value='Benin') Benin
+							option(value='Bermuda') Bermuda
+							option(value='Bhutan') Bhutan
+							option(value='Bolivia') Bolivia
+							option(value='Bonaire') Bonaire
+							option(value='Bosnia &amp; Herzegovina') Bosnia &amp; Herzegovina
+							option(value='Botswana') Botswana
+							option(value='Brazil') Brazil
+							option(value='British Indian Ocean Ter') British Indian Ocean Ter
+							option(value='Brunei') Brunei
+							option(value='Bulgaria') Bulgaria
+							option(value='Burkina Faso') Burkina Faso
+							option(value='Burundi') Burundi
+							option(value='Cambodia') Cambodia
+							option(value='Cameroon') Cameroon
+							option(value='Canada') Canada
+							option(value='Canary Islands') Canary Islands
+							option(value='Cape Verde') Cape Verde
+							option(value='Cayman Islands') Cayman Islands
+							option(value='Central African Republic') Central African Republic
+							option(value='Chad') Chad
+							option(value='Channel Islands') Channel Islands
+							option(value='Chile') Chile
+							option(value='China') China
+							option(value='Christmas Island') Christmas Island
+							option(value='Cocos Island') Cocos Island
+							option(value='Colombia') Colombia
+							option(value='Comoros') Comoros
+							option(value='Congo') Congo
+							option(value='Cook Islands') Cook Islands
+							option(value='Costa Rica') Costa Rica
+							option(value='Cote DIvoire') Cote D'Ivoire
+							option(value='Croatia') Croatia
+							option(value='Cuba') Cuba
+							option(value='Curaco') Curacao
+							option(value='Cyprus') Cyprus
+							option(value='Czech Republic') Czech Republic
+							option(value='Denmark') Denmark
+							option(value='Djibouti') Djibouti
+							option(value='Dominica') Dominica
+							option(value='Dominican Republic') Dominican Republic
+							option(value='East Timor') East Timor
+							option(value='Ecuador') Ecuador
+							option(value='Egypt') Egypt
+							option(value='El Salvador') El Salvador
+							option(value='Equatorial Guinea') Equatorial Guinea
+							option(value='Eritrea') Eritrea
+							option(value='Estonia') Estonia
+							option(value='Ethiopia') Ethiopia
+							option(value='Falkland Islands') Falkland Islands
+							option(value='Faroe Islands') Faroe Islands
+							option(value='Fiji') Fiji
+							option(value='Finland') Finland
+							option(value='France') France
+							option(value='French Guiana') French Guiana
+							option(value='French Polynesia') French Polynesia
+							option(value='French Southern Ter') French Southern Ter
+							option(value='Gabon') Gabon
+							option(value='Gambia') Gambia
+							option(value='Georgia') Georgia
+							option(value='Germany') Germany
+							option(value='Ghana') Ghana
+							option(value='Gibraltar') Gibraltar
+							option(value='Great Britain') Great Britain
+							option(value='Greece') Greece
+							option(value='Greenland') Greenland
+							option(value='Grenada') Grenada
+							option(value='Guadeloupe') Guadeloupe
+							option(value='Guam') Guam
+							option(value='Guatemala') Guatemala
+							option(value='Guinea') Guinea
+							option(value='Guyana') Guyana
+							option(value='Haiti') Haiti
+							option(value='Hawaii') Hawaii
+							option(value='Honduras') Honduras
+							option(value='Hungary') Hungary
+							option(value='Iceland') Iceland
+							option(value='India') India
+							option(value='Indonesia') Indonesia
+							option(value='Iran') Iran
+							option(value='Iraq') Iraq
+							option(value='Ireland') Ireland
+							option(value='Isle of Man') Isle of Man
+							option(value='Israel') Israel
+							option(value='Italy') Italy
+							option(value='Jamaica') Jamaica
+							option(value='Japan') Japan
+							option(value='Jordan') Jordan
+							option(value='Kazakhstan') Kazakhstan
+							option(value='Kenya') Kenya
+							option(value='Kiribati') Kiribati
+							option(value='Korea North') Korea North
+							option(value='Korea Sout') Korea South
+							option(value='Kuwait') Kuwait
+							option(value='Kyrgyzstan') Kyrgyzstan
+							option(value='Laos') Laos
+							option(value='Latvia') Latvia
+							option(value='Lebanon') Lebanon
+							option(value='Lesotho') Lesotho
+							option(value='Liberia') Liberia
+							option(value='Libya') Libya
+							option(value='Liechtenstein') Liechtenstein
+							option(value='Lithuania') Lithuania
+							option(value='Luxembourg') Luxembourg
+							option(value='Macau') Macau
+							option(value='Macedonia') Macedonia
+							option(value='Madagascar') Madagascar
+							option(value='Malaysia') Malaysia
+							option(value='Malawi') Malawi
+							option(value='Maldives') Maldives
+							option(value='Mali') Mali
+							option(value='Malta') Malta
+							option(value='Marshall Islands') Marshall Islands
+							option(value='Martinique') Martinique
+							option(value='Mauritania') Mauritania
+							option(value='Mauritius') Mauritius
+							option(value='Mayotte') Mayotte
+							option(value='Mexico') Mexico
+							option(value='Midway Islands') Midway Islands
+							option(value='Moldova') Moldova
+							option(value='Monaco') Monaco
+							option(value='Mongolia') Mongolia
+							option(value='Montserrat') Montserrat
+							option(value='Morocco') Morocco
+							option(value='Mozambique') Mozambique
+							option(value='Myanmar') Myanmar
+							option(value='Nambia') Nambia
+							option(value='Nauru') Nauru
+							option(value='Nepal') Nepal
+							option(value='Netherland Antilles') Netherland Antilles
+							option(value='Netherlands') Netherlands (Holland, Europe)
+							option(value='Nevis') Nevis
+							option(value='New Caledonia') New Caledonia
+							option(value='New Zealand') New Zealand
+							option(value='Nicaragua') Nicaragua
+							option(value='Niger') Niger
+							option(value='Nigeria') Nigeria
+							option(value='Niue') Niue
+							option(value='Norfolk Island') Norfolk Island
+							option(value='Norway') Norway
+							option(value='Oman') Oman
+							option(value='Pakistan') Pakistan
+							option(value='Palau Island') Palau Island
+							option(value='Palestine') Palestine
+							option(value='Panama') Panama
+							option(value='Papua New Guinea') Papua New Guinea
+							option(value='Paraguay') Paraguay
+							option(value='Peru') Peru
+							option(value='Phillipines') Philippines
+							option(value='Pitcairn Island') Pitcairn Island
+							option(value='Poland') Poland
+							option(value='Portugal') Portugal
+							option(value='Puerto Rico') Puerto Rico
+							option(value='Qatar') Qatar
+							option(value='Republic of Montenegro') Republic of Montenegro
+							option(value='Republic of Serbia') Republic of Serbia
+							option(value='Reunion') Reunion
+							option(value='Romania') Romania
+							option(value='Russia') Russia
+							option(value='Rwanda') Rwanda
+							option(value='St Barthelemy') St Barthelemy
+							option(value='St Eustatius') St Eustatius
+							option(value='St Helena') St Helena
+							option(value='St Kitts-Nevis') St Kitts-Nevis
+							option(value='St Lucia') St Lucia
+							option(value='St Maarten') St Maarten
+							option(value='St Pierre &amp; Miquelon') St Pierre &amp; Miquelon
+							option(value='St Vincent &amp; Grenadines') St Vincent &amp; Grenadines
+							option(value='Saipan') Saipan
+							option(value='Samoa') Samoa
+							option(value='Samoa American') Samoa American
+							option(value='San Marino') San Marino
+							option(value='Sao Tome &amp; Principe') Sao Tome &amp; Principe
+							option(value='Saudi Arabia') Saudi Arabia
+							option(value='Senegal') Senegal
+							option(value='Serbia') Serbia
+							option(value='Seychelles') Seychelles
+							option(value='Sierra Leone') Sierra Leone
+							option(value='Singapore') Singapore
+							option(value='Slovakia') Slovakia
+							option(value='Slovenia') Slovenia
+							option(value='Solomon Islands') Solomon Islands
+							option(value='Somalia') Somalia
+							option(value='South Africa') South Africa
+							option(value='Spain') Spain
+							option(value='Sri Lanka') Sri Lanka
+							option(value='Sudan') Sudan
+							option(value='Suriname') Suriname
+							option(value='Swaziland') Swaziland
+							option(value='Sweden') Sweden
+							option(value='Switzerland') Switzerland
+							option(value='Syria') Syria
+							option(value='Tahiti') Tahiti
+							option(value='Taiwan') Taiwan
+							option(value='Tajikistan') Tajikistan
+							option(value='Tanzania') Tanzania
+							option(value='Thailand') Thailand
+							option(value='Togo') Togo
+							option(value='Tokelau') Tokelau
+							option(value='Tonga') Tonga
+							option(value='Trinidad &amp; Tobago') Trinidad &amp; Tobago
+							option(value='Tunisia') Tunisia
+							option(value='Turkey') Turkey
+							option(value='Turkmenistan') Turkmenistan
+							option(value='Turks &amp; Caicos Is') Turks &amp; Caicos Is
+							option(value='Tuvalu') Tuvalu
+							option(value='Uganda') Uganda
+							option(value='Ukraine') Ukraine
+							option(value='United Arab Erimates') United Arab Emirates
+							option(value='United Kingdom') United Kingdom
+							option(value='United States of America') United States of America
+							option(value='Uraguay') Uruguay
+							option(value='Uzbekistan') Uzbekistan
+							option(value='Vanuatu') Vanuatu
+							option(value='Vatican City State') Vatican City State
+							option(value='Venezuela') Venezuela
+							option(value='Vietnam') Vietnam
+							option(value='Virgin Islands (Brit)') Virgin Islands (Brit)
+							option(value='Virgn Islands (USA)') Virgin Islands (USA)
+							option(value='Wake Island') Wake Island
+							option(value='Wallis &amp; Futana Is') Wallis &amp; Futana Is
+							option(value='Yemen') Yemen
+							option(value='Zaire') Zaire
+							option(value='Zambia') Zambia
+							option(value='Zimbabwe') Zimbabwe
+					br
+					div
+						| Year: 
+						input#date.form-control(type='text', placeholder='Choose...', required='', name='year')
+					br
+					// Date Picker
+					script(type='text/javascript').
+						$('#date').datepicker({
+						minViewMode: 2,
+						format: 'yyyy',
+						autoclose: true,
+						});
+					div
+						| Description: 
+						input(type='text', required='', name='description', placeholder='Type in description')
+						br
+					// Upload Photos
+					.container
+						.array
+							.preview-images-zone
+							// Upload Artifact Image Button
+							fieldset.form-group
+								button.button(style=' margin-top:10px; text-decoration: none;', href='javascript:void(0)', onclick="$('#pro-image').click()") Upload Image
+								// I know this looks ugly but i really dont know how to add this maximum 5 and make it pretty at the same time.
+								span(style='font-size:10px; color: #8ba5b4;') (5)
+								input#pro-image.form-control(accept='image/*', type='file', name='pro-image', style='display: none;', multiple='')
+					// Submit Button
+					section
+						ul.actions
+							li
+								input.button(type='submit', onclick='myFunction()', value='Add Artifact')
+		// Necessary: the Footer of the Page
+		footer#footer
+			.inner
+		// Upload Artifact Images
+		// Adapted from : https://bootsnipp.com/snippets/2eNKz
+		script.
+			$(document).ready(function() {
+			document.getElementById('pro-image').addEventListener('change', readImage, false);
+			$(document).on('click', '.image-cancel', function() {
+			let no = $(this).data('no');
+			$(".preview-image.preview-show-"+no).remove();
+			});
+			});
+			var num = 1;
+			function readImage() {
+			if (window.File && window.FileList && window.FileReader) {
+			var files = event.target.files; //FileList object
+			var output = $(".preview-images-zone");
+			for (let i = 0; i < files.length; i++) {
+			var file = files[i];
+			if (!file.type.match('image')) continue;
+			var picReader = new FileReader();
+			picReader.addEventListener('load', function (event) {
+			var picFile = event.target;
+			var html =  '<div class="preview-image preview-show-' + num + '">' +
+			'<div class="image-cancel" data-no="' + num + '">x</div>' +
+			'<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+			'</div>';
+			output.append(html);
+			num = num + 1;
+			});
+			picReader.readAsDataURL(file);
+			}
+			} else {
+			console.log('Browser not support');
+			}
+			}
+			function myFunction() {
+			setTimeout(function(){
+			window.location.href = "/profile";
+			}, 1000);
+			}
+		// Navigation Bar Scripts
+		script(src='../views/navigation-bar/assets/js/jquery.min.js')
+		script(src='../views/navigation-bar/assets/js/jquery.scrollex.min.js')
+		script(src='../views/navigation-bar/assets/js/jquery.scrolly.min.js')
+		script(src='../views/navigation-bar/assets/js/browser.min.js')
+		script(src='../views/navigation-bar/assets/js/breakpoints.min.js')
+		script(src='../views/navigation-bar/assets/js/util.js')
+		script(src='../views/navigation-bar/assets/js/main.js')

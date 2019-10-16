@@ -3,8 +3,9 @@ head
 	meta(charset='UTF-8')
 	meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
 	title Free Range User Approval Page
-	link(href='../views/admin-page/admin-user-style.css' rel='stylesheet' type='text/css')
-	link(href='../views/admin-page/admin-artifact-style.css' rel='stylesheet' type='text/css')
+	link(href='../views/admin-page/assets/css/admin-user-style.css' rel='stylesheet' type='text/css')
+	link(href='../views/admin-page/assets/css/admin-artifact-style.css' rel='stylesheet' type='text/css')
+	link(href='../views/admin-page/assets/css/editArtifact-approval-style.css' rel='stylesheet' type='text/css')
 	// Font Awesome CDN
 	script(src='https://kit.fontawesome.com/010fb4b3e5.js')
 	// Bootstrap CDN
@@ -15,6 +16,66 @@ head
 	// Jquery
 	script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
 	script(src='../views/admin-page/admin.js' type='text/javascript')
+	// Navigation Bar
+	link(rel='stylesheet', href='../views/navigation-bar/assets/css/nav-main.css')
+	noscript
+		link(rel='stylesheet', href='../views/navigation-bar/assets/css/noscript.css')
+	link(rel='stylesheet', href='../views/navigation-bar/assets/css/logout.css')
+	// Navigation Bar
+	body(style='margin-top: 60px;')
+		header#navigation-header
+			h1
+				a(href='/catalogue') Catalogue
+			nav#nav
+				ul
+					li.special
+						// menu text deleted
+						a.menuToggle(href='#menu')
+						#menu
+							// Profile Photo
+							.navigation-profile-upload-container
+								a(href='#')
+									span.fas.fa-camera
+								img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id, alt='profile photo')
+							// Username :-> leads to the profile page
+							.user-name(style='text-align: center;')
+								a(href='#')
+									h2.underline-animation #{user.name}
+							// User Profile Information
+							.user-info
+								h3 #{user.relationship}
+								h3 #{user.artifacts.length} Artifacts contributed
+								h3#join-date
+									i.far.fa-clock
+								script.
+									function english_ordinal_suffix(dt)
+									{
+										return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
+									}
+									var user = !{JSON.stringify(user)};
+									var date = new Date(user.dateJoined);
+									console.log(typeof date);
+									var mm = date.toLocaleString('default', { month: 'long' });
+									var yyyy = date.getFullYear();
+									document.getElementById('join-date').appendChild(document.createTextNode(' '+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
+								div(hidden='')
+									| Icons made by
+									a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
+									|  from
+									a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
+							// Home Button
+							.home-button-container
+								a.home-button(href='')
+									img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg', alt='home-button')
+									.home HOME
+							// Logout Button
+							.logout-container
+								form#form1(action='/logout', method='POST')
+									a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
+										img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg', alt='logout button')
+										.logout LOGOUT
+
+
 // Navigation Tabs : User Request + Artifact Request
 ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
 	li.nav-item
@@ -32,6 +93,11 @@ ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
 			i.fa.fa-trash
 				| Delete Request
 				span#delete-request-count.badge.badge-danger.badge-pill #{deletes.length}
+	li.nav-item
+	a#pills-editArtifact-tab.nav-link.btn-outline-success(data-toggle='pill', href='#pills-editArtifact', role='tab', aria-controls='pills-editArtifact', aria-selected='false', style='')
+		i.fab.fa-earlybirds
+			| Edited Artifact Request 
+			span#editArtifact-request-count.badge.badge-danger.badge-pill #{edits.length}
 // Tabs Content Container
 #pills-tabContent.tab-content
 	// The content under User Request Tab | Currently Active
@@ -192,3 +258,143 @@ ul#pills-tab.nav.nav-pills.mb-3.mt-3.ml-5(role='tablist')
 															// Description
 															td
 																span #{del.description}
+
+	// The content under Edit Artifact Request Tab
+	#pills-editArtifact.tab-pane.fade(role='tabpanel', aria-labelledby='pills-editArtifact-tab')
+		// Edit Artifact Request Box
+		.container.editArtifact-container
+			.row
+				.col-lg-12
+					.main-box.no-header
+						.main-box-body
+							.table-responsive
+								table.table.editArtifact-list
+									// Header
+									thead
+										tr
+											th
+												span Artifact
+											th
+												span Date Edited
+											th
+												span Requested By
+											th
+												span Approval
+											th
+												span Reason
+									tbody
+										each ticket, index in edits
+											// Edit Approval
+											tr.artifact-request
+												// Artifact Photo + Artifact Name + User Origin
+												td
+													img(src="../images/"+ticket.oldArtifact.primaryImage, alt='')
+													a.edit1.artifact-name(href='#') #{ticket.oldArtifact.name}
+													span.username-subhead #{ticket.oldArtifact.author}
+												// Artifact Edited Date
+												td.editDate
+												script.
+													var ticket = !{JSON.stringify(ticket)};
+													var date = new Date(ticket.dateEdited);
+													var dd = date.toLocaleString('default', { day: '2-digit'});
+													var mm = date.toLocaleString('default', { month: 'long' });
+													var yyyy = date.getFullYear();
+													document.getElementsByClassName('editDate')["#{index}"].appendChild(document.createTextNode(dd+" "+mm+" "+yyyy));
+												// Editor
+												td
+													span #{ticket.editor}
+												// Approve + Delete Buttons
+												td(style='width: 20%;')
+													a.edit-accept-btn.table-link.text-success(data-id=""+ticket._id)
+														span.fa-stack
+															i.fa.fa-square.fa-stack-2x
+															i.fas.fa-check.fa-stack-1x.fa-inverse
+													a.edit-delete-btn.table-link.text-danger(data-id=""+ticket._id)
+														span.fa-stack
+															i.fa.fa-square.fa-stack-2x
+															i.fa.fa-trash-o.fa-stack-1x.fa-inverse
+												// Description
+												td
+													span.editArtifact-description #{ticket.description}
+											tr.lightbox-container
+												td.container.comparison-lightbox(colspan='5')
+													// Close Light Box Button
+													i.fa.fa-window-close.cross
+													.before
+														// Artifact Name
+														.before-info.name
+															| Artifact Name:
+															h5 #{ticket.oldArtifact.name}
+														// Tags
+														.before-info.tags
+															p.tag-title Tags
+															each artifactTag in ticket.oldArtifact.tags
+																h5.tag(style='display:inline-block;') #{artifactTag}
+														// Region
+														.before-info.region
+															| Region:
+															h5 #{ticket.oldArtifact.placeOrigin}
+														// Year
+														.before-info.year
+															| Year:
+															h5 #{ticket.oldArtifact.year}
+														// Images
+														.before-info.artifact-image
+															p.image-title Images
+															img(src='../images/'+ticket.oldArtifact.primaryImage)
+															each image in ticket.oldArtifact.extraImages			
+																img(src='../images/'+image)
+														// Description
+														.before-info.description
+															| Description:
+															h5
+																| #{ticket.oldArtifact.description}
+														// Reason for editing artifact
+														.before-info.reason
+															| Reason:
+															h5
+																| #{ticket.description}
+													// After
+													.after
+														// Artifact Name
+														.after-info.name(style='margin-left: 50px;')
+															| Artifact Name:
+															h5 #{ticket.newArtifact.name}
+														// Tags
+														.after-info.tags(style='margin-left: 50px;')
+															p.tag-title Tags
+															each artifactTag in ticket.newArtifact.tags
+																h5.tag(style='display:inline-block;') #{artifactTag}
+														// Region
+														.after-info.region(style='margin-left: 50px;')
+															| Region:
+															h5 #{ticket.oldArtifact.placeOrigin}
+														// Year
+														.after-info.year(style='margin-left: 50px;')
+															| Year:
+															h5 #{ticket.oldArtifact.year}
+														// Images
+														.after-info.artifact-image(style='margin-left: 50px;')
+															p.image-title Images
+															img(src='../images/'+ticket.newArtifact.primaryImage)
+															each image in ticket.newArtifact.extraImages			
+																img(src='../images/'+image)
+														// Description
+														.after-info.description(style='margin-left: 50px;')
+															| Description:
+															h5
+																| #{ticket.newArtifact.description}
+														// Reason for editing artifact
+														.after-info.reason(style='margin-left: 50px;')
+															| Reason:
+															h5
+																| #{ticket.description}
+
+	// Navigation Bar Scripts
+	script(src='../views/navigation-bar/assets/js/jquery.min.js')
+	script(src='../views/navigation-bar/assets/js/jquery.scrollex.min.js')
+	script(src='../views/navigation-bar/assets/js/jquery.scrolly.min.js')
+	script(src='../views/navigation-bar/assets/js/browser.min.js')
+	script(src='../views/navigation-bar/assets/js/breakpoints.min.js')
+	script(src='../views/navigation-bar/assets/js/util.js')
+	script(src='../views/navigation-bar/assets/js/main.js')

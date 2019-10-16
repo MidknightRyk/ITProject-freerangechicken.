@@ -47,13 +47,11 @@ router.get('/logout', function (req, res) {
 router.get('/profile', loginController.profile);
 
 // Get edit profile page?
-router.get('/edit-profile', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/editProfile/editProfile.html'));
-});
+router.get('/edit-profile', userController.getProfileEdit);
 
 // Forgot password page
 router.get('/forgot', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/forgotPassword/forgotPassword.html'));
+	res.sendFile(path.join(__dirname, '/../views/homepage/forgot-password.html'));
 });
 
 // Reset password page
