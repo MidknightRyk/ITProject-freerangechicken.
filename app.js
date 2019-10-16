@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 var session = require('cookie-session');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(flash());
 app.use(express.static(__dirname));
 app.use(session({
 	secret: 'itproject',
@@ -26,6 +25,7 @@ require('./config/passport.js');
 var passport = require('passport');
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 var routes = require('./routes/routes.js');
 

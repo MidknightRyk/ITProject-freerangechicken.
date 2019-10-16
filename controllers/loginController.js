@@ -101,6 +101,7 @@ var forgot = function (req, res, next) {
 			});
 		},
 		function (token, done) {
+			console.log(req.body.email);
 			User.findOne({ email: req.body.email }, function (err, user) {
 				if (err) return console.log(err);
 				if (!user) {
@@ -145,9 +146,7 @@ var reset = function (req, res) {
 			req.flash('error', 'Password reset token is invalid or has expired.');
 			return res.redirect('/forgot');
 		}
-		res.render('reset', {
-			user: req.user
-		});
+		res.render(path.join(__dirname, '/../views/homepage/reset-password.pug'));
 	});
 };
 
@@ -160,24 +159,28 @@ var resetPassword = function (req, res) {
 					req.flash('error', 'Password reset token is invalid or has expired.');
 					return res.redirect('back');
 				}
+				if (req.body.pwd === req.body.pwdrepeat) {
+					user.setPassword(req.body.pwd);
+					user.resetPasswordToken = undefined;
+					user.resetPasswordExpires = undefined;
 
-				user.setPassword(req.body.password);
-				user.resetPasswordToken = undefined;
-				user.resetPasswordExpires = undefined;
-
-				user.save(function (err) {
-					if (err) return console.log(err);
-					req.session.user = user._id;
-					req.session.userName = user.name;
-					req.session.username = user.username;
-					// Set user type
-					if (user.admin) {
-						req.session.userType = 'admin';
-					} else {
-						req.session.userType = 'user';
-					}
-					return res.redirect('/catalogue');
-				});
+					user.save(function (err) {
+						if (err) return console.log(err);
+						req.session.user = user._id;
+						req.session.userName = user.name;
+						req.session.username = user.username;
+						// Set user type
+						if (user.admin) {
+							req.session.userType = 'admin';
+						} else {
+							req.session.userType = 'user';
+						}
+						return res.redirect('/catalogue');
+					});
+				} else {
+					req.flash('error', 'Please confirm your password.');
+					return res.redirect('back');
+				}
 			});
 		},
 		function (user, done) {
