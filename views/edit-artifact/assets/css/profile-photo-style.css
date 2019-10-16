@@ -19,7 +19,12 @@
     width:120px;
     height:120px;
     margin-top: 0; /* to fix nav-bar clashes*/
-    border-radius: 50%;
+   /* border-radius: 50%;*/
+}
+
+.page-name
+{
+    text-shadow:2px 1px 3px rgb(147,58,66)
 }
 
 .profile-upload-container img
