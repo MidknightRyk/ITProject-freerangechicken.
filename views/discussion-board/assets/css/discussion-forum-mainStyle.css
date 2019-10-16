@@ -38,7 +38,7 @@ body{
 
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1230px) {
 
 	body{
 		font-size: 12pt;
@@ -468,7 +468,7 @@ body.is-menu-visible #wrapper {
 
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1230px) {
 
 	#wrapper {
 		display: block;
@@ -531,7 +531,7 @@ body.single #wrapper {
 }
 
 /* Fixed start an issue button */
-@media screen and (min-width:1000px){
+/*@media screen and (min-width:1230px){
 	#sidebar header a
 	{
 		position:fixed;
@@ -539,9 +539,30 @@ body.single #wrapper {
 		right:150px;
 
 	}
-}
+}*/
 
-@media screen and (max-width: 1000px) {
+/* start issue button relative to its container*/
+@media screen and (min-width:1230px){
+	#intro header
+	{
+		position:relative;
+	}
+
+	#intro header p
+	{
+		position:absolute;
+		top:200px;
+		right:70px;
+	}
+
+	#intro header a
+	{
+		position:absolute;
+		top:300px;
+		right:50px;
+	}
+}
+@media screen and (max-width: 1230px) {
 
 	#sidebar {
 		margin: 0 0 1em 0;
@@ -550,9 +571,9 @@ body.single #wrapper {
 		width: 100%;
 		overflow-x: hidden;
 
-		/* sticky to the top*/
-		position:sticky;
-		top:0;
+
+		position:sticky; /* sticky to the top*/
+		top:40px;
 		z-index:900;
 	}
 }
@@ -562,8 +583,9 @@ body.single #wrapper {
 		margin-left: -3em;
 		min-width: 0;
 		padding: 3em 0 0 0;
-		width: 112%;
+		width: 115%;
 		overflow-x: hidden;
+		top: 40px;
 	}
 }
 
@@ -574,6 +596,7 @@ body.single #wrapper {
 		padding: 3em 0 0 0;
 		width: 111%;
 		overflow-x: hidden;
+		top: 35px; /* sticky-top fixed*/
 	}
 }
 
@@ -599,7 +622,7 @@ body.single #wrapper {
 	}
 
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1230px) {
 
 	#intro {
 		margin: 0 0 3em 0;
@@ -671,6 +694,7 @@ body.single #wrapper {
 	margin-bottom: -10px;
 }
 
+
 .issue > header .issue-title > :last-child {
 	margin-bottom: -1em;
 }
@@ -691,6 +715,7 @@ body.single #wrapper {
 	margin-bottom: -1em;
 }
 
+/* published time */
 .issue > header .issue-info .published {
 	color: #3c3b3b;
 	display: block;
@@ -701,7 +726,10 @@ body.single #wrapper {
 	margin-top: 0.5em;
 	text-transform: uppercase;
 	white-space: nowrap;
+	overflow:scroll;
 }
+
+
 
 .issue > a.image.featured {
 	overflow: hidden;
@@ -770,7 +798,69 @@ body.single #wrapper {
 	margin-right: 0.75em;
 }
 
-@media screen and (max-width: 980px) {
+/* issue title */
+@media screen and (min-width: 1230px){
+
+	.issue > header .issue-title a
+	{
+		display:inline-block;
+		word-break: break-all; /* letter break */
+		width:100%;
+		line-height: 20px;
+		letter-spacing: 3px;
+		font-size: 14px;
+		margin-bottom: 10px;
+	}
+
+}
+@media screen and (max-width: 1230px){
+
+	.issue > header .issue-title a
+	{
+		display:inline-block;
+		word-break: break-word; /* letter break */
+		width:100%;
+		line-height: 20px;
+		letter-spacing: 3px;
+		font-size: 14px;
+		margin-bottom: 10px;
+	}
+
+}
+
+@media screen and (max-width: 975px){
+
+	.issue > header .issue-title a
+	{
+		display:inline-block;
+		word-break: break-word; /* letter break */
+		width:100%;
+		line-height: 20px;
+		letter-spacing: 3px;
+		font-size: 14px;
+		margin-bottom: 10px;
+	}
+
+}
+
+@media screen and (max-width: 500px){
+
+	.issue > header .issue-title a
+	{
+		display:inline-block;
+		word-break: break-all; /* letter break */
+		width:100%;
+		line-height: 20px;
+		letter-spacing: 3px;
+		font-size: 14px;
+		margin-bottom: 10px;
+	}
+
+}
+
+
+/* header width difference fixed */
+@media screen and (max-width: 973px) {
 
 	.issue, .add-issue, .comment-container {
 		border-left: 0;
@@ -815,6 +905,7 @@ body.single #wrapper {
 		padding-left: 0;
 	}
 
+	/* published time */
 	.issue > header .issue-info .published {
 		margin-bottom: 0;
 		margin-top: 0;
@@ -872,6 +963,7 @@ body.single #wrapper {
 	.issue{
 		padding-bottom: 2em;
 	}
+
 }
 
 
