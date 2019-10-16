@@ -1,10 +1,15 @@
 doctype html
-// Inspired by design  under the Creative Commons (in HTML5 UP)
+// Web Design: Inspired by design  under the Creative Commons (in HTML5 UP)
 html
 	head
 		title Catalogue
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+		link(href='../profile-page/profile-page-style.css', rel='stylesheet', type='text/css')
+		link(rel='stylesheet', href='../views/catalogue/assets/css/main.css')
+		noscript
+			link(rel='stylesheet', href='../views/catalogue/assets/css/noscript.css')
+		link(rel='stylesheet', href='../views/catalogue/assets/css/logout.css')
 		link(rel='stylesheet', href='../views/catalogue/assets/css/main.css')
 		noscript
 			link(rel='stylesheet', href='../views/catalogue/assets/css/noscript.css')
@@ -19,8 +24,8 @@ html
 				nav#nav
 					ul
 						li.special
+							// Menu Dropdown
 							a.menuToggle(href='#menu')
-								span Menu
 							// Light Box
 							#menu
 								// Profile Photo
@@ -69,11 +74,6 @@ html
 										a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
 											img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg')
 											.logout LOGOUT
-								//
-									<ul>
-									<li><a href="catalogue.html">Home</a></li>
-									<li><a href="catalogue.html">Log Out</a></li>
-									</ul>
 			// Banner
 			section#banner
 				.inner
@@ -82,7 +82,7 @@ html
 						img(src='../views/catalogue/images/logo.png', alt='', style='width:325px;height:95px;border:0;')
 					ul.actions
 						li
-							a.button.primary(href='/artifacts/add-artifact') Add Artifact
+							a.button.fit(href='/artifacts/add-artifact') Add Artifact
 				a.more.scrolly(href='#one') Family Artifacts
 			// ARTIFACT SECTION
 			section#one.wrapper.style1.special

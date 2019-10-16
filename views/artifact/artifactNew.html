@@ -32,6 +32,10 @@
 	<link rel="stylesheet" href="../navigation-bar/assets/css/nav-main.css" />
 	<noscript><link rel="stylesheet" href="../navigation-bar/assets/css/noscript.css"/></noscript>
 	<link rel="stylesheet" href="../navigation-bar/assets/css/logout.css">
+
+	<!-- Artifact Image slideshow -->>
+	<link rel="stylesheet" href="../artifact/assets/css/artifact.css" />
+
 </head>
 
 <!-- Navigation Bar  -->
@@ -100,61 +104,6 @@
 			  </div>
 			  
 
-    	<style>
-        * {box-sizing: border-box}
-        body {font-family: Verdana, sans-serif; margin:0}
-        .mySlides {display: none}
-        img {vertical-align: middle;}
-
-        /* Slideshow container */
-        .slideshow-container {
-            max-width: 400px;
-            position: relative;
-			margin: auto;
-			margin-top: 50%;
-        }
-
-		.mySlides
-		{
-			border: 5px solid white;
-		}
-        /* Fading animation */
-        .fade {
-            -webkit-animation-name: fade;
-            -webkit-animation-duration: 1.5s;
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-
-        @-webkit-keyframes fade {
-            from {opacity: .4}
-            to {opacity: 1}
-        }
-
-        @keyframes fade {
-            from {opacity: .4}
-            to {opacity: 1}
-        }
-
-		/* responsive artifact photo display responsive */
-		@media screen and (max-width: 988px){
-			.slideshow-container
-			{
-				margin-top: -80px;
-
-			}
-			.mySlides
-			{
-				height:300px;
-				object-fit: cover;
-				margin-left: 2%;
-			}
-		}
-        /* On smaller screens, decrease text size */
-        @media only screen and (max-width: 300px) {
-            .prev, .next,.text {font-size: 11px}
-        }
-    	</style>
 	</head>
 	</header>
 
@@ -244,6 +193,7 @@
 			  setTimeout(carousel, 3000);     // Change image every 3 seconds
 			}
 	</script>
+
 
 	<!-- Scripts -->
 	<script src="../navigation-bar/assets/js/jquery.min.js"></script>
