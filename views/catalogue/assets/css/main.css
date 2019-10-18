@@ -327,22 +327,21 @@ input, select, textarea {
 	}
 
 
-/* Actions */
+
 
 /* Add Artifact Button */
-ul.actions {
-	display: flex;
+.inner {
+    width:100%
+}
+/* centered now */
+ul.actions{
+    display: table;
+    margin: 0 auto;
+    list-style: none;
+    width:0.05%;
+    padding:0 0 0 0;
 	cursor: default;
-	list-style: none;
-	margin-left: -1em;
-	padding-left: 42%;
 }
-
-ul.actions li {
-	padding: 0 0 0 1.2em;
-	vertical-align: middle;
-}
-
 
 /* Button */
 .button {
@@ -1740,7 +1739,7 @@ ul.actions li {
 			z-index: 1;
 		}
 
-			#banner h2:before, #banner h2:after {
+#banner h2:before, #banner h2:after {
 				-moz-transition: width 0.85s ease;
 				-webkit-transition: width 0.85s ease;
 				-ms-transition: width 0.85s ease;
@@ -2003,8 +2002,11 @@ ul.actions li {
 		background-color: #1d242a;
 	}
 
+
+
+
 /* Add Artifact Button Responsive */
-@media screen and (max-width: 800px){
+/*@media screen and (max-width: 800px){
 	#banner ul li a
 	{
 		margin-left: -55px;
@@ -2012,13 +2014,15 @@ ul.actions li {
 	}
 }
 
+
 @media screen and (max-width: 500px){
 		#banner ul li a
 		{
 			margin-left: -70px;
 			width:200px;
 		}
-	}
+	}*/
+
 
 /* Artifact Image Layout */
 /* image ratio: 1:1 */
@@ -2031,7 +2035,11 @@ ul.actions li {
 		width: 250px;
 		border-radius: 4px;
 		overflow: hidden;
+	}
 
+	.tiles article a{
+		width:250px;
+		height:250px;
 	}
 
 	.tiles article > .image img {
@@ -2085,6 +2093,11 @@ ul.actions li {
 		border-radius: 4px;
 		overflow: hidden;
 
+	}
+
+	.tiles article a{
+		width:200px;
+		height:200px;
 	}
 
 	.tiles article > .image img {
