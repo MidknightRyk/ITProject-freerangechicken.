@@ -5,7 +5,7 @@ html
 		title Catalogue
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
-		link(href='../profile-page/profile-page-style.css', rel='stylesheet', type='text/css')
+		link(href='../views/profile-page/profile-page-style.css', rel='stylesheet', type='text/css')
 		link(rel='stylesheet', href='../views/catalogue/assets/css/main.css')
 		noscript
 			link(rel='stylesheet', href='../views/catalogue/assets/css/noscript.css')
@@ -78,8 +78,6 @@ html
 			section#banner
 				.inner
 					h2 CATALOGUE
-					p
-						img(src='../views/catalogue/images/logo.png', alt='', style='width:325px;height:95px;border:0;')
 					ul.actions
 						li
 							a.button.fit(href='/artifacts/add-artifact') Add Artifact
@@ -114,8 +112,7 @@ html
 															var dd = date.toLocaleString('default', { day: '2-digit'});
 															var mm = date.toLocaleString('default', { month: 'long' });
 															var yyyy = date.getFullYear();
-															document.getElementsByClassName("create-date")[#{index}].innerHTML = "Created on " + dd+" "+mm+" "+yyyy;
-														p.description #{artifact.description}
+															document.getElementsByClassName("create-date")[#{index}].innerHTML =  dd+" "+mm+" "+yyyy;
 
 				// Scripts
 				script(src='../views/catalogue/assets/js/jquery.min.js')

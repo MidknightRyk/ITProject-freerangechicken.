@@ -52,21 +52,21 @@
 							<a href="#"><span class="fas fa-camera"></span></a>
 							<img src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" class="img-thumbnail img-circle img-responsive" alt="profile photo">
 						</div>
-	
+
 						<!-- Username :-> leads to the profile page -->
 						<div class="user-name" style="text-align: center;">
 							<a href="#" ><h2 class="underline-animation">Tom Holland</h2></a>
 						</div>
-	
+
 						<!-- User Profile Information -->
 						<div class="user-info">
 							<h3>Relationship</h3>
 							<h3>No. of Artifacts Added</h3>
 							<h3>Date Joined</h3>
 						</div>
-	
+
 						<div hidden>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
-	
+
 						<!-- Home Button -->
 						<div class="home-button-container">
 							<a class="home-button" href="">
@@ -74,7 +74,7 @@
 								<div class="home">HOME</div>
 							</a>
 						</div>
-	
+
 						<!-- Logout Button -->
 						<div class="logout-container">
 							<form id="form1" action="/logout" method="POST">
@@ -84,13 +84,13 @@
 								</a>
 							</form>
 						</div>
-	
+
 					</div>
 				</li>
 			</ul>
 		</nav>
 	</header>
-		
+
 <body class="is-preload">
 
 	<!-- Header -->
@@ -102,7 +102,7 @@
 				<img class="mySlides" src="images/dragon.jpg" style="width:100%">
 				<img class="mySlides" src="images/lantern.jpg" style="width:100%">
 			  </div>
-			  
+
 
 	</head>
 	</header>
@@ -129,7 +129,7 @@
 							<span class="tag">#precious</span>
 						</div><br>
 
-				
+
 				<!-- Start Issue Artifact Button (navigate to discussion forum) -->
 				<section>
 						<ul class="actions">
@@ -180,16 +180,16 @@
 	<script>
 			var myIndex = 0;
 			carousel();
-			
+
 			function carousel() {
 			  var i;
 			  var x = document.getElementsByClassName("mySlides");
 			  for (i = 0; i < x.length; i++) {
-				x[i].style.display = "none";  
+				x[i].style.display = "none";
 			  }
 			  myIndex++;
-			  if (myIndex > x.length) {myIndex = 1}    
-			  x[myIndex-1].style.display = "block";  
+			  if (myIndex > x.length) {myIndex = 1}
+			  x[myIndex-1].style.display = "block";
 			  setTimeout(carousel, 3000);     // Change image every 3 seconds
 			}
 	</script>
