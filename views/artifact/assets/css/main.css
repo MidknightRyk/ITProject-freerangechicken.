@@ -74,8 +74,10 @@ ul.actions li {
 
 
 /* Button */
-
-.button {
+/* To avoid conflicts with discussion board buttons */
+.start-issue-button,
+.edit-artifact-button,
+.delete-artifact-button{
 	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 	background-color: transparent;
 	border-radius: 0.35em;
@@ -93,18 +95,26 @@ ul.actions li {
 	white-space: nowrap;
 }
 
-.button:hover, a:hover {
+.start-issue-button:hover,
+.edit-artifact-button:hover,
+.delete-artifact-button:hover,
+a:hover {
 	border-color: #0f859e !important;
 	color: #0f859e !important;
 }
 
-.button:active {
+.start-issue-button:active,
+.edit-artifact-button:active,
+.delete-artifact-button:active{
 	background-color: rgba(73, 191, 157, 0.1);
 	border-color: #0f859e;
 	color: #0f859e !important;
 }
 
-.button:focus, a:focus
+.start-issue-button:focus,
+.edit-artifact-button:focus,
+.delete-artifact-button:focus,
+a:focus
 {
 	outline:0;
 }
@@ -144,9 +154,9 @@ ul.actions li {
 
 /* Tag Style */
 .tag {
-	background: #eee;
+	background: #a7a7a7;
 	border-radius: 3px 0 0 3px;
-	color: #999;
+	color: #f0f0f0;
 	display: inline-block;
 	height: 26px;
 	line-height: 26px;
@@ -160,7 +170,7 @@ ul.actions li {
 
 /* triangle before */
 .tag::before {
-	background: white; /* triangle color */
+	background: rgb(244,244,244); /* triangle color */
 	border-radius: 10px;
 	box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
 	content: '';
@@ -173,9 +183,9 @@ ul.actions li {
 
 /* triangle after */
 .tag::after {
-	background: white; /* triangle color */
+	background: rgb(244,244,244); /* triangle color */
 	border-bottom: 13px solid transparent;
-	border-left: 10px solid #eee;
+	border-left: 10px solid #a7a7a7;
 	border-top: 13px solid transparent;
 	content: '';
 	position: absolute;

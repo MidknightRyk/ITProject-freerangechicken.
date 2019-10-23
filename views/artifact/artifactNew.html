@@ -28,6 +28,9 @@
 	<link rel="stylesheet" href="../artifact/assets/css/uploadStyle.css" />
 	<link rel="stylesheet" href="../artifact/assets/css/profile-photo-style.css">
 
+	<!-- For adding discussion board-->
+	<link rel="stylesheet" href="../artifact/assets/css/discussion-forum-mainStyle.css">
+
 	<!-- Navigation Bar -->
 	<link rel="stylesheet" href="../navigation-bar/assets/css/nav-main.css" />
 	<noscript><link rel="stylesheet" href="../navigation-bar/assets/css/noscript.css"/></noscript>
@@ -36,8 +39,8 @@
 	<!-- Artifact Image slideshow -->>
 	<link rel="stylesheet" href="../artifact/assets/css/artifact.css" />
 
-	<!-- For adding discussion board-->
-	<!--<link rel="stylesheet" href="../artifact/assets/css/discussion-forum-mainStyle.css">-->
+
+
 
 </head>
 
@@ -146,28 +149,194 @@
 		<!-- Start Issue Artifact Button (navigate to discussion forum) -->
 		<section>
 			<ul class="actions">
-				<li><button type="submit" value="Start Issue" class="button"><a href="../discussion-board/discussion-forum-main.html">Start Issue</a></button></li>
+				<li><button type="submit" value="Start Issue" class="start-issue-button"><a href="#add-issue-form">Start Issue</a></button></li>
 			</ul><br>
 		</section>
+		<script>
+			$(".start-issue-button").click(function () {
+				$(".add-issue").fadeIn();
+			});
+		</script>
 
 		<!-- Edit Artifact Button (navigate to edit arrtifact page) -->
-		<section>
-			<ul class="actions">
-				<li><button type="submit" value="Edit Artifact" class="edit-artifact button"><a href="../edit-artifact/edit-artifact.html">Edit Artifact</a></button></li>
-			</ul><br>
-		</section>
-
 		<!-- Delete Artifact Button (trigger modal on clicking for deletion of artifact) -->
 		<section>
 			<ul class="actions">
+				<li><button type="submit" value="Edit Artifact" class="edit-artifact-button"><a href="../edit-artifact/edit-artifact.html">Edit Artifact</a></button></li>
 				<!-- tag changed to <button></button> to avoid css clash -->
-				<li><button href="javascript:;" onclick="document.getElementById('form1').submit();" class="delete-artifact button" data-toggle="modal" data-target="#myModal" formmethod="post">Delete Artifact</button></li>
+				<li><button href="javascript:;" onclick="document.getElementById('form1').submit();" class="delete-artifact-button" data-toggle="modal" data-target="#myModal" formmethod="post">Delete Artifact</button></li>
 			</ul>
 		</section>
 
+	</div>
+
+	<!-- Discussion Board Main -->
+	<div id="discussion-main">
+
+		<!-- Add new issue Form-->
+		<article class="add-issue" id="add-issue-form" style="display:none;">
+
+			<!-- Author -->
+			<header>
+				<a href="#" class="author"><span class="name">Tom Holland</span><img src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" alt="profile photo"/></a>
+				<span class="close">x</span>
+				<script>
+					$(".close").click(function () {
+						$(".add-issue").hide();
+					});
+				</script>
+			</header>
+
+			<div class="form-container">
+				<form method="post" action="/discussion-board/create-issue">
+
+					<!-- Issue Title -->
+					<div><input type="text" required="" name="topic"  placeholder="Enter Issue Title"></div><br>
+					<!-- Artifact ID -->
+					<div><input type="text" required="" name="artifactId"  placeholder="Artifact ID"></div><br>
+					<!-- Issue Description -->
+					<div><textarea name="description" placeholder="Description" ></textarea></div>
+
+					<!-- Post Button -->
+					<ul class="actions">
+						<li><input type="submit" class="button small" value = "Post"/></li>
+					</ul>
+
+				</form>
+			</div>
+
+		</article>
+
+
+		<!-- Issue 1-->
+		<article class="issue" >
+
+			<header>
+				<!-- Issue title + short description -->
+				<div class="issue-title">
+					<h2>
+						<!-- Metta: get issue by id -->
+						<a href="issue-details-page.html">whej dsfsej wehajk whej wehajk w whej</a>
+					</h2>
+					<p>short description</p>
+				</div>
+
+				<!-- Posted Time + Profile photo -->
+				<div class="issue-info">
+					<time class="published" datetime="2015-11-01">November 1, 2015gjgguyewguyfguyefguyfguywegfuyweguywegfuyegwf</time>
+					<a href="#" class="author"><span class="name">Tom Holland</span><img src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" alt="profile photo"/></a>
+				</div>
+			</header>
+
+
+			<!-- Image if there's any -->
+			<a href="#" class="image featured"><img src="" alt="" /></a>
+
+			<!-- Details -->
+			<p>talk talk talk talk talk........</p>
+
+			<footer>
+				<!-- Get rid of this -->
+				<ul class="actions">
+					<li><a href="issue-details-page.html" class="button small">Continue Reading</a></li>
+				</ul>
+
+				<!-- the Number of Likes and Comments -->
+				<ul class="stats">
+					<li><a href="#" class="icon solid fa-heart">28</a></li>
+					<li><a href="#" class="icon solid fa-comment">128</a></li>
+				</ul>
+			</footer>
+		</article>
+
+
+		<!-- Issue 2-->
+		<article class="issue">
+
+			<header>
+				<!-- Issue title + short description -->
+				<div class="issue-title">
+					<h2><a href="issue-details-page.html">Issue Title</a></h2>
+					<p>short description</p>
+				</div>
+
+				<!-- Posted Time + Profile photo -->
+				<div class="issue-info">
+					<time class="published" datetime="2015-11-01">November 1, 2015</time>
+					<a href="#" class="author"><span class="name">Tom Holland</span><img src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" alt="profile photo"/></a>
+				</div>
+			</header>
+
+			<!-- Image if there's any -->
+			<a href="#" class="image featured"><img src="../views/discussion-board/assets/css/images/galaxy.jpg" alt="" /></a>
+
+			<!-- Details -->
+			<p>talk talk talk talk talk........</p>
+
+			<footer>
+				<!-- Get rid of this -->
+				<ul class="actions">
+					<li><a href="issue-details-page.html" class="button small">Continue Reading</a></li>
+				</ul>
+
+				<!-- the Number of Likes and Comments -->
+				<ul class="stats">
+					<li><a href="#" class="icon solid fa-heart">28</a></li>
+					<li><a href="#" class="icon solid fa-comment">128</a></li>
+				</ul>
+			</footer>
+		</article>
+
+		<!-- Issue 3 -->
+		<article class="issue">
+
+			<header>
+				<!-- Issue title + short description -->
+				<div class="issue-title">
+					<h2><a href="issue-details-page.html">Issue Title</a></h2>
+					<p>short description</p>
+				</div>
+
+				<!-- Posted Time + Profile photo -->
+				<div class="issue-info">
+					<time class="published" datetime="2015-11-01">November 1, 2015</time>
+					<a href="#" class="author"><span class="name">Tom Holland</span><img src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" alt="profile photo"/></a>
+				</div>
+			</header>
+
+			<!-- Image if there's any -->
+			<a href="#" class="image featured"><img src="../views/discussion-board/assets/css/images/galaxy.jpg" alt="" /></a>
+
+			<!-- Details -->
+			<p>talk talk talk talk talk........</p>
+
+			<footer>
+				<!-- Get rid of this -->
+				<ul class="actions">
+					<li><a href="issue-details-page.html" class="button small">Continue Reading</a></li>
+				</ul>
+
+				<!-- the Number of Likes and Comments -->
+				<ul class="stats">
+					<li><a href="#" class="icon solid fa-heart">28</a></li>
+					<li><a href="#" class="icon solid fa-comment">128</a></li>
+				</ul>
+			</footer>
+		</article>
+
+		<!-- Pagination -->
+		<section>
+			<ul class="actions">
+				<li><button type="submit" value="Previous Page" class="previous-page-button"><a href="">Previous Page</a></button></li>
+				<li><button type="submit" value="Next Page" class="next-page-button"><a href="">Next Page</a></button></li>
+			</ul><br>
+		</section>
 
 	</div>
 </div>
+
+
+
 
 
 
