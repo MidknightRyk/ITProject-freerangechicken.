@@ -146,6 +146,18 @@
 			</div>
 		</form>
 
+
+
+		<!-- Edit Artifact Button (navigate to edit arrtifact page) -->
+		<!-- Delete Artifact Button (trigger modal on clicking for deletion of artifact) -->
+		<section>
+			<ul class="actions">
+				<li><button type="submit" value="Edit Artifact" class="edit-artifact-button"><a href="../edit-artifact/edit-artifact.html">Edit Artifact</a></button></li>
+				<!-- tag changed to <button></button> to avoid css clash -->
+				<li><button href="javascript:;" onclick="document.getElementById('form1').submit();" class="delete-artifact-button" data-toggle="modal" data-target="#myModal" formmethod="post">Delete Artifact</button></li>
+			</ul><br>
+		</section>
+
 		<!-- Start Issue Artifact Button (navigate to discussion forum) -->
 		<section>
 			<ul class="actions">
@@ -158,15 +170,7 @@
 			});
 		</script>
 
-		<!-- Edit Artifact Button (navigate to edit arrtifact page) -->
-		<!-- Delete Artifact Button (trigger modal on clicking for deletion of artifact) -->
-		<section>
-			<ul class="actions">
-				<li><button type="submit" value="Edit Artifact" class="edit-artifact-button"><a href="../edit-artifact/edit-artifact.html">Edit Artifact</a></button></li>
-				<!-- tag changed to <button></button> to avoid css clash -->
-				<li><button href="javascript:;" onclick="document.getElementById('form1').submit();" class="delete-artifact-button" data-toggle="modal" data-target="#myModal" formmethod="post">Delete Artifact</button></li>
-			</ul>
-		</section>
+
 
 	</div>
 
@@ -228,10 +232,6 @@
 				</div>
 			</header>
 
-
-			<!-- Image if there's any -->
-			<a href="#" class="image featured"><img src="" alt="" /></a>
-
 			<!-- Details -->
 			<p>talk talk talk talk talk........</p>
 
@@ -267,9 +267,6 @@
 				</div>
 			</header>
 
-			<!-- Image if there's any -->
-			<a href="#" class="image featured"><img src="../views/discussion-board/assets/css/images/galaxy.jpg" alt="" /></a>
-
 			<!-- Details -->
 			<p>talk talk talk talk talk........</p>
 
@@ -303,9 +300,6 @@
 					<a href="#" class="author"><span class="name">Tom Holland</span><img src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" alt="profile photo"/></a>
 				</div>
 			</header>
-
-			<!-- Image if there's any -->
-			<a href="#" class="image featured"><img src="../views/discussion-board/assets/css/images/galaxy.jpg" alt="" /></a>
 
 			<!-- Details -->
 			<p>talk talk talk talk talk........</p>
