@@ -1,267 +1,34 @@
-doctype html
-// Web Design: Inspired by design  under the Creative Commons (in HTML5 UP)
-html
-  head
-    title Catalogue
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
-    link(href='../profile-page/profile-page-style.css', rel='stylesheet', type='text/css')
-    link(rel='stylesheet', href='../catalogue/assets/css/main.css')
-    noscript
-      link(rel='stylesheet', href='../catalogue/assets/css/noscript.css')
-    link(rel='stylesheet', href='../catalogue/assets/css/logout.css')
-    link(rel='stylesheet', href='../views/catalogue/assets/css/main.css')
-    noscript
-      link(rel='stylesheet', href='../views/catalogue/assets/css/noscript.css')
-    link(rel='stylesheet', href='../views/catalogue/assets/css/logout.css')
-  body.landing.is-preload
-    // Page Wrapper
-    #page-wrapper
-      // Header
-      header#header.alt
-        h1
-          a(href='/catalogue') CATALOGUE
-        nav#nav
-          ul
-            li.special
-              // Menu Dropdown
-              a.menuToggle(href='#menu')
-              // Light Box
-              #menu
-                // Profile Photo
-                .profile-upload-container
-                  a(href='#')
-                    span.fas.fa-camera
-                  img.img-thumbnail.img-circle.img-responsive(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg')
-                // Username :-> leads to the profile page
-                .user-name(style='text-align: center;')
-                  a(href='#')
-                    h2.underline-animation Tom Holland
-                // User Profile Information
-                .user-info
-                  h3 Relationship
-                  h3 No. of Artifacts Added
-                  h3 Date Joined
-                div(hidden='')
-                  | Icons made by 
-                  a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
-                  |  from 
-                  a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
-                // Discussion Button
-                .discussion-board-button-container
-                  a.discussion-board-button(href='')
-                    img#discussion-board-icon-img(src='https://image.flaticon.com/icons/svg/1205/1205495.svg')
-                    .discussion-board DISCUSSION
-                // Home Button
-                .home-button-container
-                  a.home-button(href='')
-                    img#home-icon-img(src='https://image.flaticon.com/icons/svg/609/609803.svg')
-                    .home HOME
-                // Logout Button
-                .logout-container
-                  form#form1(action='/logout', method='POST')
-                    a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
-                      img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg')
-                      .logout LOGOUT
-      // Banner
-      section#banner
-        .inner
-          h2 CATALOGUE
-          ul.actions
-            a.button.fit(href='#') Add Artifact
-        // Scroll down to view all artifacts
-        a.more.scrolly(href='#one') Family Artifacts
-      // ARTIFACT SECTION
-      section#one.wrapper.style1.special
-        .inner
-          // 2019 Artifacts
-          section#next-section.section.visit-section
-            .container
-              .row
-                .col-md-12
-                  h2.heading(data-aos='fade-up') 2019
-              .row
-                section.tiles
-                  // Photos
-                  article.style1
-                    span.image
-                      img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                    // Link Direct to the Artifact Page
-                    a(href='artefact.html')
-                      // the Date Added/Last Modified + Artifact Description
-                      .content
-                        // the Name of the Artifact
-                        h2 Artifact
-                        p.date
-                  article.style1
-                    span.image
-                      img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                    // Link Direct to the Artifact Page
-                    a(href='artefact.html')
-                      // the Date Added/Last Modified + Artifact Description
-                      .content
-                        h2 Artifact
-                        p.date
-                  article.style1
-                    span.image
-                      img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                    // Link Direct to the Artifact Page
-                    a(href='artefact.html')
-                      // the Date Added/Last Modified + Artifact Description
-                      .content
-                        h2 Artifact
-                        p.date
-                  article.style1
-                    span.image
-                      img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                    // Link Direct to the Artifact Page
-                    a(href='artefact.html')
-                      // the Date Added/Last Modified + Artifact Description
-                      .content
-                        h2 Artifact
-                        p.date
-                  article.style1
-                    span.image
-                      img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                    // Link Direct to the Artifact Page
-                    a(href='artefact.html')
-                      // the Date Added/Last Modified + Artifact Description
-                      .content
-                        h2 Artifact
-                        p.date
-                  article.style1
-                    span.image
-                      img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                    // Link Direct to the Artifact Page
-                    a(href='artefact.html')
-                      // the Date Added/Last Modified + Artifact Description
-                      .content
-                        h2 Artifact
-                        p.date
-                    br
-                .container
-                  .row
-                    .col-md-12
-                      h2.heading(data-aos='fade-up') 2017
-                  section.tiles
-                    // Photos
-                    article.style1
-                      span.image
-                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                      // Link Direct to the Artifact Page
-                      a(href='artefact.html')
-                        // the Date Added/Last Modified + Artifact Description
-                        .content
-                          h2 Artifact
-                          p.date
-                    article.style1
-                      span.image
-                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                      // Link Direct to the Artifact Page
-                      a(href='artefact.html')
-                        // the Date Added/Last Modified + Artifact Description
-                        .content
-                          h2 Artifact
-                          p.date
-                    article.style1
-                      span.image
-                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                      // Link Direct to the Artifact Page
-                      a(href='artefact.html')
-                        // the Date Added/Last Modified + Artifact Description
-                        .content
-                          h2 Artifact
-                          p.date
-                    article.style1
-                      span.image
-                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                      // Link Direct to the Artifact Page
-                      a(href='artefact.html')
-                        // the Date Added/Last Modified + Artifact Description
-                        .content
-                          h2 Artifact
-                          p.date
-                    article.style1
-                      span.image
-                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                      // Link Direct to the Artifact Page
-                      a(href='artefact.html')
-                        // the Date Added/Last Modified + Artifact Description
-                        .content
-                          h2 Artifact
-                          p.date
-                    article.style1
-                      span.image
-                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                      // Link Direct to the Artifact Page
-                      a(href='artefact.html')
-                        // the Date Added/Last Modified + Artifact Description
-                        .content
-                          h2 Artifact
-                          p.date
-                      br
-                  section.tiles
-                    // Photos
-                    article.style1
-                      span.image
-                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                      // Link Direct to the Artifact Page
-                      a(href='artefact.html')
-                        // the Date Added/Last Modified + Artifact Description
-                        .content
-                          h2 Artifact
-                          p.date
-                    article.style1
-                      span.image
-                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                      // Link Direct to the Artifact Page
-                      a(href='artefact.html')
-                        // the Date Added/Last Modified + Artifact Description
-                        .content
-                          h2 Artifact
-                          p.date
-                    article.style1
-                      span.image
-                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                      // Link Direct to the Artifact Page
-                      a(href='artefact.html')
-                        // the Date Added/Last Modified + Artifact Description
-                        .content
-                          h2 Artifact
-                          p.date
-                    article.style1
-                      span.image
-                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                      // Link Direct to the Artifact Page
-                      a(href='artefact.html')
-                        // the Date Added/Last Modified + Artifact Description
-                        .content
-                          h2 Artifact
-                          p.date
-                    article.style1
-                      span.image
-                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                      // Link Direct to the Artifact Page
-                      a(href='artefact.html')
-                        // the Date Added/Last Modified + Artifact Description
-                        .content
-                          h2 Artifact
-                          p.date
-                    article.style1
-                      span.image
-                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
-                      // Link Direct to the Artifact Page
-                      a(href='artefact.html')
-                        // the Date Added/Last Modified + Artifact Description
-                        .content
-                          h2 Artifact
-                          p.date
-                      br
-        // Scripts
-        script(src='../catalogue/assets/js/jquery.min.js')
-        script(src='../catalogue/assets/js/jquery.scrollex.min.js')
-        script(src='../catalogue/assets/js/jquery.scrolly.min.js')
-        script(src='../catalogue/assets/js/browser.min.js')
-        script(src='../catalogue/assets/js/breakpoints.min.js')
-        script(src='../catalogue/assets/js/util.js')
-        script(src='../catalogue/assets/js/main.js')
+// Comment 1
+.comment
+  // Profile Photo + Username
+  a.comment-author(href='#')
+    img(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
+    | Response1(username)
+  // Actual Comment
+  p.comment-content  Okay. Cap. Captain. Big fan. I'm Spider-Man.
+  footer.comment-footer(style='border:1px solid red;')
+    // the Number of Likes and Comments
+    ul.stats
+      li
+        a.icon.solid.fa-heart(href='#') 0
+      li
+        a.icon.solid.fa-comment 2
+    // Comment time
+    ul.posted-time
+      span 1 Oct @ 11:41pm
+    // Reply Button
+    ul.arrow-wrapper
+      a.reply-button
+        i.fas.fa-reply
+  // Comment Input Box
+  .form-container(style='display:none;')
+    form(method='post', action='')
+      // Reply Input
+      .example
+        div(data-emojiarea='', data-type='unicode', data-global-picker='true')
+          .emoji-button 😄
+          textarea#input1(name='reply', rows='5', placeholder='I am thinking ...')
+      // Comment Button
+      ul.actions
+        li
+          a.button.small(href='#') Comment

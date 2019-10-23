@@ -92,7 +92,7 @@ html(lang='en')
 						ul.stats
 							li
 								a.icon.solid.fa-comment(href='#') #{issue.comments.length}
-						ul.posted-time
+						ul.posted-time(style="margin-right: 2em;")
 							span#date
 							script.
 								function english_ordinal_suffix(dt)
@@ -105,7 +105,7 @@ html(lang='en')
 								var mm = date.toLocaleString('default', { month: 'long' });
 								var yyyy = date.getFullYear();
 								document.getElementById('date').appendChild(document.createTextNode("Created on "+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
-						ul
+						ul.direct-reply
 							a(href='#direct-reply')
 								i.fas.fa-reply
 				// Posted Replies
@@ -139,7 +139,7 @@ html(lang='en')
 						a.author(href='#')
 							img(src="../images/"+user.displayPic._id, alt='profile photo')
 					.form-container
-						form#form1(method='post', action="/discussion-board/add-comment/"+issue._id )
+						form#form1(class='comment-form', method='post', action="/discussion-board/add-comment/"+issue._id )
 							// Reply Input
 							.example
 								div(data-emojiarea='', data-type='unicode', data-global-picker='true')
