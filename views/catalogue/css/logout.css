@@ -1,25 +1,37 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400);
 
-.logout-button {
+
+.discussion-board-button-container{
     width: 100%;        /* float to the right */
-    margin-top: 40px;
+    margin-top: 0;
     text-decoration: none;
 }
 
-img {
-    width: 25px;
-    height:25px;
+.logout-container{
+    width: 100%;        /* float to the right */
+    margin-top: 155px;
+    text-decoration: none;
+}
+.home-button-container{
+    width: 100%;        /* float to the right */
+    margin-top: 85px;
+    text-decoration: none;
+}
+
+#logout-photo, #home-icon-img, #discussion-board-icon-img{
+    width: 26px;
+    height:26px;
     object-fit: cover; /* avoid stretching */
-    border-radius: 50px;
+    border-radius: 50%;
     float: left;
 }
 
-.button {
+.logout-button, .home-button, .discussion-board-button {
     text-decoration: none;
     float: right;
-    padding: 12px;
+    padding: 6px;
     margin: 15px;
-    width: 25px;
+    width: 36px;
     background-color:rgba(244,240,240,0.6);
     border-radius: 20px;
     transition: width .35s;     /* width transition*/
@@ -29,25 +41,29 @@ img {
 
 }
 
-a:hover {
+.logout-button:hover, .home-button:hover{
     width: 115px; /* the size of the hovered out logout button */
     z-index: 9;
-
 }
 
-a:hover .logout{
+.discussion-board-button:hover{
+    width: 150px; /* the size of the hovered out logout button */
+    z-index: 9;
+}
+
+.logout-button:hover .logout, .home-button:hover .home, .discussion-board-button:hover .discussion-board{
     opacity: .9;
 
 }
 
-a {
+.logout-button, .home-button, .discussion-board-button {
     text-decoration: none;
     outline:none;
     border:0;
 }
 
 /* text */
-.logout {
+.logout, .home, .discussion-board {
     color:black;
     font-size: .8em;
     font-family: 'Oswald', sans-serif;
@@ -60,4 +76,48 @@ a {
     transition: opacity .45s;
     -webkit-transition: opacity .35s;
     text-decoration: none;
+}
+
+@media screen and (min-width: 1680px){
+    .discussion-board-button-container{
+        width: 100%;
+        margin-top: 0;
+        text-decoration: none;
+    }
+
+    .logout-container{
+        width: 100%;
+        margin-top: 165px;
+        text-decoration: none;
+    }
+    .home-button-container{
+        width: 100%;
+        margin-top: 90px;
+        text-decoration: none;
+    }
+    /* text */
+    .logout, .home, .discussion-board {
+        color:black;
+        font-size: 13px;
+        font-family: 'Oswald', sans-serif;
+        position: relative;
+        right: -18px;
+        bottom: -4px;
+        overflow: hidden;
+        letter-spacing: 3px;
+        opacity: 0;         /* animation transition*/
+        transition: opacity .45s;
+        -webkit-transition: opacity .35s;
+        text-decoration: none;
+        margin-top: -3px;
+    }
+
+    .logout-button, .home-button, .discussion-board-button {
+        text-decoration: none;
+        outline:none;
+        border:0;
+        padding-bottom:3px;
+    }
+
+
 }
