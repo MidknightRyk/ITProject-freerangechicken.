@@ -18,8 +18,6 @@
     text-decoration: none;
 }
 
-
-
 #logout-photo, #home-icon-img, #discussion-board-icon-img{
     width: 26px;
     height:26px;
@@ -78,4 +76,48 @@
     transition: opacity .45s;
     -webkit-transition: opacity .35s;
     text-decoration: none;
+}
+
+@media screen and (min-width: 1680px){
+    .discussion-board-button-container{
+        width: 100%;
+        margin-top: 0;
+        text-decoration: none;
+    }
+
+    .logout-container{
+        width: 100%;
+        margin-top: 165px;
+        text-decoration: none;
+    }
+    .home-button-container{
+        width: 100%;
+        margin-top: 90px;
+        text-decoration: none;
+    }
+    /* text */
+    .logout, .home, .discussion-board {
+        color:black;
+        font-size: 13px;
+        font-family: 'Oswald', sans-serif;
+        position: relative;
+        right: -18px;
+        bottom: -4px;
+        overflow: hidden;
+        letter-spacing: 3px;
+        opacity: 0;         /* animation transition*/
+        transition: opacity .45s;
+        -webkit-transition: opacity .35s;
+        text-decoration: none;
+        margin-top: -3px;
+    }
+
+    .logout-button, .home-button, .discussion-board-button {
+        text-decoration: none;
+        outline:none;
+        border:0;
+        padding-bottom:3px;
+    }
+
+
 }
