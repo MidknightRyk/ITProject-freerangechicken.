@@ -36,173 +36,184 @@
 	<!-- Artifact Image slideshow -->>
 	<link rel="stylesheet" href="../artifact/assets/css/artifact.css" />
 
+	<!-- For adding discussion board-->
+	<!--<link rel="stylesheet" href="../artifact/assets/css/discussion-forum-mainStyle.css">-->
+
 </head>
 
 <!-- Navigation Bar  -->
 <header id="navigation-header">
-		<h1><a href="">Catalogue</a></h1>
-		<nav id="nav">
-			<ul>
-				<li class="special">
-					<!-- menu text deleted -->
-					<a href="#menu" class="menuToggle"></a>
-					<div id="menu">
-						<!-- Profile Photo -->
-						<div class="navigation-profile-upload-container">
-							<a href="#"><span class="fas fa-camera"></span></a>
-							<img src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" class="img-thumbnail img-circle img-responsive" alt="profile photo">
-						</div>
-	
-						<!-- Username :-> leads to the profile page -->
-						<div class="user-name" style="text-align: center;">
-							<a href="#" ><h2 class="underline-animation">Tom Holland</h2></a>
-						</div>
-	
-						<!-- User Profile Information -->
-						<div class="user-info">
-							<h3>Relationship</h3>
-							<h3>No. of Artifacts Added</h3>
-							<h3>Date Joined</h3>
-						</div>
-	
-						<div hidden>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
-	
-						<!-- Home Button -->
-						<div class="home-button-container">
-							<a class="home-button" href="">
-								<img id="home-icon-img" src="https://image.flaticon.com/icons/svg/1300/1300624.svg" alt="home-button">
-								<div class="home">HOME</div>
-							</a>
-						</div>
-	
-						<!-- Logout Button -->
-						<div class="logout-container">
-							<form id="form1" action="/logout" method="POST">
-								<a href="javascript:;" onclick="document.getElementById('form1').submit();" class="logout-button">
-									<img id="logout-photo" src="https://image.flaticon.com/icons/svg/1300/1300674.svg" alt="logout button">
-									<div class="logout">LOGOUT</div>
-								</a>
-							</form>
-						</div>
-	
+	<h1><a href="">Catalogue</a></h1>
+	<nav id="nav">
+		<ul>
+			<li class="special">
+				<!-- menu text deleted -->
+				<a href="#menu" class="menuToggle"></a>
+				<div id="menu">
+					<!-- Profile Photo -->
+					<div class="navigation-profile-upload-container">
+						<a href="#"><span class="fas fa-camera"></span></a>
+						<img src="https://a.wattpad.com/cover/118909309-288-k772835.jpg" class="img-thumbnail img-circle img-responsive" alt="profile photo">
 					</div>
-				</li>
-			</ul>
-		</nav>
-	</header>
-		
+
+					<!-- Username :-> leads to the profile page -->
+					<div class="user-name" style="text-align: center;">
+						<a href="#" ><h2 class="underline-animation">Tom Holland</h2></a>
+					</div>
+
+					<!-- User Profile Information -->
+					<div class="user-info">
+						<h3>Relationship</h3>
+						<h3>No. of Artifacts Added</h3>
+						<h3>Date Joined</h3>
+					</div>
+
+					<div hidden>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
+
+					<!-- Discussion Button -->
+					<div class="discussion-board-button-container">
+						<a class="discussion-board-button" href="">
+							<img id="discussion-board-icon-img" src="https://image.flaticon.com/icons/svg/1205/1205495.svg">
+							<div class="discussion-board">DISCUSSION</div>
+						</a>
+					</div>
+
+					<!-- Home Button -->
+					<div class="home-button-container">
+						<a class="home-button" href="">
+							<img id="home-icon-img" src="https://image.flaticon.com/icons/svg/1300/1300624.svg" alt="home-button">
+							<div class="home">HOME</div>
+						</a>
+					</div>
+
+					<!-- Logout Button -->
+					<div class="logout-container">
+						<form id="form1" action="/logout" method="POST">
+							<a href="javascript:;" onclick="document.getElementById('form1').submit();" class="logout-button">
+								<img id="logout-photo" src="https://image.flaticon.com/icons/svg/1300/1300674.svg" alt="logout button">
+								<div class="logout">LOGOUT</div>
+							</a>
+						</form>
+					</div>
+
+				</div>
+			</li>
+		</ul>
+	</nav>
+</header>
+
 <body class="is-preload">
 
-	<!-- Header -->
-	<header id="header" style="z-index:9;">
-		<lottie-player src="https://assets8.lottiefiles.com/temp/lf20_RTai6J.json" background="transparent" speed="0.2" style="width: 100px; height: 100px; margin-top:-80px;" loop autoplay>
-		</lottie-player>
+<!-- Header -->
+<header id="header" style="z-index:9;">
+	<lottie-player src="https://assets8.lottiefiles.com/temp/lf20_RTai6J.json" background="transparent" speed="0.2" style="width: 100px; height: 100px; margin-top:-80px;" loop autoplay>
+	</lottie-player>
 
-		<div class="slideshow-container" style="max-width:500px">
-				<img class="mySlides" src="images/dragon.jpg" style="width:100%">
-				<img class="mySlides" src="images/lantern.jpg" style="width:100%">
-			  </div>
-			  
+	<div class="slideshow-container" style="max-width:500px">
+		<img class="mySlides" src="images/dragon.jpg" style="width:100%">
+		<img class="mySlides" src="images/lantern.jpg" style="width:100%">
+	</div>
+
 
 	</head>
-	</header>
+</header>
 
-	<!-- Main Forms -->
-	<div id="main">
+<!-- Main Forms -->
+<div id="main">
 
-		<div class="form-container">
-			<form id="addForm" method="post" action="/artifacts/add-artifact" enctype="multipart/form-data">
-				<!-- Upload Photos -->
-				<div class="container">
-					<div class="array">
-						<div class="preview-images-zone">
-						</div>
+	<div class="form-container">
+		<form id="addForm" method="post" action="/artifacts/add-artifact" enctype="multipart/form-data">
+			<!-- Upload Photos -->
+			<div class="container">
+				<div class="array">
+					<div class="preview-images-zone">
+					</div>
 
-				<div id="name"> ARTIFACT NAME</div>
-				<div id="year"> 2019 </div><br>
-				<div id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe omnis beatae libero quisquam ex nostrum repellendus, consectetur suscipit. Velit iusto ducimus sit quos officiis nesciunt libero, officia, aliquam doloremque totam.
-					Ratione natus expedita iusto, minus cumque vitae quo culpa reiciendis aspernatur aliquam veritatis magnam non, dicta nemo inventore, nisi quas dolores. Modi laboriosam sunt aliquid rem, deserunt quis? Porro, hic.
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe omnis beatae libero quisquam ex nostrum repellendus, consectetur suscipit. Velit iusto ducimus sit quos officiis nesciunt libero, officia, aliquam doloremque totam.
-					Ratione natus expedita iusto, minus cumque vitae quo culpa reiciendis aspernatur aliquam veritatis magnam non, dicta nemo inventore, nisi quas dolores. Modi laboriosam sunt aliquid rem, deserunt quis? Porro, hic.</div><br>
-						<div id="tags">
-							<span class="tag">#ancient</span>
-							<span class="tag">#precious</span>
-						</div><br>
+					<div id="name"> ARTIFACT NAME</div>
+					<div id="year"> 2019 </div><br>
+					<div id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe omnis beatae libero quisquam ex nostrum repellendus, consectetur suscipit. Velit iusto ducimus sit quos officiis nesciunt libero, officia, aliquam doloremque totam.
+						Ratione natus expedita iusto, minus cumque vitae quo culpa reiciendis aspernatur aliquam veritatis magnam non, dicta nemo inventore, nisi quas dolores. Modi laboriosam sunt aliquid rem, deserunt quis? Porro, hic.
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe omnis beatae libero quisquam ex nostrum repellendus, consectetur suscipit. Velit iusto ducimus sit quos officiis nesciunt libero, officia, aliquam doloremque totam.
+						Ratione natus expedita iusto, minus cumque vitae quo culpa reiciendis aspernatur aliquam veritatis magnam non, dicta nemo inventore, nisi quas dolores. Modi laboriosam sunt aliquid rem, deserunt quis? Porro, hic.</div><br>
+					<div id="tags">
+						<span class="tag">#ancient</span>
+						<span class="tag">#precious</span>
+					</div><br>
 
-				
-				<!-- Start Issue Artifact Button (navigate to discussion forum) -->
-				<section>
+
+					<!-- Start Issue Artifact Button (navigate to discussion forum) -->
+					<section>
 						<ul class="actions">
 							<li><input type="submit" value="Start Issue" class="button" /></li>
 						</ul><br>
 					</section>
 
-				<!-- Edit Artifact Button (navigate to edit arrtifact page) -->
-				<section>
+					<!-- Edit Artifact Button (navigate to edit arrtifact page) -->
+					<section>
 						<ul class="actions">
 							<li><input type="submit" value="Edit Artifact" class="edit-artifact button" /></li>
 						</ul><br>
 					</section>
 
-			</form>
-		</div>
+					<!-- Delete Artifact Button (trigger modal on clicking for deletion of artifact) -->
+					<section>
+						<ul class="actions">
+
+							<!-- tag changed to <button></button> to avoid css clash -->
+							<li><button href="javascript:;" onclick="document.getElementById('form1').submit();" class="delete-artifact button" data-toggle="modal" data-target="#myModal" formmethod="post">Delete Artifact</button></li>
+						</ul>
+					</section>
+		</form>
 	</div>
+</div>
 
 
-	<!-- Delete Artifact Button (trigger modal on clicking for deletion of artifact) -->
-	<section>
-			<ul class="actions">
 
-				<!-- tag changed to <button></button> to avoid css clash -->
-				<li><button href="javascript:;" onclick="document.getElementById('form1').submit();" class="delete-artifact button" data-toggle="modal" data-target="#myModal" formmethod="post">Delete Artifact</button></li>
-			</ul>
-		</section>
-	</form>
 
-	<!-- Modal -->
-	<div id="myModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
 
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" onclick="myFunction()" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Ticket Issued!</h4>
-				</div>
-				<div class="modal-body">
-					<p>Your request to delete the artifact has been sent for admin approval! </p>
-				</div>
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" onclick="myFunction()" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Ticket Issued!</h4>
 			</div>
-
+			<div class="modal-body">
+				<p>Your request to delete the artifact has been sent for admin approval! </p>
+			</div>
 		</div>
+
 	</div>
+</div>
 
-	<script>
-			var myIndex = 0;
-			carousel();
-			
-			function carousel() {
-			  var i;
-			  var x = document.getElementsByClassName("mySlides");
-			  for (i = 0; i < x.length; i++) {
-				x[i].style.display = "none";  
-			  }
-			  myIndex++;
-			  if (myIndex > x.length) {myIndex = 1}    
-			  x[myIndex-1].style.display = "block";  
-			  setTimeout(carousel, 3000);     // Change image every 3 seconds
-			}
-	</script>
+<script>
+	var myIndex = 0;
+	carousel();
+
+	function carousel() {
+		var i;
+		var x = document.getElementsByClassName("mySlides");
+		for (i = 0; i < x.length; i++) {
+			x[i].style.display = "none";
+		}
+		myIndex++;
+		if (myIndex > x.length) {myIndex = 1}
+		x[myIndex-1].style.display = "block";
+		setTimeout(carousel, 3000);     // Change image every 3 seconds
+	}
+</script>
 
 
-	<!-- Scripts -->
-	<script src="../navigation-bar/assets/js/jquery.min.js"></script>
-	<script src="../navigation-bar/assets/js/jquery.scrollex.min.js"></script>
-	<script src="../navigation-bar/assets/js/jquery.scrolly.min.js"></script>
-	<script src="../navigation-bar/assets/js/browser.min.js"></script>
-	<script src="../navigation-bar/assets/js/breakpoints.min.js"></script>
-	<script src="../navigation-bar/assets/js/util.js"></script>
-	<script src="../navigation-bar/assets/js/main.js"></script>
+<!-- Scripts -->
+<script src="../navigation-bar/assets/js/jquery.min.js"></script>
+<script src="../navigation-bar/assets/js/jquery.scrollex.min.js"></script>
+<script src="../navigation-bar/assets/js/jquery.scrolly.min.js"></script>
+<script src="../navigation-bar/assets/js/browser.min.js"></script>
+<script src="../navigation-bar/assets/js/breakpoints.min.js"></script>
+<script src="../navigation-bar/assets/js/util.js"></script>
+<script src="../navigation-bar/assets/js/main.js"></script>
 
-	</body>
+</body>
 </html>
