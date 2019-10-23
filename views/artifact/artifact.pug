@@ -135,13 +135,16 @@ html(lang='en')
 					ul.actions
 						li
 							button.button(type='submit', value='Start Issue')
-								a(href='#') Start Issue
+								a.temp Start Issue
+								script.
+									$(".temp").click(function () {
+										$(".add-issue").fadeIn();
+									});
 					br
-				// Add new issue
-				article.add-issue
+				article.add-issue(style='display:none;')
 					// Author
 					header
-						p.author
+						.author
 							span.name #{user.name}
 							img(src="../images/"+user.displayPic._id, alt='profile photo')
 						span.close x
