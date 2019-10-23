@@ -223,7 +223,6 @@ textarea
     padding:2em 2em 2em 2em;
 
 
-
 }
 
 
@@ -256,3 +255,14 @@ textarea
     font-size: 0.55em;
 }
 
+/* reply arrow */
+.arrow-wrapper
+{
+    margin-left: 10px;
+}
+
+/* Comment Footer */
+.comment-footer
+{
+    margin-top: -15px; /* posted time margin fixed*/
+}
