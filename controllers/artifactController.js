@@ -105,33 +105,37 @@ var deleteArtifact = function (req, res) {
 // Creates a duplicate artifact for edits and stores old and new into a ticket
 var cloneArtifact = function (req, res) {
 	var artifactID = storage.artifactId;
-	Artifact.findById(artifactID)
-	.exec(function (err, artifact) {
+	var userID = (req.session.user);
+	User.findById(userID).exec((err, user) => {
 		if (err) return console.log(err);
-		var editedArtifact = new Artifact({
-			'name': artifact.name,
-			'description': artifact.description,
-			'tags': artifact.tags,
-			'placeOrigin': artifact.placeOrigin,
-			'year': artifact.year,
-			'primaryImage': artifact.primaryImage,
-			'extraImages': artifact.extraImages,
-			'approved': true
+		Artifact.findById(artifactID)
+		.exec(function (err, artifact) {
+			if (err) return console.log(err);
+			var editedArtifact = new Artifact({
+				'name': artifact.name,
+				'description': artifact.description,
+				'tags': artifact.tags,
+				'placeOrigin': artifact.placeOrigin,
+				'year': artifact.year,
+				'primaryImage': artifact.primaryImage,
+				'extraImages': artifact.extraImages,
+				'approved': true
+			});
+			editedArtifact.save();
+			var editID = editedArtifact._id;
+			storage.artifactId = editID;
+			var edits = new Edits({
+				// description: req.body.editDescription,
+				editor: req.session.userName,
+				oldArtifact: artifactID,
+				newArtifact: editID,
+				approved: false
+			});
+			edits.save();
+			storage.ticketId = edits._id;
+			return res.render(path.join(__dirname, '../views/edit-artifact/edit-artifact.pug'),
+				{user: user, artifact: editedArtifact});
 		});
-		editedArtifact.save();
-		var editID = editedArtifact._id;
-		storage.artifactId = editID;
-		var edits = new Edits({
-			// description: req.body.editDescription,
-			editor: req.session.userName,
-			oldArtifact: artifactID,
-			newArtifact: editID,
-			approved: false
-		});
-		edits.save();
-		storage.ticketId = edits._id;
-		return res.render(path.join(__dirname, '../views/edit-artifact/edit-artifact.pug'),
-			{artifact: editedArtifact});
 	});
 };
 

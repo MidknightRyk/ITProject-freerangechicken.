@@ -94,13 +94,14 @@ html
 						input(type='text', required='', name='description', placeholder='Enter new description')
 						br
 					#tags
-						each tag in artifact.tags
-							div
-								| Current Tags: #{tag}
-								br
-								| New Tags:
-								br
-								input.form-control.tm-input(type='text', required='', name='tags', placeholder='Tags, separated by commas', data-role='tagsinput')
+						div
+							| Current Tags:
+							each tag in artifact.tags
+								| || #{tag} 
+							br
+							| New Tags:
+							br
+							input.form-control.tm-input(type='text', required='', name='tags', placeholder='Tags, separated by commas', data-role='tagsinput')
 					br
 					div
 						| Current Region: #{artifact.placeOrigin}
@@ -458,7 +459,7 @@ html
 					document.getElementById("form1").submit();
 				}
 			}
-			
+
 			var num = 5;
 			function readImage() {
 				if (window.File && window.FileList && window.FileReader) {
