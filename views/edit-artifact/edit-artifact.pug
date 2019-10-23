@@ -5,20 +5,34 @@ html
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
 		// Bootstrap Tagsinput CSS
-		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css')
-		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
-		link(rel='stylesheet', href='../views/edit-artifact/assets/css/bootstrap-tagsinput.css')
+		link(rel='stylesheet', href='..c/edit-artifact/assets/css/bootstrap-tagsinput.css')
+		// Lottie-player Animations
+		script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
+		// Bootstrap Date Picker
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js')
+		link(href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css', rel='stylesheet')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
+		// Bootstrap Tagsinput JS
+		script(src='../views/add-artifacts/assets/js/bootstrap-tagsinput.js')
+		// Font Awesome CDN
+		script(src='https://kit.fontawesome.com/010fb4b3e5.js')
+		// Sweet Alert box CDN
+		link(href='https://cdn.jsdelivr.net/sweetalert2/4.2.4/sweetalert2.min.css', rel='stylesheet')
+		script(src='https://cdn.jsdelivr.net/sweetalert2/4.2.4/sweetalert2.min.js')
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
 		link(rel='stylesheet', href='../views/edit-artifact/assets/css/main.css')
 		link(rel='stylesheet', href='../views/edit-artifact/assets/css/uploadStyle.css')
 		link(rel='stylesheet', href='../views/edit-artifact/assets/css/profile-photo-style.css')
+		link(rel='stylesheet', href='../views/edit-artifact/assets/css/existingPhotosStyle.css')
+		// Navigation Bar
+		link(rel='stylesheet', href='../views/navigation-bar/assets/css/nav-main.css')
+		noscript
+			link(rel='stylesheet', href='../views/navigation-bar/assets/css/noscript.css')
+		link(rel='stylesheet', href='../views/navigation-bar/assets/css/logout.css')
+	// Navigation Bar
 	body.is-preload
-		// Header
-		header#header(style='z-index:9;')
-			lottie-player(src='https://assets8.lottiefiles.com/temp/lf20_RTai6J.json', background='transparent', speed='0.2', style='width: 100px; height: 100px; margin-top:-80px;', loop='', autoplay='')
-			.profile-upload-container.inner
-				a(href='#')
-					span.fas.fa-camera
-				img.img-thumbnail.img-circle.img-responsive(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
 		header#navigation-header
 			h1
 				a(href='/catalogue') Catalogue
@@ -30,7 +44,7 @@ html
 						// Light Box
 						#menu
 							// Profile Photo
-							.profile-upload-container
+							.navigation-profile-upload-container
 								a(href='#')
 									span.fas.fa-camera
 								img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id)
@@ -67,14 +81,25 @@ html
 							// Home Button
 							.home-button-container
 								a.home-button(href='')
-									img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg')
+									img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg', alt='home-button')
 									.home HOME
+							// Discussion Button
+							.discussion-board-button-container
+								a.discussion-board-button(href='/discussion-board')
+									img#discussion-board-icon-img(src='https://image.flaticon.com/icons/svg/1205/1205495.svg')
+									.discussion-board DISCUSSION
 							// Logout Button
 							.logout-container
 								form#form1(action='/logout', method='POST')
 									a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
-										img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg')
+										img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg', alt='logout button')
 										.logout LOGOUT
+		// Header
+		header#header(style='z-index:9;')
+			lottie-player(src='https://assets8.lottiefiles.com/temp/lf20_RTai6J.json', background='transparent', speed='0.2', style='width: 100px; height: 100px; margin-top:-80px;', loop='', autoplay='')
+			.profile-upload-container.inner
+				h2.page-name
+					b Edit Artifact
 		// Main Forms
 		#main
 			.form-container
@@ -97,7 +122,7 @@ html
 						div
 							| Current Tags:
 							each tag in artifact.tags
-								| || #{tag} 
+								|  || #{tag} || 
 							br
 							| New Tags:
 							br
@@ -375,6 +400,10 @@ html
 						format: 'yyyy',
 						autoclose: true,
 						});
+					div
+						| Description: 
+						input(type='text', name='description', placeholder='Type in description')
+						br
 					// User must give reason for editing artifact details
 					div
 						| *Reason for editing artifact (mandatory):
@@ -404,7 +433,10 @@ html
 					section
 						ul.actions
 							li
-								a.button(href='javascript:;', onclick="checkNImages()", formmethod='post') Accept changes
+								a.button(href='javascript:;', onclick="checkNImages()") Accept changes
+							li
+								form(id='cancel-form', action='/artifacts/cancel-edits', method='post')
+								a.button(href='javascript:;', onclick="document.getElementById('cancel-form').submit();") Cancel Changes
 				// Modal
 				#myModal.modal.fade(role='dialog')
 					.modal-dialog
@@ -479,8 +511,16 @@ html
 							num = num + 1;
 							});
 							picReader.readAsDataURL(file);
-						}
-						} else {
-							console.log('Browser not supported');
-						}
-					}
+			}
+			} else {
+				console.log('Browser not supported');
+			}
+			}
+		// Scripts
+		script(src='../views/navigation-bar/assets/js/jquery.min.js')
+		script(src='../views/navigation-bar/assets/js/jquery.scrollex.min.js')
+		script(src='../views/navigation-bar/assets/js/jquery.scrolly.min.js')
+		script(src='../views/navigation-bar/assets/js/browser.min.js')
+		script(src='../views/navigation-bar/assets/js/breakpoints.min.js')
+		script(src='../views/navigation-bar/assets/js/util.js')
+		script(src='../views/navigation-bar/assets/js/main.js')

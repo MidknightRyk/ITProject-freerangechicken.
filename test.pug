@@ -1,167 +1,267 @@
 doctype html
-html(lang='en')
-	head
-		title Artifact
-		meta(charset='utf-8')
-		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
-		// Bootstrap Tagsinput CSS
-		link(rel='stylesheet', href='../views/artifact/assets/css/bootstrap-tagsinput.css')
-		// Lottie-player Animations
-		script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
-		// Bootstrap Date Picker
-		script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
-		script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js')
-		link(href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css', rel='stylesheet')
-		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
-		// Bootstrap Tagsinput JS
-		script(src='../views/artifact/assets/js/bootstrap-tagsinput.js')
-		// Font Awesome CDN
-		script(src='https://kit.fontawesome.com/010fb4b3e5.js')
-		link(rel='stylesheet', href='../views/artifact/assets/css/main.css')
-		link(rel='stylesheet', href='../views/artifact/assets/css/uploadStyle.css')
-		link(rel='stylesheet', href='../views/artifact/assets/css/profile-photo-style.css')
-		// Navigation Bar
-		link(rel='stylesheet', href='../views/navigation-bar/assets/css/nav-main.css')
-		noscript
-			link(rel='stylesheet', href='../views/navigation-bar/assets/css/noscript.css')
-		link(rel='stylesheet', href='../views/navigation-bar/assets/css/logout.css')
-		// Artifact Image slideshow
-	body.is-preload
-		| >
-		link(rel='stylesheet', href='../views/artifact/assets/css/artifact.css')
-		// Page Wrapper
-		#page-wrapper
-			// Navigation Bar
-			header#navigation-header
-				h1
-					a(href='/catalogue') Catalogue
-				nav#nav
-					ul
-						li.special
-							// Menu Dropdown
-							a.menuToggle(href='#menu')
-							// Light Box
-							#menu
-								// Profile Photo
-								.profile-upload-container
-									a(href='#')
-										span.fas.fa-camera
-									img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id)
-								// Username :-> leads to the profile page
-								.user-name(style='text-align: center;')
-									a(href='/profile')
-										h2.underline-animation #{user.name}
-								// User Info
-								.user-info
-									h3#relationship
-										i.fas.fa-users
-										|  #{user.relationship}
-									h3#total-artifacts
-										i.far.fa-gem
-										|  #{user.artifacts.length} Artifacts contributed
-									h3#join-date
-										i.far.fa-clock
-									script.
-										function english_ordinal_suffix(dt)
-										{
-											return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
-										}
-										var user = !{JSON.stringify(user)};
-										var date = new Date(user.dateJoined);
-										console.log(typeof date);
-										var mm = date.toLocaleString('default', { month: 'long' });
-										var yyyy = date.getFullYear();
-										document.getElementById('join-date').appendChild(document.createTextNode(' '+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
-								div(hidden='')
-									| Icons made by
-									a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
-									|  from
-									a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
-								// Home Button
-								.home-button-container
-									a.home-button(href='')
-										img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg')
-										.home HOME
-								// Logout Button
-								.logout-container
-									form#form1(action='/logout', method='POST')
-										a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
-											img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg')
-											.logout LOGOUT
-		// Header
-		header#header(style='z-index:9;')
-			lottie-player(src='https://assets8.lottiefiles.com/temp/lf20_RTai6J.json', background='transparent', speed='0.2', style='width: 100px; height: 100px; margin-top:-80px;', loop='', autoplay='')
-			.slideshow-container(style='max-width:500px')
-				img.mySlides(src='../images/'+artifact.primaryImage._id, style='width:100%')
-				each image in artifact.extraImages
-					img.mySlides(src='../images/'+image._id, style='width:100%')
-		// Main Forms
-		#main
-			.form-container
-				form#addForm()
-					// Upload Photos
-					.container
-						.array
-							.preview-images-zone
-							#name  #{artifact.name}
-							#year  #{artifact.year}
-							br
-							#description #{artifact.description}
-							br
-							#tags
-								each tag in artifact.tags
-									span.tag #{tag}
-							br
-				// Start Issue Artifact Button (navigate to discussion forum)
-				section
-					ul.actions
-						li
-							button.button(type='submit', value='Start Issue')
-								a(href='#') Start Issue
-					br
-				// Edit Artifact Button (navigate to edit arrtifact page)
-				section
-					ul.actions
-						li
-							button.edit-artifact.button(type='submit', value='Edit Artifact')
-								a(href='/artifacts/edit-artifact') Edit Artifact
-					br
-				// Delete Artifact Button (trigger modal on clicking for deletion of artifact)
-				section
-					ul.actions
-						// tag changed to <button></button> to avoid css clash
-						li
-							button.delete-artifact.button(href='javascript:;', onclick="document.getElementById('form1').submit();", data-toggle='modal', data-target='#myModal', formmethod='post') Delete Artifact
-				// Modal
-				#myModal.modal.fade(role='dialog')
-					.modal-dialog
-						// Modal content
-						.modal-content
-							.modal-header
-								button.close(type='button', onclick='myFunction()', data-dismiss='modal') ×
-								h4.modal-title Ticket Issued!
-							.modal-body
-								p Your request to delete the artifact has been sent for admin approval! 
-				script.
-					var myIndex = 0;
-					carousel();
-					function carousel() {
-					var i;
-					var x = document.getElementsByClassName("mySlides");
-					for (i = 0; i < x.length; i++) {
-					x[i].style.display = "none";
-					}
-					myIndex++;
-					if (myIndex > x.length) {myIndex = 1}
-					x[myIndex-1].style.display = "block";
-					setTimeout(carousel, 3000);     // Change image every 3 seconds
-					}
-				// Scripts
-				script(src='../views/navigation-bar/assets/js/jquery.min.js')
-				script(src='../views/navigation-bar/assets/js/jquery.scrollex.min.js')
-				script(src='../views/navigation-bar/assets/js/jquery.scrolly.min.js')
-				script(src='../views/navigation-bar/assets/js/browser.min.js')
-				script(src='../views/navigation-bar/assets/js/breakpoints.min.js')
-				script(src='../views/navigation-bar/assets/js/util.js')
-				script(src='../views/navigation-bar/assets/js/main.js')
+// Web Design: Inspired by design  under the Creative Commons (in HTML5 UP)
+html
+  head
+    title Catalogue
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+    link(href='../profile-page/profile-page-style.css', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='../catalogue/assets/css/main.css')
+    noscript
+      link(rel='stylesheet', href='../catalogue/assets/css/noscript.css')
+    link(rel='stylesheet', href='../catalogue/assets/css/logout.css')
+    link(rel='stylesheet', href='../views/catalogue/assets/css/main.css')
+    noscript
+      link(rel='stylesheet', href='../views/catalogue/assets/css/noscript.css')
+    link(rel='stylesheet', href='../views/catalogue/assets/css/logout.css')
+  body.landing.is-preload
+    // Page Wrapper
+    #page-wrapper
+      // Header
+      header#header.alt
+        h1
+          a(href='/catalogue') CATALOGUE
+        nav#nav
+          ul
+            li.special
+              // Menu Dropdown
+              a.menuToggle(href='#menu')
+              // Light Box
+              #menu
+                // Profile Photo
+                .profile-upload-container
+                  a(href='#')
+                    span.fas.fa-camera
+                  img.img-thumbnail.img-circle.img-responsive(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg')
+                // Username :-> leads to the profile page
+                .user-name(style='text-align: center;')
+                  a(href='#')
+                    h2.underline-animation Tom Holland
+                // User Profile Information
+                .user-info
+                  h3 Relationship
+                  h3 No. of Artifacts Added
+                  h3 Date Joined
+                div(hidden='')
+                  | Icons made by 
+                  a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
+                  |  from 
+                  a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
+                // Discussion Button
+                .discussion-board-button-container
+                  a.discussion-board-button(href='')
+                    img#discussion-board-icon-img(src='https://image.flaticon.com/icons/svg/1205/1205495.svg')
+                    .discussion-board DISCUSSION
+                // Home Button
+                .home-button-container
+                  a.home-button(href='')
+                    img#home-icon-img(src='https://image.flaticon.com/icons/svg/609/609803.svg')
+                    .home HOME
+                // Logout Button
+                .logout-container
+                  form#form1(action='/logout', method='POST')
+                    a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
+                      img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg')
+                      .logout LOGOUT
+      // Banner
+      section#banner
+        .inner
+          h2 CATALOGUE
+          ul.actions
+            a.button.fit(href='#') Add Artifact
+        // Scroll down to view all artifacts
+        a.more.scrolly(href='#one') Family Artifacts
+      // ARTIFACT SECTION
+      section#one.wrapper.style1.special
+        .inner
+          // 2019 Artifacts
+          section#next-section.section.visit-section
+            .container
+              .row
+                .col-md-12
+                  h2.heading(data-aos='fade-up') 2019
+              .row
+                section.tiles
+                  // Photos
+                  article.style1
+                    span.image
+                      img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                    // Link Direct to the Artifact Page
+                    a(href='artefact.html')
+                      // the Date Added/Last Modified + Artifact Description
+                      .content
+                        // the Name of the Artifact
+                        h2 Artifact
+                        p.date
+                  article.style1
+                    span.image
+                      img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                    // Link Direct to the Artifact Page
+                    a(href='artefact.html')
+                      // the Date Added/Last Modified + Artifact Description
+                      .content
+                        h2 Artifact
+                        p.date
+                  article.style1
+                    span.image
+                      img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                    // Link Direct to the Artifact Page
+                    a(href='artefact.html')
+                      // the Date Added/Last Modified + Artifact Description
+                      .content
+                        h2 Artifact
+                        p.date
+                  article.style1
+                    span.image
+                      img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                    // Link Direct to the Artifact Page
+                    a(href='artefact.html')
+                      // the Date Added/Last Modified + Artifact Description
+                      .content
+                        h2 Artifact
+                        p.date
+                  article.style1
+                    span.image
+                      img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                    // Link Direct to the Artifact Page
+                    a(href='artefact.html')
+                      // the Date Added/Last Modified + Artifact Description
+                      .content
+                        h2 Artifact
+                        p.date
+                  article.style1
+                    span.image
+                      img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                    // Link Direct to the Artifact Page
+                    a(href='artefact.html')
+                      // the Date Added/Last Modified + Artifact Description
+                      .content
+                        h2 Artifact
+                        p.date
+                    br
+                .container
+                  .row
+                    .col-md-12
+                      h2.heading(data-aos='fade-up') 2017
+                  section.tiles
+                    // Photos
+                    article.style1
+                      span.image
+                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                      // Link Direct to the Artifact Page
+                      a(href='artefact.html')
+                        // the Date Added/Last Modified + Artifact Description
+                        .content
+                          h2 Artifact
+                          p.date
+                    article.style1
+                      span.image
+                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                      // Link Direct to the Artifact Page
+                      a(href='artefact.html')
+                        // the Date Added/Last Modified + Artifact Description
+                        .content
+                          h2 Artifact
+                          p.date
+                    article.style1
+                      span.image
+                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                      // Link Direct to the Artifact Page
+                      a(href='artefact.html')
+                        // the Date Added/Last Modified + Artifact Description
+                        .content
+                          h2 Artifact
+                          p.date
+                    article.style1
+                      span.image
+                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                      // Link Direct to the Artifact Page
+                      a(href='artefact.html')
+                        // the Date Added/Last Modified + Artifact Description
+                        .content
+                          h2 Artifact
+                          p.date
+                    article.style1
+                      span.image
+                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                      // Link Direct to the Artifact Page
+                      a(href='artefact.html')
+                        // the Date Added/Last Modified + Artifact Description
+                        .content
+                          h2 Artifact
+                          p.date
+                    article.style1
+                      span.image
+                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                      // Link Direct to the Artifact Page
+                      a(href='artefact.html')
+                        // the Date Added/Last Modified + Artifact Description
+                        .content
+                          h2 Artifact
+                          p.date
+                      br
+                  section.tiles
+                    // Photos
+                    article.style1
+                      span.image
+                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                      // Link Direct to the Artifact Page
+                      a(href='artefact.html')
+                        // the Date Added/Last Modified + Artifact Description
+                        .content
+                          h2 Artifact
+                          p.date
+                    article.style1
+                      span.image
+                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                      // Link Direct to the Artifact Page
+                      a(href='artefact.html')
+                        // the Date Added/Last Modified + Artifact Description
+                        .content
+                          h2 Artifact
+                          p.date
+                    article.style1
+                      span.image
+                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                      // Link Direct to the Artifact Page
+                      a(href='artefact.html')
+                        // the Date Added/Last Modified + Artifact Description
+                        .content
+                          h2 Artifact
+                          p.date
+                    article.style1
+                      span.image
+                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                      // Link Direct to the Artifact Page
+                      a(href='artefact.html')
+                        // the Date Added/Last Modified + Artifact Description
+                        .content
+                          h2 Artifact
+                          p.date
+                    article.style1
+                      span.image
+                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                      // Link Direct to the Artifact Page
+                      a(href='artefact.html')
+                        // the Date Added/Last Modified + Artifact Description
+                        .content
+                          h2 Artifact
+                          p.date
+                    article.style1
+                      span.image
+                        img.img-fluid.rounded(src='../profile-page/jade-necklace.jpg', alt='Image placeholder', data-aos='fade-up', data-aos-delay='300')
+                      // Link Direct to the Artifact Page
+                      a(href='artefact.html')
+                        // the Date Added/Last Modified + Artifact Description
+                        .content
+                          h2 Artifact
+                          p.date
+                      br
+        // Scripts
+        script(src='../catalogue/assets/js/jquery.min.js')
+        script(src='../catalogue/assets/js/jquery.scrollex.min.js')
+        script(src='../catalogue/assets/js/jquery.scrolly.min.js')
+        script(src='../catalogue/assets/js/browser.min.js')
+        script(src='../catalogue/assets/js/breakpoints.min.js')
+        script(src='../catalogue/assets/js/util.js')
+        script(src='../catalogue/assets/js/main.js')
