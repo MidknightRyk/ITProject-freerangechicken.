@@ -3,18 +3,18 @@
 
 .discussion-board-button-container{
     width: 100%;        /* float to the right */
-    margin-top: 0px;
+    margin-top: 0;
     text-decoration: none;
 }
 
 .logout-container{
     width: 100%;        /* float to the right */
-    margin-top: 150px;
+    margin-top: 155px;
     text-decoration: none;
 }
 .home-button-container{
     width: 100%;        /* float to the right */
-    margin-top: 80px;
+    margin-top: 85px;
     text-decoration: none;
 }
 
