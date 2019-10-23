@@ -1,8 +1,7 @@
 doctype html
-html
 	head
 		meta(charset='UTF-8')
-		meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
 		title Your Profile
 		link(href='../views/profile-page/profile-page-style.css' rel='stylesheet' type='text/css')
 		script(src='http://code.jquery.com/jquery-3.3.1.js')
@@ -16,10 +15,10 @@ html
 		// Vue
 		script(src='https://unpkg.com/vue')
 		// Navigation Bar
-		link(rel='stylesheet', href='../views/navigation-bar/assets/css/nav-main.css')
+		link(rel='stylesheet', href='../navigation-bar/assets/css/nav-main.css')
 		noscript
-			link(rel='stylesheet', href='../views/navigation-bar/assets/css/noscript.css')
-		link(rel='stylesheet', href='../views/navigation-bar/assets/css/logout.css')
+			link(rel='stylesheet', href='../navigation-bar/assets/css/noscript.css')
+		link(rel='stylesheet', href='../navigation-bar/assets/css/logout.css')
 	// Navigation Bar
 	body
 		header#navigation-header
@@ -28,27 +27,22 @@ html
 			nav#nav
 				ul
 					li.special
-						// Menu Dropdown
+						// menu text deleted
 						a.menuToggle(href='#menu')
-						// Light Box
 						#menu
 							// Profile Photo
 							.navigation-profile-upload-container
 								a(href='#')
 									span.fas.fa-camera
-								img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id)
+								img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id, alt='profile photo')
 							// Username :-> leads to the profile page
 							.user-name(style='text-align: center;')
-								a(href='/profile')
+								a(href='#')
 									h2.underline-animation #{user.name}
-							// User Info
+							// User Profile Information
 							.user-info
-								h3#relationship
-									i.fas.fa-users
-									|  #{user.relationship}
-								h3#total-artifacts
-									i.far.fa-gem
-									|  #{user.artifacts.length} Artifacts contributed
+								h3 #{user.relationship}
+								h3 #{user.artifacts.length} Artifacts contributed
 								h3#join-date
 									i.far.fa-clock
 								script.
@@ -62,21 +56,21 @@ html
 									var mm = date.toLocaleString('default', { month: 'long' });
 									var yyyy = date.getFullYear();
 									document.getElementById('join-date').appendChild(document.createTextNode(' '+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
-							div(hidden='')
-								| Icons made by
-								a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
-								|  from
-								a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
+								div(hidden='')
+									| Icons made by
+									a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
+									|  from
+									a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
 							// Home Button
 							.home-button-container
 								a.home-button(href='')
-									img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg')
+									img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg', alt='home-button')
 									.home HOME
 							// Logout Button
 							.logout-container
 								form#form1(action='/logout', method='POST')
 									a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
-										img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg')
+										img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg', alt='logout button')
 										.logout LOGOUT
 		// Wrapper
 		#wrapper
@@ -96,7 +90,7 @@ html
 						button.icon-btn.edit-btn
 							.edit-icon
 							// Direct to Edit/Add Artifacts Page
-							a(href='' style='text-decoration: none;' @click='submitEntry')
+							a(href='' style='text-decoration: none;')
 								.btn-txt
 									b.save-changes Save Changes
 					header
@@ -109,31 +103,31 @@ html
 									span.data(type='text', v-show='!field.edit') {{ field.value }}
 									input(type='text', v-model='field.value', v-show='field.edit', v-bind:id='field.id', v-on:blur='saveEdit(field)', :ref='field.id')
 									a(href='#', v-on:click.prevent='toggleEdit(field, $event)')
-										i.fas.fa-pencil-alt  
+										i.fas.fa-pencil-alt   
 							script.
 								var eip = new Vue({
 								el: '#eip',
 								data: {
 								fields: [{
-								value: '#{user.name}',
+								value: 'Tom Holland',
 								edit: false,
 								name: 'Name',
 								id: 'name',
 								icon: 'fas fa-file-signature'
 								}, {
-								value: '#{user.username}',
+								value: 'T.H.',
 								edit: false,
 								name: 'Username',
 								id: 'username',
 								icon: 'fas far fa-user'
 								},{
-								value: '#{user.email}',
+								value: 'aha@gmail.com',
 								edit: false,
 								name: 'Email',
 								id: 'email',
 								icon: 'fas fa-envelope'
 								},{
-								value: '#{user.relationship}',
+								value: 'Unknown',
 								edit: false,
 								name: 'Relationship',
 								id: 'relationship',
@@ -149,15 +143,6 @@ html
 								},
 								saveEdit: function(field) {
 								field.edit = false;
-								},
-								submitEntry: function() {
-									axios.post('/edit-profile', this.fields).then(response => {
-										console.log(data)
-									}).catch((err) => {
-										console.log(err)
-									})
-									let element = this.$refs.myModal.el;
-									$(element).modal();
 								}
 								}
 								});
@@ -165,28 +150,57 @@ html
 			#main
 				.inner
 					header
-						// Photos of Artifacts that the User Added
-						section.tiles
-							each artifact, index in artifacts
+						// First Join Date + Relationship with Mrs Tan + the Number of Total Artifacts Added
+						// <i> tags are character icons from FontAwesome
 
-								// Photos
-								article.style1
-									span.image
-										img(src='../images/'+artifact.primaryImage._id alt='')
-									// Link Direct to the Artifact Page
-									a(href='/artifact/'+artifact._id)
-										// the Name of the Artifact
-										h2 #{artifact.name}
-										// the Date Added/Last Modified + Artifact Description
-										.content
-											p.date
-									script.
-										var artifact = !{JSON.stringify(artifact)};
-										var date = new Date(artifact.dateCreated);
-										var dd = date.toLocaleString('default', { day: '2-digit'});
-										var mm = date.toLocaleString('default', { month: 'long' });
-										var yyyy = date.getFullYear();
-										document.getElementsByClassName('date')["#{index}"].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
+
+						p#join-date
+							i.far.fa-clock
+						script.
+							function english_ordinal_suffix(dt)
+							{
+								return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
+							}
+							var user = !{JSON.stringify(user)};
+							var date = new Date(user.dateJoined);
+							console.log(typeof date);
+							var mm = date.toLocaleString('default', { month: 'long' });
+							var yyyy = date.getFullYear();
+							document.getElementById('join-date').appendChild(document.createTextNode("   Joined on "+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
+
+						p#relationship
+							i.fas.fa-users
+							|  #{user.relationship}
+						p#total-artifacts
+							i.far.fa-gem
+							|  #{artifacts.length} Artifacts contributed
+					// Photos of Artifacts that the User Added
+					section.tiles
+					each artifact, index in artifacts
+						script.
+							var styles = ['style1', 'style2', 'style3','style4','style5','style6'];
+							var random_style = styles[Math.floor(Math.random() * styles.length)];
+							document.getElementById('display').className = random_style;
+
+						// Photos
+						article.style1
+							span.image
+								img(src='../images/'+artifact.primaryImage._id alt='' style="width:150px")
+							// Link Direct to the Artifact Page
+							a(href='../views/profile-page/profile-photo.jpeg')
+								// the Name of the Artifact
+								h2 #{artifact.name}
+								// the Date Added/Last Modified + Artifact Description
+								.content
+									p.date
+							script.
+								var artifact = !{JSON.stringify(artifact)};
+								var date = new Date(artifact.dateCreated);
+								var dd = date.toLocaleString('default', { day: '2-digit'});
+								var mm = date.toLocaleString('default', { month: 'long' });
+								var yyyy = date.getFullYear();
+								document.getElementsByClassName('date')["#{index}"].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
+							p.description #{artifact.description}
 		// Navigation Bar Scripts
 		script(src='../views/navigation-bar/assets/js/jquery.min.js')
 		script(src='../views/navigation-bar/assets/js/jquery.scrollex.min.js')
