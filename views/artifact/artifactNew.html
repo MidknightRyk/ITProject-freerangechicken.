@@ -139,31 +139,33 @@
 						<span class="tag">#ancient</span>
 						<span class="tag">#precious</span>
 					</div><br>
-
-
-					<!-- Start Issue Artifact Button (navigate to discussion forum) -->
-					<section>
-						<ul class="actions">
-							<li><input type="submit" value="Start Issue" class="button" /></li>
-						</ul><br>
-					</section>
-
-					<!-- Edit Artifact Button (navigate to edit arrtifact page) -->
-					<section>
-						<ul class="actions">
-							<li><input type="submit" value="Edit Artifact" class="edit-artifact button" /></li>
-						</ul><br>
-					</section>
-
-					<!-- Delete Artifact Button (trigger modal on clicking for deletion of artifact) -->
-					<section>
-						<ul class="actions">
-
-							<!-- tag changed to <button></button> to avoid css clash -->
-							<li><button href="javascript:;" onclick="document.getElementById('form1').submit();" class="delete-artifact button" data-toggle="modal" data-target="#myModal" formmethod="post">Delete Artifact</button></li>
-						</ul>
-					</section>
+				</div>
+			</div>
 		</form>
+
+		<!-- Start Issue Artifact Button (navigate to discussion forum) -->
+		<section>
+			<ul class="actions">
+				<li><button type="submit" value="Start Issue" class="button"><a href="../discussion-board/discussion-forum-main.html">Start Issue</a></button></li>
+			</ul><br>
+		</section>
+
+		<!-- Edit Artifact Button (navigate to edit arrtifact page) -->
+		<section>
+			<ul class="actions">
+				<li><button type="submit" value="Edit Artifact" class="edit-artifact button"><a href="../edit-artifact/edit-artifact.html">Edit Artifact</a></button></li>
+			</ul><br>
+		</section>
+
+		<!-- Delete Artifact Button (trigger modal on clicking for deletion of artifact) -->
+		<section>
+			<ul class="actions">
+				<!-- tag changed to <button></button> to avoid css clash -->
+				<li><button href="javascript:;" onclick="document.getElementById('form1').submit();" class="delete-artifact button" data-toggle="modal" data-target="#myModal" formmethod="post">Delete Artifact</button></li>
+			</ul>
+		</section>
+
+
 	</div>
 </div>
 

@@ -93,8 +93,8 @@ ul.actions li {
 	white-space: nowrap;
 }
 
-.button:hover {
-	border-color: #0f859e;
+.button:hover, a:hover {
+	border-color: #0f859e !important;
 	color: #0f859e !important;
 }
 
@@ -102,6 +102,11 @@ ul.actions li {
 	background-color: rgba(73, 191, 157, 0.1);
 	border-color: #0f859e;
 	color: #0f859e !important;
+}
+
+.button:focus, a:focus
+{
+	outline:0;
 }
 
 /* Year */
