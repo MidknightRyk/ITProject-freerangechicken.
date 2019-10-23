@@ -1009,7 +1009,7 @@ body.single #wrapper {
 
 form {
 	margin: 0 0 0 0;
-	overflow: auto;
+	/*overflow: auto;*/
 }
 
 .comment-form {
