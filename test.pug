@@ -1,211 +1,167 @@
 doctype html
+html(lang='en')
 	head
-		meta(charset='UTF-8')
+		title Artifact
+		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
-		title Your Profile
-		link(href='../views/profile-page/profile-page-style.css' rel='stylesheet' type='text/css')
-		script(src='http://code.jquery.com/jquery-3.3.1.js')
+		// Bootstrap Tagsinput CSS
+		link(rel='stylesheet', href='../views/artifact/assets/css/bootstrap-tagsinput.css')
+		// Lottie-player Animations
+		script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
+		// Bootstrap Date Picker
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js')
+		link(href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css', rel='stylesheet')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+		link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
+		// Bootstrap Tagsinput JS
+		script(src='../views/artifact/assets/js/bootstrap-tagsinput.js')
 		// Font Awesome CDN
 		script(src='https://kit.fontawesome.com/010fb4b3e5.js')
-		// Bootstrap CDN
-		link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
-		script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
-		script(src="https://code.jquery.com/jquery-3.2.1.min.js")
-		script(src="../node_modules/jquery.facedetection/dist/jquery.facedetection.min.js")
-		// Vue
-		script(src='https://unpkg.com/vue')
+		link(rel='stylesheet', href='../views/artifact/assets/css/main.css')
+		link(rel='stylesheet', href='../views/artifact/assets/css/uploadStyle.css')
+		link(rel='stylesheet', href='../views/artifact/assets/css/profile-photo-style.css')
 		// Navigation Bar
-		link(rel='stylesheet', href='../navigation-bar/assets/css/nav-main.css')
+		link(rel='stylesheet', href='../views/navigation-bar/assets/css/nav-main.css')
 		noscript
-			link(rel='stylesheet', href='../navigation-bar/assets/css/noscript.css')
-		link(rel='stylesheet', href='../navigation-bar/assets/css/logout.css')
-	// Navigation Bar
-	body
-		header#navigation-header
-			h1
-				a(href='/catalogue') Catalogue
-			nav#nav
-				ul
-					li.special
-						// menu text deleted
-						a.menuToggle(href='#menu')
-						#menu
-							// Profile Photo
-							.navigation-profile-upload-container
-								a(href='#')
-									span.fas.fa-camera
-								img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id, alt='profile photo')
-							// Username :-> leads to the profile page
-							.user-name(style='text-align: center;')
-								a(href='#')
-									h2.underline-animation #{user.name}
-							// User Profile Information
-							.user-info
-								h3 #{user.relationship}
-								h3 #{user.artifacts.length} Artifacts contributed
-								h3#join-date
-									i.far.fa-clock
-								script.
-									function english_ordinal_suffix(dt)
-									{
-										return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
-									}
-									var user = !{JSON.stringify(user)};
-									var date = new Date(user.dateJoined);
-									console.log(typeof date);
-									var mm = date.toLocaleString('default', { month: 'long' });
-									var yyyy = date.getFullYear();
-									document.getElementById('join-date').appendChild(document.createTextNode(' '+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
+			link(rel='stylesheet', href='../views/navigation-bar/assets/css/noscript.css')
+		link(rel='stylesheet', href='../views/navigation-bar/assets/css/logout.css')
+		// Artifact Image slideshow
+	body.is-preload
+		| >
+		link(rel='stylesheet', href='../views/artifact/assets/css/artifact.css')
+		// Page Wrapper
+		#page-wrapper
+			// Navigation Bar
+			header#navigation-header
+				h1
+					a(href='/catalogue') Catalogue
+				nav#nav
+					ul
+						li.special
+							// Menu Dropdown
+							a.menuToggle(href='#menu')
+							// Light Box
+							#menu
+								// Profile Photo
+								.profile-upload-container
+									a(href='#')
+										span.fas.fa-camera
+									img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id)
+								// Username :-> leads to the profile page
+								.user-name(style='text-align: center;')
+									a(href='/profile')
+										h2.underline-animation #{user.name}
+								// User Info
+								.user-info
+									h3#relationship
+										i.fas.fa-users
+										|  #{user.relationship}
+									h3#total-artifacts
+										i.far.fa-gem
+										|  #{user.artifacts.length} Artifacts contributed
+									h3#join-date
+										i.far.fa-clock
+									script.
+										function english_ordinal_suffix(dt)
+										{
+											return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
+										}
+										var user = !{JSON.stringify(user)};
+										var date = new Date(user.dateJoined);
+										console.log(typeof date);
+										var mm = date.toLocaleString('default', { month: 'long' });
+										var yyyy = date.getFullYear();
+										document.getElementById('join-date').appendChild(document.createTextNode(' '+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
 								div(hidden='')
 									| Icons made by
 									a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
 									|  from
 									a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
-							// Home Button
-							.home-button-container
-								a.home-button(href='')
-									img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg', alt='home-button')
-									.home HOME
-							// Logout Button
-							.logout-container
-								form#form1(action='/logout', method='POST')
-									a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
-										img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg', alt='logout button')
-										.logout LOGOUT
-		// Wrapper
-		#wrapper
-			// Header
-			header#header
-				.inner
-					// Profile Photo + Username
-					// Update profile photos by clicking on the original profile photo
-					a.profile-info(href='/images/upload-DP')
-						// Profile Photo
-						img#profile-photo.mr.mt-3(src = "../images/"+user.displayPic._id alt='Profile Photo')
-						// Username
-						span.title
-						|    #{user.name}
-					// Edit Artifacts Button
-					div(style='float:right;margin-top:10%')
-						button.icon-btn.edit-btn
-							.edit-icon
-							// Direct to Edit/Add Artifacts Page
-							a(href='' style='text-decoration: none;')
-								.btn-txt
-									b.save-changes Save Changes
-					header
-						// First Join Date + Relationship with Mrs Tan + the Number of Total Artifacts Added
-						#eip.form-container1
-							form(v-for='field in fields')
-								.field
-									i(:class='field.icon')
-									|  {{field.name}}: 
-									span.data(type='text', v-show='!field.edit') {{ field.value }}
-									input(type='text', v-model='field.value', v-show='field.edit', v-bind:id='field.id', v-on:blur='saveEdit(field)', :ref='field.id')
-									a(href='#', v-on:click.prevent='toggleEdit(field, $event)')
-										i.fas.fa-pencil-alt   
-							script.
-								var eip = new Vue({
-								el: '#eip',
-								data: {
-								fields: [{
-								value: 'Tom Holland',
-								edit: false,
-								name: 'Name',
-								id: 'name',
-								icon: 'fas fa-file-signature'
-								}, {
-								value: 'T.H.',
-								edit: false,
-								name: 'Username',
-								id: 'username',
-								icon: 'fas far fa-user'
-								},{
-								value: 'aha@gmail.com',
-								edit: false,
-								name: 'Email',
-								id: 'email',
-								icon: 'fas fa-envelope'
-								},{
-								value: 'Unknown',
-								edit: false,
-								name: 'Relationship',
-								id: 'relationship',
-								icon: 'fas fa-users'
-								}]
-								},
-								methods: {
-								toggleEdit: function(field, e) {
-								field.edit = true;
-								this.$nextTick(()=>{
-								this.$refs[field.id][0].focus();
-								})
-								},
-								saveEdit: function(field) {
-								field.edit = false;
-								}
-								}
-								});
-			// Main
-			#main
-				.inner
-					header
-						// First Join Date + Relationship with Mrs Tan + the Number of Total Artifacts Added
-						// <i> tags are character icons from FontAwesome
-
-
-						p#join-date
-							i.far.fa-clock
-						script.
-							function english_ordinal_suffix(dt)
-							{
-								return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
-							}
-							var user = !{JSON.stringify(user)};
-							var date = new Date(user.dateJoined);
-							console.log(typeof date);
-							var mm = date.toLocaleString('default', { month: 'long' });
-							var yyyy = date.getFullYear();
-							document.getElementById('join-date').appendChild(document.createTextNode("   Joined on "+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
-
-						p#relationship
-							i.fas.fa-users
-							|  #{user.relationship}
-						p#total-artifacts
-							i.far.fa-gem
-							|  #{artifacts.length} Artifacts contributed
-					// Photos of Artifacts that the User Added
-					section.tiles
-					each artifact, index in artifacts
-						script.
-							var styles = ['style1', 'style2', 'style3','style4','style5','style6'];
-							var random_style = styles[Math.floor(Math.random() * styles.length)];
-							document.getElementById('display').className = random_style;
-
-						// Photos
-						article.style1
-							span.image
-								img(src='../images/'+artifact.primaryImage._id alt='' style="width:150px")
-							// Link Direct to the Artifact Page
-							a(href='../views/profile-page/profile-photo.jpeg')
-								// the Name of the Artifact
-								h2 #{artifact.name}
-								// the Date Added/Last Modified + Artifact Description
-								.content
-									p.date
-							script.
-								var artifact = !{JSON.stringify(artifact)};
-								var date = new Date(artifact.dateCreated);
-								var dd = date.toLocaleString('default', { day: '2-digit'});
-								var mm = date.toLocaleString('default', { month: 'long' });
-								var yyyy = date.getFullYear();
-								document.getElementsByClassName('date')["#{index}"].appendChild(document.createTextNode(dd+"."+mm+"."+yyyy));
-							p.description #{artifact.description}
-		// Navigation Bar Scripts
-		script(src='../views/navigation-bar/assets/js/jquery.min.js')
-		script(src='../views/navigation-bar/assets/js/jquery.scrollex.min.js')
-		script(src='../views/navigation-bar/assets/js/jquery.scrolly.min.js')
-		script(src='../views/navigation-bar/assets/js/browser.min.js')
-		script(src='../views/navigation-bar/assets/js/breakpoints.min.js')
-		script(src='../views/navigation-bar/assets/js/util.js')
-		script(src='../views/navigation-bar/assets/js/main.js')
+								// Home Button
+								.home-button-container
+									a.home-button(href='')
+										img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg')
+										.home HOME
+								// Logout Button
+								.logout-container
+									form#form1(action='/logout', method='POST')
+										a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
+											img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg')
+											.logout LOGOUT
+		// Header
+		header#header(style='z-index:9;')
+			lottie-player(src='https://assets8.lottiefiles.com/temp/lf20_RTai6J.json', background='transparent', speed='0.2', style='width: 100px; height: 100px; margin-top:-80px;', loop='', autoplay='')
+			.slideshow-container(style='max-width:500px')
+				img.mySlides(src='../images/'+artifact.primaryImage._id, style='width:100%')
+				each image in artifact.extraImages
+					img.mySlides(src='../images/'+image._id, style='width:100%')
+		// Main Forms
+		#main
+			.form-container
+				form#addForm()
+					// Upload Photos
+					.container
+						.array
+							.preview-images-zone
+							#name  #{artifact.name}
+							#year  #{artifact.year}
+							br
+							#description #{artifact.description}
+							br
+							#tags
+								each tag in artifact.tags
+									span.tag #{tag}
+							br
+				// Start Issue Artifact Button (navigate to discussion forum)
+				section
+					ul.actions
+						li
+							button.button(type='submit', value='Start Issue')
+								a(href='#') Start Issue
+					br
+				// Edit Artifact Button (navigate to edit arrtifact page)
+				section
+					ul.actions
+						li
+							button.edit-artifact.button(type='submit', value='Edit Artifact')
+								a(href='/artifacts/edit-artifact') Edit Artifact
+					br
+				// Delete Artifact Button (trigger modal on clicking for deletion of artifact)
+				section
+					ul.actions
+						// tag changed to <button></button> to avoid css clash
+						li
+							button.delete-artifact.button(href='javascript:;', onclick="document.getElementById('form1').submit();", data-toggle='modal', data-target='#myModal', formmethod='post') Delete Artifact
+				// Modal
+				#myModal.modal.fade(role='dialog')
+					.modal-dialog
+						// Modal content
+						.modal-content
+							.modal-header
+								button.close(type='button', onclick='myFunction()', data-dismiss='modal') ×
+								h4.modal-title Ticket Issued!
+							.modal-body
+								p Your request to delete the artifact has been sent for admin approval! 
+				script.
+					var myIndex = 0;
+					carousel();
+					function carousel() {
+					var i;
+					var x = document.getElementsByClassName("mySlides");
+					for (i = 0; i < x.length; i++) {
+					x[i].style.display = "none";
+					}
+					myIndex++;
+					if (myIndex > x.length) {myIndex = 1}
+					x[myIndex-1].style.display = "block";
+					setTimeout(carousel, 3000);     // Change image every 3 seconds
+					}
+				// Scripts
+				script(src='../views/navigation-bar/assets/js/jquery.min.js')
+				script(src='../views/navigation-bar/assets/js/jquery.scrollex.min.js')
+				script(src='../views/navigation-bar/assets/js/jquery.scrolly.min.js')
+				script(src='../views/navigation-bar/assets/js/browser.min.js')
+				script(src='../views/navigation-bar/assets/js/breakpoints.min.js')
+				script(src='../views/navigation-bar/assets/js/util.js')
+				script(src='../views/navigation-bar/assets/js/main.js')

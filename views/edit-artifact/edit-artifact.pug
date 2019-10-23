@@ -19,24 +19,94 @@ html
 				a(href='#')
 					span.fas.fa-camera
 				img.img-thumbnail.img-circle.img-responsive(src='https://a.wattpad.com/cover/118909309-288-k772835.jpg', alt='profile photo')
+		header#navigation-header
+			h1
+				a(href='/catalogue') Catalogue
+			nav#nav
+				ul
+					li.special
+						// Menu Dropdown
+						a.menuToggle(href='#menu')
+						// Light Box
+						#menu
+							// Profile Photo
+							.profile-upload-container
+								a(href='#')
+									span.fas.fa-camera
+								img.img-thumbnail.img-circle.img-responsive(src="../images/"+user.displayPic._id)
+							// Username :-> leads to the profile page
+							.user-name(style='text-align: center;')
+								a(href='/profile')
+									h2.underline-animation #{user.name}
+							// User Info
+							.user-info
+								h3#relationship
+									i.fas.fa-users
+									|  #{user.relationship}
+								h3#total-artifacts
+									i.far.fa-gem
+									|  #{user.artifacts.length} Artifacts contributed
+								h3#join-date
+									i.far.fa-clock
+								script.
+									function english_ordinal_suffix(dt)
+									{
+										return dt.getDate()+(dt.getDate() % 10 == 1 && dt.getDate() != 11 ? 'st' : (dt.getDate() % 10 == 2 && dt.getDate() != 12 ? 'nd' : (dt.getDate() % 10 == 3 && dt.getDate() != 13 ? 'rd' : 'th')));
+									}
+									var user = !{JSON.stringify(user)};
+									var date = new Date(user.dateJoined);
+									console.log(typeof date);
+									var mm = date.toLocaleString('default', { month: 'long' });
+									var yyyy = date.getFullYear();
+									document.getElementById('join-date').appendChild(document.createTextNode(' '+mm+" "+english_ordinal_suffix(date)+" "+yyyy));
+							div(hidden='')
+								| Icons made by
+								a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
+								|  from
+								a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
+							// Home Button
+							.home-button-container
+								a.home-button(href='')
+									img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg')
+									.home HOME
+							// Logout Button
+							.logout-container
+								form#form1(action='/logout', method='POST')
+									a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
+										img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg')
+										.logout LOGOUT
 		// Main Forms
 		#main
 			.form-container
 				form#form1(method='post', action='/artifacts/edit-artifact', enctype='multipart/form-data')
 					div
-						| Name: #{artifact.name}
+						| Current Name: #{artifact.name} 
+						br
+						| New Name: 
+						br
 						input(type='text', required='', name='name', placeholder='Enter new name of artifact')
 					br
 					div
-						| Description: #{artifact.description}
+						| Current Description: #{artifact.description}
+						br
+						| New Description: 
+						br
 						input(type='text', required='', name='description', placeholder='Enter new description')
 						br
-					div
-						| Tags: #{artifact.tags}
-						input.form-control.tm-input(type='text', required='', name='tags', placeholder='Tags, separated by commas', data-role='tagsinput')
+					#tags
+						each tag in artifact.tags
+							div
+								| Current Tags: #{tag}
+								br
+								| New Tags:
+								br
+								input.form-control.tm-input(type='text', required='', name='tags', placeholder='Tags, separated by commas', data-role='tagsinput')
 					br
 					div
-						| Region: #{artifact.placeOrigin}
+						| Current Region: #{artifact.placeOrigin}
+						br
+						| New Region: 
+						br
 						select(name='country')
 							option.test(value='') Country...
 							option(value='Afganistan') Afghanistan
@@ -287,7 +357,10 @@ html
 							option(value='Zimbabwe') Zimbabwe
 					br
 					div
-						| Year: #{artifact.year}
+						| Current Year: #{artifact.year}
+						br
+						| New Year:
+						br
 						input#date.form-control(type='text', required='', name='year', placeholder='Format: YYYY')
 					br
 					// Bootstrap Date Picker

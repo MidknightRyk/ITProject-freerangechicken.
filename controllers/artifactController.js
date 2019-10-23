@@ -92,7 +92,6 @@ var deleteArtifact = function (req, res) {
 	var artifactID = storage.artifactId;
 	console.log('deleting artifact: ' + artifactID);
 	var edits = new Edits({
-		description: req.body.editDescription,
 		editor: req.session.userName,
 		oldArtifact: artifactID,
 		deletion: true,
