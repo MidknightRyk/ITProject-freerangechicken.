@@ -63,17 +63,23 @@ html
 									a(href='https://www.flaticon.com/authors/freepik', title='Freepik') Freepik
 									|  from
 									a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
+								form#form1(action='/logout', method='POST')
+								// Discussion Button
+								.discussion-board-button-container
+									a.discussion-board-button(href='/discussion-board')
+										img#discussion-board-icon-img(src='https://image.flaticon.com/icons/svg/1205/1205495.svg')
+										.discussion-board DISCUSSION
 								// Home Button
 								.home-button-container
 									a.home-button(href='')
-										img#home-icon-img(src='https://image.flaticon.com/icons/svg/1300/1300624.svg')
+										img#home-icon-img(src='https://image.flaticon.com/icons/svg/609/609803.svg')
 										.home HOME
 								// Logout Button
 								.logout-container
-									form#form1(action='/logout', method='POST')
-										a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
-											img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg')
-											.logout LOGOUT
+									a.logout-button(href='javascript:;', onclick="document.getElementById('form1').submit();")
+										img#logout-photo(src='https://image.flaticon.com/icons/svg/1300/1300674.svg')
+										.logout LOGOUT
+								
 			// Banner
 			section#banner
 				.inner

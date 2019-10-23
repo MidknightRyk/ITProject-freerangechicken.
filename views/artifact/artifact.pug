@@ -21,6 +21,7 @@ html(lang='en')
 		link(rel='stylesheet', href='../views/artifact/assets/css/main.css')
 		link(rel='stylesheet', href='../views/artifact/assets/css/uploadStyle.css')
 		link(rel='stylesheet', href='../views/artifact/assets/css/profile-photo-style.css')
+		link(rel='stylesheet', href='../views/discussion-board/assets/css/discussion-forum-mainStyle.css')
 		// Navigation Bar
 		link(rel='stylesheet', href='../views/navigation-bar/assets/css/nav-main.css')
 		noscript
@@ -99,7 +100,7 @@ html(lang='en')
 		// Main Forms
 		#main
 			.form-container
-				form#addForm(method='post', action='/artifacts/add-artifact', enctype='multipart/form-data')
+				form#addForm()
 					// Upload Photos
 					.container
 						.array
@@ -113,24 +114,57 @@ html(lang='en')
 								each tag in artifact.tags
 									span.tag #{tag}
 							br
-							// Start Issue Artifact Button (navigate to discussion forum)
-							section
-								ul.actions
-									li
-										input.button(type='submit', value='Start Issue')
-								br
-							// Edit Artifact Button (navigate to edit arrtifact page)
-							section
-								ul.actions
-									li
-										input.edit-artifact.button(type='submit', value='Edit Artifact')
-								br
+				// Edit Artifact Button (navigate to edit arrtifact page)
+				section
+					ul.actions
+						li
+							button.edit-artifact.button(type='submit', value='Edit Artifact')
+								a(href='/artifacts/edit-artifact') Edit Artifact
+					br
 				// Delete Artifact Button (trigger modal on clicking for deletion of artifact)
 				section
 					ul.actions
 						// tag changed to <button></button> to avoid css clash
 						li
-							button.delete-artifact.button(href='javascript:;', onclick="document.getElementById('form1').submit();", data-toggle='modal', data-target='#myModal', formmethod='post') Delete Artifact
+							form(id='delete-form', action='/artifacts/delete-artifact', method='post')
+							button.delete-artifact.button(type='submit', value='Delete Artifact', data-toggle='modal', data-target='#myModal')
+								a(href='javascript:;', onclick="document.getElementById('delete-form').submit();") Delete Artifact
+					br
+				// Start Issue Artifact Button 
+				section
+					ul.actions
+						li
+							button.button(type='submit', value='Start Issue')
+								a.temp Start Issue
+								script.
+									$(".temp").click(function () {
+										$(".add-issue").fadeIn();
+									});
+					br
+				article.add-issue(style='display:none;')
+					// Author
+					header
+						.author
+							span.name #{user.name}
+							img(src="../images/"+user.displayPic._id, alt='profile photo')
+						span.close x
+						script.
+							$(".close").click(function () {
+							$(".add-issue").hide();
+							});
+					.form-container
+						form(method='post', action='/discussion-board/create-issue')
+							// Issue Title
+							div
+								input(type='text', required='', name='topic', placeholder='Enter Issue Title')
+							br
+							// Issue Description
+							div
+								textarea(name='description', placeholder='Description')
+							// Post Button
+							ul.actions
+								li
+									input.button.small(type='submit', value='Post')
 				// Modal
 				#myModal.modal.fade(role='dialog')
 					.modal-dialog

@@ -18,6 +18,14 @@
 <!-- Preview files before input, check if contains a face if uploading display picture -->
 <!-- Source: https://www.codexworld.com/preview-image-before-upload-jquery/ -->
 <script>
+    var upload = 1;
+
+    $('#uploadForm').on('submit', function(event){
+        if (upload == 1){
+            alert("Please upload an image with your face only!");
+            event.preventDefault();
+        }
+    })
 
     $("#image").change(function () {
         filePreview(this);
@@ -29,17 +37,18 @@
                 $('#uploadForm + embed').remove();
                 $('#uploadForm').after('<embed src="'+e.target.result+'">');
                 $('#preview').attr('src', e.target.result);
-                if (uploadForm.imageType.value === "userProfilePhoto"){
-                    $("#preview").faceDetection({
-                        complete: function (faces) {
-                            console.log(faces);
-                            console.log(faces.length);
-                            if (faces.length != 1) {
-                                alert("Please upload an image with your face only!");
-                            }
+                $("#preview").faceDetection({
+                    complete: function (faces) {
+                        console.log(faces);
+                        console.log(faces.length);
+                        if (faces.length != 1) {
+                            alert("Please upload an image with your face only!");
                         }
-                    })
-                }
+                        else{
+                            upload = 0;
+                        }
+                    }
+                })
             }
             reader.readAsDataURL(input.files[0]);
         }
