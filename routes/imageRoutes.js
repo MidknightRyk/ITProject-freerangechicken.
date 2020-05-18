@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var multer = require('multer');
-var upload = multer({ dest: 'uploads/' });
+var upload = multer({
+  dest: 'uploads/'
+});
 var imageController = require('../controllers/imageController.js');
 
 // Routes for image related stuff
@@ -11,7 +13,7 @@ var imageController = require('../controllers/imageController.js');
 
 // Get upload displayPic page
 router.get('/upload-DP', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/image-uploads/display-picture-upload.html'));
+  res.sendFile(path.join(__dirname, '/../views/image-uploads/display-picture-upload.html'));
 });
 
 // Get upload artifact image page
@@ -23,14 +25,14 @@ router.get('/upload-DP', function (req, res) {
 		TQVM <3
  */
 router.get('/upload-images', function (req, res) {
-	res.sendFile(path.join(__dirname, '/../views/artifactImages.html'));
+  res.sendFile(path.join(__dirname, '/../views/FountainImages.html'));
 });
 
 /* !!!! ATTENTION: Add new get pages before this comment !!!
  * If you do not heed the warning,
  * you gon objectid error
  * YOU HAVE BEEN WARNED
-*/
+ */
 
 // Get images
 router.get('/:image', imageController.getImage);
